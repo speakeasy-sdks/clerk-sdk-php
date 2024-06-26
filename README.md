@@ -1,79 +1,52 @@
-# clerk/backend-php
+<p align="center">
+  <a href="https://clerk.com?utm_source=github&utm_medium=clerk-php" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://images.clerk.com/static/logo-dark-mode-400x400.png">
+      <img src="https://images.clerk.com/static/logo-light-mode-400x400.png" height="64">
+    </picture>
+  </a>
+  <br />
+</p>
 
-<div align="left">
-    <a href="https://speakeasyapi.dev/"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
-    </a>
+# octoper/clerk-php
+
+<div align="center">
+
+[![Chat on Discord](https://img.shields.io/discord/856971667393609759.svg?logo=discord)](https://clerk.com/discord)
+[![Clerk documentation](https://img.shields.io/badge/documentation-clerk-green.svg)](https://clerk.com/docs?utm_source=github&utm_medium=koa)
+[![Follow on Twitter](https://img.shields.io/twitter/follow/ClerkDev?style=social)](https://twitter.com/intent/follow?screen_name=ClerkDev)
+
+[Changelog](https://github.com/octoper/clerk-php/blob/main/CHANGELOG.md)
+·
+[Ask a Question](https://github.com/octoper/clerk-php/discussions)
+
 </div>
 
+---
 
-## 🏗 **Welcome to your new SDK!** 🏗
+## Overview
 
-It has been generated successfully based on your OpenAPI spec. However, it is not yet ready for production use. Here are some next steps:
-- [ ] 🛠 Make your SDK feel handcrafted by [customizing it](https://www.speakeasyapi.dev/docs/customize-sdks)
-- [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
-- [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/advanced-setup/publish-sdks)
-- [ ] ✨ When ready to productionize, delete this section from the README
+[Clerk](https://clerk.com?utm_source=github&utm_medium=clerk-php) is the easiest way to add authentication and user management to your application. To gain a better understanding of the Clerk Backend API, refer to the <a href="https://clerk.com/docs/reference/backend-api" target="_blank">Backend API</a> documentation.
 
-<!-- Start SDK Installation [installation] -->
-## SDK Installation
+## Getting started
 
-### Composer
+### Prerequisites
 
-To install the SDK first add the below to your `composer.json` file:
+## Installation
 
-```json
-{
-    "repositories": [
-        {
-            "type": "github",
-            "url": "<UNSET>.git"
-        }
-    ],
-    "require": {
-        "clerk/backend-php": "*"
-    }
-}
+```sh
+composer install @octoper/clerk-php
 ```
 
-Then run the following command:
+## Usage
 
-```bash
-composer update
+Retrieve your Backend API key from the [API Keys](https://dashboard.clerk.com/last-active?path=api-keys) screen in your Clerk dashboard and set it as an environment variable in a `.env` file:
+
+```sh
+CLERK_PUBLISHABLE_KEY=pk_*******
+CLERK_SECRET_KEY=sk_******
 ```
-<!-- End SDK Installation [installation] -->
 
-<!-- Start SDK Example Usage [usage] -->
-## SDK Example Usage
-
-### Example
-
-```php
-<?php
-
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Clerk\Backend;
-use Clerk\Backend\Models\Components;
-use Clerk\Backend\Models\Operations;
-
-$sdk = Backend\ClerkBackend::builder()->build();
-
-try {
-    $response = $sdk->miscellaneous->getPublicInterstitial('<value>', '<value>');
-
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
-}
-
-```
-<!-- End SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
@@ -298,9 +271,28 @@ This SDK is in beta, and there may be breaking changes between versions without 
 to a specific package version. This way, you can install the same version each time without breaking changes unless you are intentionally
 looking for the latest version.
 
-## Contributions
+## Support
 
-While we value open-source contributions to this SDK, this library is generated programmatically.
-Feel free to open a PR or a Github issue as a proof of concept and we'll do our best to include it in a future release!
+You can get in touch with us in any of the following ways:
 
-### SDK Created by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)
+- Join the official community [Clerk Discord server](https://clerk.com/discord)
+- Create a [GitHub Discussion](https://github.com/octoper/clerk-php/discussions)
+- Contact options listed on [Clerk Support page](https://clerk.com/support?utm_source=github&utm_medium=clerk-php)
+
+## Contributing
+
+We're open to all community contributions!
+
+## Security
+
+`@octoper/clerk-php` follows good practices of security, but 100% security cannot be assured.
+
+`@octoper/clerk-php` is provided **"as is"** without any **warranty**. Use at your own risk.
+
+_For more information and to report security issues, please refer to the [security documentation](https://github.com/octoper/clerk-php/blob/main/docs/SECURITY.md)._
+
+## License
+
+This project is licensed under the **MIT license**.
+
+See [LICENSE](https://github.com/octoper/clerk-php/blob/main/LICENSE) for more information.
