@@ -12,7 +12,5 @@ namespace Clerk\Backend\Models\Components;
 /** OrganizationMembershipPrivateMetadata - Metadata saved on the organization membership, accessible only from the Backend API */
 class OrganizationMembershipPrivateMetadata
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

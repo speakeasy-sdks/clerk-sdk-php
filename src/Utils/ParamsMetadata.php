@@ -17,8 +17,7 @@ class ParamsMetadata
         public string $name,
         public string $serialization,
         public string $dateTimeFormat,
-    ) {
-    }
+    ) {}
 
     public static function parse(string $metadata): ?ParamsMetadata
     {

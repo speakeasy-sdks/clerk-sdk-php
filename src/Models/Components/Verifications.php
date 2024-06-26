@@ -11,7 +11,5 @@ namespace Clerk\Backend\Models\Components;
 
 class Verifications
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

@@ -16,8 +16,7 @@ class FormMetadata
         public string $style,
         public bool $explode,
         public string $dateTimeFormat,
-    ) {
-    }
+    ) {}
 
     public static function parse(string $metadata): ?FormMetadata
     {

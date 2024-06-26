@@ -16,7 +16,5 @@ namespace Clerk\Backend\Models\Operations;
  */
 class UnsafeMetadata
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

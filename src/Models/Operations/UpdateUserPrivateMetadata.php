@@ -12,7 +12,5 @@ namespace Clerk\Backend\Models\Operations;
 /** UpdateUserPrivateMetadata - Metadata saved on the user, that is only visible to your Backend API */
 class UpdateUserPrivateMetadata
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

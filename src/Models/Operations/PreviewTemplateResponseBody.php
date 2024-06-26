@@ -12,7 +12,5 @@ namespace Clerk\Backend\Models\Operations;
 /** PreviewTemplateResponseBody - OK */
 class PreviewTemplateResponseBody
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

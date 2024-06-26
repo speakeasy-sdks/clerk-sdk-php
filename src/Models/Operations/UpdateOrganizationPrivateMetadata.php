@@ -12,7 +12,5 @@ namespace Clerk\Backend\Models\Operations;
 /** UpdateOrganizationPrivateMetadata - Metadata saved on the organization that is only visible to your backend. */
 class UpdateOrganizationPrivateMetadata
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

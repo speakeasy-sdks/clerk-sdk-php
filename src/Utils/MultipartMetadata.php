@@ -16,8 +16,7 @@ class MultipartMetadata
         public bool $content,
         public bool $json,
         public string $dateTimeFormat,
-    ) {
-    }
+    ) {}
 
     public static function parse(string $metadata): ?MultipartMetadata
     {

@@ -32,6 +32,9 @@
     ],
     "stan": [
       "./vendor/bin/phpstan analyse --memory-limit=2g"
+    ],
+    "format": [
+      "./vendor/bin/pint"
     ]
   },
   "script-descriptions": {

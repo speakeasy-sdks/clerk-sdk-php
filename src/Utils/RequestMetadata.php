@@ -12,8 +12,7 @@ class RequestMetadata
 {
     private function __construct(
         public string $mediaType,
-    ) {
-    }
+    ) {}
 
     public static function parse(string $metadata): ?RequestMetadata
     {

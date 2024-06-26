@@ -23,8 +23,7 @@ class SecurityClient implements ClientInterface
     public function __construct(
         private readonly ClientInterface $client,
         private readonly array $clientOptions,
-    ) {
-    }
+    ) {}
 
     /**
      * @param  RequestInterface  $request

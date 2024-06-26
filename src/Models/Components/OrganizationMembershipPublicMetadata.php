@@ -12,7 +12,5 @@ namespace Clerk\Backend\Models\Components;
 /** OrganizationMembershipPublicMetadata - Metadata saved on the organization membership, accessible from both Frontend and Backend APIs */
 class OrganizationMembershipPublicMetadata
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

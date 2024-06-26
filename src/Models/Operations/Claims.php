@@ -12,7 +12,5 @@ namespace Clerk\Backend\Models\Operations;
 /** Claims - JWT template claims in JSON format */
 class Claims
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }

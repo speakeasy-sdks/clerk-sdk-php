@@ -12,7 +12,5 @@ namespace Clerk\Backend\Models\Operations;
 /** CreateOrganizationInvitationBulkPrivateMetadata - Metadata saved on the organization invitation, fully accessible (read/write) from the Backend API but not visible from the Frontend API. */
 class CreateOrganizationInvitationBulkPrivateMetadata
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }
