@@ -116,12 +116,12 @@ try {
 
 ### [EmailAndSMSTemplates](docs/sdks/emailandsmstemplates/README.md)
 
-* [getTemplateList](docs/sdks/emailandsmstemplates/README.md#gettemplatelist) - List all templates
-* [getTemplate](docs/sdks/emailandsmstemplates/README.md#gettemplate) - Retrieve a template
-* [upsertTemplate](docs/sdks/emailandsmstemplates/README.md#upserttemplate) - Update a template for a given type and slug
-* [revertTemplate](docs/sdks/emailandsmstemplates/README.md#reverttemplate) - Revert a template
-* [previewTemplate](docs/sdks/emailandsmstemplates/README.md#previewtemplate) - Preview changes to a template
-* [toggleTemplateDelivery](docs/sdks/emailandsmstemplates/README.md#toggletemplatedelivery) - Toggle the delivery by Clerk for a template of a given type and slug
+* [~~getTemplateList~~](docs/sdks/emailandsmstemplates/README.md#gettemplatelist) - List all templates :warning: **Deprecated**
+* [~~getTemplate~~](docs/sdks/emailandsmstemplates/README.md#gettemplate) - Retrieve a template :warning: **Deprecated**
+* [~~upsertTemplate~~](docs/sdks/emailandsmstemplates/README.md#upserttemplate) - Update a template for a given type and slug :warning: **Deprecated**
+* [~~revertTemplate~~](docs/sdks/emailandsmstemplates/README.md#reverttemplate) - Revert a template :warning: **Deprecated**
+* [~~previewTemplate~~](docs/sdks/emailandsmstemplates/README.md#previewtemplate) - Preview changes to a template :warning: **Deprecated**
+* [~~toggleTemplateDelivery~~](docs/sdks/emailandsmstemplates/README.md#toggletemplatedelivery) - Toggle the delivery by Clerk for a template of a given type and slug :warning: **Deprecated**
 
 ### [Users](docs/sdks/users/README.md)
 

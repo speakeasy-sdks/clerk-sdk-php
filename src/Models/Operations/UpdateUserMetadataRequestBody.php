@@ -16,24 +16,24 @@ class UpdateUserMetadataRequestBody
      *
      * The new object will be merged with the existing value.
      *
-     * @var ?\Clerk\Backend\Models\Operations\UpdateUserMetadataPublicMetadata $publicMetadata
+     * @var ?array<string, mixed> $publicMetadata
      */
     #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('Clerk\Backend\Models\Operations\UpdateUserMetadataPublicMetadata')]
+    #[\JMS\Serializer\Annotation\Type('array<string, mixed>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?UpdateUserMetadataPublicMetadata $publicMetadata = null;
+    public ?array $publicMetadata = null;
 
     /**
      * Metadata saved on the user that is only visible to your backend.
      *
      * The new object will be merged with the existing value.
      *
-     * @var ?\Clerk\Backend\Models\Operations\UpdateUserMetadataPrivateMetadata $privateMetadata
+     * @var ?array<string, mixed> $privateMetadata
      */
     #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('Clerk\Backend\Models\Operations\UpdateUserMetadataPrivateMetadata')]
+    #[\JMS\Serializer\Annotation\Type('array<string, mixed>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?UpdateUserMetadataPrivateMetadata $privateMetadata = null;
+    public ?array $privateMetadata = null;
 
     /**
      * Metadata saved on the user, that can be updated from both the Frontend and Backend APIs.
@@ -42,12 +42,12 @@ class UpdateUserMetadataRequestBody
      *
      * Note: Since this data can be modified from the frontend, it is not guaranteed to be safe.
      *
-     * @var ?\Clerk\Backend\Models\Operations\UpdateUserMetadataUnsafeMetadata $unsafeMetadata
+     * @var ?array<string, mixed> $unsafeMetadata
      */
     #[\JMS\Serializer\Annotation\SerializedName('unsafe_metadata')]
-    #[\JMS\Serializer\Annotation\Type('Clerk\Backend\Models\Operations\UpdateUserMetadataUnsafeMetadata')]
+    #[\JMS\Serializer\Annotation\Type('array<string, mixed>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?UpdateUserMetadataUnsafeMetadata $unsafeMetadata = null;
+    public ?array $unsafeMetadata = null;
 
     public function __construct()
     {

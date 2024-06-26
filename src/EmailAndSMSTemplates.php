@@ -28,10 +28,12 @@ class EmailAndSMSTemplates
      *
      * @param  \Clerk\Backend\Models\Operations\TemplateType  $templateType
      * @return \Clerk\Backend\Models\Operations\GetTemplateListResponse
+     * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     public function getTemplateList(
         \Clerk\Backend\Models\Operations\TemplateType $templateType,
     ): \Clerk\Backend\Models\Operations\GetTemplateListResponse {
+        trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new \Clerk\Backend\Models\Operations\GetTemplateListRequest();
         $request->templateType = $templateType;
         $baseUrl = $this->sdkConfiguration->getServerUrl();
@@ -72,11 +74,13 @@ class EmailAndSMSTemplates
      * @param  \Clerk\Backend\Models\Operations\PathParamTemplateType  $templateType
      * @param  string  $slug
      * @return \Clerk\Backend\Models\Operations\GetTemplateResponse
+     * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     public function getTemplate(
         \Clerk\Backend\Models\Operations\PathParamTemplateType $templateType,
         string $slug,
     ): \Clerk\Backend\Models\Operations\GetTemplateResponse {
+        trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new \Clerk\Backend\Models\Operations\GetTemplateRequest();
         $request->templateType = $templateType;
         $request->slug = $slug;
@@ -119,12 +123,14 @@ class EmailAndSMSTemplates
      * @param  string  $slug
      * @param  ?\Clerk\Backend\Models\Operations\UpsertTemplateRequestBody  $requestBody
      * @return \Clerk\Backend\Models\Operations\UpsertTemplateResponse
+     * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     public function upsertTemplate(
         \Clerk\Backend\Models\Operations\UpsertTemplatePathParamTemplateType $templateType,
         string $slug,
         ?\Clerk\Backend\Models\Operations\UpsertTemplateRequestBody $requestBody = null,
     ): \Clerk\Backend\Models\Operations\UpsertTemplateResponse {
+        trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new \Clerk\Backend\Models\Operations\UpsertTemplateRequest();
         $request->templateType = $templateType;
         $request->slug = $slug;
@@ -171,11 +177,13 @@ class EmailAndSMSTemplates
      * @param  \Clerk\Backend\Models\Operations\RevertTemplatePathParamTemplateType  $templateType
      * @param  string  $slug
      * @return \Clerk\Backend\Models\Operations\RevertTemplateResponse
+     * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     public function revertTemplate(
         \Clerk\Backend\Models\Operations\RevertTemplatePathParamTemplateType $templateType,
         string $slug,
     ): \Clerk\Backend\Models\Operations\RevertTemplateResponse {
+        trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new \Clerk\Backend\Models\Operations\RevertTemplateRequest();
         $request->templateType = $templateType;
         $request->slug = $slug;
@@ -218,12 +226,14 @@ class EmailAndSMSTemplates
      * @param  string  $slug
      * @param  ?\Clerk\Backend\Models\Operations\PreviewTemplateRequestBody  $requestBody
      * @return \Clerk\Backend\Models\Operations\PreviewTemplateResponse
+     * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     public function previewTemplate(
         string $templateType,
         string $slug,
         ?\Clerk\Backend\Models\Operations\PreviewTemplateRequestBody $requestBody = null,
     ): \Clerk\Backend\Models\Operations\PreviewTemplateResponse {
+        trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new \Clerk\Backend\Models\Operations\PreviewTemplateRequest();
         $request->templateType = $templateType;
         $request->slug = $slug;
@@ -273,12 +283,14 @@ class EmailAndSMSTemplates
      * @param  string  $slug
      * @param  ?\Clerk\Backend\Models\Operations\ToggleTemplateDeliveryRequestBody  $requestBody
      * @return \Clerk\Backend\Models\Operations\ToggleTemplateDeliveryResponse
+     * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     public function toggleTemplateDelivery(
         \Clerk\Backend\Models\Operations\ToggleTemplateDeliveryPathParamTemplateType $templateType,
         string $slug,
         ?\Clerk\Backend\Models\Operations\ToggleTemplateDeliveryRequestBody $requestBody = null,
     ): \Clerk\Backend\Models\Operations\ToggleTemplateDeliveryResponse {
+        trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new \Clerk\Backend\Models\Operations\ToggleTemplateDeliveryRequest();
         $request->templateType = $templateType;
         $request->slug = $slug;

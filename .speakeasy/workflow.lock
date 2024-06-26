@@ -2,16 +2,16 @@ speakeasyVersion: 1.304.0
 sources:
     clerk-backend-php:
         sourceNamespace: clerk-backend-php
-        sourceRevisionDigest: sha256:1659b016475c79c826c2bec40b8fa342949de0ff3a5f857d593dc6b1c492ff0e
-        sourceBlobDigest: sha256:54222731741d6c8a37a3e88a34a64e9e10085cd39c9b3e0ab9981b25048f8e65
+        sourceRevisionDigest: sha256:8324d4e13b4acf8045e55dfca67ee83c87e440906d93a3b484d45fe3211ff53a
+        sourceBlobDigest: sha256:426da36af58cfc22dcaccd77120cff8f5f50efef2912cf525aa7394f3a67ea84
         tags:
             - latest
 targets:
     my-first-target:
         source: clerk-backend-php
         sourceNamespace: clerk-backend-php
-        sourceRevisionDigest: sha256:1659b016475c79c826c2bec40b8fa342949de0ff3a5f857d593dc6b1c492ff0e
-        sourceBlobDigest: sha256:54222731741d6c8a37a3e88a34a64e9e10085cd39c9b3e0ab9981b25048f8e65
+        sourceRevisionDigest: sha256:8324d4e13b4acf8045e55dfca67ee83c87e440906d93a3b484d45fe3211ff53a
+        sourceBlobDigest: sha256:426da36af58cfc22dcaccd77120cff8f5f50efef2912cf525aa7394f3a67ea84
         outLocation: /Users/octoper/clerk/projects/clerk-backend-php
 workflow:
     workflowVersion: 1.0.0
@@ -19,7 +19,7 @@ workflow:
     sources:
         clerk-backend-php:
             inputs:
-                - location: ../../../Downloads/swagg.json
+                - location: ./openapi.json
             registry:
                 location: registry.speakeasyapi.dev/octoper-3d0/octoper/clerk-backend-php
     targets:

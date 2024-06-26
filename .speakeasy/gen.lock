@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 8c24a12b-d2f1-466a-bdaa-6d83a049a679
 management:
-  docChecksum: b4b3cbe6b1d4fbc0cbd1352ba7388231
+  docChecksum: 16d57a566fd293ae00cc4172463280a5
   docVersion: v1
-  speakeasyVersion: 1.303.4
-  generationVersion: 2.340.2
-  releaseVersion: 0.0.1
-  configChecksum: 8126157200018e8993de6af0e81f422c
+  speakeasyVersion: 1.304.0
+  generationVersion: 2.340.3
+  releaseVersion: 0.0.2
+  configChecksum: 34256face4ed02fa3d1ffcabc892a57d
 features:
   php:
     core: 3.3.5
@@ -162,9 +162,6 @@ generatedFiles:
   - src/Models/Operations/SetUserProfileImageResponse.php
   - src/Models/Operations/DeleteUserProfileImageRequest.php
   - src/Models/Operations/DeleteUserProfileImageResponse.php
-  - src/Models/Operations/UpdateUserMetadataPublicMetadata.php
-  - src/Models/Operations/UpdateUserMetadataPrivateMetadata.php
-  - src/Models/Operations/UpdateUserMetadataUnsafeMetadata.php
   - src/Models/Operations/UpdateUserMetadataRequestBody.php
   - src/Models/Operations/UpdateUserMetadataRequest.php
   - src/Models/Operations/UpdateUserMetadataResponse.php
@@ -564,9 +561,6 @@ generatedFiles:
   - docs/Models/Operations/SetUserProfileImageResponse.md
   - docs/Models/Operations/DeleteUserProfileImageRequest.md
   - docs/Models/Operations/DeleteUserProfileImageResponse.md
-  - docs/Models/Operations/UpdateUserMetadataPublicMetadata.md
-  - docs/Models/Operations/UpdateUserMetadataPrivateMetadata.md
-  - docs/Models/Operations/UpdateUserMetadataUnsafeMetadata.md
   - docs/Models/Operations/UpdateUserMetadataRequestBody.md
   - docs/Models/Operations/UpdateUserMetadataRequest.md
   - docs/Models/Operations/UpdateUserMetadataResponse.md

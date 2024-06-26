@@ -741,9 +741,15 @@ $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
         $requestBody = new Operations\UpdateUserMetadataRequestBody();
-    $requestBody->publicMetadata = new Operations\UpdateUserMetadataPublicMetadata();
-    $requestBody->privateMetadata = new Operations\UpdateUserMetadataPrivateMetadata();
-    $requestBody->unsafeMetadata = new Operations\UpdateUserMetadataUnsafeMetadata();
+    $requestBody->publicMetadata = [
+        'interestingly' => '<value>',
+    ];
+    $requestBody->privateMetadata = [
+        'Bristol' => '<value>',
+    ];
+    $requestBody->unsafeMetadata = [
+        'withdrawal' => '<value>',
+    ];
 
     $response = $sdk->users->updateUserMetadata('<value>', $requestBody);
 

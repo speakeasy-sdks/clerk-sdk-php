@@ -239,7 +239,7 @@ class CreateUserRequestBody
      * **sha256_salted** (insecure): The digest should be a 64-length hex string with a salt.
      *
      * The format is the following:
-     *   `<hash>$<salt>`  
+     *   `<hash>$<salt>`
      *
      * The value is expected to have 2 segments separated by the $ character and include the following information:
      *   _hash:_ The sha256 hash, a 64-length hex string.

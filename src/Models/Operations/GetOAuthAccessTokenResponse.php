@@ -40,7 +40,7 @@ class GetOAuthAccessTokenResponse
     public ?array $responseBodies = null;
 
     /**
-     * Invalid request parameters
+     * Request was not successful
      *
      * @var ?\Clerk\Backend\Models\Components\ClerkErrors $clerkErrors
      */

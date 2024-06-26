@@ -8,17 +8,19 @@ Email & SMS templates allow you to customize the theming and wording of emails &
 <https://clerk.com/docs/authentication/email-sms-templates>
 ### Available Operations
 
-* [getTemplateList](#gettemplatelist) - List all templates
-* [getTemplate](#gettemplate) - Retrieve a template
-* [upsertTemplate](#upserttemplate) - Update a template for a given type and slug
-* [revertTemplate](#reverttemplate) - Revert a template
-* [previewTemplate](#previewtemplate) - Preview changes to a template
-* [toggleTemplateDelivery](#toggletemplatedelivery) - Toggle the delivery by Clerk for a template of a given type and slug
+* [~~getTemplateList~~](#gettemplatelist) - List all templates :warning: **Deprecated**
+* [~~getTemplate~~](#gettemplate) - Retrieve a template :warning: **Deprecated**
+* [~~upsertTemplate~~](#upserttemplate) - Update a template for a given type and slug :warning: **Deprecated**
+* [~~revertTemplate~~](#reverttemplate) - Revert a template :warning: **Deprecated**
+* [~~previewTemplate~~](#previewtemplate) - Preview changes to a template :warning: **Deprecated**
+* [~~toggleTemplateDelivery~~](#toggletemplatedelivery) - Toggle the delivery by Clerk for a template of a given type and slug :warning: **Deprecated**
 
-## getTemplateList
+## ~~getTemplateList~~
 
 Returns a list of all templates.
 The templates are returned sorted by position.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -63,9 +65,11 @@ try {
 **[?\Clerk\Backend\Models\Operations\GetTemplateListResponse](../../Models/Operations/GetTemplateListResponse.md)**
 
 
-## getTemplate
+## ~~getTemplate~~
 
 Returns the details of a template
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -111,9 +115,11 @@ try {
 **[?\Clerk\Backend\Models\Operations\GetTemplateResponse](../../Models/Operations/GetTemplateResponse.md)**
 
 
-## upsertTemplate
+## ~~upsertTemplate~~
 
 Updates the existing template of the given type and slug
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -167,9 +173,11 @@ try {
 **[?\Clerk\Backend\Models\Operations\UpsertTemplateResponse](../../Models/Operations/UpsertTemplateResponse.md)**
 
 
-## revertTemplate
+## ~~revertTemplate~~
 
 Reverts an updated template to its default state
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -215,9 +223,11 @@ try {
 **[?\Clerk\Backend\Models\Operations\RevertTemplateResponse](../../Models/Operations/RevertTemplateResponse.md)**
 
 
-## previewTemplate
+## ~~previewTemplate~~
 
 Returns a preview of a template for a given template_type, slug and body
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -268,11 +278,13 @@ try {
 **[?\Clerk\Backend\Models\Operations\PreviewTemplateResponse](../../Models/Operations/PreviewTemplateResponse.md)**
 
 
-## toggleTemplateDelivery
+## ~~toggleTemplateDelivery~~
 
 Toggles the delivery by Clerk for a template of a given type and slug.
 If disabled, Clerk will not deliver the resulting email or SMS.
 The app developer will need to listen to the `email.created` or `sms.created` webhooks in order to handle delivery themselves.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

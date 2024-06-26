@@ -666,7 +666,7 @@ class Users
                 $serializer = Utils\JSON::createSerializer();
                 $response->responseBodies = $serializer->deserialize((string) $httpResponse->getBody(), 'array<Clerk\Backend\Models\Operations\ResponseBody>', 'json');
             }
-        } elseif ($httpResponse->getStatusCode() === 422) {
+        } elseif ($httpResponse->getStatusCode() === 400 or $httpResponse->getStatusCode() === 422) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->clerkErrors = $serializer->deserialize((string) $httpResponse->getBody(), 'Clerk\Backend\Models\Components\ClerkErrors', 'json');
