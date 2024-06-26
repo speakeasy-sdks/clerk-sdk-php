@@ -1,0 +1,12 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    clerk-backend-php:
+        inputs:
+            - location: ../../../Downloads/swagg.json
+        registry:
+            location: registry.speakeasyapi.dev/octoper-3d0/octoper/clerk-backend-php
+targets:
+    my-first-target:
+        target: php
+        source: clerk-backend-php

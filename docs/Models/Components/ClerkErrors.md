@@ -1,0 +1,9 @@
+# ClerkErrors
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `errors`                                                                                        | array<[\Clerk\Backend\Models\Components\ClerkError](../../Models/Components/ClerkError.md)>     | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `meta`                                                                                          | [?\Clerk\Backend\Models\Components\ClerkErrorsMeta](../../Models/Components/ClerkErrorsMeta.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |

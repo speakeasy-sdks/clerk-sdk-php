@@ -1,0 +1,9 @@
+# UploadOrganizationLogoRequestBody
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `uploaderUserId`                                                                                                     | *string*                                                                                                             | :heavy_check_mark:                                                                                                   | The ID of the user that will be credited with the image upload.                                                      |
+| `file`                                                                                                               | [\Clerk\Backend\Models\Operations\UploadOrganizationLogoFile](../../Models/Operations/UploadOrganizationLogoFile.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
