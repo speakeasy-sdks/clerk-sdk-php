@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://clerk.com?utm_source=github&utm_medium=clerk-php" target="_blank" rel="noopener noreferrer">
+  <a href="https://clerk.com?utm_source=github&utm_medium=clerk-backend-php" target="_blank" rel="noopener noreferrer">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://images.clerk.com/static/logo-dark-mode-400x400.png">
       <img src="https://images.clerk.com/static/logo-light-mode-400x400.png" height="64">
@@ -8,7 +8,7 @@
   <br />
 </p>
 
-# octoper/clerk-php
+# octoper/clerk-backend-php
 
 <div align="center">
 
@@ -16,9 +16,9 @@
 [![Clerk documentation](https://img.shields.io/badge/documentation-clerk-green.svg)](https://clerk.com/docs?utm_source=github&utm_medium=koa)
 [![Follow on Twitter](https://img.shields.io/twitter/follow/ClerkDev?style=social)](https://twitter.com/intent/follow?screen_name=ClerkDev)
 
-[Changelog](https://github.com/octoper/clerk-php/blob/main/CHANGELOG.md)
+[Changelog](https://github.com/octoper/clerk-backend-php/blob/main/CHANGELOG.md)
 ·
-[Ask a Question](https://github.com/octoper/clerk-php/discussions)
+[Ask a Question](https://github.com/octoper/clerk-backend-php/discussions)
 
 </div>
 
@@ -26,7 +26,7 @@
 
 ## Overview
 
-[Clerk](https://clerk.com?utm_source=github&utm_medium=clerk-php) is the easiest way to add authentication and user management to your application. To gain a better understanding of the Clerk Backend API, refer to the <a href="https://clerk.com/docs/reference/backend-api" target="_blank">Backend API</a> documentation.
+[Clerk](https://clerk.com?utm_source=github&utm_medium=clerk-backend-php) is the easiest way to add authentication and user management to your application. To gain a better understanding of the Clerk Backend API, refer to the <a href="https://clerk.com/docs/reference/backend-api" target="_blank">Backend API</a> documentation.
 
 ## Getting started
 
@@ -35,7 +35,7 @@
 ## Installation
 
 ```sh
-composer install @octoper/clerk-php
+composer install @octoper/clerk-backend-php
 ```
 
 ## Usage
@@ -276,8 +276,8 @@ looking for the latest version.
 You can get in touch with us in any of the following ways:
 
 - Join the official community [Clerk Discord server](https://clerk.com/discord)
-- Create a [GitHub Discussion](https://github.com/octoper/clerk-php/discussions)
-- Contact options listed on [Clerk Support page](https://clerk.com/support?utm_source=github&utm_medium=clerk-php)
+- Create a [GitHub Discussion](https://github.com/octoper/clerk-backend-php/discussions)
+- Contact options listed on [Clerk Support page](https://clerk.com/support?utm_source=github&utm_medium=clerk-backend-php)
 
 ## Contributing
 
@@ -285,14 +285,14 @@ We're open to all community contributions!
 
 ## Security
 
-`@octoper/clerk-php` follows good practices of security, but 100% security cannot be assured.
+`@octoper/clerk-backend-php` follows good practices of security, but 100% security cannot be assured.
 
-`@octoper/clerk-php` is provided **"as is"** without any **warranty**. Use at your own risk.
+`@octoper/clerk-backend-php` is provided **"as is"** without any **warranty**. Use at your own risk.
 
-_For more information and to report security issues, please refer to the [security documentation](https://github.com/octoper/clerk-php/blob/main/docs/SECURITY.md)._
+_For more information and to report security issues, please refer to the [security documentation](https://github.com/octoper/clerk-backend-php/blob/main/docs/SECURITY.md)._
 
 ## License
 
 This project is licensed under the **MIT license**.
 
-See [LICENSE](https://github.com/octoper/clerk-php/blob/main/LICENSE) for more information.
+See [LICENSE](https://github.com/octoper/clerk-backend-php/blob/main/LICENSE) for more information.
