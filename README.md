@@ -35,7 +35,7 @@
 ## Installation
 
 ```sh
-composer install @octoper/clerk-backend-php
+composer require @octoper/clerk-backend-php
 ```
 
 ## Usage
