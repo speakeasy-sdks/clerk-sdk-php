@@ -3,13 +3,13 @@ id: 8c24a12b-d2f1-466a-bdaa-6d83a049a679
 management:
   docChecksum: 16d57a566fd293ae00cc4172463280a5
   docVersion: v1
-  speakeasyVersion: 1.304.0
-  generationVersion: 2.340.3
-  releaseVersion: 0.0.2
-  configChecksum: 34256face4ed02fa3d1ffcabc892a57d
+  speakeasyVersion: 1.330.0
+  generationVersion: 2.361.10
+  releaseVersion: 0.0.3
+  configChecksum: c1795060efbe64cc88a9856715854761
 features:
   php:
-    core: 3.3.5
+    core: 3.3.6
     deprecations: 2.81.1
     flattening: 2.81.1
     globalSecurity: 2.81.6

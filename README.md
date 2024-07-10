@@ -261,6 +261,65 @@ You can override the default server globally by passing a server index to the `s
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 <!-- End Server Selection [server] -->
 
+<!-- Start SDK Installation [installation] -->
+## SDK Installation
+
+### Composer
+
+To install the SDK first add the below to your `composer.json` file:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "github",
+            "url": "<UNSET>.git"
+        }
+    ],
+    "require": {
+        "clerk/backend-php": "*"
+    }
+}
+```
+
+Then run the following command:
+
+```bash
+composer update
+```
+<!-- End SDK Installation [installation] -->
+
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
+
+### Example
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
+
+$sdk = Backend\ClerkBackend::builder()->build();
+
+try {
+    $response = $sdk->miscellaneous->getPublicInterstitial('<value>', '<value>');
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+
+```
+<!-- End SDK Example Usage [usage] -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development

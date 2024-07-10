@@ -17,5 +17,7 @@ namespace Clerk\Backend\Models\Operations;
  */
 class CreateInvitationPublicMetadata
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

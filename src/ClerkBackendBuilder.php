@@ -15,7 +15,8 @@ class ClerkBackendBuilder
 {
     public function __construct(
         private SDKConfiguration $sdkConfig = new SDKConfiguration(),
-    ) {}
+    ) {
+    }
 
     /**
      * setClient allows setting a custom Guzzle client for the SDK to make requests with.

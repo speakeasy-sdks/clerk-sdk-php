@@ -12,5 +12,7 @@ namespace Clerk\Backend\Models\Operations;
 /** PublicMetadata - Metadata saved on the user, that is visible to both your Frontend and Backend APIs */
 class PublicMetadata
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

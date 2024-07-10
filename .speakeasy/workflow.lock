@@ -1,4 +1,4 @@
-speakeasyVersion: 1.304.0
+speakeasyVersion: 1.330.0
 sources:
     clerk-backend-php:
         sourceNamespace: clerk-backend-php

@@ -11,5 +11,7 @@ namespace Clerk\Backend\Models\Components;
 
 class OrganizationWithLogoPrivateMetadata
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

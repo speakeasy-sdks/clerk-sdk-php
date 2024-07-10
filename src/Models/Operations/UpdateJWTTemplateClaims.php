@@ -12,5 +12,7 @@ namespace Clerk\Backend\Models\Operations;
 /** UpdateJWTTemplateClaims - JWT template claims in JSON format */
 class UpdateJWTTemplateClaims
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

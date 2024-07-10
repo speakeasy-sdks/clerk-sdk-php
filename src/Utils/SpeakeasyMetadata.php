@@ -16,7 +16,8 @@ class SpeakeasyMetadata
 {
     public function __construct(
         public string $value,
-    ) {}
+    ) {
+    }
 
     /**
      * @param  array<ReflectionAttribute<SpeakeasyMetadata>>  $attributes

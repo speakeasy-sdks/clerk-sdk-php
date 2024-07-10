@@ -12,5 +12,7 @@ namespace Clerk\Backend\Models\Operations;
 /** CreateOrganizationPublicMetadata - Metadata saved on the organization, read-only from the Frontend API and fully accessible (read/write) from the Backend API */
 class CreateOrganizationPublicMetadata
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

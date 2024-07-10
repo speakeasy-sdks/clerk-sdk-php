@@ -11,5 +11,7 @@ namespace Clerk\Backend\Models\Components;
 
 class InvitationRevokedPublicMetadata
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

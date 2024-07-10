@@ -16,5 +16,7 @@ namespace Clerk\Backend\Models\Operations;
  */
 class Actor
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

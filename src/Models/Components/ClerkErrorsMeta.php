@@ -11,5 +11,7 @@ namespace Clerk\Backend\Models\Components;
 
 class ClerkErrorsMeta
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

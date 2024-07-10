@@ -12,5 +12,7 @@ namespace Clerk\Backend\Models\Operations;
 /** UpdateOrganizationPublicMetadata - Metadata saved on the organization, that is visible to both your frontend and backend. */
 class UpdateOrganizationPublicMetadata
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

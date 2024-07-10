@@ -11,5 +11,7 @@ namespace Clerk\Backend\Models\Components;
 
 class SAMLAccountPublicMetadata
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

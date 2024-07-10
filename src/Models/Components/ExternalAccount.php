@@ -11,5 +11,7 @@ namespace Clerk\Backend\Models\Components;
 
 class ExternalAccount
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

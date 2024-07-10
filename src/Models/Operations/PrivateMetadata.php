@@ -12,5 +12,7 @@ namespace Clerk\Backend\Models\Operations;
 /** PrivateMetadata - Metadata saved on the user, that is only visible to your Backend API */
 class PrivateMetadata
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 }

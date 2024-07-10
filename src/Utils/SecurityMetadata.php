@@ -16,7 +16,8 @@ class SecurityMetadata
         public string $name,
         public string $type,
         public string $subtype,
-    ) {}
+    ) {
+    }
 
     public static function parse(string $metadata): ?SecurityMetadata
     {
