@@ -7,6 +7,6 @@ sources:
         registry:
             location: registry.speakeasyapi.dev/clerk/clerk/clerk-openapi
 targets:
-    my-first-target:
+    clerk-php:
         target: php
         source: clerk-backend-php
