@@ -1,5 +1,6 @@
 # ProxyChecks
 
+## Overview
 
 ### Available Operations
 
@@ -19,15 +20,13 @@ a different proxy URL than the one provided. It can also be used to re-validate 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -35,10 +34,10 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\VerifyDomainProxyRequestBody();
-    $request->domainId = '<value>';
-    $request->proxyUrl = '<value>';;
-
+    $request = new Operations\VerifyDomainProxyRequestBody(
+        domainId: '<value>',
+        proxyUrl: '<value>',
+    );
     $response = $sdk->proxyChecks->verifyDomainProxy($request);
 
     if ($response->proxyCheck !== null) {
@@ -51,12 +50,17 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                               | [\Clerk\Backend\Models\Operations\VerifyDomainProxyRequestBody](../../Models/Operations/VerifyDomainProxyRequestBody.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
-
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                         | [Operations\VerifyDomainProxyRequestBody](../../Models/Operations/VerifyDomainProxyRequestBody.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\VerifyDomainProxyResponse](../../Models/Operations/VerifyDomainProxyResponse.md)**
+**[?Operations\VerifyDomainProxyResponse](../../Models/Operations/VerifyDomainProxyResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,422                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

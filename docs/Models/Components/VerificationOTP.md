@@ -1,0 +1,11 @@
+# VerificationOTP
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `status`                                                                                 | [Components\OTPVerificationStatus](../../Models/Components/OTPVerificationStatus.md)     | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `strategy`                                                                               | [Components\OTPVerificationStrategy](../../Models/Components/OTPVerificationStrategy.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `attempts`                                                                               | *int*                                                                                    | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `expireAt`                                                                               | *int*                                                                                    | :heavy_check_mark:                                                                       | N/A                                                                                      |

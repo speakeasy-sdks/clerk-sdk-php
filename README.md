@@ -261,10 +261,36 @@ You can override the default server globally by passing a server index to the `s
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 <!-- End Server Selection [server] -->
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Clerk Backend API: The Clerk REST Backend API, meant to be accessed by backend
+servers.
+
+### Versions
+
+When the API changes in a way that isn't compatible with older versions, a new version is released.
+Each version is identified by its release date, e.g. `2021-02-05`. For more information, please see [Clerk API Versions](https://clerk.com/docs/backend-requests/versioning/overview).
+
+
+Please see https://clerk.com/docs for more information.
+
+More information about the API can be found at https://clerk.com/docs
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Server Selection](#server-selection)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-### Composer
+The SDK relies on [Composer](https://getcomposer.org/) to manage its dependencies.
 
 To install the SDK first add the below to your `composer.json` file:
 
@@ -295,19 +321,16 @@ composer update
 ### Example
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
-use Clerk\Backend\Models\Operations;
 
 $sdk = Backend\ClerkBackend::builder()->build();
 
 try {
+
     $response = $sdk->miscellaneous->getPublicInterstitial('<value>', '<value>');
 
     if ($response->statusCode === 200) {
@@ -316,7 +339,6 @@ try {
 } catch (Throwable $e) {
     // handle exception
 }
-
 ```
 <!-- End SDK Example Usage [usage] -->
 

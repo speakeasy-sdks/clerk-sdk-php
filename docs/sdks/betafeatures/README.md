@@ -1,6 +1,5 @@
 # BetaFeatures
 
-
 ## Overview
 
 Modify instance settings that are currently in beta.
@@ -18,15 +17,13 @@ Updates the settings of an instance
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -34,14 +31,14 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\UpdateInstanceAuthConfigRequestBody();
-    $request->restrictedToAllowlist = false;
-    $request->fromEmailAddress = '<value>';
-    $request->progressiveSignUp = false;
-    $request->sessionTokenTemplate = '<value>';
-    $request->enhancedEmailDeliverability = false;
-    $request->testMode = false;;
-
+    $request = new Operations\UpdateInstanceAuthConfigRequestBody(
+        restrictedToAllowlist: false,
+        fromEmailAddress: '<value>',
+        progressiveSignUp: false,
+        sessionTokenTemplate: '<value>',
+        enhancedEmailDeliverability: false,
+        testMode: false,
+    );
     $response = $sdk->betaFeatures->updateInstanceAuthConfig($request);
 
     if ($response->instanceSettings !== null) {
@@ -54,14 +51,20 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                              | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
-| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                             | [\Clerk\Backend\Models\Operations\UpdateInstanceAuthConfigRequestBody](../../Models/Operations/UpdateInstanceAuthConfigRequestBody.md) | :heavy_check_mark:                                                                                                                     | The request object to use for the request.                                                                                             |
-
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                       | [Operations\UpdateInstanceAuthConfigRequestBody](../../Models/Operations/UpdateInstanceAuthConfigRequestBody.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\UpdateInstanceAuthConfigResponse](../../Models/Operations/UpdateInstanceAuthConfigResponse.md)**
+**[?Operations\UpdateInstanceAuthConfigResponse](../../Models/Operations/UpdateInstanceAuthConfigResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 402,422                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## ~~updateProductionInstanceDomain~~
@@ -77,15 +80,13 @@ WARNING: Changing your domain will invalidate all current user sessions (i.e. us
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -93,9 +94,9 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\UpdateProductionInstanceDomainRequestBody();
-    $request->homeUrl = '<value>';;
-
+    $request = new Operations\UpdateProductionInstanceDomainRequestBody(
+        homeUrl: '<value>',
+    );
     $response = $sdk->betaFeatures->updateProductionInstanceDomain($request);
 
     if ($response->statusCode === 200) {
@@ -108,14 +109,20 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                                          | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                         | [\Clerk\Backend\Models\Operations\UpdateProductionInstanceDomainRequestBody](../../Models/Operations/UpdateProductionInstanceDomainRequestBody.md) | :heavy_check_mark:                                                                                                                                 | The request object to use for the request.                                                                                                         |
-
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                   | [Operations\UpdateProductionInstanceDomainRequestBody](../../Models/Operations/UpdateProductionInstanceDomainRequestBody.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\UpdateProductionInstanceDomainResponse](../../Models/Operations/UpdateProductionInstanceDomainResponse.md)**
+**[?Operations\UpdateProductionInstanceDomainResponse](../../Models/Operations/UpdateProductionInstanceDomainResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,422                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## changeProductionInstanceDomain
@@ -129,15 +136,13 @@ WARNING: Changing your domain will invalidate all current user sessions (i.e. us
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -145,9 +150,9 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\ChangeProductionInstanceDomainRequestBody();
-    $request->homeUrl = '<value>';;
-
+    $request = new Operations\ChangeProductionInstanceDomainRequestBody(
+        homeUrl: '<value>',
+    );
     $response = $sdk->betaFeatures->changeProductionInstanceDomain($request);
 
     if ($response->statusCode === 200) {
@@ -160,12 +165,17 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                                          | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                         | [\Clerk\Backend\Models\Operations\ChangeProductionInstanceDomainRequestBody](../../Models/Operations/ChangeProductionInstanceDomainRequestBody.md) | :heavy_check_mark:                                                                                                                                 | The request object to use for the request.                                                                                                         |
-
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                   | [Operations\ChangeProductionInstanceDomainRequestBody](../../Models/Operations/ChangeProductionInstanceDomainRequestBody.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\ChangeProductionInstanceDomainResponse](../../Models/Operations/ChangeProductionInstanceDomainResponse.md)**
+**[?Operations\ChangeProductionInstanceDomainResponse](../../Models/Operations/ChangeProductionInstanceDomainResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,422                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

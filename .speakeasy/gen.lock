@@ -3,18 +3,20 @@ id: 8c24a12b-d2f1-466a-bdaa-6d83a049a679
 management:
   docChecksum: 16d57a566fd293ae00cc4172463280a5
   docVersion: v1
-  speakeasyVersion: 1.330.0
-  generationVersion: 2.361.10
-  releaseVersion: 0.0.3
-  configChecksum: c1795060efbe64cc88a9856715854761
+  speakeasyVersion: 1.390.8
+  generationVersion: 2.409.8
+  releaseVersion: 0.1.0
+  configChecksum: 6045d1f43ef0d4af6a7850b31232b852
 features:
   php:
-    core: 3.3.6
+    core: 3.4.0
     deprecations: 2.81.1
     flattening: 2.81.1
-    globalSecurity: 2.81.6
+    globalSecurity: 2.81.7
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.1
+    responseFormat: 0.1.0
+    unions: 0.1.1
 generatedFiles:
   - src/SDKConfiguration.php
   - src/Miscellaneous.php
@@ -47,8 +49,13 @@ generatedFiles:
   - src/ClerkBackendBuilder.php
   - composer.json
   - phpstan.neon
+  - phpunit.xml
   - pint.json
   - rector.php
+  - src/Utils/DateHandler.php
+  - src/Utils/DateTimeHandler.php
+  - src/Utils/DefaultResponse.php
+  - src/Utils/DefaultStream.php
   - src/Utils/EnumHandler.php
   - src/Utils/FormMetadata.php
   - src/Utils/Headers.php
@@ -57,6 +64,7 @@ generatedFiles:
   - src/Utils/MultipartMetadata.php
   - src/Utils/ParamsMetadata.php
   - src/Utils/PathParameters.php
+  - src/Utils/PhpDocTypeParser.php
   - src/Utils/QueryParameters.php
   - src/Utils/RequestBodies.php
   - src/Utils/RequestMetadata.php
@@ -64,7 +72,9 @@ generatedFiles:
   - src/Utils/SecurityClient.php
   - src/Utils/SecurityMetadata.php
   - src/Utils/SpeakeasyMetadata.php
+  - src/Utils/UnionHandler.php
   - src/Utils/Utils.php
+  - src/Models/Errors/SDKException.php
   - src/Models/Operations/GetPublicInterstitialRequest.php
   - src/Models/Operations/GetPublicInterstitialResponse.php
   - src/Models/Operations/GetJWKSResponse.php
@@ -346,22 +356,37 @@ generatedFiles:
   - src/Models/Operations/DeleteSAMLConnectionRequest.php
   - src/Models/Operations/DeleteSAMLConnectionResponse.php
   - src/Models/Operations/CreateTestingTokenResponse.php
-  - src/Models/Components/ClerkErrorsMeta.php
-  - src/Models/Components/ClerkErrors.php
-  - src/Models/Components/Meta.php
-  - src/Models/Components/ClerkError.php
   - src/Models/Components/ObjectT.php
   - src/Models/Components/Client.php
   - src/Models/Components/SessionObject.php
   - src/Models/Components/Actor.php
   - src/Models/Components/Status.php
   - src/Models/Components/Session.php
+  - src/Models/Components/Meta.php
+  - src/Models/Components/ClerkError.php
   - src/Models/Components/EmailAddressObject.php
+  - src/Models/Components/OauthVerificationStatus.php
+  - src/Models/Components/OauthVerificationStrategy.php
+  - src/Models/Components/ErrorMeta.php
+  - src/Models/Components/ErrorClerkError.php
+  - src/Models/Components/Oauth.php
+  - src/Models/Components/AdminVerificationStatus.php
+  - src/Models/Components/VerificationStrategy.php
+  - src/Models/Components/Admin.php
+  - src/Models/Components/VerificationStatus.php
+  - src/Models/Components/Strategy.php
+  - src/Models/Components/Otp.php
   - src/Models/Components/EmailAddress.php
   - src/Models/Components/Type.php
   - src/Models/Components/IdentificationLink.php
   - src/Models/Components/DeletedObject.php
   - src/Models/Components/PhoneNumberObject.php
+  - src/Models/Components/AdminVerificationPhoneNumberStatus.php
+  - src/Models/Components/AdminVerificationStrategy.php
+  - src/Models/Components/VerificationAdmin.php
+  - src/Models/Components/OTPVerificationStatus.php
+  - src/Models/Components/OTPVerificationStrategy.php
+  - src/Models/Components/VerificationOTP.php
   - src/Models/Components/PhoneNumber.php
   - src/Models/Components/TemplateObject.php
   - src/Models/Components/Template.php
@@ -373,10 +398,29 @@ generatedFiles:
   - src/Models/Components/User.php
   - src/Models/Components/SAMLAccountObject.php
   - src/Models/Components/SAMLAccountPublicMetadata.php
+  - src/Models/Components/TicketVerificationStatus.php
+  - src/Models/Components/TicketVerificationStrategy.php
+  - src/Models/Components/Ticket.php
+  - src/Models/Components/SAMLVerificationStatus.php
+  - src/Models/Components/SAMLVerificationStrategy.php
+  - src/Models/Components/ClerkErrorErrorMeta.php
+  - src/Models/Components/SAMLErrorClerkError.php
+  - src/Models/Components/Saml.php
   - src/Models/Components/SAMLAccount.php
   - src/Models/Components/SchemasPasskeyObject.php
+  - src/Models/Components/PasskeyVerificationStatus.php
+  - src/Models/Components/PasskeyVerificationStrategy.php
+  - src/Models/Components/VerificationNonce.php
+  - src/Models/Components/Passkey.php
   - src/Models/Components/SchemasPasskey.php
   - src/Models/Components/Web3WalletObject.php
+  - src/Models/Components/AdminVerificationWeb3WalletStatus.php
+  - src/Models/Components/AdminVerificationWeb3WalletStrategy.php
+  - src/Models/Components/Web3WalletVerificationAdmin.php
+  - src/Models/Components/Web3SignatureVerificationStatus.php
+  - src/Models/Components/Web3SignatureVerificationStrategy.php
+  - src/Models/Components/Nonce.php
+  - src/Models/Components/Web3Signature.php
   - src/Models/Components/Web3Wallet.php
   - src/Models/Components/TotalCountObject.php
   - src/Models/Components/TotalCount.php
@@ -464,6 +508,9 @@ generatedFiles:
   - src/Models/Components/TestingTokenObject.php
   - src/Models/Components/TestingToken.php
   - src/Models/Components/Security.php
+  - src/Models/Errors/Meta.php
+  - src/Models/Errors/ClerkErrorsThrowable.php
+  - src/Models/Errors/ClerkErrors.php
   - docs/Models/Operations/GetPublicInterstitialRequest.md
   - docs/Models/Operations/GetPublicInterstitialResponse.md
   - docs/Models/Operations/GetJWKSResponse.md
@@ -745,22 +792,40 @@ generatedFiles:
   - docs/Models/Operations/DeleteSAMLConnectionRequest.md
   - docs/Models/Operations/DeleteSAMLConnectionResponse.md
   - docs/Models/Operations/CreateTestingTokenResponse.md
-  - docs/Models/Components/ClerkErrorsMeta.md
-  - docs/Models/Components/ClerkErrors.md
-  - docs/Models/Components/Meta.md
-  - docs/Models/Components/ClerkError.md
   - docs/Models/Components/ObjectT.md
   - docs/Models/Components/Client.md
   - docs/Models/Components/SessionObject.md
   - docs/Models/Components/Actor.md
   - docs/Models/Components/Status.md
   - docs/Models/Components/Session.md
+  - docs/Models/Components/Meta.md
+  - docs/Models/Components/ClerkError.md
   - docs/Models/Components/EmailAddressObject.md
+  - docs/Models/Components/OauthVerificationStatus.md
+  - docs/Models/Components/OauthVerificationStrategy.md
+  - docs/Models/Components/ErrorMeta.md
+  - docs/Models/Components/ErrorClerkError.md
+  - docs/Models/Components/Error.md
+  - docs/Models/Components/Oauth.md
+  - docs/Models/Components/AdminVerificationStatus.md
+  - docs/Models/Components/VerificationStrategy.md
+  - docs/Models/Components/Admin.md
+  - docs/Models/Components/VerificationStatus.md
+  - docs/Models/Components/Strategy.md
+  - docs/Models/Components/Otp.md
+  - docs/Models/Components/Verification.md
   - docs/Models/Components/EmailAddress.md
   - docs/Models/Components/Type.md
   - docs/Models/Components/IdentificationLink.md
   - docs/Models/Components/DeletedObject.md
   - docs/Models/Components/PhoneNumberObject.md
+  - docs/Models/Components/AdminVerificationPhoneNumberStatus.md
+  - docs/Models/Components/AdminVerificationStrategy.md
+  - docs/Models/Components/VerificationAdmin.md
+  - docs/Models/Components/OTPVerificationStatus.md
+  - docs/Models/Components/OTPVerificationStrategy.md
+  - docs/Models/Components/VerificationOTP.md
+  - docs/Models/Components/PhoneNumberVerification.md
   - docs/Models/Components/PhoneNumber.md
   - docs/Models/Components/TemplateObject.md
   - docs/Models/Components/Template.md
@@ -772,10 +837,33 @@ generatedFiles:
   - docs/Models/Components/User.md
   - docs/Models/Components/SAMLAccountObject.md
   - docs/Models/Components/SAMLAccountPublicMetadata.md
+  - docs/Models/Components/TicketVerificationStatus.md
+  - docs/Models/Components/TicketVerificationStrategy.md
+  - docs/Models/Components/Ticket.md
+  - docs/Models/Components/SAMLVerificationStatus.md
+  - docs/Models/Components/SAMLVerificationStrategy.md
+  - docs/Models/Components/ClerkErrorErrorMeta.md
+  - docs/Models/Components/SAMLErrorClerkError.md
+  - docs/Models/Components/VerificationError.md
+  - docs/Models/Components/Saml.md
+  - docs/Models/Components/SAMLAccountVerification.md
   - docs/Models/Components/SAMLAccount.md
   - docs/Models/Components/SchemasPasskeyObject.md
+  - docs/Models/Components/PasskeyVerificationStatus.md
+  - docs/Models/Components/PasskeyVerificationStrategy.md
+  - docs/Models/Components/VerificationNonce.md
+  - docs/Models/Components/Passkey.md
+  - docs/Models/Components/SchemasPasskeyVerification.md
   - docs/Models/Components/SchemasPasskey.md
   - docs/Models/Components/Web3WalletObject.md
+  - docs/Models/Components/AdminVerificationWeb3WalletStatus.md
+  - docs/Models/Components/AdminVerificationWeb3WalletStrategy.md
+  - docs/Models/Components/Web3WalletVerificationAdmin.md
+  - docs/Models/Components/Web3SignatureVerificationStatus.md
+  - docs/Models/Components/Web3SignatureVerificationStrategy.md
+  - docs/Models/Components/Nonce.md
+  - docs/Models/Components/Web3Signature.md
+  - docs/Models/Components/Web3WalletVerification.md
   - docs/Models/Components/Web3Wallet.md
   - docs/Models/Components/TotalCountObject.md
   - docs/Models/Components/TotalCount.md
@@ -863,6 +951,8 @@ generatedFiles:
   - docs/Models/Components/TestingTokenObject.md
   - docs/Models/Components/TestingToken.md
   - docs/Models/Components/Security.md
+  - docs/Models/Errors/Meta.md
+  - docs/Models/Errors/ClerkErrors.md
   - docs/sdks/clerkbackend/README.md
   - docs/sdks/miscellaneous/README.md
   - docs/sdks/jwks/README.md
@@ -892,3 +982,4 @@ generatedFiles:
   - docs/sdks/testingtokens/README.md
   - USAGE.md
   - .gitattributes
+  - CONTRIBUTING.md

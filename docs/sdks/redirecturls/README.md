@@ -1,6 +1,5 @@
 # RedirectURLs
 
-
 ## Overview
 
 Redirect URLs are whitelisted URLs that facilitate secure authentication flows in native applications (e.g. React Native, Expo).
@@ -20,14 +19,12 @@ Lists all whitelisted redirect_urls for the instance
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -45,10 +42,15 @@ try {
 }
 ```
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\ListRedirectURLsResponse](../../Models/Operations/ListRedirectURLsResponse.md)**
+**[?Operations\ListRedirectURLsResponse](../../Models/Operations/ListRedirectURLsResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## createRedirectURL
@@ -58,15 +60,13 @@ Create a redirect URL
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -74,9 +74,9 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\CreateRedirectURLRequestBody();
-    $request->url = 'https://physical-airbus.name';;
-
+    $request = new Operations\CreateRedirectURLRequestBody(
+        url: 'https://physical-airbus.name',
+    );
     $response = $sdk->redirectURLs->createRedirectURL($request);
 
     if ($response->redirectURL !== null) {
@@ -89,14 +89,20 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                               | [\Clerk\Backend\Models\Operations\CreateRedirectURLRequestBody](../../Models/Operations/CreateRedirectURLRequestBody.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
-
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                         | [Operations\CreateRedirectURLRequestBody](../../Models/Operations/CreateRedirectURLRequestBody.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\CreateRedirectURLResponse](../../Models/Operations/CreateRedirectURLResponse.md)**
+**[?Operations\CreateRedirectURLResponse](../../Models/Operations/CreateRedirectURLResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,422                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## getRedirectURL
@@ -106,15 +112,12 @@ Retrieve the details of the redirect URL with the given ID
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -122,7 +125,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->redirectURLs->getRedirectURL('<value>');
 
@@ -140,10 +142,16 @@ try {
 | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
 | `id`                       | *string*                   | :heavy_check_mark:         | The ID of the redirect URL |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\GetRedirectURLResponse](../../Models/Operations/GetRedirectURLResponse.md)**
+**[?Operations\GetRedirectURLResponse](../../Models/Operations/GetRedirectURLResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 404                                      | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## deleteRedirectURL
@@ -153,15 +161,12 @@ Remove the selected redirect URL from the whitelist of the instance
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -169,7 +174,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->redirectURLs->deleteRedirectURL('<value>');
 
@@ -187,8 +191,13 @@ try {
 | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
 | `id`                       | *string*                   | :heavy_check_mark:         | The ID of the redirect URL |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\DeleteRedirectURLResponse](../../Models/Operations/DeleteRedirectURLResponse.md)**
+**[?Operations\DeleteRedirectURLResponse](../../Models/Operations/DeleteRedirectURLResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 404                                      | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

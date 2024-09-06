@@ -1,11 +1,10 @@
 # Invitations
 
-
 ## Overview
 
 Invitations allow you to invite someone to sign up to your application, via email.
-
 <https://clerk.com/docs/authentication/invitations>
+
 ### Available Operations
 
 * [createInvitation](#createinvitation) - Create an invitation
@@ -21,15 +20,13 @@ Also, trying to create an invitation for an email address that already exists in
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -37,13 +34,15 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\CreateInvitationRequestBody();
-    $request->emailAddress = 'Green.Aufderhar@hotmail.com';
-    $request->publicMetadata = new Operations\CreateInvitationPublicMetadata();
-    $request->redirectUrl = '<value>';
-    $request->notify = false;
-    $request->ignoreExisting = false;;
+    $request = new Operations\CreateInvitationRequestBody(
+        emailAddress: 'Green.Aufderhar@hotmail.com',
+        publicMetadata: new Operations\CreateInvitationPublicMetadata(
 
+        ),
+        redirectUrl: '<value>',
+        notify: false,
+        ignoreExisting: false,
+    );
     $response = $sdk->invitations->createInvitation($request);
 
     if ($response->invitation !== null) {
@@ -56,14 +55,20 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                             | [\Clerk\Backend\Models\Operations\CreateInvitationRequestBody](../../Models/Operations/CreateInvitationRequestBody.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
-
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                       | [Operations\CreateInvitationRequestBody](../../Models/Operations/CreateInvitationRequestBody.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\CreateInvitationResponse](../../Models/Operations/CreateInvitationResponse.md)**
+**[?Operations\CreateInvitationResponse](../../Models/Operations/CreateInvitationResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,422                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## listInvitations
@@ -73,15 +78,13 @@ Returns all non-revoked invitations for your application, sorted by creation dat
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -89,7 +92,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->invitations->listInvitations(5414.73, 4011.8, Operations\QueryParamStatus::Accepted);
 
@@ -107,12 +109,17 @@ try {
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `limit`                                                                                                                                   | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
 | `offset`                                                                                                                                  | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
-| `status`                                                                                                                                  | [\Clerk\Backend\Models\Operations\QueryParamStatus](../../Models/Operations/QueryParamStatus.md)                                          | :heavy_minus_sign:                                                                                                                        | Filter invitations based on their status                                                                                                  |
-
+| `status`                                                                                                                                  | [Operations\QueryParamStatus](../../Models/Operations/QueryParamStatus.md)                                                                | :heavy_minus_sign:                                                                                                                        | Filter invitations based on their status                                                                                                  |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\ListInvitationsResponse](../../Models/Operations/ListInvitationsResponse.md)**
+**[?Operations\ListInvitationsResponse](../../Models/Operations/ListInvitationsResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## revokeInvitation
@@ -125,15 +132,12 @@ Only active (i.e. non-revoked) invitations can be revoked.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -141,7 +145,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->invitations->revokeInvitation('<value>');
 
@@ -159,8 +162,13 @@ try {
 | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
 | `invitationId`                         | *string*                               | :heavy_check_mark:                     | The ID of the invitation to be revoked |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\RevokeInvitationResponse](../../Models/Operations/RevokeInvitationResponse.md)**
+**[?Operations\RevokeInvitationResponse](../../Models/Operations/RevokeInvitationResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,404                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

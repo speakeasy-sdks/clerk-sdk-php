@@ -1,4 +1,4 @@
-speakeasyVersion: 1.330.0
+speakeasyVersion: 1.390.8
 sources:
     clerk-backend-php:
         sourceNamespace: clerk-backend-php
@@ -12,7 +12,7 @@ targets:
         sourceNamespace: clerk-backend-php
         sourceRevisionDigest: sha256:8324d4e13b4acf8045e55dfca67ee83c87e440906d93a3b484d45fe3211ff53a
         sourceBlobDigest: sha256:426da36af58cfc22dcaccd77120cff8f5f50efef2912cf525aa7394f3a67ea84
-        outLocation: /Users/octoper/clerk/projects/clerk-backend-php
+        outLocation: /Users/octoper/clerk/php/clerk-php
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

@@ -1,11 +1,10 @@
 # Organizations
 
-
 ## Overview
 
 Organizations are used to group members under a common entity and provide shared access to resources.
-
 <https://clerk.com/docs/organizations/overview>
+
 ### Available Operations
 
 * [listOrganizations](#listorganizations) - Get a list of organizations for an instance
@@ -27,15 +26,13 @@ Most recent organizations will be returned first.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -43,13 +40,13 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\ListOrganizationsRequest();
-    $request->limit = 7112.49;
-    $request->offset = 5895.54;
-    $request->includeMembersCount = false;
-    $request->query = '<value>';
-    $request->orderBy = '<value>';;
-
+    $request = new Operations\ListOrganizationsRequest(
+        limit: 7112.49,
+        offset: 5895.54,
+        includeMembersCount: false,
+        query: '<value>',
+        orderBy: '<value>',
+    );
     $response = $sdk->organizations->listOrganizations($request);
 
     if ($response->organizations !== null) {
@@ -62,14 +59,20 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                       | [\Clerk\Backend\Models\Operations\ListOrganizationsRequest](../../Models/Operations/ListOrganizationsRequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
-
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `$request`                                                                                 | [Operations\ListOrganizationsRequest](../../Models/Operations/ListOrganizationsRequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\ListOrganizationsResponse](../../Models/Operations/ListOrganizationsResponse.md)**
+**[?Operations\ListOrganizationsResponse](../../Models/Operations/ListOrganizationsResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,403,422                              | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## createOrganization
@@ -87,15 +90,13 @@ Public metadata can be accessed from the Backend API, and are read-only from the
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -103,14 +104,18 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\CreateOrganizationRequestBody();
-    $request->name = '<value>';
-    $request->createdBy = '<value>';
-    $request->privateMetadata = new Operations\CreateOrganizationPrivateMetadata();
-    $request->publicMetadata = new Operations\CreateOrganizationPublicMetadata();
-    $request->slug = '<value>';
-    $request->maxAllowedMemberships = 57077;;
+    $request = new Operations\CreateOrganizationRequestBody(
+        name: '<value>',
+        createdBy: '<value>',
+        privateMetadata: new Operations\CreateOrganizationPrivateMetadata(
 
+        ),
+        publicMetadata: new Operations\CreateOrganizationPublicMetadata(
+
+        ),
+        slug: '<value>',
+        maxAllowedMemberships: 57077,
+    );
     $response = $sdk->organizations->createOrganization($request);
 
     if ($response->organization !== null) {
@@ -123,14 +128,20 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                 | [\Clerk\Backend\Models\Operations\CreateOrganizationRequestBody](../../Models/Operations/CreateOrganizationRequestBody.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
-
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                           | [Operations\CreateOrganizationRequestBody](../../Models/Operations/CreateOrganizationRequestBody.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\CreateOrganizationResponse](../../Models/Operations/CreateOrganizationResponse.md)**
+**[?Operations\CreateOrganizationResponse](../../Models/Operations/CreateOrganizationResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,403,422                              | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## getOrganization
@@ -140,15 +151,12 @@ Fetches the organization whose ID or slug matches the provided `id_or_slug` URL 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -156,7 +164,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->organizations->getOrganization('<value>');
 
@@ -174,10 +181,16 @@ try {
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
 | `organizationId`                   | *string*                           | :heavy_check_mark:                 | The ID or slug of the organization |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\GetOrganizationResponse](../../Models/Operations/GetOrganizationResponse.md)**
+**[?Operations\GetOrganizationResponse](../../Models/Operations/GetOrganizationResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 403,404                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## updateOrganization
@@ -187,15 +200,13 @@ Updates an existing organization
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -203,14 +214,18 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $requestBody = new Operations\UpdateOrganizationRequestBody();
-    $requestBody->publicMetadata = new Operations\UpdateOrganizationPublicMetadata();
-    $requestBody->privateMetadata = new Operations\UpdateOrganizationPrivateMetadata();
-    $requestBody->name = '<value>';
-    $requestBody->slug = '<value>';
-    $requestBody->maxAllowedMemberships = 524231;
-    $requestBody->adminDeleteEnabled = false;
+    $requestBody = new Operations\UpdateOrganizationRequestBody(
+        publicMetadata: new Operations\UpdateOrganizationPublicMetadata(
 
+        ),
+        privateMetadata: new Operations\UpdateOrganizationPrivateMetadata(
+
+        ),
+        name: '<value>',
+        slug: '<value>',
+        maxAllowedMemberships: 524231,
+        adminDeleteEnabled: false,
+    );
     $response = $sdk->organizations->updateOrganization('<value>', $requestBody);
 
     if ($response->organization !== null) {
@@ -223,15 +238,21 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `organizationId`                                                                                                           | *string*                                                                                                                   | :heavy_check_mark:                                                                                                         | The ID of the organization to update                                                                                       |
-| `requestBody`                                                                                                              | [\Clerk\Backend\Models\Operations\UpdateOrganizationRequestBody](../../Models/Operations/UpdateOrganizationRequestBody.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
-
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `organizationId`                                                                                     | *string*                                                                                             | :heavy_check_mark:                                                                                   | The ID of the organization to update                                                                 |
+| `requestBody`                                                                                        | [Operations\UpdateOrganizationRequestBody](../../Models/Operations/UpdateOrganizationRequestBody.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\UpdateOrganizationResponse](../../Models/Operations/UpdateOrganizationResponse.md)**
+**[?Operations\UpdateOrganizationResponse](../../Models/Operations/UpdateOrganizationResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 402,404,422                              | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## deleteOrganization
@@ -243,15 +264,12 @@ This is not reversible.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -259,7 +277,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->organizations->deleteOrganization('<value>');
 
@@ -277,10 +294,16 @@ try {
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
 | `organizationId`                     | *string*                             | :heavy_check_mark:                   | The ID of the organization to delete |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\DeleteOrganizationResponse](../../Models/Operations/DeleteOrganizationResponse.md)**
+**[?Operations\DeleteOrganizationResponse](../../Models/Operations/DeleteOrganizationResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 404                                      | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## mergeOrganizationMetadata
@@ -293,15 +316,13 @@ You can remove metadata keys at any level by setting their value to `null`.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -309,10 +330,14 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $requestBody = new Operations\MergeOrganizationMetadataRequestBody();
-    $requestBody->publicMetadata = new Operations\MergeOrganizationMetadataPublicMetadata();
-    $requestBody->privateMetadata = new Operations\MergeOrganizationMetadataPrivateMetadata();
+    $requestBody = new Operations\MergeOrganizationMetadataRequestBody(
+        publicMetadata: new Operations\MergeOrganizationMetadataPublicMetadata(
 
+        ),
+        privateMetadata: new Operations\MergeOrganizationMetadataPrivateMetadata(
+
+        ),
+    );
     $response = $sdk->organizations->mergeOrganizationMetadata('<value>', $requestBody);
 
     if ($response->organization !== null) {
@@ -325,15 +350,21 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `organizationId`                                                                                                                         | *string*                                                                                                                                 | :heavy_check_mark:                                                                                                                       | The ID of the organization for which metadata will be merged or updated                                                                  |
-| `requestBody`                                                                                                                            | [\Clerk\Backend\Models\Operations\MergeOrganizationMetadataRequestBody](../../Models/Operations/MergeOrganizationMetadataRequestBody.md) | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |
-
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `organizationId`                                                                                                   | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | The ID of the organization for which metadata will be merged or updated                                            |
+| `requestBody`                                                                                                      | [Operations\MergeOrganizationMetadataRequestBody](../../Models/Operations/MergeOrganizationMetadataRequestBody.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\MergeOrganizationMetadataResponse](../../Models/Operations/MergeOrganizationMetadataResponse.md)**
+**[?Operations\MergeOrganizationMetadataResponse](../../Models/Operations/MergeOrganizationMetadataResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,401,404,422                          | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## uploadOrganizationLogo
@@ -346,15 +377,13 @@ Only the following file content types are supported: `image/jpeg`, `image/png`, 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -362,12 +391,13 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $requestBody = new Operations\UploadOrganizationLogoRequestBody();
-    $requestBody->uploaderUserId = '<value>';
-    $requestBody->file = new Operations\UploadOrganizationLogoFile();
-    $requestBody->file->fileName = 'your_file_here';
-    $requestBody->file->content = '0xda979adced';
-
+    $requestBody = new Operations\UploadOrganizationLogoRequestBody(
+        uploaderUserId: '<value>',
+        file: new Operations\UploadOrganizationLogoFile(
+            fileName: 'your_file_here',
+            content: '0xda979adced',
+        ),
+    );
     $response = $sdk->organizations->uploadOrganizationLogo('<value>', $requestBody);
 
     if ($response->organizationWithLogo !== null) {
@@ -380,15 +410,21 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `organizationId`                                                                                                                   | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The ID of the organization for which to upload a logo                                                                              |
-| `requestBody`                                                                                                                      | [\Clerk\Backend\Models\Operations\UploadOrganizationLogoRequestBody](../../Models/Operations/UploadOrganizationLogoRequestBody.md) | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `organizationId`                                                                                             | *string*                                                                                                     | :heavy_check_mark:                                                                                           | The ID of the organization for which to upload a logo                                                        |
+| `requestBody`                                                                                                | [Operations\UploadOrganizationLogoRequestBody](../../Models/Operations/UploadOrganizationLogoRequestBody.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\UploadOrganizationLogoResponse](../../Models/Operations/UploadOrganizationLogoResponse.md)**
+**[?Operations\UploadOrganizationLogoResponse](../../Models/Operations/UploadOrganizationLogoResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,403,404,413                          | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## deleteOrganizationLogo
@@ -398,15 +434,12 @@ Delete the organization's logo.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -414,7 +447,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->organizations->deleteOrganizationLogo('<value>');
 
@@ -432,8 +464,13 @@ try {
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | `organizationId`                                               | *string*                                                       | :heavy_check_mark:                                             | The ID of the organization for which the logo will be deleted. |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\DeleteOrganizationLogoResponse](../../Models/Operations/DeleteOrganizationLogoResponse.md)**
+**[?Operations\DeleteOrganizationLogoResponse](../../Models/Operations/DeleteOrganizationLogoResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 404                                      | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

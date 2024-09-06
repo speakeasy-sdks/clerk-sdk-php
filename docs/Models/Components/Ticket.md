@@ -1,0 +1,11 @@
+# Ticket
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `status`                                                                                       | [Components\TicketVerificationStatus](../../Models/Components/TicketVerificationStatus.md)     | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `strategy`                                                                                     | [Components\TicketVerificationStrategy](../../Models/Components/TicketVerificationStrategy.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `attempts`                                                                                     | *?int*                                                                                         | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `expireAt`                                                                                     | *?int*                                                                                         | :heavy_minus_sign:                                                                             | N/A                                                                                            |

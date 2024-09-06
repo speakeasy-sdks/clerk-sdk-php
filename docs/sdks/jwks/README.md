@@ -1,6 +1,5 @@
 # Jwks
 
-
 ## Overview
 
 Retrieve the JSON Web Key Set which can be used to verify the token signatures of the instance.
@@ -16,14 +15,12 @@ Retrieve the JSON Web Key Set of the instance
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -41,8 +38,12 @@ try {
 }
 ```
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\GetJWKSResponse](../../Models/Operations/GetJWKSResponse.md)**
+**[?Operations\GetJWKSResponse](../../Models/Operations/GetJWKSResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

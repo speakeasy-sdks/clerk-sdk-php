@@ -1,11 +1,10 @@
 # OrganizationInvitations
 
-
 ## Overview
 
 Invite users to an organization.
-
 <https://clerk.com/docs/organizations/invite-users>
+
 ### Available Operations
 
 * [createOrganizationInvitation](#createorganizationinvitation) - Create and send an organization invitation
@@ -37,15 +36,13 @@ When the organization invitation is accepted, the metadata will be transferred t
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -53,14 +50,18 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $requestBody = new Operations\CreateOrganizationInvitationRequestBody();
-    $requestBody->emailAddress = 'Palma.Kulas@hotmail.com';
-    $requestBody->inviterUserId = '<value>';
-    $requestBody->role = '<value>';
-    $requestBody->publicMetadata = new Operations\CreateOrganizationInvitationPublicMetadata();
-    $requestBody->privateMetadata = new Operations\CreateOrganizationInvitationPrivateMetadata();
-    $requestBody->redirectUrl = '<value>';
+    $requestBody = new Operations\CreateOrganizationInvitationRequestBody(
+        emailAddress: 'Palma.Kulas@hotmail.com',
+        inviterUserId: '<value>',
+        role: '<value>',
+        publicMetadata: new Operations\CreateOrganizationInvitationPublicMetadata(
 
+        ),
+        privateMetadata: new Operations\CreateOrganizationInvitationPrivateMetadata(
+
+        ),
+        redirectUrl: '<value>',
+    );
     $response = $sdk->organizationInvitations->createOrganizationInvitation('<value>', $requestBody);
 
     if ($response->organizationInvitation !== null) {
@@ -73,15 +74,21 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                                      | Type                                                                                                                                           | Required                                                                                                                                       | Description                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `organizationId`                                                                                                                               | *string*                                                                                                                                       | :heavy_check_mark:                                                                                                                             | The ID of the organization for which to send the invitation                                                                                    |
-| `requestBody`                                                                                                                                  | [\Clerk\Backend\Models\Operations\CreateOrganizationInvitationRequestBody](../../Models/Operations/CreateOrganizationInvitationRequestBody.md) | :heavy_check_mark:                                                                                                                             | N/A                                                                                                                                            |
-
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `organizationId`                                                                                                         | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | The ID of the organization for which to send the invitation                                                              |
+| `requestBody`                                                                                                            | [Operations\CreateOrganizationInvitationRequestBody](../../Models/Operations/CreateOrganizationInvitationRequestBody.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\CreateOrganizationInvitationResponse](../../Models/Operations/CreateOrganizationInvitationResponse.md)**
+**[?Operations\CreateOrganizationInvitationResponse](../../Models/Operations/CreateOrganizationInvitationResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,403,404,422                          | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## listOrganizationInvitations
@@ -96,15 +103,13 @@ Any invitations created as a result of an Organization Domain are not included i
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -112,7 +117,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->organizationInvitations->listOrganizationInvitations('<value>', 6429.18, 2744.7, Operations\ListOrganizationInvitationsQueryParamStatus::Pending);
 
@@ -126,17 +130,23 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                                              | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `organizationId`                                                                                                                                       | *string*                                                                                                                                               | :heavy_check_mark:                                                                                                                                     | The organization ID.                                                                                                                                   |
-| `limit`                                                                                                                                                | *float*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                     | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                                  |
-| `offset`                                                                                                                                               | *float*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                     | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`.      |
-| `status`                                                                                                                                               | [\Clerk\Backend\Models\Operations\ListOrganizationInvitationsQueryParamStatus](../../Models/Operations/ListOrganizationInvitationsQueryParamStatus.md) | :heavy_minus_sign:                                                                                                                                     | Filter organization invitations based on their status                                                                                                  |
-
+| Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `organizationId`                                                                                                                          | *string*                                                                                                                                  | :heavy_check_mark:                                                                                                                        | The organization ID.                                                                                                                      |
+| `limit`                                                                                                                                   | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
+| `offset`                                                                                                                                  | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
+| `status`                                                                                                                                  | [Operations\ListOrganizationInvitationsQueryParamStatus](../../Models/Operations/ListOrganizationInvitationsQueryParamStatus.md)          | :heavy_minus_sign:                                                                                                                        | Filter organization invitations based on their status                                                                                     |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\ListOrganizationInvitationsResponse](../../Models/Operations/ListOrganizationInvitationsResponse.md)**
+**[?Operations\ListOrganizationInvitationsResponse](../../Models/Operations/ListOrganizationInvitationsResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,404                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## createOrganizationInvitationBulk
@@ -158,15 +168,13 @@ When the organization invitation is accepted, the metadata will be transferred t
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -174,11 +182,10 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->organizationInvitations->createOrganizationInvitationBulk('<value>', [
-    new Operations\RequestBody(),
-]);
+        new Operations\RequestBody,
+    ]);
 
     if ($response->organizationInvitations !== null) {
         // handle response
@@ -190,15 +197,21 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `organizationId`                                                                              | *string*                                                                                      | :heavy_check_mark:                                                                            | The organization ID.                                                                          |
-| `requestBody`                                                                                 | array<[\Clerk\Backend\Models\Operations\RequestBody](../../Models/Operations/RequestBody.md)> | :heavy_check_mark:                                                                            | N/A                                                                                           |
-
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `organizationId`                                                        | *string*                                                                | :heavy_check_mark:                                                      | The organization ID.                                                    |
+| `requestBody`                                                           | array<[Operations\RequestBody](../../Models/Operations/RequestBody.md)> | :heavy_check_mark:                                                      | N/A                                                                     |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\CreateOrganizationInvitationBulkResponse](../../Models/Operations/CreateOrganizationInvitationBulkResponse.md)**
+**[?Operations\CreateOrganizationInvitationBulkResponse](../../Models/Operations/CreateOrganizationInvitationBulkResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,403,404,422                          | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## ~~listPendingOrganizationInvitations~~
@@ -215,15 +228,12 @@ Any invitations created as a result of an Organization Domain are not included i
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -231,7 +241,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->organizationInvitations->listPendingOrganizationInvitations('<value>', 9194.42, 4938.23);
 
@@ -251,10 +260,16 @@ try {
 | `limit`                                                                                                                                   | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
 | `offset`                                                                                                                                  | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\ListPendingOrganizationInvitationsResponse](../../Models/Operations/ListPendingOrganizationInvitationsResponse.md)**
+**[?Operations\ListPendingOrganizationInvitationsResponse](../../Models/Operations/ListPendingOrganizationInvitationsResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,404                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## getOrganizationInvitation
@@ -264,15 +279,12 @@ Use this request to get an existing organization invitation by ID.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -280,7 +292,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->organizationInvitations->getOrganizationInvitation('<value>', '<value>');
 
@@ -299,10 +310,16 @@ try {
 | `organizationId`                | *string*                        | :heavy_check_mark:              | The organization ID.            |
 | `invitationId`                  | *string*                        | :heavy_check_mark:              | The organization invitation ID. |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\GetOrganizationInvitationResponse](../../Models/Operations/GetOrganizationInvitationResponse.md)**
+**[?Operations\GetOrganizationInvitationResponse](../../Models/Operations/GetOrganizationInvitationResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,403,404                              | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## revokeOrganizationInvitation
@@ -316,15 +333,13 @@ Only users with "admin" role can revoke invitations.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -332,9 +347,9 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $requestBody = new Operations\RevokeOrganizationInvitationRequestBody();
-    $requestBody->requestingUserId = '<value>';
-
+    $requestBody = new Operations\RevokeOrganizationInvitationRequestBody(
+        requestingUserId: '<value>',
+    );
     $response = $sdk->organizationInvitations->revokeOrganizationInvitation('<value>', '<value>', $requestBody);
 
     if ($response->organizationInvitation !== null) {
@@ -347,14 +362,19 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                                      | Type                                                                                                                                           | Required                                                                                                                                       | Description                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `organizationId`                                                                                                                               | *string*                                                                                                                                       | :heavy_check_mark:                                                                                                                             | The organization ID.                                                                                                                           |
-| `invitationId`                                                                                                                                 | *string*                                                                                                                                       | :heavy_check_mark:                                                                                                                             | The organization invitation ID.                                                                                                                |
-| `requestBody`                                                                                                                                  | [\Clerk\Backend\Models\Operations\RevokeOrganizationInvitationRequestBody](../../Models/Operations/RevokeOrganizationInvitationRequestBody.md) | :heavy_check_mark:                                                                                                                             | N/A                                                                                                                                            |
-
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `organizationId`                                                                                                         | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | The organization ID.                                                                                                     |
+| `invitationId`                                                                                                           | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | The organization invitation ID.                                                                                          |
+| `requestBody`                                                                                                            | [Operations\RevokeOrganizationInvitationRequestBody](../../Models/Operations/RevokeOrganizationInvitationRequestBody.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\RevokeOrganizationInvitationResponse](../../Models/Operations/RevokeOrganizationInvitationResponse.md)**
+**[?Operations\RevokeOrganizationInvitationResponse](../../Models/Operations/RevokeOrganizationInvitationResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,403,404                              | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

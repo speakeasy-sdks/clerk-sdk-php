@@ -1,6 +1,5 @@
 # Domains
 
-
 ## Overview
 
 Domains represent each instance's URLs and DNS setup.
@@ -20,14 +19,12 @@ The response will contain the primary domain for the instance and any satellite 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -45,10 +42,15 @@ try {
 }
 ```
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\ListDomainsResponse](../../Models/Operations/ListDomainsResponse.md)**
+**[?Operations\ListDomainsResponse](../../Models/Operations/ListDomainsResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## addDomain
@@ -62,15 +64,13 @@ If you're planning to configure the new satellite domain to run behind a proxy, 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -78,11 +78,11 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\AddDomainRequestBody();
-    $request->name = '<value>';
-    $request->isSatellite = false;
-    $request->proxyUrl = '<value>';;
-
+    $request = new Operations\AddDomainRequestBody(
+        name: '<value>',
+        isSatellite: false,
+        proxyUrl: '<value>',
+    );
     $response = $sdk->domains->addDomain($request);
 
     if ($response->domain !== null) {
@@ -95,14 +95,20 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                               | [\Clerk\Backend\Models\Operations\AddDomainRequestBody](../../Models/Operations/AddDomainRequestBody.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `$request`                                                                         | [Operations\AddDomainRequestBody](../../Models/Operations/AddDomainRequestBody.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\AddDomainResponse](../../Models/Operations/AddDomainResponse.md)**
+**[?Operations\AddDomainResponse](../../Models/Operations/AddDomainResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,402,422                              | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## deleteDomain
@@ -113,15 +119,12 @@ It is currently not possible to delete the instance's primary domain.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -129,7 +132,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->domains->deleteDomain('<value>');
 
@@ -147,10 +149,16 @@ try {
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `domainId`                                                             | *string*                                                               | :heavy_check_mark:                                                     | The ID of the domain that will be deleted. Must be a satellite domain. |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\DeleteDomainResponse](../../Models/Operations/DeleteDomainResponse.md)**
+**[?Operations\DeleteDomainResponse](../../Models/Operations/DeleteDomainResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 403,404                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## updateDomain
@@ -167,15 +175,13 @@ update the instance's home origin, affecting the default application paths.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -183,10 +189,10 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $requestBody = new Operations\UpdateDomainRequestBody();
-    $requestBody->name = '<value>';
-    $requestBody->proxyUrl = '<value>';
-
+    $requestBody = new Operations\UpdateDomainRequestBody(
+        name: '<value>',
+        proxyUrl: '<value>',
+    );
     $response = $sdk->domains->updateDomain('<value>', $requestBody);
 
     if ($response->domain !== null) {
@@ -199,13 +205,18 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `domainId`                                                                                                     | *string*                                                                                                       | :heavy_check_mark:                                                                                             | The ID of the domain that will be updated.                                                                     |
-| `requestBody`                                                                                                  | [\Clerk\Backend\Models\Operations\UpdateDomainRequestBody](../../Models/Operations/UpdateDomainRequestBody.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `domainId`                                                                               | *string*                                                                                 | :heavy_check_mark:                                                                       | The ID of the domain that will be updated.                                               |
+| `requestBody`                                                                            | [Operations\UpdateDomainRequestBody](../../Models/Operations/UpdateDomainRequestBody.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\UpdateDomainResponse](../../Models/Operations/UpdateDomainResponse.md)**
+**[?Operations\UpdateDomainResponse](../../Models/Operations/UpdateDomainResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,404,422                              | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

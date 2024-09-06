@@ -1,13 +1,12 @@
 # Sessions
 
-
 ## Overview
 
 The Session object is an abstraction over an HTTP session.
 It models the period of information exchange between a user and the server.
 Sessions are created when a user successfully goes through the sign in or sign up flows.
-
 <https://clerk.com/docs/reference/clerkjs/session>
+
 ### Available Operations
 
 * [getSessionList](#getsessionlist) - List all sessions
@@ -26,15 +25,13 @@ moving forward at least one of `client_id` or `user_id` parameters should be pro
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -42,13 +39,13 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\GetSessionListRequest();
-    $request->clientId = '<value>';
-    $request->userId = '<value>';
-    $request->status = Operations\Status::Removed;
-    $request->limit = 1172.96;
-    $request->offset = 1903.38;;
-
+    $request = new Operations\GetSessionListRequest(
+        clientId: '<value>',
+        userId: '<value>',
+        status: Operations\Status::Removed,
+        limit: 1172.96,
+        offset: 1903.38,
+    );
     $response = $sdk->sessions->getSessionList($request);
 
     if ($response->sessionList !== null) {
@@ -61,14 +58,20 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                 | [\Clerk\Backend\Models\Operations\GetSessionListRequest](../../Models/Operations/GetSessionListRequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
-
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `$request`                                                                           | [Operations\GetSessionListRequest](../../Models/Operations/GetSessionListRequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\GetSessionListResponse](../../Models/Operations/GetSessionListResponse.md)**
+**[?Operations\GetSessionListResponse](../../Models/Operations/GetSessionListResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,401,422                              | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## getSession
@@ -78,15 +81,12 @@ Retrieve the details of a session
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -94,7 +94,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->sessions->getSession('<value>');
 
@@ -112,10 +111,16 @@ try {
 | --------------------- | --------------------- | --------------------- | --------------------- |
 | `sessionId`           | *string*              | :heavy_check_mark:    | The ID of the session |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\GetSessionResponse](../../Models/Operations/GetSessionResponse.md)**
+**[?Operations\GetSessionResponse](../../Models/Operations/GetSessionResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,401,404                              | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## revokeSession
@@ -126,15 +131,12 @@ In multi-session mode, a revoked session will still be returned along with its c
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -142,7 +144,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->sessions->revokeSession('<value>');
 
@@ -160,10 +161,16 @@ try {
 | --------------------- | --------------------- | --------------------- | --------------------- |
 | `sessionId`           | *string*              | :heavy_check_mark:    | The ID of the session |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\RevokeSessionResponse](../../Models/Operations/RevokeSessionResponse.md)**
+**[?Operations\RevokeSessionResponse](../../Models/Operations/RevokeSessionResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,401,404                              | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## ~~verifySession~~
@@ -178,15 +185,13 @@ WARNING: This endpoint is deprecated and will be removed in future versions. We 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -194,9 +199,9 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $requestBody = new Operations\VerifySessionRequestBody();
-    $requestBody->token = '<value>';
-
+    $requestBody = new Operations\VerifySessionRequestBody(
+        token: '<value>',
+    );
     $response = $sdk->sessions->verifySession('<value>', $requestBody);
 
     if ($response->session !== null) {
@@ -209,15 +214,21 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `sessionId`                                                                                                      | *string*                                                                                                         | :heavy_check_mark:                                                                                               | The ID of the session                                                                                            |
-| `requestBody`                                                                                                    | [\Clerk\Backend\Models\Operations\VerifySessionRequestBody](../../Models/Operations/VerifySessionRequestBody.md) | :heavy_minus_sign:                                                                                               | Parameters.                                                                                                      |
-
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `sessionId`                                                                                | *string*                                                                                   | :heavy_check_mark:                                                                         | The ID of the session                                                                      |
+| `requestBody`                                                                              | [Operations\VerifySessionRequestBody](../../Models/Operations/VerifySessionRequestBody.md) | :heavy_minus_sign:                                                                         | Parameters.                                                                                |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\VerifySessionResponse](../../Models/Operations/VerifySessionResponse.md)**
+**[?Operations\VerifySessionResponse](../../Models/Operations/VerifySessionResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,401,404,410                          | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## createSessionTokenFromTemplate
@@ -227,15 +238,12 @@ Creates a JSON Web Token(JWT) based on a session and a JWT Template name defined
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -243,7 +251,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->sessions->createSessionTokenFromTemplate('<value>', '<value>');
 
@@ -262,8 +269,13 @@ try {
 | `sessionId`                                                                   | *string*                                                                      | :heavy_check_mark:                                                            | The ID of the session                                                         |
 | `templateName`                                                                | *string*                                                                      | :heavy_check_mark:                                                            | The name of the JWT Template defined in your instance (e.g. `custom_hasura`). |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\CreateSessionTokenFromTemplateResponse](../../Models/Operations/CreateSessionTokenFromTemplateResponse.md)**
+**[?Operations\CreateSessionTokenFromTemplateResponse](../../Models/Operations/CreateSessionTokenFromTemplateResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 401,404                                  | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

@@ -1,11 +1,10 @@
 # EmailAddresses
 
-
 ## Overview
 
 A user can be associated with one or more email addresses, which allows them to be contacted via email.
-
 <https://clerk.com/docs/reference/clerkjs/emailaddress>
+
 ### Available Operations
 
 * [createEmailAddress](#createemailaddress) - Create an email address
@@ -20,15 +19,13 @@ Create a new email address
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -36,12 +33,12 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $request = new Operations\CreateEmailAddressRequestBody();
-    $request->userId = '<value>';
-    $request->emailAddress = 'Hailee_Leuschke90@hotmail.com';
-    $request->verified = false;
-    $request->primary = false;;
-
+    $request = new Operations\CreateEmailAddressRequestBody(
+        userId: '<value>',
+        emailAddress: 'Hailee_Leuschke90@hotmail.com',
+        verified: false,
+        primary: false,
+    );
     $response = $sdk->emailAddresses->createEmailAddress($request);
 
     if ($response->emailAddress !== null) {
@@ -54,14 +51,20 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                 | [\Clerk\Backend\Models\Operations\CreateEmailAddressRequestBody](../../Models/Operations/CreateEmailAddressRequestBody.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
-
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                           | [Operations\CreateEmailAddressRequestBody](../../Models/Operations/CreateEmailAddressRequestBody.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\CreateEmailAddressResponse](../../Models/Operations/CreateEmailAddressResponse.md)**
+**[?Operations\CreateEmailAddressResponse](../../Models/Operations/CreateEmailAddressResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,401,403,404,422                      | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## getEmailAddress
@@ -71,15 +74,12 @@ Returns the details of an email address.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -87,7 +87,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->emailAddresses->getEmailAddress('<value>');
 
@@ -105,10 +104,16 @@ try {
 | --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | `emailAddressId`                        | *string*                                | :heavy_check_mark:                      | The ID of the email address to retrieve |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\GetEmailAddressResponse](../../Models/Operations/GetEmailAddressResponse.md)**
+**[?Operations\GetEmailAddressResponse](../../Models/Operations/GetEmailAddressResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,401,403,404                          | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## deleteEmailAddress
@@ -118,15 +123,12 @@ Delete the email address with the given ID
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -134,7 +136,6 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-    
 
     $response = $sdk->emailAddresses->deleteEmailAddress('<value>');
 
@@ -152,10 +153,16 @@ try {
 | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 | `emailAddressId`                      | *string*                              | :heavy_check_mark:                    | The ID of the email address to delete |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\DeleteEmailAddressResponse](../../Models/Operations/DeleteEmailAddressResponse.md)**
+**[?Operations\DeleteEmailAddressResponse](../../Models/Operations/DeleteEmailAddressResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,401,403,404                          | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## updateEmailAddress
@@ -165,15 +172,13 @@ Updates an email address.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
+use Clerk\Backend\Models\Operations;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -181,10 +186,10 @@ $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
 try {
-        $requestBody = new Operations\UpdateEmailAddressRequestBody();
-    $requestBody->verified = false;
-    $requestBody->primary = false;
-
+    $requestBody = new Operations\UpdateEmailAddressRequestBody(
+        verified: false,
+        primary: false,
+    );
     $response = $sdk->emailAddresses->updateEmailAddress('<value>', $requestBody);
 
     if ($response->emailAddress !== null) {
@@ -197,13 +202,18 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `emailAddressId`                                                                                                           | *string*                                                                                                                   | :heavy_check_mark:                                                                                                         | The ID of the email address to update                                                                                      |
-| `requestBody`                                                                                                              | [\Clerk\Backend\Models\Operations\UpdateEmailAddressRequestBody](../../Models/Operations/UpdateEmailAddressRequestBody.md) | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |
-
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `emailAddressId`                                                                                     | *string*                                                                                             | :heavy_check_mark:                                                                                   | The ID of the email address to update                                                                |
+| `requestBody`                                                                                        | [Operations\UpdateEmailAddressRequestBody](../../Models/Operations/UpdateEmailAddressRequestBody.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\UpdateEmailAddressResponse](../../Models/Operations/UpdateEmailAddressResponse.md)**
+**[?Operations\UpdateEmailAddressResponse](../../Models/Operations/UpdateEmailAddressResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400,401,403,404                          | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

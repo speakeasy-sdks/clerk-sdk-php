@@ -1,6 +1,5 @@
 # Miscellaneous
 
-
 ## Overview
 
 Various endpoints that do not belong in any particular category.
@@ -17,20 +16,15 @@ It is used by Clerk SDKs when the user's authentication state cannot be immediat
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
-use \Clerk\Backend\Models\Operations;
+use Clerk\Backend;
 
 $sdk = Backend\ClerkBackend::builder()->build();
 
 try {
-    
 
     $response = $sdk->miscellaneous->getPublicInterstitial('<value>', '<value>');
 
@@ -49,8 +43,12 @@ try {
 | `frontendApi`                         | *string*                              | :heavy_minus_sign:                    | The Frontend API key of your instance |
 | `publishableKey`                      | *string*                              | :heavy_minus_sign:                    | The publishable key of your instance  |
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\GetPublicInterstitialResponse](../../Models/Operations/GetPublicInterstitialResponse.md)**
+**[?Operations\GetPublicInterstitialResponse](../../Models/Operations/GetPublicInterstitialResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |

@@ -1,11 +1,10 @@
 # Webhooks
 
-
 ## Overview
 
 You can configure webhooks to be notified about various events that happen on your instance.
-
 <https://clerk.com/docs/integration/webhooks>
+
 ### Available Operations
 
 * [createSvixApp](#createsvixapp) - Create a Svix app
@@ -19,14 +18,12 @@ Create a Svix app and associate it with the current instance
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -44,10 +41,16 @@ try {
 }
 ```
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\CreateSvixAppResponse](../../Models/Operations/CreateSvixAppResponse.md)**
+**[?Operations\CreateSvixAppResponse](../../Models/Operations/CreateSvixAppResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400                                      | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## deleteSvixApp
@@ -57,14 +60,12 @@ Delete a Svix app and disassociate it from the current instance
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -82,10 +83,16 @@ try {
 }
 ```
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\DeleteSvixAppResponse](../../Models/Operations/DeleteSvixAppResponse.md)**
+**[?Operations\DeleteSvixAppResponse](../../Models/Operations/DeleteSvixAppResponse.md)**
+
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400                                      | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
 
 
 ## generateSvixAuthURL
@@ -95,14 +102,12 @@ Generate a new url for accessing the Svix's management dashboard for that partic
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use \Clerk\Backend;
-use \Clerk\Backend\Models\Components;
+use Clerk\Backend;
+use Clerk\Backend\Models\Components;
 
 $security = new Components\Security();
 $security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
@@ -120,8 +125,13 @@ try {
 }
 ```
 
-
 ### Response
 
-**[?\Clerk\Backend\Models\Operations\GenerateSvixAuthURLResponse](../../Models/Operations/GenerateSvixAuthURLResponse.md)**
+**[?Operations\GenerateSvixAuthURLResponse](../../Models/Operations/GenerateSvixAuthURLResponse.md)**
 
+### Errors
+
+| Error Object                             | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Errors\ClerkErrors                       | 400                                      | application/json                         |
+| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
