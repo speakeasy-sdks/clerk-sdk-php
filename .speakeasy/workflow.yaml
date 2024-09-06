@@ -5,7 +5,7 @@ sources:
         inputs:
             - location: ./openapi.json
         registry:
-            location: registry.speakeasyapi.dev/octoper-3d0/octoper/clerk-backend-php
+            location: registry.speakeasyapi.dev/clerk/clerk/clerk-openapi
 targets:
     my-first-target:
         target: php
