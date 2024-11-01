@@ -8,7 +8,7 @@
   <br />
 </p>
 
-# octoper/clerk-backend-php
+# clerkinc/clerk-backend-php
 
 <div align="center">
 
@@ -16,9 +16,9 @@
 [![Clerk documentation](https://img.shields.io/badge/documentation-clerk-green.svg)](https://clerk.com/docs?utm_source=github&utm_medium=koa)
 [![Follow on Twitter](https://img.shields.io/twitter/follow/ClerkDev?style=social)](https://twitter.com/intent/follow?screen_name=ClerkDev)
 
-[Changelog](https://github.com/octoper/clerk-backend-php/blob/main/CHANGELOG.md)
+[Changelog](https://github.com/clerkinc/clerk-backend-php/blob/main/CHANGELOG.md)
 ·
-[Ask a Question](https://github.com/octoper/clerk-backend-php/discussions)
+[Ask a Question](https://github.com/clerkinc/clerk-backend-php/discussions)
 
 </div>
 
@@ -35,7 +35,7 @@
 ## Installation
 
 ```sh
-composer require @octoper/clerk-backend-php
+composer require @clerkinc/clerk-backend-php
 ```
 
 ## Usage
@@ -403,7 +403,7 @@ looking for the latest version.
 You can get in touch with us in any of the following ways:
 
 - Join the official community [Clerk Discord server](https://clerk.com/discord)
-- Create a [GitHub Discussion](https://github.com/octoper/clerk-backend-php/discussions)
+- Create a [GitHub Discussion](https://github.com/clerkinc/clerk-backend-php/discussions)
 - Contact options listed on [Clerk Support page](https://clerk.com/support?utm_source=github&utm_medium=clerk-backend-php)
 
 ## Contributing
@@ -412,14 +412,14 @@ We're open to all community contributions!
 
 ## Security
 
-`@octoper/clerk-backend-php` follows good practices of security, but 100% security cannot be assured.
+`@clerkinc/clerk-backend-php` follows good practices of security, but 100% security cannot be assured.
 
-`@octoper/clerk-backend-php` is provided **"as is"** without any **warranty**. Use at your own risk.
+`@clerkinc/clerk-backend-php` is provided **"as is"** without any **warranty**. Use at your own risk.
 
-_For more information and to report security issues, please refer to the [security documentation](https://github.com/octoper/clerk-backend-php/blob/main/docs/SECURITY.md)._
+_For more information and to report security issues, please refer to the [security documentation](https://github.com/clerkinc/clerk-backend-php/blob/main/docs/SECURITY.md)._
 
 ## License
 
 This project is licensed under the **MIT license**.
 
-See [LICENSE](https://github.com/octoper/clerk-backend-php/blob/main/LICENSE) for more information.
+See [LICENSE](https://github.com/clerkinc/clerk-backend-php/blob/main/LICENSE) for more information.
