@@ -10,3 +10,7 @@ targets:
     clerk-php:
         target: php
         source: clerk-backend-php
+        publish:
+            packagist:
+                username: clerkinc
+                token: $packagist_token
