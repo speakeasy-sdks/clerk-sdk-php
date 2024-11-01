@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** OrganizationInvitations - A list of organization invitations */
 class OrganizationInvitations
 {
     /**
@@ -16,8 +17,8 @@ class OrganizationInvitations
      *
      * @var array<OrganizationInvitation> $data
      */
-    #[\JMS\Serializer\Annotation\SerializedName('data')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\OrganizationInvitation>')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\OrganizationInvitation>')]
     public array $data;
 
     /**
@@ -27,14 +28,14 @@ class OrganizationInvitations
      *
      * @var int $totalCount
      */
-    #[\JMS\Serializer\Annotation\SerializedName('total_count')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('total_count')]
     public int $totalCount;
 
     /**
-     * @param  ?array<OrganizationInvitation>  $data
-     * @param  ?int  $totalCount
+     * @param  array<OrganizationInvitation>  $data
+     * @param  int  $totalCount
      */
-    public function __construct(?array $data = null, ?int $totalCount = null)
+    public function __construct(array $data, int $totalCount)
     {
         $this->data = $data;
         $this->totalCount = $totalCount;

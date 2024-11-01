@@ -233,7 +233,7 @@ class ClerkBackend
      * @param  SDKConfiguration  $sdkConfiguration
      */
     public function __construct(
-        private SDKConfiguration $sdkConfiguration,
+        public SDKConfiguration $sdkConfiguration,
     ) {
         $this->miscellaneous = new Miscellaneous($this->sdkConfiguration);
         $this->jwks = new Jwks($this->sdkConfiguration);

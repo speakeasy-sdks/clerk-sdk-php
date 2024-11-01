@@ -1,4 +1,5 @@
 # Clients
+(*clients*)
 
 ## Overview
 
@@ -27,22 +28,21 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->clients->getClientList(2830.33, 2613.46);
 
-    if ($response->clientList !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->clients->getClientList(
+    limit: 10,
+    offset: 0
+
+);
+
+if ($response->clientList !== null) {
+    // handle response
 }
 ```
 
@@ -50,8 +50,8 @@ try {
 
 | Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `limit`                                                                                                                                   | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
-| `offset`                                                                                                                                  | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
+| `limit`                                                                                                                                   | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
+| `offset`                                                                                                                                  | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
 
 ### Response
 
@@ -59,11 +59,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,410,422                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\ClerkErrors  | 400, 401, 410, 422  | application/json    |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## verifyClient
 
@@ -77,25 +76,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\VerifyClientRequestBody(
-        token: '<value>',
-    );
-    $response = $sdk->clients->verifyClient($request);
+$request = new Operations\VerifyClientRequestBody();
 
-    if ($response->client !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->clients->verifyClient(
+    request: $request
+);
+
+if ($response->client !== null) {
+    // handle response
 }
 ```
 
@@ -111,11 +105,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\ClerkErrors1 | 400, 401, 404       | application/json    |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## getClient
 
@@ -129,22 +122,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->clients->getClient('<value>');
 
-    if ($response->client !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->clients->getClient(
+    clientId: '<id>'
+);
+
+if ($response->client !== null) {
+    // handle response
 }
 ```
 
@@ -160,7 +150,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\ClerkErrors2 | 400, 401, 404       | application/json    |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |

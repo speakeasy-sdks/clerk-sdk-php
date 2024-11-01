@@ -40,12 +40,12 @@ class ListOAuthApplicationsResponse
     public ?Components\OAuthApplications $oAuthApplications = null;
 
     /**
-     * @param  ?string  $contentType
-     * @param  ?int  $statusCode
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\OAuthApplications  $oAuthApplications
      */
-    public function __construct(?string $contentType = null, ?int $statusCode = null, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, ?Components\OAuthApplications $oAuthApplications = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\OAuthApplications $oAuthApplications = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

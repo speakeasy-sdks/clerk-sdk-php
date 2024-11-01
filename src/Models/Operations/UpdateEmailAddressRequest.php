@@ -27,10 +27,10 @@ class UpdateEmailAddressRequest
     public ?UpdateEmailAddressRequestBody $requestBody = null;
 
     /**
-     * @param  ?string  $emailAddressId
+     * @param  string  $emailAddressId
      * @param  ?UpdateEmailAddressRequestBody  $requestBody
      */
-    public function __construct(?string $emailAddressId = null, ?UpdateEmailAddressRequestBody $requestBody = null)
+    public function __construct(string $emailAddressId, ?UpdateEmailAddressRequestBody $requestBody = null)
     {
         $this->emailAddressId = $emailAddressId;
         $this->requestBody = $requestBody;

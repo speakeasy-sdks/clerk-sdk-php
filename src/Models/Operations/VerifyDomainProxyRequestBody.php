@@ -16,8 +16,8 @@ class VerifyDomainProxyRequestBody
      *
      * @var ?string $domainId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('domain_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('domain_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $domainId = null;
 
     /**
@@ -25,8 +25,8 @@ class VerifyDomainProxyRequestBody
      *
      * @var ?string $proxyUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('proxy_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('proxy_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $proxyUrl = null;
 
     /**

@@ -40,12 +40,12 @@ class UpdateOrganizationMembershipMetadataResponse
     public ?Components\OrganizationMembership $organizationMembership = null;
 
     /**
-     * @param  ?string  $contentType
-     * @param  ?int  $statusCode
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\OrganizationMembership  $organizationMembership
      */
-    public function __construct(?string $contentType = null, ?int $statusCode = null, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, ?Components\OrganizationMembership $organizationMembership = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\OrganizationMembership $organizationMembership = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

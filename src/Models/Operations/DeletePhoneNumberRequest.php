@@ -20,9 +20,9 @@ class DeletePhoneNumberRequest
     public string $phoneNumberId;
 
     /**
-     * @param  ?string  $phoneNumberId
+     * @param  string  $phoneNumberId
      */
-    public function __construct(?string $phoneNumberId = null)
+    public function __construct(string $phoneNumberId)
     {
         $this->phoneNumberId = $phoneNumberId;
     }

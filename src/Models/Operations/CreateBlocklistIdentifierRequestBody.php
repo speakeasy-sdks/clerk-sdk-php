@@ -18,13 +18,13 @@ class CreateBlocklistIdentifierRequestBody
      *
      * @var string $identifier
      */
-    #[\JMS\Serializer\Annotation\SerializedName('identifier')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('identifier')]
     public string $identifier;
 
     /**
-     * @param  ?string  $identifier
+     * @param  string  $identifier
      */
-    public function __construct(?string $identifier = null)
+    public function __construct(string $identifier)
     {
         $this->identifier = $identifier;
     }

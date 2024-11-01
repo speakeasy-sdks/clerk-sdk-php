@@ -27,10 +27,10 @@ class UpdateUserRequest
     public UpdateUserRequestBody $requestBody;
 
     /**
-     * @param  ?string  $userId
-     * @param  ?UpdateUserRequestBody  $requestBody
+     * @param  string  $userId
+     * @param  UpdateUserRequestBody  $requestBody
      */
-    public function __construct(?string $userId = null, ?UpdateUserRequestBody $requestBody = null)
+    public function __construct(string $userId, UpdateUserRequestBody $requestBody)
     {
         $this->userId = $userId;
         $this->requestBody = $requestBody;

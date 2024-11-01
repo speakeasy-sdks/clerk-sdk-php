@@ -16,8 +16,8 @@ class UpdateInstanceAuthConfigRequestBody
      *
      * @var ?bool $restrictedToAllowlist
      */
-    #[\JMS\Serializer\Annotation\SerializedName('restricted_to_allowlist')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('restricted_to_allowlist')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $restrictedToAllowlist = null;
 
     /**
@@ -28,8 +28,8 @@ class UpdateInstanceAuthConfigRequestBody
      *
      * @var ?string $fromEmailAddress
      */
-    #[\JMS\Serializer\Annotation\SerializedName('from_email_address')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('from_email_address')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $fromEmailAddress = null;
 
     /**
@@ -37,8 +37,8 @@ class UpdateInstanceAuthConfigRequestBody
      *
      * @var ?bool $progressiveSignUp
      */
-    #[\JMS\Serializer\Annotation\SerializedName('progressive_sign_up')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('progressive_sign_up')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $progressiveSignUp = null;
 
     /**
@@ -46,8 +46,8 @@ class UpdateInstanceAuthConfigRequestBody
      *
      * @var ?string $sessionTokenTemplate
      */
-    #[\JMS\Serializer\Annotation\SerializedName('session_token_template')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('session_token_template')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $sessionTokenTemplate = null;
 
     /**
@@ -57,8 +57,8 @@ class UpdateInstanceAuthConfigRequestBody
      *
      * @var ?bool $enhancedEmailDeliverability
      */
-    #[\JMS\Serializer\Annotation\SerializedName('enhanced_email_deliverability')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('enhanced_email_deliverability')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $enhancedEmailDeliverability = null;
 
     /**
@@ -68,8 +68,8 @@ class UpdateInstanceAuthConfigRequestBody
      *
      * @var ?bool $testMode
      */
-    #[\JMS\Serializer\Annotation\SerializedName('test_mode')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('test_mode')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $testMode = null;
 
     /**
@@ -80,7 +80,7 @@ class UpdateInstanceAuthConfigRequestBody
      * @param  ?bool  $enhancedEmailDeliverability
      * @param  ?bool  $testMode
      */
-    public function __construct(?bool $restrictedToAllowlist = null, ?string $fromEmailAddress = null, ?bool $progressiveSignUp = null, ?string $sessionTokenTemplate = null, ?bool $enhancedEmailDeliverability = null, ?bool $testMode = null)
+    public function __construct(?string $fromEmailAddress = null, ?bool $progressiveSignUp = null, ?string $sessionTokenTemplate = null, ?bool $enhancedEmailDeliverability = null, ?bool $testMode = null, ?bool $restrictedToAllowlist = false)
     {
         $this->restrictedToAllowlist = $restrictedToAllowlist;
         $this->fromEmailAddress = $fromEmailAddress;

@@ -40,12 +40,12 @@ class UploadOrganizationLogoResponse
     public ?Components\OrganizationWithLogo $organizationWithLogo = null;
 
     /**
-     * @param  ?string  $contentType
-     * @param  ?int  $statusCode
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\OrganizationWithLogo  $organizationWithLogo
      */
-    public function __construct(?string $contentType = null, ?int $statusCode = null, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, ?Components\OrganizationWithLogo $organizationWithLogo = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\OrganizationWithLogo $organizationWithLogo = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

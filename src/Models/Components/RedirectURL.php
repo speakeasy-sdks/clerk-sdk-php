@@ -9,28 +9,29 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** RedirectURL - List of Redirect URLs */
 class RedirectURL
 {
     /**
      *
      * @var RedirectURLObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\RedirectURLObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\RedirectURLObject')]
     public RedirectURLObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var string $url
      */
-    #[\JMS\Serializer\Annotation\SerializedName('url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('url')]
     public string $url;
 
     /**
@@ -40,7 +41,7 @@ class RedirectURL
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -50,17 +51,17 @@ class RedirectURL
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?RedirectURLObject  $object
-     * @param  ?string  $id
-     * @param  ?string  $url
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  RedirectURLObject  $object
+     * @param  string  $id
+     * @param  string  $url
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      */
-    public function __construct(?RedirectURLObject $object = null, ?string $id = null, ?string $url = null, ?int $createdAt = null, ?int $updatedAt = null)
+    public function __construct(RedirectURLObject $object, string $id, string $url, int $createdAt, int $updatedAt)
     {
         $this->object = $object;
         $this->id = $id;

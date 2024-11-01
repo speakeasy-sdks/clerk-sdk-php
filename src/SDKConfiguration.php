@@ -27,11 +27,11 @@ class SDKConfiguration
 
     public string $openapiDocVersion = 'v1';
 
-    public string $sdkVersion = '0.1.2';
+    public string $sdkVersion = '0.2.0';
 
-    public string $genVersion = '2.409.8';
+    public string $genVersion = '2.445.1';
 
-    public string $userAgent = 'speakeasy-sdk/php 0.1.2 2.409.8 v1 clerk/backend-php';
+    public string $userAgent = 'speakeasy-sdk/php 0.2.0 2.445.1 v1 clerk/backend-php';
 
     public function getServerUrl(): string
     {
@@ -40,7 +40,11 @@ class SDKConfiguration
             return $this->serverUrl;
         }
 
-        return ClerkBackend::SERVERS[$this->serverIndex];
+        if (isset(ClerkBackend::SERVERS[$this->serverIndex])) {
+            return ClerkBackend::SERVERS[$this->serverIndex];
+        } else {
+            throw new \OutOfBoundsException('Server index '.$this->serverIndex.' is out of bounds');
+        }
     }
     public function hasSecurity(): bool
     {

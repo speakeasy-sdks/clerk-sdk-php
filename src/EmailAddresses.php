@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class EmailAddresses
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -28,13 +27,12 @@ class EmailAddresses
      *
      * Create a new email address
      *
-     * @param  Operations\CreateEmailAddressRequestBody  $request
+     * @param  ?Operations\CreateEmailAddressRequestBody  $request
      * @return Operations\CreateEmailAddressResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createEmailAddress(
-        ?Operations\CreateEmailAddressRequestBody $request,
-    ): Operations\CreateEmailAddressResponse {
+    public function createEmailAddress(?Operations\CreateEmailAddressRequestBody $request = null): Operations\CreateEmailAddressResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/email_addresses');
         $options = ['http_errors' => false];
@@ -68,7 +66,7 @@ class EmailAddresses
         } elseif (in_array($statusCode, [400, 401, 403, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors3', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -89,9 +87,8 @@ class EmailAddresses
      * @return Operations\GetEmailAddressResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getEmailAddress(
-        string $emailAddressId,
-    ): Operations\GetEmailAddressResponse {
+    public function getEmailAddress(string $emailAddressId): Operations\GetEmailAddressResponse
+    {
         $request = new Operations\GetEmailAddressRequest(
             emailAddressId: $emailAddressId,
         );
@@ -124,7 +121,7 @@ class EmailAddresses
         } elseif (in_array($statusCode, [400, 401, 403, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors4', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -145,9 +142,8 @@ class EmailAddresses
      * @return Operations\DeleteEmailAddressResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function deleteEmailAddress(
-        string $emailAddressId,
-    ): Operations\DeleteEmailAddressResponse {
+    public function deleteEmailAddress(string $emailAddressId): Operations\DeleteEmailAddressResponse
+    {
         $request = new Operations\DeleteEmailAddressRequest(
             emailAddressId: $emailAddressId,
         );
@@ -180,7 +176,7 @@ class EmailAddresses
         } elseif (in_array($statusCode, [400, 401, 403, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors5', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -202,10 +198,8 @@ class EmailAddresses
      * @return Operations\UpdateEmailAddressResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateEmailAddress(
-        string $emailAddressId,
-        ?Operations\UpdateEmailAddressRequestBody $requestBody = null,
-    ): Operations\UpdateEmailAddressResponse {
+    public function updateEmailAddress(string $emailAddressId, ?Operations\UpdateEmailAddressRequestBody $requestBody = null): Operations\UpdateEmailAddressResponse
+    {
         $request = new Operations\UpdateEmailAddressRequest(
             emailAddressId: $emailAddressId,
             requestBody: $requestBody,
@@ -243,7 +237,7 @@ class EmailAddresses
         } elseif (in_array($statusCode, [400, 401, 403, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors6', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -254,4 +248,5 @@ class EmailAddresses
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

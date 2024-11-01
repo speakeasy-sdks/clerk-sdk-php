@@ -16,8 +16,8 @@ class CreateEmailAddressRequestBody
      *
      * @var ?string $userId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $userId = null;
 
     /**
@@ -25,8 +25,8 @@ class CreateEmailAddressRequestBody
      *
      * @var ?string $emailAddress
      */
-    #[\JMS\Serializer\Annotation\SerializedName('email_address')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email_address')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $emailAddress = null;
 
     /**
@@ -34,8 +34,8 @@ class CreateEmailAddressRequestBody
      *
      * @var ?bool $verified
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verified')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verified')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $verified = null;
 
     /**
@@ -45,8 +45,8 @@ class CreateEmailAddressRequestBody
      *
      * @var ?bool $primary
      */
-    #[\JMS\Serializer\Annotation\SerializedName('primary')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('primary')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $primary = null;
 
     /**

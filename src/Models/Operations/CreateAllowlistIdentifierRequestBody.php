@@ -18,7 +18,7 @@ class CreateAllowlistIdentifierRequestBody
      *
      * @var string $identifier
      */
-    #[\JMS\Serializer\Annotation\SerializedName('identifier')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('identifier')]
     public string $identifier;
 
     /**
@@ -28,15 +28,15 @@ class CreateAllowlistIdentifierRequestBody
      *
      * @var ?bool $notify
      */
-    #[\JMS\Serializer\Annotation\SerializedName('notify')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('notify')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $notify = null;
 
     /**
-     * @param  ?string  $identifier
+     * @param  string  $identifier
      * @param  ?bool  $notify
      */
-    public function __construct(?string $identifier = null, ?bool $notify = null)
+    public function __construct(string $identifier, ?bool $notify = false)
     {
         $this->identifier = $identifier;
         $this->notify = $notify;

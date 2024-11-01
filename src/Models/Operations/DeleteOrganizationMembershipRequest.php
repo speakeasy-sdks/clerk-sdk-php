@@ -28,10 +28,10 @@ class DeleteOrganizationMembershipRequest
     public string $userId;
 
     /**
-     * @param  ?string  $organizationId
-     * @param  ?string  $userId
+     * @param  string  $organizationId
+     * @param  string  $userId
      */
-    public function __construct(?string $organizationId = null, ?string $userId = null)
+    public function __construct(string $organizationId, string $userId)
     {
         $this->organizationId = $organizationId;
         $this->userId = $userId;

@@ -13,11 +13,10 @@ use Clerk\Backend\Models\Operations;
 class Miscellaneous
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -33,10 +32,8 @@ class Miscellaneous
      * @return Operations\GetPublicInterstitialResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getPublicInterstitial(
-        ?string $frontendApi = null,
-        ?string $publishableKey = null,
-    ): Operations\GetPublicInterstitialResponse {
+    public function getPublicInterstitial(?string $frontendApi = null, ?string $publishableKey = null): Operations\GetPublicInterstitialResponse
+    {
         $request = new Operations\GetPublicInterstitialRequest(
             frontendApi: $frontendApi,
             publishableKey: $publishableKey,
@@ -64,4 +61,5 @@ class Miscellaneous
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

@@ -15,76 +15,76 @@ class OrganizationMembershipOrganization
      *
      * @var OrganizationMembershipOrganizationObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipOrganizationObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipOrganizationObject')]
     public OrganizationMembershipOrganizationObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
 
     /**
      *
      * @var string $slug
      */
-    #[\JMS\Serializer\Annotation\SerializedName('slug')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
     public string $slug;
 
     /**
      *
      * @var ?int $membersCount
      */
-    #[\JMS\Serializer\Annotation\SerializedName('members_count')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('members_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $membersCount = null;
 
     /**
      *
      * @var int $maxAllowedMemberships
      */
-    #[\JMS\Serializer\Annotation\SerializedName('max_allowed_memberships')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('max_allowed_memberships')]
     public int $maxAllowedMemberships;
 
     /**
      *
      * @var ?bool $adminDeleteEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('admin_delete_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('admin_delete_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $adminDeleteEnabled = null;
 
     /**
      *
      * @var OrganizationMembershipOrganizationPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipOrganizationPublicMetadata')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipOrganizationPublicMetadata')]
     public OrganizationMembershipOrganizationPublicMetadata $publicMetadata;
 
     /**
      *
      * @var OrganizationMembershipOrganizationPrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipOrganizationPrivateMetadata')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipOrganizationPrivateMetadata')]
     public OrganizationMembershipOrganizationPrivateMetadata $privateMetadata;
 
     /**
      *
      * @var ?string $createdBy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_by')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_by')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $createdBy = null;
 
     /**
@@ -94,7 +94,7 @@ class OrganizationMembershipOrganization
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -104,24 +104,24 @@ class OrganizationMembershipOrganization
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?OrganizationMembershipOrganizationObject  $object
-     * @param  ?string  $id
-     * @param  ?string  $name
-     * @param  ?string  $slug
-     * @param  ?int  $maxAllowedMemberships
-     * @param  ?OrganizationMembershipOrganizationPublicMetadata  $publicMetadata
-     * @param  ?OrganizationMembershipOrganizationPrivateMetadata  $privateMetadata
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
-     * @param  ?int  $membersCount
+     * @param  OrganizationMembershipOrganizationObject  $object
+     * @param  string  $id
+     * @param  string  $name
+     * @param  string  $slug
+     * @param  int  $maxAllowedMemberships
+     * @param  OrganizationMembershipOrganizationPublicMetadata  $publicMetadata
+     * @param  OrganizationMembershipOrganizationPrivateMetadata  $privateMetadata
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      * @param  ?bool  $adminDeleteEnabled
      * @param  ?string  $createdBy
+     * @param  ?int  $membersCount
      */
-    public function __construct(?OrganizationMembershipOrganizationObject $object = null, ?string $id = null, ?string $name = null, ?string $slug = null, ?int $maxAllowedMemberships = null, ?OrganizationMembershipOrganizationPublicMetadata $publicMetadata = null, ?OrganizationMembershipOrganizationPrivateMetadata $privateMetadata = null, ?int $createdAt = null, ?int $updatedAt = null, ?int $membersCount = null, ?bool $adminDeleteEnabled = null, ?string $createdBy = null)
+    public function __construct(OrganizationMembershipOrganizationObject $object, string $id, string $name, string $slug, int $maxAllowedMemberships, OrganizationMembershipOrganizationPublicMetadata $publicMetadata, OrganizationMembershipOrganizationPrivateMetadata $privateMetadata, int $createdAt, int $updatedAt, ?bool $adminDeleteEnabled = null, ?string $createdBy = null, ?int $membersCount = null)
     {
         $this->object = $object;
         $this->id = $id;
@@ -132,8 +132,8 @@ class OrganizationMembershipOrganization
         $this->privateMetadata = $privateMetadata;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
-        $this->membersCount = $membersCount;
         $this->adminDeleteEnabled = $adminDeleteEnabled;
         $this->createdBy = $createdBy;
+        $this->membersCount = $membersCount;
     }
 }

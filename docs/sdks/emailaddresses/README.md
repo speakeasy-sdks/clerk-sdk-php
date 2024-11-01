@@ -1,4 +1,5 @@
 # EmailAddresses
+(*emailAddresses*)
 
 ## Overview
 
@@ -24,28 +25,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\CreateEmailAddressRequestBody(
-        userId: '<value>',
-        emailAddress: 'Hailee_Leuschke90@hotmail.com',
-        verified: false,
-        primary: false,
-    );
-    $response = $sdk->emailAddresses->createEmailAddress($request);
+$request = new Operations\CreateEmailAddressRequestBody();
 
-    if ($response->emailAddress !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->emailAddresses->createEmailAddress(
+    request: $request
+);
+
+if ($response->emailAddress !== null) {
+    // handle response
 }
 ```
 
@@ -61,11 +54,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,403,404,422                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| Errors\ClerkErrors3     | 400, 401, 403, 404, 422 | application/json        |
+| Errors\SDKException     | 4XX, 5XX                | \*/\*                   |
 
 ## getEmailAddress
 
@@ -79,22 +71,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->emailAddresses->getEmailAddress('<value>');
 
-    if ($response->emailAddress !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->emailAddresses->getEmailAddress(
+    emailAddressId: '<id>'
+);
+
+if ($response->emailAddress !== null) {
+    // handle response
 }
 ```
 
@@ -110,11 +99,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,403,404                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\ClerkErrors4 | 400, 401, 403, 404  | application/json    |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## deleteEmailAddress
 
@@ -128,22 +116,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->emailAddresses->deleteEmailAddress('<value>');
 
-    if ($response->deletedObject !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->emailAddresses->deleteEmailAddress(
+    emailAddressId: '<id>'
+);
+
+if ($response->deletedObject !== null) {
+    // handle response
 }
 ```
 
@@ -159,11 +144,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,403,404                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\ClerkErrors5 | 400, 401, 403, 404  | application/json    |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## updateEmailAddress
 
@@ -177,35 +161,31 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpdateEmailAddressRequestBody(
-        verified: false,
-        primary: false,
-    );
-    $response = $sdk->emailAddresses->updateEmailAddress('<value>', $requestBody);
+$requestBody = new Operations\UpdateEmailAddressRequestBody();
 
-    if ($response->emailAddress !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->emailAddresses->updateEmailAddress(
+    emailAddressId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->emailAddress !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `emailAddressId`                                                                                     | *string*                                                                                             | :heavy_check_mark:                                                                                   | The ID of the email address to update                                                                |
-| `requestBody`                                                                                        | [Operations\UpdateEmailAddressRequestBody](../../Models/Operations/UpdateEmailAddressRequestBody.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `emailAddressId`                                                                                      | *string*                                                                                              | :heavy_check_mark:                                                                                    | The ID of the email address to update                                                                 |
+| `requestBody`                                                                                         | [?Operations\UpdateEmailAddressRequestBody](../../Models/Operations/UpdateEmailAddressRequestBody.md) | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
 
 ### Response
 
@@ -213,7 +193,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,403,404                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\ClerkErrors6 | 400, 401, 403, 404  | application/json    |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |

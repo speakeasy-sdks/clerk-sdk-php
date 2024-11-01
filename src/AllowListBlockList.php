@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class AllowListBlockList
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -31,8 +30,8 @@ class AllowListBlockList
      * @return Operations\ListAllowlistIdentifiersResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function listAllowlistIdentifiers(
-    ): Operations\ListAllowlistIdentifiersResponse {
+    public function listAllowlistIdentifiers(): Operations\ListAllowlistIdentifiersResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/allowlist_identifiers');
         $options = ['http_errors' => false];
@@ -62,7 +61,7 @@ class AllowListBlockList
         } elseif (in_array($statusCode, [401, 402])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors36', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -79,13 +78,12 @@ class AllowListBlockList
      *
      * Create an identifier allowed to sign up to an instance
      *
-     * @param  Operations\CreateAllowlistIdentifierRequestBody  $request
+     * @param  ?Operations\CreateAllowlistIdentifierRequestBody  $request
      * @return Operations\CreateAllowlistIdentifierResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createAllowlistIdentifier(
-        ?Operations\CreateAllowlistIdentifierRequestBody $request,
-    ): Operations\CreateAllowlistIdentifierResponse {
+    public function createAllowlistIdentifier(?Operations\CreateAllowlistIdentifierRequestBody $request = null): Operations\CreateAllowlistIdentifierResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/allowlist_identifiers');
         $options = ['http_errors' => false];
@@ -119,7 +117,7 @@ class AllowListBlockList
         } elseif (in_array($statusCode, [400, 402, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors37', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -140,9 +138,8 @@ class AllowListBlockList
      * @return Operations\DeleteAllowlistIdentifierResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function deleteAllowlistIdentifier(
-        string $identifierId,
-    ): Operations\DeleteAllowlistIdentifierResponse {
+    public function deleteAllowlistIdentifier(string $identifierId): Operations\DeleteAllowlistIdentifierResponse
+    {
         $request = new Operations\DeleteAllowlistIdentifierRequest(
             identifierId: $identifierId,
         );
@@ -175,7 +172,7 @@ class AllowListBlockList
         } elseif (in_array($statusCode, [402, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors38', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -195,8 +192,8 @@ class AllowListBlockList
      * @return Operations\ListBlocklistIdentifiersResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function listBlocklistIdentifiers(
-    ): Operations\ListBlocklistIdentifiersResponse {
+    public function listBlocklistIdentifiers(): Operations\ListBlocklistIdentifiersResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/blocklist_identifiers');
         $options = ['http_errors' => false];
@@ -226,7 +223,7 @@ class AllowListBlockList
         } elseif (in_array($statusCode, [401, 402])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors39', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -243,13 +240,12 @@ class AllowListBlockList
      *
      * Create an identifier that is blocked from accessing an instance
      *
-     * @param  Operations\CreateBlocklistIdentifierRequestBody  $request
+     * @param  ?Operations\CreateBlocklistIdentifierRequestBody  $request
      * @return Operations\CreateBlocklistIdentifierResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createBlocklistIdentifier(
-        ?Operations\CreateBlocklistIdentifierRequestBody $request,
-    ): Operations\CreateBlocklistIdentifierResponse {
+    public function createBlocklistIdentifier(?Operations\CreateBlocklistIdentifierRequestBody $request = null): Operations\CreateBlocklistIdentifierResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/blocklist_identifiers');
         $options = ['http_errors' => false];
@@ -283,7 +279,7 @@ class AllowListBlockList
         } elseif (in_array($statusCode, [400, 402, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors40', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -304,9 +300,8 @@ class AllowListBlockList
      * @return Operations\DeleteBlocklistIdentifierResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function deleteBlocklistIdentifier(
-        string $identifierId,
-    ): Operations\DeleteBlocklistIdentifierResponse {
+    public function deleteBlocklistIdentifier(string $identifierId): Operations\DeleteBlocklistIdentifierResponse
+    {
         $request = new Operations\DeleteBlocklistIdentifierRequest(
             identifierId: $identifierId,
         );
@@ -339,7 +334,7 @@ class AllowListBlockList
         } elseif (in_array($statusCode, [402, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors41', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -350,4 +345,5 @@ class AllowListBlockList
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

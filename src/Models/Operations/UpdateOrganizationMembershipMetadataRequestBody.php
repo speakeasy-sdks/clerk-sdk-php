@@ -18,9 +18,9 @@ class UpdateOrganizationMembershipMetadataRequestBody
      *
      * @var ?UpdateOrganizationMembershipMetadataPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateOrganizationMembershipMetadataPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateOrganizationMembershipMetadataPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UpdateOrganizationMembershipMetadataPublicMetadata $publicMetadata = null;
 
     /**
@@ -30,9 +30,9 @@ class UpdateOrganizationMembershipMetadataRequestBody
      *
      * @var ?UpdateOrganizationMembershipMetadataPrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateOrganizationMembershipMetadataPrivateMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateOrganizationMembershipMetadataPrivateMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UpdateOrganizationMembershipMetadataPrivateMetadata $privateMetadata = null;
 
     /**

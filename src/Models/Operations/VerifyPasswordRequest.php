@@ -27,10 +27,10 @@ class VerifyPasswordRequest
     public ?VerifyPasswordRequestBody $requestBody = null;
 
     /**
-     * @param  ?string  $userId
+     * @param  string  $userId
      * @param  ?VerifyPasswordRequestBody  $requestBody
      */
-    public function __construct(?string $userId = null, ?VerifyPasswordRequestBody $requestBody = null)
+    public function __construct(string $userId, ?VerifyPasswordRequestBody $requestBody = null)
     {
         $this->userId = $userId;
         $this->requestBody = $requestBody;

@@ -16,8 +16,8 @@ class UpdateOAuthApplicationRequestBody
      *
      * @var ?string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $name = null;
 
     /**
@@ -25,8 +25,8 @@ class UpdateOAuthApplicationRequestBody
      *
      * @var ?string $callbackUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('callback_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('callback_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $callbackUrl = null;
 
     /**
@@ -34,8 +34,8 @@ class UpdateOAuthApplicationRequestBody
      *
      * @var ?string $scopes
      */
-    #[\JMS\Serializer\Annotation\SerializedName('scopes')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('scopes')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $scopes = null;
 
     /**
@@ -43,7 +43,7 @@ class UpdateOAuthApplicationRequestBody
      * @param  ?string  $callbackUrl
      * @param  ?string  $scopes
      */
-    public function __construct(?string $name = null, ?string $callbackUrl = null, ?string $scopes = null)
+    public function __construct(?string $name = null, ?string $callbackUrl = null, ?string $scopes = 'profile email')
     {
         $this->name = $name;
         $this->callbackUrl = $callbackUrl;

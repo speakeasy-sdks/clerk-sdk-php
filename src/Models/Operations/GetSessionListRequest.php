@@ -63,7 +63,7 @@ class GetSessionListRequest
      * @param  ?float  $limit
      * @param  ?float  $offset
      */
-    public function __construct(?string $clientId = null, ?string $userId = null, ?Status $status = null, ?float $limit = null, ?float $offset = null)
+    public function __construct(?string $clientId = null, ?string $userId = null, ?Status $status = null, ?float $limit = 10, ?float $offset = 0)
     {
         $this->clientId = $clientId;
         $this->userId = $userId;

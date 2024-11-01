@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class PhoneNumbers
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -28,13 +27,12 @@ class PhoneNumbers
      *
      * Create a new phone number
      *
-     * @param  Operations\CreatePhoneNumberRequestBody  $request
+     * @param  ?Operations\CreatePhoneNumberRequestBody  $request
      * @return Operations\CreatePhoneNumberResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createPhoneNumber(
-        ?Operations\CreatePhoneNumberRequestBody $request,
-    ): Operations\CreatePhoneNumberResponse {
+    public function createPhoneNumber(?Operations\CreatePhoneNumberRequestBody $request = null): Operations\CreatePhoneNumberResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/phone_numbers');
         $options = ['http_errors' => false];
@@ -68,7 +66,7 @@ class PhoneNumbers
         } elseif (in_array($statusCode, [400, 401, 403, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors7', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -89,9 +87,8 @@ class PhoneNumbers
      * @return Operations\GetPhoneNumberResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getPhoneNumber(
-        string $phoneNumberId,
-    ): Operations\GetPhoneNumberResponse {
+    public function getPhoneNumber(string $phoneNumberId): Operations\GetPhoneNumberResponse
+    {
         $request = new Operations\GetPhoneNumberRequest(
             phoneNumberId: $phoneNumberId,
         );
@@ -124,7 +121,7 @@ class PhoneNumbers
         } elseif (in_array($statusCode, [400, 401, 403, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors8', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -145,9 +142,8 @@ class PhoneNumbers
      * @return Operations\DeletePhoneNumberResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function deletePhoneNumber(
-        string $phoneNumberId,
-    ): Operations\DeletePhoneNumberResponse {
+    public function deletePhoneNumber(string $phoneNumberId): Operations\DeletePhoneNumberResponse
+    {
         $request = new Operations\DeletePhoneNumberRequest(
             phoneNumberId: $phoneNumberId,
         );
@@ -180,7 +176,7 @@ class PhoneNumbers
         } elseif (in_array($statusCode, [400, 401, 403, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors9', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -202,10 +198,8 @@ class PhoneNumbers
      * @return Operations\UpdatePhoneNumberResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updatePhoneNumber(
-        string $phoneNumberId,
-        ?Operations\UpdatePhoneNumberRequestBody $requestBody = null,
-    ): Operations\UpdatePhoneNumberResponse {
+    public function updatePhoneNumber(string $phoneNumberId, ?Operations\UpdatePhoneNumberRequestBody $requestBody = null): Operations\UpdatePhoneNumberResponse
+    {
         $request = new Operations\UpdatePhoneNumberRequest(
             phoneNumberId: $phoneNumberId,
             requestBody: $requestBody,
@@ -243,7 +237,7 @@ class PhoneNumbers
         } elseif (in_array($statusCode, [400, 401, 403, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors10', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -254,4 +248,5 @@ class PhoneNumbers
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

@@ -28,10 +28,10 @@ class GetOrganizationInvitationRequest
     public string $invitationId;
 
     /**
-     * @param  ?string  $organizationId
-     * @param  ?string  $invitationId
+     * @param  string  $organizationId
+     * @param  string  $invitationId
      */
-    public function __construct(?string $organizationId = null, ?string $invitationId = null)
+    public function __construct(string $organizationId, string $invitationId)
     {
         $this->organizationId = $organizationId;
         $this->invitationId = $invitationId;

@@ -19,8 +19,8 @@ class UpdateDomainRequestBody
      *
      * @var ?string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $name = null;
 
     /**
@@ -30,8 +30,8 @@ class UpdateDomainRequestBody
      *
      * @var ?string $proxyUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('proxy_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('proxy_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $proxyUrl = null;
 
     /**

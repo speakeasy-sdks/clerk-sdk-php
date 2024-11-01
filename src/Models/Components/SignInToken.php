@@ -9,52 +9,53 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** SignInToken - Success */
 class SignInToken
 {
     /**
      *
      * @var SignInTokenObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SignInTokenObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SignInTokenObject')]
     public SignInTokenObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var SignInTokenStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SignInTokenStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SignInTokenStatus')]
     public SignInTokenStatus $status;
 
     /**
      *
      * @var string $userId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
     public string $userId;
 
     /**
      *
      * @var ?string $token
      */
-    #[\JMS\Serializer\Annotation\SerializedName('token')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('token')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $token = null;
 
     /**
      *
      * @var ?string $url
      */
-    #[\JMS\Serializer\Annotation\SerializedName('url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $url = null;
 
     /**
@@ -64,7 +65,7 @@ class SignInToken
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -74,20 +75,20 @@ class SignInToken
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?SignInTokenObject  $object
-     * @param  ?string  $id
-     * @param  ?SignInTokenStatus  $status
-     * @param  ?string  $userId
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  SignInTokenObject  $object
+     * @param  string  $id
+     * @param  SignInTokenStatus  $status
+     * @param  string  $userId
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      * @param  ?string  $token
      * @param  ?string  $url
      */
-    public function __construct(?SignInTokenObject $object = null, ?string $id = null, ?SignInTokenStatus $status = null, ?string $userId = null, ?int $createdAt = null, ?int $updatedAt = null, ?string $token = null, ?string $url = null)
+    public function __construct(SignInTokenObject $object, string $id, SignInTokenStatus $status, string $userId, int $createdAt, int $updatedAt, ?string $token = null, ?string $url = null)
     {
         $this->object = $object;
         $this->id = $id;

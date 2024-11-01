@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** InstanceSettings - InstanceSettings Server API */
 class InstanceSettings
 {
     /**
@@ -16,49 +17,49 @@ class InstanceSettings
      *
      * @var ?InstanceSettingsObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InstanceSettingsObject|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InstanceSettingsObject|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?InstanceSettingsObject $object = null;
 
     /**
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
      *
      * @var ?bool $restrictedToAllowlist
      */
-    #[\JMS\Serializer\Annotation\SerializedName('restricted_to_allowlist')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('restricted_to_allowlist')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $restrictedToAllowlist = null;
 
     /**
      *
      * @var ?string $fromEmailAddress
      */
-    #[\JMS\Serializer\Annotation\SerializedName('from_email_address')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('from_email_address')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $fromEmailAddress = null;
 
     /**
      *
      * @var ?bool $progressiveSignUp
      */
-    #[\JMS\Serializer\Annotation\SerializedName('progressive_sign_up')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('progressive_sign_up')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $progressiveSignUp = null;
 
     /**
      *
      * @var ?bool $enhancedEmailDeliverability
      */
-    #[\JMS\Serializer\Annotation\SerializedName('enhanced_email_deliverability')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('enhanced_email_deliverability')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $enhancedEmailDeliverability = null;
 
     /**

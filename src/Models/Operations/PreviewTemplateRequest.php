@@ -36,11 +36,11 @@ class PreviewTemplateRequest
     public ?PreviewTemplateRequestBody $requestBody = null;
 
     /**
-     * @param  ?string  $templateType
-     * @param  ?string  $slug
+     * @param  string  $templateType
+     * @param  string  $slug
      * @param  ?PreviewTemplateRequestBody  $requestBody
      */
-    public function __construct(?string $templateType = null, ?string $slug = null, ?PreviewTemplateRequestBody $requestBody = null)
+    public function __construct(string $templateType, string $slug, ?PreviewTemplateRequestBody $requestBody = null)
     {
         $this->templateType = $templateType;
         $this->slug = $slug;

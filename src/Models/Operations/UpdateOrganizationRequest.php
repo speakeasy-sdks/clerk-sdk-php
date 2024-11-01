@@ -27,10 +27,10 @@ class UpdateOrganizationRequest
     public UpdateOrganizationRequestBody $requestBody;
 
     /**
-     * @param  ?string  $organizationId
-     * @param  ?UpdateOrganizationRequestBody  $requestBody
+     * @param  string  $organizationId
+     * @param  UpdateOrganizationRequestBody  $requestBody
      */
-    public function __construct(?string $organizationId = null, ?UpdateOrganizationRequestBody $requestBody = null)
+    public function __construct(string $organizationId, UpdateOrganizationRequestBody $requestBody)
     {
         $this->organizationId = $organizationId;
         $this->requestBody = $requestBody;

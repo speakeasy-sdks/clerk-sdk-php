@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class Domains
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -32,8 +31,8 @@ class Domains
      * @return Operations\ListDomainsResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function listDomains(
-    ): Operations\ListDomainsResponse {
+    public function listDomains(): Operations\ListDomainsResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/domains');
         $options = ['http_errors' => false];
@@ -76,13 +75,12 @@ class Domains
      * At the moment, instances can have only one primary domain, so the `is_satellite` parameter must be set to `true`.
      * If you're planning to configure the new satellite domain to run behind a proxy, pass the `proxy_url` parameter accordingly.
      *
-     * @param  Operations\AddDomainRequestBody  $request
+     * @param  ?Operations\AddDomainRequestBody  $request
      * @return Operations\AddDomainResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function addDomain(
-        ?Operations\AddDomainRequestBody $request,
-    ): Operations\AddDomainResponse {
+    public function addDomain(?Operations\AddDomainRequestBody $request = null): Operations\AddDomainResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/domains');
         $options = ['http_errors' => false];
@@ -116,7 +114,7 @@ class Domains
         } elseif (in_array($statusCode, [400, 402, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors46', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -138,9 +136,8 @@ class Domains
      * @return Operations\DeleteDomainResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function deleteDomain(
-        string $domainId,
-    ): Operations\DeleteDomainResponse {
+    public function deleteDomain(string $domainId): Operations\DeleteDomainResponse
+    {
         $request = new Operations\DeleteDomainRequest(
             domainId: $domainId,
         );
@@ -173,7 +170,7 @@ class Domains
         } elseif (in_array($statusCode, [403, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors47', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -197,15 +194,13 @@ class Domains
      * emails to work. Expect downtime otherwise. Updating a primary domain's name will also
      * update the instance's home origin, affecting the default application paths.
      *
-     * @param  string  $domainId
      * @param  Operations\UpdateDomainRequestBody  $requestBody
+     * @param  string  $domainId
      * @return Operations\UpdateDomainResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateDomain(
-        string $domainId,
-        Operations\UpdateDomainRequestBody $requestBody,
-    ): Operations\UpdateDomainResponse {
+    public function updateDomain(Operations\UpdateDomainRequestBody $requestBody, string $domainId): Operations\UpdateDomainResponse
+    {
         $request = new Operations\UpdateDomainRequest(
             domainId: $domainId,
             requestBody: $requestBody,
@@ -244,7 +239,7 @@ class Domains
         } elseif (in_array($statusCode, [400, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors48', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -255,4 +250,5 @@ class Domains
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

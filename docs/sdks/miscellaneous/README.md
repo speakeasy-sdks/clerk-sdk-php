@@ -1,4 +1,5 @@
 # Miscellaneous
+(*miscellaneous*)
 
 ## Overview
 
@@ -24,15 +25,16 @@ use Clerk\Backend;
 
 $sdk = Backend\ClerkBackend::builder()->build();
 
-try {
 
-    $response = $sdk->miscellaneous->getPublicInterstitial('<value>', '<value>');
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->miscellaneous->getPublicInterstitial(
+    frontendApi: '<value>',
+    publishableKey: '<value>'
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -40,8 +42,8 @@ try {
 
 | Parameter                             | Type                                  | Required                              | Description                           |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `frontendApi`                         | *string*                              | :heavy_minus_sign:                    | The Frontend API key of your instance |
-| `publishableKey`                      | *string*                              | :heavy_minus_sign:                    | The publishable key of your instance  |
+| `frontendApi`                         | *?string*                             | :heavy_minus_sign:                    | The Frontend API key of your instance |
+| `publishableKey`                      | *?string*                             | :heavy_minus_sign:                    | The publishable key of your instance  |
 
 ### Response
 
@@ -49,6 +51,6 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |

@@ -40,12 +40,12 @@ class VerifyDomainProxyResponse
     public ?Components\ProxyCheck $proxyCheck = null;
 
     /**
-     * @param  ?string  $contentType
-     * @param  ?int  $statusCode
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\ProxyCheck  $proxyCheck
      */
-    public function __construct(?string $contentType = null, ?int $statusCode = null, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, ?Components\ProxyCheck $proxyCheck = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\ProxyCheck $proxyCheck = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

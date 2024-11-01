@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** OAuthApplications - A list of OAuth applications */
 class OAuthApplications
 {
     /**
@@ -16,8 +17,8 @@ class OAuthApplications
      *
      * @var array<OAuthApplication> $data
      */
-    #[\JMS\Serializer\Annotation\SerializedName('data')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\OAuthApplication>')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\OAuthApplication>')]
     public array $data;
 
     /**
@@ -27,14 +28,14 @@ class OAuthApplications
      *
      * @var int $totalCount
      */
-    #[\JMS\Serializer\Annotation\SerializedName('total_count')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('total_count')]
     public int $totalCount;
 
     /**
-     * @param  ?array<OAuthApplication>  $data
-     * @param  ?int  $totalCount
+     * @param  array<OAuthApplication>  $data
+     * @param  int  $totalCount
      */
-    public function __construct(?array $data = null, ?int $totalCount = null)
+    public function __construct(array $data, int $totalCount)
     {
         $this->data = $data;
         $this->totalCount = $totalCount;

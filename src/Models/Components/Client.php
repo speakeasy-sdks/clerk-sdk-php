@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** Client - Success */
 class Client
 {
     /**
@@ -18,8 +19,8 @@ class Client
      *
      * @var ObjectT $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ObjectT')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ObjectT')]
     public ObjectT $object;
 
     /**
@@ -29,7 +30,7 @@ class Client
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
@@ -37,8 +38,8 @@ class Client
      *
      * @var array<string> $sessionIds
      */
-    #[\JMS\Serializer\Annotation\SerializedName('session_ids')]
-    #[\JMS\Serializer\Annotation\Type('array<string>')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('session_ids')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>')]
     public array $sessionIds;
 
     /**
@@ -46,33 +47,33 @@ class Client
      *
      * @var array<Session> $sessions
      */
-    #[\JMS\Serializer\Annotation\SerializedName('sessions')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\Session>')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sessions')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\Session>')]
     public array $sessions;
 
     /**
      *
-     * @var string $signInId
+     * @var ?string $signInId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('sign_in_id')]
-    public string $signInId;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sign_in_id')]
+    public ?string $signInId;
 
     /**
      *
-     * @var string $signUpId
+     * @var ?string $signUpId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('sign_up_id')]
-    public string $signUpId;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sign_up_id')]
+    public ?string $signUpId;
 
     /**
      * Last active session_id.
      *
      *
      *
-     * @var string $lastActiveSessionId
+     * @var ?string $lastActiveSessionId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_active_session_id')]
-    public string $lastActiveSessionId;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_active_session_id')]
+    public ?string $lastActiveSessionId;
 
     /**
      * Unix timestamp of last update.
@@ -81,7 +82,7 @@ class Client
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
@@ -91,30 +92,30 @@ class Client
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
-     * @param  ?ObjectT  $object
-     * @param  ?string  $id
-     * @param  ?array<string>  $sessionIds
-     * @param  ?array<Session>  $sessions
+     * @param  ObjectT  $object
+     * @param  string  $id
+     * @param  array<string>  $sessionIds
+     * @param  array<Session>  $sessions
+     * @param  int  $updatedAt
+     * @param  int  $createdAt
      * @param  ?string  $signInId
      * @param  ?string  $signUpId
      * @param  ?string  $lastActiveSessionId
-     * @param  ?int  $updatedAt
-     * @param  ?int  $createdAt
      */
-    public function __construct(?ObjectT $object = null, ?string $id = null, ?array $sessionIds = null, ?array $sessions = null, ?string $signInId = null, ?string $signUpId = null, ?string $lastActiveSessionId = null, ?int $updatedAt = null, ?int $createdAt = null)
+    public function __construct(ObjectT $object, string $id, array $sessionIds, array $sessions, int $updatedAt, int $createdAt, ?string $signInId = null, ?string $signUpId = null, ?string $lastActiveSessionId = null)
     {
         $this->object = $object;
         $this->id = $id;
         $this->sessionIds = $sessionIds;
         $this->sessions = $sessions;
+        $this->updatedAt = $updatedAt;
+        $this->createdAt = $createdAt;
         $this->signInId = $signInId;
         $this->signUpId = $signUpId;
         $this->lastActiveSessionId = $lastActiveSessionId;
-        $this->updatedAt = $updatedAt;
-        $this->createdAt = $createdAt;
     }
 }

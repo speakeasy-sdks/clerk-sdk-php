@@ -41,11 +41,11 @@ class UsersGetOrganizationMembershipsRequest
     public ?float $offset = null;
 
     /**
-     * @param  ?string  $userId
+     * @param  string  $userId
      * @param  ?float  $limit
      * @param  ?float  $offset
      */
-    public function __construct(?string $userId = null, ?float $limit = null, ?float $offset = null)
+    public function __construct(string $userId, ?float $limit = 10, ?float $offset = 0)
     {
         $this->userId = $userId;
         $this->limit = $limit;

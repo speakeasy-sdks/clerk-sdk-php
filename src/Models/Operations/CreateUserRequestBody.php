@@ -18,8 +18,8 @@ class CreateUserRequestBody
      *
      * @var ?string $externalId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('external_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $externalId = null;
 
     /**
@@ -27,8 +27,8 @@ class CreateUserRequestBody
      *
      * @var ?string $firstName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('first_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('first_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $firstName = null;
 
     /**
@@ -36,8 +36,8 @@ class CreateUserRequestBody
      *
      * @var ?string $lastName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $lastName = null;
 
     /**
@@ -48,9 +48,9 @@ class CreateUserRequestBody
      *
      * @var ?array<string> $emailAddress
      */
-    #[\JMS\Serializer\Annotation\SerializedName('email_address')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email_address')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $emailAddress = null;
 
     /**
@@ -61,9 +61,9 @@ class CreateUserRequestBody
      *
      * @var ?array<string> $phoneNumber
      */
-    #[\JMS\Serializer\Annotation\SerializedName('phone_number')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('phone_number')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $phoneNumber = null;
 
     /**
@@ -74,9 +74,9 @@ class CreateUserRequestBody
      *
      * @var ?array<string> $web3Wallet
      */
-    #[\JMS\Serializer\Annotation\SerializedName('web3_wallet')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('web3_wallet')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $web3Wallet = null;
 
     /**
@@ -86,8 +86,8 @@ class CreateUserRequestBody
      *
      * @var ?string $username
      */
-    #[\JMS\Serializer\Annotation\SerializedName('username')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('username')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $username = null;
 
     /**
@@ -97,8 +97,8 @@ class CreateUserRequestBody
      *
      * @var ?string $password
      */
-    #[\JMS\Serializer\Annotation\SerializedName('password')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('password')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $password = null;
 
     /**
@@ -109,8 +109,8 @@ class CreateUserRequestBody
      *
      * @var ?string $passwordDigest
      */
-    #[\JMS\Serializer\Annotation\SerializedName('password_digest')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('password_digest')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $passwordDigest = null;
 
     /**
@@ -241,9 +241,9 @@ class CreateUserRequestBody
      *
      * @var ?PasswordHasher $passwordHasher
      */
-    #[\JMS\Serializer\Annotation\SerializedName('password_hasher')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\PasswordHasher|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('password_hasher')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\PasswordHasher|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?PasswordHasher $passwordHasher = null;
 
     /**
@@ -254,8 +254,8 @@ class CreateUserRequestBody
      *
      * @var ?bool $skipPasswordChecks
      */
-    #[\JMS\Serializer\Annotation\SerializedName('skip_password_checks')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('skip_password_checks')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $skipPasswordChecks = null;
 
     /**
@@ -266,8 +266,8 @@ class CreateUserRequestBody
      *
      * @var ?bool $skipPasswordRequirement
      */
-    #[\JMS\Serializer\Annotation\SerializedName('skip_password_requirement')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('skip_password_requirement')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $skipPasswordRequirement = null;
 
     /**
@@ -280,8 +280,8 @@ class CreateUserRequestBody
      *
      * @var ?string $totpSecret
      */
-    #[\JMS\Serializer\Annotation\SerializedName('totp_secret')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('totp_secret')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $totpSecret = null;
 
     /**
@@ -291,9 +291,9 @@ class CreateUserRequestBody
      *
      * @var ?array<string> $backupCodes
      */
-    #[\JMS\Serializer\Annotation\SerializedName('backup_codes')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('backup_codes')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $backupCodes = null;
 
     /**
@@ -301,9 +301,9 @@ class CreateUserRequestBody
      *
      * @var ?PublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\PublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\PublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?PublicMetadata $publicMetadata = null;
 
     /**
@@ -311,9 +311,9 @@ class CreateUserRequestBody
      *
      * @var ?PrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\PrivateMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\PrivateMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?PrivateMetadata $privateMetadata = null;
 
     /**
@@ -323,9 +323,9 @@ class CreateUserRequestBody
      *
      * @var ?UnsafeMetadata $unsafeMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('unsafe_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UnsafeMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('unsafe_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UnsafeMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UnsafeMetadata $unsafeMetadata = null;
 
     /**
@@ -333,19 +333,14 @@ class CreateUserRequestBody
      *
      * @var ?string $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $createdAt = null;
 
     /**
-     * @param  ?string  $externalId
-     * @param  ?string  $firstName
-     * @param  ?string  $lastName
      * @param  ?array<string>  $emailAddress
      * @param  ?array<string>  $phoneNumber
      * @param  ?array<string>  $web3Wallet
-     * @param  ?string  $username
-     * @param  ?string  $password
      * @param  ?string  $passwordDigest
      * @param  ?PasswordHasher  $passwordHasher
      * @param  ?bool  $skipPasswordChecks
@@ -356,17 +351,17 @@ class CreateUserRequestBody
      * @param  ?PrivateMetadata  $privateMetadata
      * @param  ?UnsafeMetadata  $unsafeMetadata
      * @param  ?string  $createdAt
+     * @param  ?string  $externalId
+     * @param  ?string  $firstName
+     * @param  ?string  $lastName
+     * @param  ?string  $username
+     * @param  ?string  $password
      */
-    public function __construct(?string $externalId = null, ?string $firstName = null, ?string $lastName = null, ?array $emailAddress = null, ?array $phoneNumber = null, ?array $web3Wallet = null, ?string $username = null, ?string $password = null, ?string $passwordDigest = null, ?PasswordHasher $passwordHasher = null, ?bool $skipPasswordChecks = null, ?bool $skipPasswordRequirement = null, ?string $totpSecret = null, ?array $backupCodes = null, ?PublicMetadata $publicMetadata = null, ?PrivateMetadata $privateMetadata = null, ?UnsafeMetadata $unsafeMetadata = null, ?string $createdAt = null)
+    public function __construct(?array $emailAddress = null, ?array $phoneNumber = null, ?array $web3Wallet = null, ?string $passwordDigest = null, ?PasswordHasher $passwordHasher = null, ?bool $skipPasswordChecks = null, ?bool $skipPasswordRequirement = null, ?string $totpSecret = null, ?array $backupCodes = null, ?PublicMetadata $publicMetadata = null, ?PrivateMetadata $privateMetadata = null, ?UnsafeMetadata $unsafeMetadata = null, ?string $createdAt = null, ?string $externalId = null, ?string $firstName = null, ?string $lastName = null, ?string $username = null, ?string $password = null)
     {
-        $this->externalId = $externalId;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
         $this->emailAddress = $emailAddress;
         $this->phoneNumber = $phoneNumber;
         $this->web3Wallet = $web3Wallet;
-        $this->username = $username;
-        $this->password = $password;
         $this->passwordDigest = $passwordDigest;
         $this->passwordHasher = $passwordHasher;
         $this->skipPasswordChecks = $skipPasswordChecks;
@@ -377,5 +372,10 @@ class CreateUserRequestBody
         $this->privateMetadata = $privateMetadata;
         $this->unsafeMetadata = $unsafeMetadata;
         $this->createdAt = $createdAt;
+        $this->externalId = $externalId;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->username = $username;
+        $this->password = $password;
     }
 }

@@ -18,9 +18,9 @@ class MergeOrganizationMetadataRequestBody
      *
      * @var ?MergeOrganizationMetadataPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\MergeOrganizationMetadataPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\MergeOrganizationMetadataPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?MergeOrganizationMetadataPublicMetadata $publicMetadata = null;
 
     /**
@@ -30,9 +30,9 @@ class MergeOrganizationMetadataRequestBody
      *
      * @var ?MergeOrganizationMetadataPrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\MergeOrganizationMetadataPrivateMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\MergeOrganizationMetadataPrivateMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?MergeOrganizationMetadataPrivateMetadata $privateMetadata = null;
 
     /**

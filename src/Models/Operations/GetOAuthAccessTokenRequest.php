@@ -28,10 +28,10 @@ class GetOAuthAccessTokenRequest
     public string $provider;
 
     /**
-     * @param  ?string  $userId
-     * @param  ?string  $provider
+     * @param  string  $userId
+     * @param  string  $provider
      */
-    public function __construct(?string $userId = null, ?string $provider = null)
+    public function __construct(string $userId, string $provider)
     {
         $this->userId = $userId;
         $this->provider = $provider;

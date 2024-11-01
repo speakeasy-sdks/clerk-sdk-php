@@ -18,75 +18,75 @@ class Session
      *
      * @var SessionObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SessionObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SessionObject')]
     public SessionObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var string $userId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
     public string $userId;
 
     /**
      *
      * @var string $clientId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('client_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('client_id')]
     public string $clientId;
 
     /**
      *
      * @var ?Actor $actor
      */
-    #[\JMS\Serializer\Annotation\SerializedName('actor')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Actor|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('actor')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Actor|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?Actor $actor = null;
 
     /**
      *
      * @var Status $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Status')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Status')]
     public Status $status;
 
     /**
      *
      * @var ?string $lastActiveOrganizationId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_active_organization_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_active_organization_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $lastActiveOrganizationId = null;
 
     /**
      *
      * @var int $lastActiveAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_active_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_active_at')]
     public int $lastActiveAt;
 
     /**
      *
      * @var int $expireAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expire_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expire_at')]
     public int $expireAt;
 
     /**
      *
      * @var int $abandonAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('abandon_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('abandon_at')]
     public int $abandonAt;
 
     /**
@@ -96,7 +96,7 @@ class Session
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
@@ -106,24 +106,24 @@ class Session
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
-     * @param  ?SessionObject  $object
-     * @param  ?string  $id
-     * @param  ?string  $userId
-     * @param  ?string  $clientId
-     * @param  ?Status  $status
-     * @param  ?int  $lastActiveAt
-     * @param  ?int  $expireAt
-     * @param  ?int  $abandonAt
-     * @param  ?int  $updatedAt
-     * @param  ?int  $createdAt
+     * @param  SessionObject  $object
+     * @param  string  $id
+     * @param  string  $userId
+     * @param  string  $clientId
+     * @param  Status  $status
+     * @param  int  $lastActiveAt
+     * @param  int  $expireAt
+     * @param  int  $abandonAt
+     * @param  int  $updatedAt
+     * @param  int  $createdAt
      * @param  ?Actor  $actor
      * @param  ?string  $lastActiveOrganizationId
      */
-    public function __construct(?SessionObject $object = null, ?string $id = null, ?string $userId = null, ?string $clientId = null, ?Status $status = null, ?int $lastActiveAt = null, ?int $expireAt = null, ?int $abandonAt = null, ?int $updatedAt = null, ?int $createdAt = null, ?Actor $actor = null, ?string $lastActiveOrganizationId = null)
+    public function __construct(SessionObject $object, string $id, string $userId, string $clientId, Status $status, int $lastActiveAt, int $expireAt, int $abandonAt, int $updatedAt, int $createdAt, ?Actor $actor = null, ?string $lastActiveOrganizationId = null)
     {
         $this->object = $object;
         $this->id = $id;

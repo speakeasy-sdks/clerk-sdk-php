@@ -15,41 +15,41 @@ class Admin
      *
      * @var AdminVerificationStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AdminVerificationStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AdminVerificationStatus')]
     public AdminVerificationStatus $status;
 
     /**
      *
      * @var VerificationStrategy $strategy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('strategy')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\VerificationStrategy')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('strategy')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\VerificationStrategy')]
     public VerificationStrategy $strategy;
 
     /**
      *
      * @var ?int $attempts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attempts')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attempts')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $attempts = null;
 
     /**
      *
      * @var ?int $expireAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expire_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expire_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $expireAt = null;
 
     /**
-     * @param  ?AdminVerificationStatus  $status
-     * @param  ?VerificationStrategy  $strategy
+     * @param  AdminVerificationStatus  $status
+     * @param  VerificationStrategy  $strategy
      * @param  ?int  $attempts
      * @param  ?int  $expireAt
      */
-    public function __construct(?AdminVerificationStatus $status = null, ?VerificationStrategy $strategy = null, ?int $attempts = null, ?int $expireAt = null)
+    public function __construct(AdminVerificationStatus $status, VerificationStrategy $strategy, ?int $attempts = null, ?int $expireAt = null)
     {
         $this->status = $status;
         $this->strategy = $strategy;

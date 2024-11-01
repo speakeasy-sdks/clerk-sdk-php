@@ -16,8 +16,8 @@ class UpdateEmailAddressRequestBody
      *
      * @var ?bool $verified
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verified')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verified')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $verified = null;
 
     /**
@@ -25,8 +25,8 @@ class UpdateEmailAddressRequestBody
      *
      * @var ?bool $primary
      */
-    #[\JMS\Serializer\Annotation\SerializedName('primary')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('primary')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $primary = null;
 
     /**

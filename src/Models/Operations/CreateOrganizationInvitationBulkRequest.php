@@ -28,10 +28,10 @@ class CreateOrganizationInvitationBulkRequest
     public array $requestBody;
 
     /**
-     * @param  ?string  $organizationId
-     * @param  ?array<RequestBody>  $requestBody
+     * @param  string  $organizationId
+     * @param  array<RequestBody>  $requestBody
      */
-    public function __construct(?string $organizationId = null, ?array $requestBody = null)
+    public function __construct(string $organizationId, array $requestBody)
     {
         $this->organizationId = $organizationId;
         $this->requestBody = $requestBody;

@@ -20,9 +20,9 @@ class RevokeSignInTokenRequest
     public string $signInTokenId;
 
     /**
-     * @param  ?string  $signInTokenId
+     * @param  string  $signInTokenId
      */
-    public function __construct(?string $signInTokenId = null)
+    public function __construct(string $signInTokenId)
     {
         $this->signInTokenId = $signInTokenId;
     }

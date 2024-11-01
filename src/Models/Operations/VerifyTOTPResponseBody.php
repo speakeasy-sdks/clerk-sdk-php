@@ -16,17 +16,17 @@ class VerifyTOTPResponseBody
      *
      * @var ?bool $verified
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verified')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verified')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $verified = null;
 
     /**
      *
      * @var ?CodeType $codeType
      */
-    #[\JMS\Serializer\Annotation\SerializedName('code_type')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CodeType|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('code_type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CodeType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?CodeType $codeType = null;
 
     /**

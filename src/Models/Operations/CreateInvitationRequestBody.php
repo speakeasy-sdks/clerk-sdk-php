@@ -17,7 +17,7 @@ class CreateInvitationRequestBody
      *
      * @var string $emailAddress
      */
-    #[\JMS\Serializer\Annotation\SerializedName('email_address')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email_address')]
     public string $emailAddress;
 
     /**
@@ -28,9 +28,9 @@ class CreateInvitationRequestBody
      *
      * @var ?CreateInvitationPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CreateInvitationPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CreateInvitationPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?CreateInvitationPublicMetadata $publicMetadata = null;
 
     /**
@@ -40,8 +40,8 @@ class CreateInvitationRequestBody
      *
      * @var ?string $redirectUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('redirect_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('redirect_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $redirectUrl = null;
 
     /**
@@ -51,8 +51,8 @@ class CreateInvitationRequestBody
      *
      * @var ?bool $notify
      */
-    #[\JMS\Serializer\Annotation\SerializedName('notify')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('notify')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $notify = null;
 
     /**
@@ -60,18 +60,18 @@ class CreateInvitationRequestBody
      *
      * @var ?bool $ignoreExisting
      */
-    #[\JMS\Serializer\Annotation\SerializedName('ignore_existing')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('ignore_existing')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $ignoreExisting = null;
 
     /**
-     * @param  ?string  $emailAddress
+     * @param  string  $emailAddress
      * @param  ?CreateInvitationPublicMetadata  $publicMetadata
      * @param  ?string  $redirectUrl
      * @param  ?bool  $notify
      * @param  ?bool  $ignoreExisting
      */
-    public function __construct(?string $emailAddress = null, ?CreateInvitationPublicMetadata $publicMetadata = null, ?string $redirectUrl = null, ?bool $notify = null, ?bool $ignoreExisting = null)
+    public function __construct(string $emailAddress, ?CreateInvitationPublicMetadata $publicMetadata = null, ?string $redirectUrl = null, ?bool $notify = true, ?bool $ignoreExisting = false)
     {
         $this->emailAddress = $emailAddress;
         $this->publicMetadata = $publicMetadata;

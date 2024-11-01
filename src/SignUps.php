@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class SignUps
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -33,10 +32,8 @@ class SignUps
      * @return Operations\UpdateSignUpResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateSignUp(
-        string $id,
-        ?Operations\UpdateSignUpRequestBody $requestBody = null,
-    ): Operations\UpdateSignUpResponse {
+    public function updateSignUp(string $id, ?Operations\UpdateSignUpRequestBody $requestBody = null): Operations\UpdateSignUpResponse
+    {
         $request = new Operations\UpdateSignUpRequest(
             id: $id,
             requestBody: $requestBody,
@@ -74,7 +71,7 @@ class SignUps
         } elseif ($statusCode == 403) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors79', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -85,4 +82,5 @@ class SignUps
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

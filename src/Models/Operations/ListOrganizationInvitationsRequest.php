@@ -49,12 +49,12 @@ class ListOrganizationInvitationsRequest
     public ?ListOrganizationInvitationsQueryParamStatus $status = null;
 
     /**
-     * @param  ?string  $organizationId
+     * @param  string  $organizationId
      * @param  ?float  $limit
      * @param  ?float  $offset
      * @param  ?ListOrganizationInvitationsQueryParamStatus  $status
      */
-    public function __construct(?string $organizationId = null, ?float $limit = null, ?float $offset = null, ?ListOrganizationInvitationsQueryParamStatus $status = null)
+    public function __construct(string $organizationId, ?ListOrganizationInvitationsQueryParamStatus $status = null, ?float $limit = 10, ?float $offset = 0)
     {
         $this->organizationId = $organizationId;
         $this->limit = $limit;

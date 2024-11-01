@@ -9,60 +9,61 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** ActorToken - Success */
 class ActorToken
 {
     /**
      *
      * @var ActorTokenObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ActorTokenObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ActorTokenObject')]
     public ActorTokenObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var ActorTokenStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ActorTokenStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ActorTokenStatus')]
     public ActorTokenStatus $status;
 
     /**
      *
      * @var string $userId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
     public string $userId;
 
     /**
      *
      * @var ActorTokenActor $actor
      */
-    #[\JMS\Serializer\Annotation\SerializedName('actor')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ActorTokenActor')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('actor')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ActorTokenActor')]
     public ActorTokenActor $actor;
 
     /**
      *
      * @var ?string $token
      */
-    #[\JMS\Serializer\Annotation\SerializedName('token')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('token')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $token = null;
 
     /**
      *
      * @var ?string $url
      */
-    #[\JMS\Serializer\Annotation\SerializedName('url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $url = null;
 
     /**
@@ -72,7 +73,7 @@ class ActorToken
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -82,21 +83,21 @@ class ActorToken
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?ActorTokenObject  $object
-     * @param  ?string  $id
-     * @param  ?ActorTokenStatus  $status
-     * @param  ?string  $userId
-     * @param  ?ActorTokenActor  $actor
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  ActorTokenObject  $object
+     * @param  string  $id
+     * @param  ActorTokenStatus  $status
+     * @param  string  $userId
+     * @param  ActorTokenActor  $actor
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      * @param  ?string  $token
      * @param  ?string  $url
      */
-    public function __construct(?ActorTokenObject $object = null, ?string $id = null, ?ActorTokenStatus $status = null, ?string $userId = null, ?ActorTokenActor $actor = null, ?int $createdAt = null, ?int $updatedAt = null, ?string $token = null, ?string $url = null)
+    public function __construct(ActorTokenObject $object, string $id, ActorTokenStatus $status, string $userId, ActorTokenActor $actor, int $createdAt, int $updatedAt, ?string $token = null, ?string $url = null)
     {
         $this->object = $object;
         $this->id = $id;

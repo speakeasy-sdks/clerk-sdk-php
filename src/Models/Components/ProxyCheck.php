@@ -9,76 +9,77 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** ProxyCheck - Health check information about a domain's proxy configuration validation attempt. */
 class ProxyCheck
 {
     /**
      *
      * @var ProxyCheckObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ProxyCheckObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ProxyCheckObject')]
     public ProxyCheckObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var string $domainId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('domain_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('domain_id')]
     public string $domainId;
 
     /**
      *
      * @var int $lastRunAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_run_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_run_at')]
     public int $lastRunAt;
 
     /**
      *
      * @var string $proxyUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('proxy_url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('proxy_url')]
     public string $proxyUrl;
 
     /**
      *
      * @var bool $successful
      */
-    #[\JMS\Serializer\Annotation\SerializedName('successful')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('successful')]
     public bool $successful;
 
     /**
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?ProxyCheckObject  $object
-     * @param  ?string  $id
-     * @param  ?string  $domainId
-     * @param  ?int  $lastRunAt
-     * @param  ?string  $proxyUrl
-     * @param  ?bool  $successful
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  ProxyCheckObject  $object
+     * @param  string  $id
+     * @param  string  $domainId
+     * @param  int  $lastRunAt
+     * @param  string  $proxyUrl
+     * @param  bool  $successful
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      */
-    public function __construct(?ProxyCheckObject $object = null, ?string $id = null, ?string $domainId = null, ?int $lastRunAt = null, ?string $proxyUrl = null, ?bool $successful = null, ?int $createdAt = null, ?int $updatedAt = null)
+    public function __construct(ProxyCheckObject $object, string $id, string $domainId, int $lastRunAt, string $proxyUrl, bool $successful, int $createdAt, int $updatedAt)
     {
         $this->object = $object;
         $this->id = $id;

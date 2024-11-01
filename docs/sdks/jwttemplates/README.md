@@ -1,4 +1,5 @@
 # JWTTemplates
+(*jwtTemplates*)
 
 ## Overview
 
@@ -27,21 +28,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $response = $sdk->jwtTemplates->listJWTTemplates();
 
-    if ($response->jwtTemplateList !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+
+$response = $sdk->jwtTemplates->listJWTTemplates(
+
+);
+
+if ($response->jwtTemplateList !== null) {
+    // handle response
 }
 ```
 
@@ -51,10 +50,9 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## createJWTTemplate
 
@@ -68,33 +66,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\CreateJWTTemplateRequestBody(
-        name: '<value>',
-        claims: new Operations\Claims(
+$request = new Operations\CreateJWTTemplateRequestBody();
 
-        ),
-        lifetime: 6361.96,
-        allowedClockSkew: 8500.88,
-        customSigningKey: false,
-        signingAlgorithm: '<value>',
-        signingKey: '<value>',
-    );
-    $response = $sdk->jwtTemplates->createJWTTemplate($request);
+$response = $sdk->jwtTemplates->createJWTTemplate(
+    request: $request
+);
 
-    if ($response->jwtTemplate !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+if ($response->jwtTemplate !== null) {
+    // handle response
 }
 ```
 
@@ -110,11 +95,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,402,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors53 | 400, 402, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## getJWTTemplate
 
@@ -128,22 +112,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->jwtTemplates->getJWTTemplate('<value>');
 
-    if ($response->jwtTemplate !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->jwtTemplates->getJWTTemplate(
+    templateId: '<id>'
+);
+
+if ($response->jwtTemplate !== null) {
+    // handle response
 }
 ```
 
@@ -159,11 +140,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 404                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors54 | 404                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## updateJWTTemplate
 
@@ -177,42 +157,31 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpdateJWTTemplateRequestBody(
-        name: '<value>',
-        claims: new Operations\UpdateJWTTemplateClaims(
+$requestBody = new Operations\UpdateJWTTemplateRequestBody();
 
-        ),
-        lifetime: 5704.19,
-        allowedClockSkew: 1506.03,
-        customSigningKey: false,
-        signingAlgorithm: '<value>',
-        signingKey: '<value>',
-    );
-    $response = $sdk->jwtTemplates->updateJWTTemplate('<value>', $requestBody);
+$response = $sdk->jwtTemplates->updateJWTTemplate(
+    templateId: '<id>',
+    requestBody: $requestBody
 
-    if ($response->jwtTemplate !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+);
+
+if ($response->jwtTemplate !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `templateId`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | The ID of the JWT template to update                                                               |
-| `requestBody`                                                                                      | [Operations\UpdateJWTTemplateRequestBody](../../Models/Operations/UpdateJWTTemplateRequestBody.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `templateId`                                                                                        | *string*                                                                                            | :heavy_check_mark:                                                                                  | The ID of the JWT template to update                                                                |
+| `requestBody`                                                                                       | [?Operations\UpdateJWTTemplateRequestBody](../../Models/Operations/UpdateJWTTemplateRequestBody.md) | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 
 ### Response
 
@@ -220,11 +189,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,402,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors55 | 400, 402, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## deleteJWTTemplate
 
@@ -238,22 +206,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->jwtTemplates->deleteJWTTemplate('<value>');
 
-    if ($response->deletedObject !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->jwtTemplates->deleteJWTTemplate(
+    templateId: '<id>'
+);
+
+if ($response->deletedObject !== null) {
+    // handle response
 }
 ```
 
@@ -269,7 +234,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 403,404                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors56 | 403, 404             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

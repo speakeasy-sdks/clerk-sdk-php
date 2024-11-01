@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class ProxyChecks
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -35,13 +34,12 @@ class ProxyChecks
      * The `proxy_url` parameter allows for testing proxy configurations for domains that don't have a proxy URL yet, or operate on
      * a different proxy URL than the one provided. It can also be used to re-validate a domain that is already configured to work with a proxy.
      *
-     * @param  Operations\VerifyDomainProxyRequestBody  $request
+     * @param  ?Operations\VerifyDomainProxyRequestBody  $request
      * @return Operations\VerifyDomainProxyResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function verifyDomainProxy(
-        ?Operations\VerifyDomainProxyRequestBody $request,
-    ): Operations\VerifyDomainProxyResponse {
+    public function verifyDomainProxy(?Operations\VerifyDomainProxyRequestBody $request = null): Operations\VerifyDomainProxyResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/proxy_checks');
         $options = ['http_errors' => false];
@@ -75,7 +73,7 @@ class ProxyChecks
         } elseif (in_array($statusCode, [400, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors74', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -86,4 +84,5 @@ class ProxyChecks
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

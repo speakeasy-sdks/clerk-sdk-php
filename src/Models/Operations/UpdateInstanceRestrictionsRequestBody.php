@@ -15,40 +15,40 @@ class UpdateInstanceRestrictionsRequestBody
      *
      * @var ?bool $allowlist
      */
-    #[\JMS\Serializer\Annotation\SerializedName('allowlist')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allowlist')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $allowlist = null;
 
     /**
      *
      * @var ?bool $blocklist
      */
-    #[\JMS\Serializer\Annotation\SerializedName('blocklist')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('blocklist')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $blocklist = null;
 
     /**
      *
      * @var ?bool $blockEmailSubaddresses
      */
-    #[\JMS\Serializer\Annotation\SerializedName('block_email_subaddresses')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('block_email_subaddresses')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $blockEmailSubaddresses = null;
 
     /**
      *
      * @var ?bool $blockDisposableEmailDomains
      */
-    #[\JMS\Serializer\Annotation\SerializedName('block_disposable_email_domains')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('block_disposable_email_domains')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $blockDisposableEmailDomains = null;
 
     /**
      *
      * @var ?bool $ignoreDotsForGmailAddresses
      */
-    #[\JMS\Serializer\Annotation\SerializedName('ignore_dots_for_gmail_addresses')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('ignore_dots_for_gmail_addresses')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $ignoreDotsForGmailAddresses = null;
 
     /**

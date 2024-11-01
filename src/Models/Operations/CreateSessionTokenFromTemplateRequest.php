@@ -28,10 +28,10 @@ class CreateSessionTokenFromTemplateRequest
     public string $templateName;
 
     /**
-     * @param  ?string  $sessionId
-     * @param  ?string  $templateName
+     * @param  string  $sessionId
+     * @param  string  $templateName
      */
-    public function __construct(?string $sessionId = null, ?string $templateName = null)
+    public function __construct(string $sessionId, string $templateName)
     {
         $this->sessionId = $sessionId;
         $this->templateName = $templateName;

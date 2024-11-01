@@ -8,15 +8,16 @@ use Clerk\Backend;
 
 $sdk = Backend\ClerkBackend::builder()->build();
 
-try {
 
-    $response = $sdk->miscellaneous->getPublicInterstitial('<value>', '<value>');
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->miscellaneous->getPublicInterstitial(
+    frontendApi: '<value>',
+    publishableKey: '<value>'
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 <!-- End SDK Example Usage [usage] -->

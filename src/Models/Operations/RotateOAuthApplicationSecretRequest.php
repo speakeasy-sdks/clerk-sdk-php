@@ -20,9 +20,9 @@ class RotateOAuthApplicationSecretRequest
     public string $oauthApplicationId;
 
     /**
-     * @param  ?string  $oauthApplicationId
+     * @param  string  $oauthApplicationId
      */
-    public function __construct(?string $oauthApplicationId = null)
+    public function __construct(string $oauthApplicationId)
     {
         $this->oauthApplicationId = $oauthApplicationId;
     }

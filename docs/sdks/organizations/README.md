@@ -1,4 +1,5 @@
 # Organizations
+(*organizations*)
 
 ## Overview
 
@@ -31,29 +32,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\ListOrganizationsRequest(
-        limit: 7112.49,
-        offset: 5895.54,
-        includeMembersCount: false,
-        query: '<value>',
-        orderBy: '<value>',
-    );
-    $response = $sdk->organizations->listOrganizations($request);
+$request = new Operations\ListOrganizationsRequest();
 
-    if ($response->organizations !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizations->listOrganizations(
+    request: $request
+);
+
+if ($response->organizations !== null) {
+    // handle response
 }
 ```
 
@@ -69,11 +61,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,403,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors57 | 400, 403, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## createOrganization
 
@@ -95,34 +86,23 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\CreateOrganizationRequestBody(
-        name: '<value>',
-        createdBy: '<value>',
-        privateMetadata: new Operations\CreateOrganizationPrivateMetadata(
+$request = new Operations\CreateOrganizationRequestBody(
+    name: '<value>',
+    createdBy: '<value>',
+);
 
-        ),
-        publicMetadata: new Operations\CreateOrganizationPublicMetadata(
+$response = $sdk->organizations->createOrganization(
+    request: $request
+);
 
-        ),
-        slug: '<value>',
-        maxAllowedMemberships: 57077,
-    );
-    $response = $sdk->organizations->createOrganization($request);
-
-    if ($response->organization !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+if ($response->organization !== null) {
+    // handle response
 }
 ```
 
@@ -138,11 +118,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,403,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors58 | 400, 403, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## getOrganization
 
@@ -156,22 +135,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->organizations->getOrganization('<value>');
 
-    if ($response->organization !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizations->getOrganization(
+    organizationId: '<id>'
+);
+
+if ($response->organization !== null) {
+    // handle response
 }
 ```
 
@@ -187,11 +163,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 403,404                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors59 | 403, 404             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## updateOrganization
 
@@ -205,34 +180,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpdateOrganizationRequestBody(
-        publicMetadata: new Operations\UpdateOrganizationPublicMetadata(
+$requestBody = new Operations\UpdateOrganizationRequestBody();
 
-        ),
-        privateMetadata: new Operations\UpdateOrganizationPrivateMetadata(
+$response = $sdk->organizations->updateOrganization(
+    organizationId: '<id>',
+    requestBody: $requestBody
 
-        ),
-        name: '<value>',
-        slug: '<value>',
-        maxAllowedMemberships: 524231,
-        adminDeleteEnabled: false,
-    );
-    $response = $sdk->organizations->updateOrganization('<value>', $requestBody);
+);
 
-    if ($response->organization !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+if ($response->organization !== null) {
+    // handle response
 }
 ```
 
@@ -249,11 +212,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402,404,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors60 | 402, 404, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## deleteOrganization
 
@@ -269,22 +231,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->organizations->deleteOrganization('<value>');
 
-    if ($response->deletedObject !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizations->deleteOrganization(
+    organizationId: '<id>'
+);
+
+if ($response->deletedObject !== null) {
+    // handle response
 }
 ```
 
@@ -300,11 +259,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 404                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors61 | 404                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## mergeOrganizationMetadata
 
@@ -321,30 +279,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\MergeOrganizationMetadataRequestBody(
-        publicMetadata: new Operations\MergeOrganizationMetadataPublicMetadata(
+$requestBody = new Operations\MergeOrganizationMetadataRequestBody();
 
-        ),
-        privateMetadata: new Operations\MergeOrganizationMetadataPrivateMetadata(
+$response = $sdk->organizations->mergeOrganizationMetadata(
+    organizationId: '<id>',
+    requestBody: $requestBody
 
-        ),
-    );
-    $response = $sdk->organizations->mergeOrganizationMetadata('<value>', $requestBody);
+);
 
-    if ($response->organization !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+if ($response->organization !== null) {
+    // handle response
 }
 ```
 
@@ -361,11 +311,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404,422                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors61 | 400, 401, 404, 422   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## uploadOrganizationLogo
 
@@ -382,38 +331,37 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UploadOrganizationLogoRequestBody(
-        uploaderUserId: '<value>',
-        file: new Operations\UploadOrganizationLogoFile(
-            fileName: 'your_file_here',
-            content: '0xda979adced',
-        ),
-    );
-    $response = $sdk->organizations->uploadOrganizationLogo('<value>', $requestBody);
+$requestBody = new Operations\UploadOrganizationLogoRequestBody(
+    uploaderUserId: '<id>',
+    file: new Operations\UploadOrganizationLogoFile(
+        fileName: 'example.file',
+        content: '0xd99deAb77d',
+    ),
+);
 
-    if ($response->organizationWithLogo !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizations->uploadOrganizationLogo(
+    organizationId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->organizationWithLogo !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `organizationId`                                                                                             | *string*                                                                                                     | :heavy_check_mark:                                                                                           | The ID of the organization for which to upload a logo                                                        |
-| `requestBody`                                                                                                | [Operations\UploadOrganizationLogoRequestBody](../../Models/Operations/UploadOrganizationLogoRequestBody.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `organizationId`                                                                                              | *string*                                                                                                      | :heavy_check_mark:                                                                                            | The ID of the organization for which to upload a logo                                                         |
+| `requestBody`                                                                                                 | [?Operations\UploadOrganizationLogoRequestBody](../../Models/Operations/UploadOrganizationLogoRequestBody.md) | :heavy_minus_sign:                                                                                            | N/A                                                                                                           |
 
 ### Response
 
@@ -421,11 +369,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,403,404,413                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors62 | 400, 403, 404, 413   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## deleteOrganizationLogo
 
@@ -439,22 +386,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->organizations->deleteOrganizationLogo('<value>');
 
-    if ($response->organization !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizations->deleteOrganizationLogo(
+    organizationId: '<id>'
+);
+
+if ($response->organization !== null) {
+    // handle response
 }
 ```
 
@@ -470,7 +414,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 404                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors63 | 404                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

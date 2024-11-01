@@ -15,39 +15,39 @@ class VerificationOTP
      *
      * @var OTPVerificationStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OTPVerificationStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OTPVerificationStatus')]
     public OTPVerificationStatus $status;
 
     /**
      *
      * @var OTPVerificationStrategy $strategy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('strategy')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OTPVerificationStrategy')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('strategy')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OTPVerificationStrategy')]
     public OTPVerificationStrategy $strategy;
 
     /**
      *
      * @var int $attempts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attempts')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attempts')]
     public int $attempts;
 
     /**
      *
      * @var int $expireAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expire_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expire_at')]
     public int $expireAt;
 
     /**
-     * @param  ?OTPVerificationStatus  $status
-     * @param  ?OTPVerificationStrategy  $strategy
-     * @param  ?int  $attempts
-     * @param  ?int  $expireAt
+     * @param  OTPVerificationStatus  $status
+     * @param  OTPVerificationStrategy  $strategy
+     * @param  int  $attempts
+     * @param  int  $expireAt
      */
-    public function __construct(?OTPVerificationStatus $status = null, ?OTPVerificationStrategy $strategy = null, ?int $attempts = null, ?int $expireAt = null)
+    public function __construct(OTPVerificationStatus $status, OTPVerificationStrategy $strategy, int $attempts, int $expireAt)
     {
         $this->status = $status;
         $this->strategy = $strategy;

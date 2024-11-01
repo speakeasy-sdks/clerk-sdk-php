@@ -16,8 +16,8 @@ class ToggleTemplateDeliveryRequestBody
      *
      * @var ?bool $deliveredByClerk
      */
-    #[\JMS\Serializer\Annotation\SerializedName('delivered_by_clerk')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('delivered_by_clerk')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $deliveredByClerk = null;
 
     /**

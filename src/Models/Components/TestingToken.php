@@ -9,14 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** TestingToken - A Testing Token */
 class TestingToken
 {
     /**
      *
      * @var TestingTokenObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\TestingTokenObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\TestingTokenObject')]
     public TestingTokenObject $object;
 
     /**
@@ -24,7 +25,7 @@ class TestingToken
      *
      * @var string $token
      */
-    #[\JMS\Serializer\Annotation\SerializedName('token')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('token')]
     public string $token;
 
     /**
@@ -34,15 +35,15 @@ class TestingToken
      *
      * @var int $expiresAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expires_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expires_at')]
     public int $expiresAt;
 
     /**
-     * @param  ?TestingTokenObject  $object
-     * @param  ?string  $token
-     * @param  ?int  $expiresAt
+     * @param  TestingTokenObject  $object
+     * @param  string  $token
+     * @param  int  $expiresAt
      */
-    public function __construct(?TestingTokenObject $object = null, ?string $token = null, ?int $expiresAt = null)
+    public function __construct(TestingTokenObject $object, string $token, int $expiresAt)
     {
         $this->object = $object;
         $this->token = $token;

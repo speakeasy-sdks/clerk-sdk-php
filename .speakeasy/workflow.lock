@@ -1,24 +1,24 @@
-speakeasyVersion: 1.390.8
+speakeasyVersion: 1.424.0
 sources:
     clerk-backend-php:
         sourceNamespace: clerk-openapi
-        sourceRevisionDigest: sha256:6353205af3f19bb156736f0b9e892105994cdb88a27501203bc48fa966be9cd2
-        sourceBlobDigest: sha256:70485a857719071de692222b345b03eb8c8d415420074439d45ec731a9dee8aa
+        sourceRevisionDigest: sha256:1b286b5fed33a83bc8f8565131d2a072b75dbac14f4d2d47e67033f3ae2af2c8
+        sourceBlobDigest: sha256:a1fe6e2b6b88ebb94a1ed12cf3aa9acf83572460a5f825e8af217a692289a9f2
         tags:
             - latest
 targets:
     clerk-php:
         source: clerk-backend-php
         sourceNamespace: clerk-openapi
-        sourceRevisionDigest: sha256:6353205af3f19bb156736f0b9e892105994cdb88a27501203bc48fa966be9cd2
-        sourceBlobDigest: sha256:70485a857719071de692222b345b03eb8c8d415420074439d45ec731a9dee8aa
-        outLocation: /Users/octoper/clerk/php/clerk-php
+        sourceRevisionDigest: sha256:1b286b5fed33a83bc8f8565131d2a072b75dbac14f4d2d47e67033f3ae2af2c8
+        sourceBlobDigest: sha256:a1fe6e2b6b88ebb94a1ed12cf3aa9acf83572460a5f825e8af217a692289a9f2
+        codeSamplesNamespace: clerk-openapi-code-samples
+        codeSamplesRevisionDigest: sha256:220becc6b1b15b3ebe33c2a76a7f712f38f7c889d1522460eba85847cb041c9b
     my-first-target:
         source: clerk-backend-php
         sourceNamespace: clerk-openapi
         sourceRevisionDigest: sha256:c169e1d91c0cf96f1b0efcd65d90aa47ab9f42cfcde30514813f38ee86c14a75
         sourceBlobDigest: sha256:70485a857719071de692222b345b03eb8c8d415420074439d45ec731a9dee8aa
-        outLocation: /Users/octoper/clerk/php/clerk-php
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -32,3 +32,11 @@ workflow:
         clerk-php:
             target: php
             source: clerk-backend-php
+            publish:
+                packagist:
+                    username: clerkinc
+                    token: $packagist_token
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/clerk/clerk/clerk-openapi-code-samples
+                blocking: false

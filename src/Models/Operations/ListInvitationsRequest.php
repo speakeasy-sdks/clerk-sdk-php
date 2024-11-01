@@ -45,7 +45,7 @@ class ListInvitationsRequest
      * @param  ?float  $offset
      * @param  ?QueryParamStatus  $status
      */
-    public function __construct(?float $limit = null, ?float $offset = null, ?QueryParamStatus $status = null)
+    public function __construct(?QueryParamStatus $status = null, ?float $limit = 10, ?float $offset = 0)
     {
         $this->limit = $limit;
         $this->offset = $offset;

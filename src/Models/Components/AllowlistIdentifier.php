@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** AllowlistIdentifier - Success */
 class AllowlistIdentifier
 {
     /**
@@ -18,25 +19,25 @@ class AllowlistIdentifier
      *
      * @var ?AllowlistIdentifierObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AllowlistIdentifierObject|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AllowlistIdentifierObject|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?AllowlistIdentifierObject $object = null;
 
     /**
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
      *
      * @var ?string $invitationId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('invitation_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('invitation_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $invitationId = null;
 
     /**
@@ -46,25 +47,25 @@ class AllowlistIdentifier
      *
      * @var ?string $identifier
      */
-    #[\JMS\Serializer\Annotation\SerializedName('identifier')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('identifier')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $identifier = null;
 
     /**
      *
      * @var ?IdentifierType $identifierType
      */
-    #[\JMS\Serializer\Annotation\SerializedName('identifier_type')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\IdentifierType|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('identifier_type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\IdentifierType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?IdentifierType $identifierType = null;
 
     /**
      *
      * @var ?string $instanceId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('instance_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('instance_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $instanceId = null;
 
     /**
@@ -74,8 +75,8 @@ class AllowlistIdentifier
      *
      * @var ?int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $createdAt = null;
 
     /**
@@ -85,8 +86,8 @@ class AllowlistIdentifier
      *
      * @var ?int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $updatedAt = null;
 
     /**

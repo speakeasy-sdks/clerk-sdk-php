@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class Users
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -29,13 +28,12 @@ class Users
      * Returns a list of all users.
      * The users are returned sorted by creation date, with the newest users appearing first.
      *
-     * @param  Operations\GetUserListRequest  $request
+     * @param  ?Operations\GetUserListRequest  $request
      * @return Operations\GetUserListResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getUserList(
-        ?Operations\GetUserListRequest $request,
-    ): Operations\GetUserListResponse {
+    public function getUserList(?Operations\GetUserListRequest $request = null): Operations\GetUserListResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/users');
         $options = ['http_errors' => false];
@@ -66,7 +64,7 @@ class Users
         } elseif (in_array($statusCode, [400, 401, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors22', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -89,21 +87,19 @@ class Users
      *
      * A rate limit rule of 20 requests per 10 seconds is applied to this endpoint.
      *
-     * @param  Operations\CreateUserRequestBody  $request
+     * @param  ?Operations\CreateUserRequestBody  $request
      * @return Operations\CreateUserResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createUser(
-        Operations\CreateUserRequestBody $request,
-    ): Operations\CreateUserResponse {
+    public function createUser(?Operations\CreateUserRequestBody $request = null): Operations\CreateUserResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/users');
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
-        if ($body === null) {
-            throw new \Exception('Request body is required');
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
         }
-        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         $httpRequest = new \GuzzleHttp\Psr7\Request('POST', $url);
@@ -130,7 +126,7 @@ class Users
         } elseif (in_array($statusCode, [400, 401, 403, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors23', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -147,13 +143,12 @@ class Users
      *
      * Returns a total count of all users that match the given filtering criteria.
      *
-     * @param  Operations\GetUsersCountRequest  $request
+     * @param  ?Operations\GetUsersCountRequest  $request
      * @return Operations\GetUsersCountResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getUsersCount(
-        ?Operations\GetUsersCountRequest $request,
-    ): Operations\GetUsersCountResponse {
+    public function getUsersCount(?Operations\GetUsersCountRequest $request = null): Operations\GetUsersCountResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/users/count');
         $options = ['http_errors' => false];
@@ -184,7 +179,7 @@ class Users
         } elseif ($statusCode == 422) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors24', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -205,9 +200,8 @@ class Users
      * @return Operations\GetUserResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getUser(
-        string $userId,
-    ): Operations\GetUserResponse {
+    public function getUser(string $userId): Operations\GetUserResponse
+    {
         $request = new Operations\GetUserRequest(
             userId: $userId,
         );
@@ -240,7 +234,7 @@ class Users
         } elseif (in_array($statusCode, [400, 401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors25', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -268,15 +262,13 @@ class Users
      * You can ignore the password policy checks for your instance by setting the `skip_password_checks` parameter to `true`.
      * You can also choose to sign the user out of all their active sessions on any device once the password is updated. Just set `sign_out_of_other_sessions` to `true`.
      *
-     * @param  string  $userId
      * @param  Operations\UpdateUserRequestBody  $requestBody
+     * @param  string  $userId
      * @return Operations\UpdateUserResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateUser(
-        string $userId,
-        Operations\UpdateUserRequestBody $requestBody,
-    ): Operations\UpdateUserResponse {
+    public function updateUser(Operations\UpdateUserRequestBody $requestBody, string $userId): Operations\UpdateUserResponse
+    {
         $request = new Operations\UpdateUserRequest(
             userId: $userId,
             requestBody: $requestBody,
@@ -315,7 +307,7 @@ class Users
         } elseif (in_array($statusCode, [400, 401, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors26', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -336,9 +328,8 @@ class Users
      * @return Operations\DeleteUserResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function deleteUser(
-        string $userId,
-    ): Operations\DeleteUserResponse {
+    public function deleteUser(string $userId): Operations\DeleteUserResponse
+    {
         $request = new Operations\DeleteUserRequest(
             userId: $userId,
         );
@@ -371,7 +362,7 @@ class Users
         } elseif (in_array($statusCode, [400, 401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors27', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -392,9 +383,8 @@ class Users
      * @return Operations\BanUserResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function banUser(
-        string $userId,
-    ): Operations\BanUserResponse {
+    public function banUser(string $userId): Operations\BanUserResponse
+    {
         $request = new Operations\BanUserRequest(
             userId: $userId,
         );
@@ -427,7 +417,7 @@ class Users
         } elseif ($statusCode == 402) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors28', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -448,9 +438,8 @@ class Users
      * @return Operations\UnbanUserResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function unbanUser(
-        string $userId,
-    ): Operations\UnbanUserResponse {
+    public function unbanUser(string $userId): Operations\UnbanUserResponse
+    {
         $request = new Operations\UnbanUserRequest(
             userId: $userId,
         );
@@ -483,7 +472,7 @@ class Users
         } elseif ($statusCode == 402) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors29', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -505,9 +494,8 @@ class Users
      * @return Operations\LockUserResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function lockUser(
-        string $userId,
-    ): Operations\LockUserResponse {
+    public function lockUser(string $userId): Operations\LockUserResponse
+    {
         $request = new Operations\LockUserRequest(
             userId: $userId,
         );
@@ -540,7 +528,7 @@ class Users
         } elseif ($statusCode == 403) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors29', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -561,9 +549,8 @@ class Users
      * @return Operations\UnlockUserResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function unlockUser(
-        string $userId,
-    ): Operations\UnlockUserResponse {
+    public function unlockUser(string $userId): Operations\UnlockUserResponse
+    {
         $request = new Operations\UnlockUserRequest(
             userId: $userId,
         );
@@ -596,7 +583,7 @@ class Users
         } elseif ($statusCode == 403) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors29', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -613,15 +600,13 @@ class Users
      *
      * Update a user's profile image
      *
-     * @param  string  $userId
      * @param  Operations\SetUserProfileImageRequestBody  $requestBody
+     * @param  string  $userId
      * @return Operations\SetUserProfileImageResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function setUserProfileImage(
-        string $userId,
-        Operations\SetUserProfileImageRequestBody $requestBody,
-    ): Operations\SetUserProfileImageResponse {
+    public function setUserProfileImage(Operations\SetUserProfileImageRequestBody $requestBody, string $userId): Operations\SetUserProfileImageResponse
+    {
         $request = new Operations\SetUserProfileImageRequest(
             userId: $userId,
             requestBody: $requestBody,
@@ -660,7 +645,7 @@ class Users
         } elseif (in_array($statusCode, [400, 401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors29', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -681,9 +666,8 @@ class Users
      * @return Operations\DeleteUserProfileImageResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function deleteUserProfileImage(
-        string $userId,
-    ): Operations\DeleteUserProfileImageResponse {
+    public function deleteUserProfileImage(string $userId): Operations\DeleteUserProfileImageResponse
+    {
         $request = new Operations\DeleteUserProfileImageRequest(
             userId: $userId,
         );
@@ -716,7 +700,7 @@ class Users
         } elseif ($statusCode == 404) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors30', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -745,10 +729,8 @@ class Users
      * @return Operations\UpdateUserMetadataResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateUserMetadata(
-        string $userId,
-        ?Operations\UpdateUserMetadataRequestBody $requestBody = null,
-    ): Operations\UpdateUserMetadataResponse {
+    public function updateUserMetadata(string $userId, ?Operations\UpdateUserMetadataRequestBody $requestBody = null): Operations\UpdateUserMetadataResponse
+    {
         $request = new Operations\UpdateUserMetadataRequest(
             userId: $userId,
             requestBody: $requestBody,
@@ -786,7 +768,7 @@ class Users
         } elseif (in_array($statusCode, [400, 401, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors31', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -809,10 +791,8 @@ class Users
      * @return Operations\GetOAuthAccessTokenResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getOAuthAccessToken(
-        string $userId,
-        string $provider,
-    ): Operations\GetOAuthAccessTokenResponse {
+    public function getOAuthAccessToken(string $userId, string $provider): Operations\GetOAuthAccessTokenResponse
+    {
         $request = new Operations\GetOAuthAccessTokenRequest(
             userId: $userId,
             provider: $provider,
@@ -846,7 +826,7 @@ class Users
         } elseif (in_array($statusCode, [400, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors32', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -869,11 +849,8 @@ class Users
      * @return Operations\UsersGetOrganizationMembershipsResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function usersGetOrganizationMemberships(
-        string $userId,
-        ?float $limit = null,
-        ?float $offset = null,
-    ): Operations\UsersGetOrganizationMembershipsResponse {
+    public function usersGetOrganizationMemberships(string $userId, ?float $limit = null, ?float $offset = null): Operations\UsersGetOrganizationMembershipsResponse
+    {
         $request = new Operations\UsersGetOrganizationMembershipsRequest(
             userId: $userId,
             limit: $limit,
@@ -909,7 +886,7 @@ class Users
         } elseif ($statusCode == 403) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors33', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -932,10 +909,8 @@ class Users
      * @return Operations\VerifyPasswordResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function verifyPassword(
-        string $userId,
-        ?Operations\VerifyPasswordRequestBody $requestBody = null,
-    ): Operations\VerifyPasswordResponse {
+    public function verifyPassword(string $userId, ?Operations\VerifyPasswordRequestBody $requestBody = null): Operations\VerifyPasswordResponse
+    {
         $request = new Operations\VerifyPasswordRequest(
             userId: $userId,
             requestBody: $requestBody,
@@ -975,7 +950,7 @@ class Users
         } elseif ($statusCode == 500) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors33', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -998,10 +973,8 @@ class Users
      * @return Operations\VerifyTOTPResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function verifyTOTP(
-        string $userId,
-        ?Operations\VerifyTOTPRequestBody $requestBody = null,
-    ): Operations\VerifyTOTPResponse {
+    public function verifyTOTP(string $userId, ?Operations\VerifyTOTPRequestBody $requestBody = null): Operations\VerifyTOTPResponse
+    {
         $request = new Operations\VerifyTOTPRequest(
             userId: $userId,
             requestBody: $requestBody,
@@ -1041,7 +1014,7 @@ class Users
         } elseif ($statusCode == 500) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors33', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -1060,9 +1033,8 @@ class Users
      * @return Operations\DisableMFAResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function disableMFA(
-        string $userId,
-    ): Operations\DisableMFAResponse {
+    public function disableMFA(string $userId): Operations\DisableMFAResponse
+    {
         $request = new Operations\DisableMFARequest(
             userId: $userId,
         );
@@ -1095,7 +1067,7 @@ class Users
         } elseif (in_array($statusCode, [404, 500])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors33', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -1106,4 +1078,5 @@ class Users
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

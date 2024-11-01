@@ -1,4 +1,5 @@
 # Webhooks
+(*webhooks*)
 
 ## Overview
 
@@ -23,21 +24,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $response = $sdk->webhooks->createSvixApp();
 
-    if ($response->svixURL !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+
+$response = $sdk->webhooks->createSvixApp(
+
+);
+
+if ($response->svixURL !== null) {
+    // handle response
 }
 ```
 
@@ -47,11 +46,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors52 | 400                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## deleteSvixApp
 
@@ -65,21 +63,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $response = $sdk->webhooks->deleteSvixApp();
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+
+$response = $sdk->webhooks->deleteSvixApp(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -89,11 +85,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors53 | 400                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## generateSvixAuthURL
 
@@ -107,21 +102,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $response = $sdk->webhooks->generateSvixAuthURL();
 
-    if ($response->svixURL !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+
+$response = $sdk->webhooks->generateSvixAuthURL(
+
+);
+
+if ($response->svixURL !== null) {
+    // handle response
 }
 ```
 
@@ -131,7 +124,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors53 | 400                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

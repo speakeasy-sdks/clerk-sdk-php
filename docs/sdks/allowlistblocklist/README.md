@@ -1,4 +1,5 @@
 # AllowListBlockList
+(*allowListBlockList*)
 
 ## Overview
 
@@ -28,21 +29,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $response = $sdk->allowListBlockList->listAllowlistIdentifiers();
 
-    if ($response->allowlistIdentifierList !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+
+$response = $sdk->allowListBlockList->listAllowlistIdentifiers(
+
+);
+
+if ($response->allowlistIdentifierList !== null) {
+    // handle response
 }
 ```
 
@@ -52,11 +51,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 401,402                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors36 | 401, 402             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## createAllowlistIdentifier
 
@@ -70,26 +68,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\CreateAllowlistIdentifierRequestBody(
-        identifier: '<value>',
-        notify: false,
-    );
-    $response = $sdk->allowListBlockList->createAllowlistIdentifier($request);
+$request = new Operations\CreateAllowlistIdentifierRequestBody(
+    identifier: '<value>',
+);
 
-    if ($response->allowlistIdentifier !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->allowListBlockList->createAllowlistIdentifier(
+    request: $request
+);
+
+if ($response->allowlistIdentifier !== null) {
+    // handle response
 }
 ```
 
@@ -105,11 +99,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,402,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors37 | 400, 402, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## deleteAllowlistIdentifier
 
@@ -123,22 +116,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->allowListBlockList->deleteAllowlistIdentifier('<value>');
 
-    if ($response->deletedObject !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->allowListBlockList->deleteAllowlistIdentifier(
+    identifierId: '<id>'
+);
+
+if ($response->deletedObject !== null) {
+    // handle response
 }
 ```
 
@@ -154,11 +144,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402,404                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors38 | 402, 404             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## listBlocklistIdentifiers
 
@@ -172,21 +161,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $response = $sdk->allowListBlockList->listBlocklistIdentifiers();
 
-    if ($response->blocklistIdentifiers !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+
+$response = $sdk->allowListBlockList->listBlocklistIdentifiers(
+
+);
+
+if ($response->blocklistIdentifiers !== null) {
+    // handle response
 }
 ```
 
@@ -196,11 +183,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 401,402                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors39 | 401, 402             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## createBlocklistIdentifier
 
@@ -214,25 +200,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\CreateBlocklistIdentifierRequestBody(
-        identifier: '<value>',
-    );
-    $response = $sdk->allowListBlockList->createBlocklistIdentifier($request);
+$request = new Operations\CreateBlocklistIdentifierRequestBody(
+    identifier: '<value>',
+);
 
-    if ($response->blocklistIdentifier !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->allowListBlockList->createBlocklistIdentifier(
+    request: $request
+);
+
+if ($response->blocklistIdentifier !== null) {
+    // handle response
 }
 ```
 
@@ -248,11 +231,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,402,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors40 | 400, 402, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## deleteBlocklistIdentifier
 
@@ -266,22 +248,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->allowListBlockList->deleteBlocklistIdentifier('<value>');
 
-    if ($response->deletedObject !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->allowListBlockList->deleteBlocklistIdentifier(
+    identifierId: '<id>'
+);
+
+if ($response->deletedObject !== null) {
+    // handle response
 }
 ```
 
@@ -297,7 +276,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402,404                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors41 | 402, 404             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

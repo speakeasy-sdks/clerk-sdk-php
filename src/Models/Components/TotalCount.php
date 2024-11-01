@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** TotalCount - Success */
 class TotalCount
 {
     /**
@@ -18,22 +19,22 @@ class TotalCount
      *
      * @var TotalCountObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\TotalCountObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\TotalCountObject')]
     public TotalCountObject $object;
 
     /**
      *
      * @var int $totalCount
      */
-    #[\JMS\Serializer\Annotation\SerializedName('total_count')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('total_count')]
     public int $totalCount;
 
     /**
-     * @param  ?TotalCountObject  $object
-     * @param  ?int  $totalCount
+     * @param  TotalCountObject  $object
+     * @param  int  $totalCount
      */
-    public function __construct(?TotalCountObject $object = null, ?int $totalCount = null)
+    public function __construct(TotalCountObject $object, int $totalCount)
     {
         $this->object = $object;
         $this->totalCount = $totalCount;

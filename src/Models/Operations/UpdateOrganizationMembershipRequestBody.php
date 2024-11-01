@@ -16,13 +16,13 @@ class UpdateOrganizationMembershipRequestBody
      *
      * @var string $role
      */
-    #[\JMS\Serializer\Annotation\SerializedName('role')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
     public string $role;
 
     /**
-     * @param  ?string  $role
+     * @param  string  $role
      */
-    public function __construct(?string $role = null)
+    public function __construct(string $role)
     {
         $this->role = $role;
     }

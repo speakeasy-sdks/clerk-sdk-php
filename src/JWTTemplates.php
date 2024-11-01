@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class JWTTemplates
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -29,8 +28,8 @@ class JWTTemplates
      * @return Operations\ListJWTTemplatesResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function listJWTTemplates(
-    ): Operations\ListJWTTemplatesResponse {
+    public function listJWTTemplates(): Operations\ListJWTTemplatesResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/jwt_templates');
         $options = ['http_errors' => false];
@@ -69,13 +68,12 @@ class JWTTemplates
      *
      * Create a new JWT template
      *
-     * @param  Operations\CreateJWTTemplateRequestBody  $request
+     * @param  ?Operations\CreateJWTTemplateRequestBody  $request
      * @return Operations\CreateJWTTemplateResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createJWTTemplate(
-        ?Operations\CreateJWTTemplateRequestBody $request,
-    ): Operations\CreateJWTTemplateResponse {
+    public function createJWTTemplate(?Operations\CreateJWTTemplateRequestBody $request = null): Operations\CreateJWTTemplateResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/jwt_templates');
         $options = ['http_errors' => false];
@@ -109,7 +107,7 @@ class JWTTemplates
         } elseif (in_array($statusCode, [400, 402, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors53', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -130,9 +128,8 @@ class JWTTemplates
      * @return Operations\GetJWTTemplateResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getJWTTemplate(
-        string $templateId,
-    ): Operations\GetJWTTemplateResponse {
+    public function getJWTTemplate(string $templateId): Operations\GetJWTTemplateResponse
+    {
         $request = new Operations\GetJWTTemplateRequest(
             templateId: $templateId,
         );
@@ -165,7 +162,7 @@ class JWTTemplates
         } elseif ($statusCode == 404) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors54', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -187,10 +184,8 @@ class JWTTemplates
      * @return Operations\UpdateJWTTemplateResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateJWTTemplate(
-        string $templateId,
-        ?Operations\UpdateJWTTemplateRequestBody $requestBody = null,
-    ): Operations\UpdateJWTTemplateResponse {
+    public function updateJWTTemplate(string $templateId, ?Operations\UpdateJWTTemplateRequestBody $requestBody = null): Operations\UpdateJWTTemplateResponse
+    {
         $request = new Operations\UpdateJWTTemplateRequest(
             templateId: $templateId,
             requestBody: $requestBody,
@@ -228,7 +223,7 @@ class JWTTemplates
         } elseif (in_array($statusCode, [400, 402, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors55', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -247,9 +242,8 @@ class JWTTemplates
      * @return Operations\DeleteJWTTemplateResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function deleteJWTTemplate(
-        string $templateId,
-    ): Operations\DeleteJWTTemplateResponse {
+    public function deleteJWTTemplate(string $templateId): Operations\DeleteJWTTemplateResponse
+    {
         $request = new Operations\DeleteJWTTemplateRequest(
             templateId: $templateId,
         );
@@ -282,7 +276,7 @@ class JWTTemplates
         } elseif (in_array($statusCode, [403, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors56', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -293,4 +287,5 @@ class JWTTemplates
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

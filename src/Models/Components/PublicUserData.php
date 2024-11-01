@@ -15,24 +15,24 @@ class PublicUserData
      *
      * @var ?string $userId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $userId = null;
 
     /**
      *
      * @var ?string $firstName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('first_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('first_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $firstName = null;
 
     /**
      *
      * @var ?string $lastName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $lastName = null;
 
     /**
@@ -40,51 +40,51 @@ class PublicUserData
      * @var ?string $profileImageUrl
      * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    #[\JMS\Serializer\Annotation\SerializedName('profile_image_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('profile_image_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $profileImageUrl = null;
 
     /**
      *
      * @var ?string $imageUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('image_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('image_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $imageUrl = null;
 
     /**
      *
      * @var ?bool $hasImage
      */
-    #[\JMS\Serializer\Annotation\SerializedName('has_image')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('has_image')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $hasImage = null;
 
     /**
      *
      * @var ?string $identifier
      */
-    #[\JMS\Serializer\Annotation\SerializedName('identifier')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('identifier')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $identifier = null;
 
     /**
      * @param  ?string  $userId
+     * @param  ?string  $imageUrl
+     * @param  ?bool  $hasImage
      * @param  ?string  $firstName
      * @param  ?string  $lastName
      * @param  ?string  $profileImageUrl
-     * @param  ?string  $imageUrl
-     * @param  ?bool  $hasImage
      * @param  ?string  $identifier
      */
-    public function __construct(?string $userId = null, ?string $firstName = null, ?string $lastName = null, ?string $profileImageUrl = null, ?string $imageUrl = null, ?bool $hasImage = null, ?string $identifier = null)
+    public function __construct(?string $userId = null, ?string $imageUrl = null, ?bool $hasImage = null, ?string $firstName = null, ?string $lastName = null, ?string $profileImageUrl = null, ?string $identifier = null)
     {
         $this->userId = $userId;
+        $this->imageUrl = $imageUrl;
+        $this->hasImage = $hasImage;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->profileImageUrl = $profileImageUrl;
-        $this->imageUrl = $imageUrl;
-        $this->hasImage = $hasImage;
         $this->identifier = $identifier;
     }
 }

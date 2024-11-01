@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class Invitations
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -30,13 +29,12 @@ class Invitations
      * Keep in mind that you cannot create an invitation if there is already one for the given email address.
      * Also, trying to create an invitation for an email address that already exists in your application will result to an error.
      *
-     * @param  Operations\CreateInvitationRequestBody  $request
+     * @param  ?Operations\CreateInvitationRequestBody  $request
      * @return Operations\CreateInvitationResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createInvitation(
-        ?Operations\CreateInvitationRequestBody $request,
-    ): Operations\CreateInvitationResponse {
+    public function createInvitation(?Operations\CreateInvitationRequestBody $request = null): Operations\CreateInvitationResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/invitations');
         $options = ['http_errors' => false];
@@ -70,7 +68,7 @@ class Invitations
         } elseif (in_array($statusCode, [400, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors34', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -93,11 +91,8 @@ class Invitations
      * @return Operations\ListInvitationsResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function listInvitations(
-        ?float $limit = null,
-        ?float $offset = null,
-        ?Operations\QueryParamStatus $status = null,
-    ): Operations\ListInvitationsResponse {
+    public function listInvitations(?float $limit = null, ?float $offset = null, ?Operations\QueryParamStatus $status = null): Operations\ListInvitationsResponse
+    {
         $request = new Operations\ListInvitationsRequest(
             limit: $limit,
             offset: $offset,
@@ -149,9 +144,8 @@ class Invitations
      * @return Operations\RevokeInvitationResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function revokeInvitation(
-        string $invitationId,
-    ): Operations\RevokeInvitationResponse {
+    public function revokeInvitation(string $invitationId): Operations\RevokeInvitationResponse
+    {
         $request = new Operations\RevokeInvitationRequest(
             invitationId: $invitationId,
         );
@@ -184,7 +178,7 @@ class Invitations
         } elseif (in_array($statusCode, [400, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors35', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -195,4 +189,5 @@ class Invitations
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

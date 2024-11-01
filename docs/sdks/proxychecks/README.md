@@ -1,4 +1,5 @@
 # ProxyChecks
+(*proxyChecks*)
 
 ## Overview
 
@@ -25,26 +26,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\VerifyDomainProxyRequestBody(
-        domainId: '<value>',
-        proxyUrl: '<value>',
-    );
-    $response = $sdk->proxyChecks->verifyDomainProxy($request);
+$request = new Operations\VerifyDomainProxyRequestBody();
 
-    if ($response->proxyCheck !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->proxyChecks->verifyDomainProxy(
+    request: $request
+);
+
+if ($response->proxyCheck !== null) {
+    // handle response
 }
 ```
 
@@ -60,7 +55,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,422                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors74 | 400, 422             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

@@ -27,10 +27,10 @@ class UpdateSignUpRequest
     public ?UpdateSignUpRequestBody $requestBody = null;
 
     /**
-     * @param  ?string  $id
+     * @param  string  $id
      * @param  ?UpdateSignUpRequestBody  $requestBody
      */
-    public function __construct(?string $id = null, ?UpdateSignUpRequestBody $requestBody = null)
+    public function __construct(string $id, ?UpdateSignUpRequestBody $requestBody = null)
     {
         $this->id = $id;
         $this->requestBody = $requestBody;

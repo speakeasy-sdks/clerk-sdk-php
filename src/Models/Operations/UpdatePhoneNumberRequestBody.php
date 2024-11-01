@@ -16,8 +16,8 @@ class UpdatePhoneNumberRequestBody
      *
      * @var ?bool $verified
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verified')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verified')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $verified = null;
 
     /**
@@ -25,8 +25,8 @@ class UpdatePhoneNumberRequestBody
      *
      * @var ?bool $primary
      */
-    #[\JMS\Serializer\Annotation\SerializedName('primary')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('primary')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $primary = null;
 
     /**
@@ -37,8 +37,8 @@ class UpdatePhoneNumberRequestBody
      *
      * @var ?bool $reservedForSecondFactor
      */
-    #[\JMS\Serializer\Annotation\SerializedName('reserved_for_second_factor')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reserved_for_second_factor')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $reservedForSecondFactor = null;
 
     /**

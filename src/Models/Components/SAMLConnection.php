@@ -15,140 +15,140 @@ class SAMLConnection
      *
      * @var SAMLConnectionObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLConnectionObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLConnectionObject')]
     public SAMLConnectionObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
 
     /**
      *
      * @var string $domain
      */
-    #[\JMS\Serializer\Annotation\SerializedName('domain')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('domain')]
     public string $domain;
 
     /**
      *
-     * @var string $idpEntityId
+     * @var ?string $idpEntityId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_entity_id')]
-    public string $idpEntityId;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_entity_id')]
+    public ?string $idpEntityId;
 
     /**
      *
-     * @var string $idpSsoUrl
+     * @var ?string $idpSsoUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_sso_url')]
-    public string $idpSsoUrl;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_sso_url')]
+    public ?string $idpSsoUrl;
 
     /**
      *
-     * @var string $idpCertificate
+     * @var ?string $idpCertificate
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_certificate')]
-    public string $idpCertificate;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_certificate')]
+    public ?string $idpCertificate;
 
     /**
      *
      * @var ?string $idpMetadataUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_metadata_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_metadata_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpMetadataUrl = null;
 
     /**
      *
      * @var ?string $idpMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_metadata')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_metadata')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpMetadata = null;
 
     /**
      *
      * @var string $acsUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('acs_url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('acs_url')]
     public string $acsUrl;
 
     /**
      *
      * @var string $spEntityId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('sp_entity_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sp_entity_id')]
     public string $spEntityId;
 
     /**
      *
      * @var string $spMetadataUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('sp_metadata_url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sp_metadata_url')]
     public string $spMetadataUrl;
 
     /**
      *
      * @var ?AttributeMapping $attributeMapping
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attribute_mapping')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AttributeMapping|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attribute_mapping')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AttributeMapping|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?AttributeMapping $attributeMapping = null;
 
     /**
      *
      * @var bool $active
      */
-    #[\JMS\Serializer\Annotation\SerializedName('active')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active')]
     public bool $active;
 
     /**
      *
      * @var string $provider
      */
-    #[\JMS\Serializer\Annotation\SerializedName('provider')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('provider')]
     public string $provider;
 
     /**
      *
      * @var int $userCount
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_count')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_count')]
     public int $userCount;
 
     /**
      *
      * @var bool $syncUserAttributes
      */
-    #[\JMS\Serializer\Annotation\SerializedName('sync_user_attributes')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sync_user_attributes')]
     public bool $syncUserAttributes;
 
     /**
      *
      * @var ?bool $allowSubdomains
      */
-    #[\JMS\Serializer\Annotation\SerializedName('allow_subdomains')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_subdomains')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $allowSubdomains = null;
 
     /**
      *
      * @var ?bool $allowIdpInitiated
      */
-    #[\JMS\Serializer\Annotation\SerializedName('allow_idp_initiated')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_idp_initiated')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $allowIdpInitiated = null;
 
     /**
@@ -158,7 +158,7 @@ class SAMLConnection
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -168,41 +168,38 @@ class SAMLConnection
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?SAMLConnectionObject  $object
-     * @param  ?string  $id
-     * @param  ?string  $name
-     * @param  ?string  $domain
+     * @param  SAMLConnectionObject  $object
+     * @param  string  $id
+     * @param  string  $name
+     * @param  string  $domain
+     * @param  string  $acsUrl
+     * @param  string  $spEntityId
+     * @param  string  $spMetadataUrl
+     * @param  bool  $active
+     * @param  string  $provider
+     * @param  int  $userCount
+     * @param  bool  $syncUserAttributes
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      * @param  ?string  $idpEntityId
      * @param  ?string  $idpSsoUrl
      * @param  ?string  $idpCertificate
-     * @param  ?string  $acsUrl
-     * @param  ?string  $spEntityId
-     * @param  ?string  $spMetadataUrl
-     * @param  ?bool  $active
-     * @param  ?string  $provider
-     * @param  ?int  $userCount
-     * @param  ?bool  $syncUserAttributes
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
-     * @param  ?string  $idpMetadataUrl
-     * @param  ?string  $idpMetadata
      * @param  ?AttributeMapping  $attributeMapping
      * @param  ?bool  $allowSubdomains
      * @param  ?bool  $allowIdpInitiated
+     * @param  ?string  $idpMetadataUrl
+     * @param  ?string  $idpMetadata
      */
-    public function __construct(?SAMLConnectionObject $object = null, ?string $id = null, ?string $name = null, ?string $domain = null, ?string $idpEntityId = null, ?string $idpSsoUrl = null, ?string $idpCertificate = null, ?string $acsUrl = null, ?string $spEntityId = null, ?string $spMetadataUrl = null, ?bool $active = null, ?string $provider = null, ?int $userCount = null, ?bool $syncUserAttributes = null, ?int $createdAt = null, ?int $updatedAt = null, ?string $idpMetadataUrl = null, ?string $idpMetadata = null, ?AttributeMapping $attributeMapping = null, ?bool $allowSubdomains = null, ?bool $allowIdpInitiated = null)
+    public function __construct(SAMLConnectionObject $object, string $id, string $name, string $domain, string $acsUrl, string $spEntityId, string $spMetadataUrl, bool $active, string $provider, int $userCount, bool $syncUserAttributes, int $createdAt, int $updatedAt, ?string $idpEntityId = null, ?string $idpSsoUrl = null, ?string $idpCertificate = null, ?AttributeMapping $attributeMapping = null, ?bool $allowSubdomains = null, ?bool $allowIdpInitiated = null, ?string $idpMetadataUrl = null, ?string $idpMetadata = null)
     {
         $this->object = $object;
         $this->id = $id;
         $this->name = $name;
         $this->domain = $domain;
-        $this->idpEntityId = $idpEntityId;
-        $this->idpSsoUrl = $idpSsoUrl;
-        $this->idpCertificate = $idpCertificate;
         $this->acsUrl = $acsUrl;
         $this->spEntityId = $spEntityId;
         $this->spMetadataUrl = $spMetadataUrl;
@@ -212,10 +209,13 @@ class SAMLConnection
         $this->syncUserAttributes = $syncUserAttributes;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
-        $this->idpMetadataUrl = $idpMetadataUrl;
-        $this->idpMetadata = $idpMetadata;
+        $this->idpEntityId = $idpEntityId;
+        $this->idpSsoUrl = $idpSsoUrl;
+        $this->idpCertificate = $idpCertificate;
         $this->attributeMapping = $attributeMapping;
         $this->allowSubdomains = $allowSubdomains;
         $this->allowIdpInitiated = $allowIdpInitiated;
+        $this->idpMetadataUrl = $idpMetadataUrl;
+        $this->idpMetadata = $idpMetadata;
     }
 }

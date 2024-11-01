@@ -27,10 +27,10 @@ class UploadOrganizationLogoRequestBody
     public UploadOrganizationLogoFile $file;
 
     /**
-     * @param  ?string  $uploaderUserId
-     * @param  ?UploadOrganizationLogoFile  $file
+     * @param  string  $uploaderUserId
+     * @param  UploadOrganizationLogoFile  $file
      */
-    public function __construct(?string $uploaderUserId = null, ?UploadOrganizationLogoFile $file = null)
+    public function __construct(string $uploaderUserId, UploadOrganizationLogoFile $file)
     {
         $this->uploaderUserId = $uploaderUserId;
         $this->file = $file;

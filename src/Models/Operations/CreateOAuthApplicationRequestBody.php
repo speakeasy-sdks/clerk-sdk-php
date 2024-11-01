@@ -16,7 +16,7 @@ class CreateOAuthApplicationRequestBody
      *
      * @var string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
 
     /**
@@ -24,7 +24,7 @@ class CreateOAuthApplicationRequestBody
      *
      * @var string $callbackUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('callback_url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('callback_url')]
     public string $callbackUrl;
 
     /**
@@ -32,8 +32,8 @@ class CreateOAuthApplicationRequestBody
      *
      * @var ?string $scopes
      */
-    #[\JMS\Serializer\Annotation\SerializedName('scopes')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('scopes')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $scopes = null;
 
     /**
@@ -44,17 +44,17 @@ class CreateOAuthApplicationRequestBody
      *
      * @var ?bool $public
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $public = null;
 
     /**
-     * @param  ?string  $name
-     * @param  ?string  $callbackUrl
+     * @param  string  $name
+     * @param  string  $callbackUrl
      * @param  ?string  $scopes
      * @param  ?bool  $public
      */
-    public function __construct(?string $name = null, ?string $callbackUrl = null, ?string $scopes = null, ?bool $public = null)
+    public function __construct(string $name, string $callbackUrl, ?bool $public = null, ?string $scopes = 'profile email')
     {
         $this->name = $name;
         $this->callbackUrl = $callbackUrl;

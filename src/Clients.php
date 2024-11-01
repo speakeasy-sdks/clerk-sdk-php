@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class Clients
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -36,10 +35,8 @@ class Clients
      * @throws \Clerk\Backend\Models\Errors\SDKException
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    public function getClientList(
-        ?float $limit = null,
-        ?float $offset = null,
-    ): Operations\GetClientListResponse {
+    public function getClientList(?float $limit = null, ?float $offset = null): Operations\GetClientListResponse
+    {
         trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new Operations\GetClientListRequest(
             limit: $limit,
@@ -92,13 +89,12 @@ class Clients
      *
      * Verifies the client in the provided token
      *
-     * @param  Operations\VerifyClientRequestBody  $request
+     * @param  ?Operations\VerifyClientRequestBody  $request
      * @return Operations\VerifyClientResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function verifyClient(
-        ?Operations\VerifyClientRequestBody $request,
-    ): Operations\VerifyClientResponse {
+    public function verifyClient(?Operations\VerifyClientRequestBody $request = null): Operations\VerifyClientResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/clients/verify');
         $options = ['http_errors' => false];
@@ -132,7 +128,7 @@ class Clients
         } elseif (in_array($statusCode, [400, 401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors1', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -153,9 +149,8 @@ class Clients
      * @return Operations\GetClientResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getClient(
-        string $clientId,
-    ): Operations\GetClientResponse {
+    public function getClient(string $clientId): Operations\GetClientResponse
+    {
         $request = new Operations\GetClientRequest(
             clientId: $clientId,
         );
@@ -188,7 +183,7 @@ class Clients
         } elseif (in_array($statusCode, [400, 401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors2', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -199,4 +194,5 @@ class Clients
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

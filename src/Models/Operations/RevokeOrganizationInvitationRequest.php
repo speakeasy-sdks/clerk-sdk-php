@@ -35,11 +35,11 @@ class RevokeOrganizationInvitationRequest
     public RevokeOrganizationInvitationRequestBody $requestBody;
 
     /**
-     * @param  ?string  $organizationId
-     * @param  ?string  $invitationId
-     * @param  ?RevokeOrganizationInvitationRequestBody  $requestBody
+     * @param  string  $organizationId
+     * @param  string  $invitationId
+     * @param  RevokeOrganizationInvitationRequestBody  $requestBody
      */
-    public function __construct(?string $organizationId = null, ?string $invitationId = null, ?RevokeOrganizationInvitationRequestBody $requestBody = null)
+    public function __construct(string $organizationId, string $invitationId, RevokeOrganizationInvitationRequestBody $requestBody)
     {
         $this->organizationId = $organizationId;
         $this->invitationId = $invitationId;

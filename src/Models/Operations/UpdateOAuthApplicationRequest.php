@@ -27,10 +27,10 @@ class UpdateOAuthApplicationRequest
     public UpdateOAuthApplicationRequestBody $requestBody;
 
     /**
-     * @param  ?string  $oauthApplicationId
-     * @param  ?UpdateOAuthApplicationRequestBody  $requestBody
+     * @param  string  $oauthApplicationId
+     * @param  UpdateOAuthApplicationRequestBody  $requestBody
      */
-    public function __construct(?string $oauthApplicationId = null, ?UpdateOAuthApplicationRequestBody $requestBody = null)
+    public function __construct(string $oauthApplicationId, UpdateOAuthApplicationRequestBody $requestBody)
     {
         $this->oauthApplicationId = $oauthApplicationId;
         $this->requestBody = $requestBody;

@@ -9,14 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** Template - Success */
 class Template
 {
     /**
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
@@ -26,9 +27,9 @@ class Template
      *
      * @var ?TemplateObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\TemplateObject|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\TemplateObject|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?TemplateObject $object = null;
 
     /**
@@ -36,8 +37,8 @@ class Template
      *
      * @var ?string $instanceId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('instance_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('instance_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $instanceId = null;
 
     /**
@@ -45,8 +46,8 @@ class Template
      *
      * @var ?string $resourceType
      */
-    #[\JMS\Serializer\Annotation\SerializedName('resource_type')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('resource_type')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $resourceType = null;
 
     /**
@@ -54,8 +55,8 @@ class Template
      *
      * @var ?string $templateType
      */
-    #[\JMS\Serializer\Annotation\SerializedName('template_type')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('template_type')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $templateType = null;
 
     /**
@@ -63,8 +64,8 @@ class Template
      *
      * @var ?string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $name = null;
 
     /**
@@ -72,8 +73,8 @@ class Template
      *
      * @var ?string $slug
      */
-    #[\JMS\Serializer\Annotation\SerializedName('slug')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $slug = null;
 
     /**
@@ -81,8 +82,8 @@ class Template
      *
      * @var ?int $position
      */
-    #[\JMS\Serializer\Annotation\SerializedName('position')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('position')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $position = null;
 
     /**
@@ -90,8 +91,8 @@ class Template
      *
      * @var ?bool $canRevert
      */
-    #[\JMS\Serializer\Annotation\SerializedName('can_revert')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('can_revert')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $canRevert = null;
 
     /**
@@ -99,8 +100,8 @@ class Template
      *
      * @var ?bool $canDelete
      */
-    #[\JMS\Serializer\Annotation\SerializedName('can_delete')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('can_delete')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $canDelete = null;
 
     /**
@@ -108,8 +109,8 @@ class Template
      *
      * @var ?bool $canToggle
      */
-    #[\JMS\Serializer\Annotation\SerializedName('can_toggle')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('can_toggle')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $canToggle = null;
 
     /**
@@ -117,8 +118,8 @@ class Template
      *
      * @var ?string $subject
      */
-    #[\JMS\Serializer\Annotation\SerializedName('subject')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subject')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $subject = null;
 
     /**
@@ -126,8 +127,8 @@ class Template
      *
      * @var ?string $markup
      */
-    #[\JMS\Serializer\Annotation\SerializedName('markup')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('markup')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $markup = null;
 
     /**
@@ -135,8 +136,8 @@ class Template
      *
      * @var ?string $body
      */
-    #[\JMS\Serializer\Annotation\SerializedName('body')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('body')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $body = null;
 
     /**
@@ -144,9 +145,9 @@ class Template
      *
      * @var ?array<string> $availableVariables
      */
-    #[\JMS\Serializer\Annotation\SerializedName('available_variables')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('available_variables')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $availableVariables = null;
 
     /**
@@ -154,41 +155,41 @@ class Template
      *
      * @var ?array<string> $requiredVariables
      */
-    #[\JMS\Serializer\Annotation\SerializedName('required_variables')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('required_variables')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $requiredVariables = null;
 
     /**
      *
      * @var ?string $fromEmailName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('from_email_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('from_email_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $fromEmailName = null;
 
     /**
      *
      * @var ?string $replyToEmailName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('reply_to_email_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reply_to_email_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $replyToEmailName = null;
 
     /**
      *
      * @var ?bool $deliveredByClerk
      */
-    #[\JMS\Serializer\Annotation\SerializedName('delivered_by_clerk')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('delivered_by_clerk')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $deliveredByClerk = null;
 
     /**
      *
      * @var ?bool $enabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $enabled = null;
 
     /**
@@ -198,8 +199,8 @@ class Template
      *
      * @var ?int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $updatedAt = null;
 
     /**
@@ -209,14 +210,13 @@ class Template
      *
      * @var ?int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $createdAt = null;
 
     /**
      * @param  ?string  $id
      * @param  ?TemplateObject  $object
-     * @param  ?string  $instanceId
      * @param  ?string  $resourceType
      * @param  ?string  $templateType
      * @param  ?string  $name
@@ -225,7 +225,6 @@ class Template
      * @param  ?bool  $canRevert
      * @param  ?bool  $canDelete
      * @param  ?bool  $canToggle
-     * @param  ?string  $subject
      * @param  ?string  $markup
      * @param  ?string  $body
      * @param  ?array<string>  $availableVariables
@@ -236,12 +235,13 @@ class Template
      * @param  ?bool  $enabled
      * @param  ?int  $updatedAt
      * @param  ?int  $createdAt
+     * @param  ?string  $instanceId
+     * @param  ?string  $subject
      */
-    public function __construct(?string $id = null, ?TemplateObject $object = null, ?string $instanceId = null, ?string $resourceType = null, ?string $templateType = null, ?string $name = null, ?string $slug = null, ?int $position = null, ?bool $canRevert = null, ?bool $canDelete = null, ?bool $canToggle = null, ?string $subject = null, ?string $markup = null, ?string $body = null, ?array $availableVariables = null, ?array $requiredVariables = null, ?string $fromEmailName = null, ?string $replyToEmailName = null, ?bool $deliveredByClerk = null, ?bool $enabled = null, ?int $updatedAt = null, ?int $createdAt = null)
+    public function __construct(?string $id = null, ?TemplateObject $object = null, ?string $resourceType = null, ?string $templateType = null, ?string $name = null, ?string $slug = null, ?int $position = null, ?bool $canRevert = null, ?bool $canDelete = null, ?bool $canToggle = null, ?string $markup = null, ?string $body = null, ?array $availableVariables = null, ?array $requiredVariables = null, ?string $fromEmailName = null, ?string $replyToEmailName = null, ?bool $deliveredByClerk = null, ?bool $enabled = null, ?int $updatedAt = null, ?int $createdAt = null, ?string $instanceId = null, ?string $subject = null)
     {
         $this->id = $id;
         $this->object = $object;
-        $this->instanceId = $instanceId;
         $this->resourceType = $resourceType;
         $this->templateType = $templateType;
         $this->name = $name;
@@ -250,7 +250,6 @@ class Template
         $this->canRevert = $canRevert;
         $this->canDelete = $canDelete;
         $this->canToggle = $canToggle;
-        $this->subject = $subject;
         $this->markup = $markup;
         $this->body = $body;
         $this->availableVariables = $availableVariables;
@@ -261,5 +260,7 @@ class Template
         $this->enabled = $enabled;
         $this->updatedAt = $updatedAt;
         $this->createdAt = $createdAt;
+        $this->instanceId = $instanceId;
+        $this->subject = $subject;
     }
 }

@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class SignInTokens
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -30,13 +29,12 @@ class SignInTokens
      * By default, sign-in tokens expire in 30 days.
      * You can optionally supply a different duration in seconds using the `expires_in_seconds` property.
      *
-     * @param  Operations\CreateSignInTokenRequestBody  $request
+     * @param  ?Operations\CreateSignInTokenRequestBody  $request
      * @return Operations\CreateSignInTokenResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createSignInToken(
-        ?Operations\CreateSignInTokenRequestBody $request,
-    ): Operations\CreateSignInTokenResponse {
+    public function createSignInToken(?Operations\CreateSignInTokenRequestBody $request = null): Operations\CreateSignInTokenResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/sign_in_tokens');
         $options = ['http_errors' => false];
@@ -70,7 +68,7 @@ class SignInTokens
         } elseif (in_array($statusCode, [404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors77', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -91,9 +89,8 @@ class SignInTokens
      * @return Operations\RevokeSignInTokenResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function revokeSignInToken(
-        string $signInTokenId,
-    ): Operations\RevokeSignInTokenResponse {
+    public function revokeSignInToken(string $signInTokenId): Operations\RevokeSignInTokenResponse
+    {
         $request = new Operations\RevokeSignInTokenRequest(
             signInTokenId: $signInTokenId,
         );
@@ -126,7 +123,7 @@ class SignInTokens
         } elseif (in_array($statusCode, [400, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors78', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -137,4 +134,5 @@ class SignInTokens
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

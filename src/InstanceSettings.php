@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class InstanceSettings
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -28,13 +27,12 @@ class InstanceSettings
      *
      * Updates the settings of an instance
      *
-     * @param  Operations\UpdateInstanceRequestBody  $request
+     * @param  ?Operations\UpdateInstanceRequestBody  $request
      * @return Operations\UpdateInstanceResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateInstance(
-        ?Operations\UpdateInstanceRequestBody $request,
-    ): Operations\UpdateInstanceResponse {
+    public function updateInstance(?Operations\UpdateInstanceRequestBody $request = null): Operations\UpdateInstanceResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/instance');
         $options = ['http_errors' => false];
@@ -60,7 +58,7 @@ class InstanceSettings
         } elseif ($statusCode == 422) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors49', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -77,13 +75,12 @@ class InstanceSettings
      *
      * Updates the restriction settings of an instance
      *
-     * @param  Operations\UpdateInstanceRestrictionsRequestBody  $request
+     * @param  ?Operations\UpdateInstanceRestrictionsRequestBody  $request
      * @return Operations\UpdateInstanceRestrictionsResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateInstanceRestrictions(
-        ?Operations\UpdateInstanceRestrictionsRequestBody $request,
-    ): Operations\UpdateInstanceRestrictionsResponse {
+    public function updateInstanceRestrictions(?Operations\UpdateInstanceRestrictionsRequestBody $request = null): Operations\UpdateInstanceRestrictionsResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/instance/restrictions');
         $options = ['http_errors' => false];
@@ -117,7 +114,7 @@ class InstanceSettings
         } elseif (in_array($statusCode, [402, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors49', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -134,13 +131,12 @@ class InstanceSettings
      *
      * Updates the organization settings of the instance
      *
-     * @param  Operations\UpdateInstanceOrganizationSettingsRequestBody  $request
+     * @param  ?Operations\UpdateInstanceOrganizationSettingsRequestBody  $request
      * @return Operations\UpdateInstanceOrganizationSettingsResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateInstanceOrganizationSettings(
-        ?Operations\UpdateInstanceOrganizationSettingsRequestBody $request,
-    ): Operations\UpdateInstanceOrganizationSettingsResponse {
+    public function updateInstanceOrganizationSettings(?Operations\UpdateInstanceOrganizationSettingsRequestBody $request = null): Operations\UpdateInstanceOrganizationSettingsResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/instance/organization_settings');
         $options = ['http_errors' => false];
@@ -174,7 +170,7 @@ class InstanceSettings
         } elseif (in_array($statusCode, [402, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors51', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -185,4 +181,5 @@ class InstanceSettings
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

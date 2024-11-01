@@ -1,4 +1,5 @@
 # OrganizationInvitations
+(*organizationInvitations*)
 
 ## Overview
 
@@ -41,34 +42,26 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\CreateOrganizationInvitationRequestBody(
-        emailAddress: 'Palma.Kulas@hotmail.com',
-        inviterUserId: '<value>',
-        role: '<value>',
-        publicMetadata: new Operations\CreateOrganizationInvitationPublicMetadata(
+$requestBody = new Operations\CreateOrganizationInvitationRequestBody(
+    emailAddress: 'Jensen_Ankunding@hotmail.com',
+    inviterUserId: '<id>',
+    role: '<value>',
+);
 
-        ),
-        privateMetadata: new Operations\CreateOrganizationInvitationPrivateMetadata(
+$response = $sdk->organizationInvitations->createOrganizationInvitation(
+    organizationId: '<id>',
+    requestBody: $requestBody
 
-        ),
-        redirectUrl: '<value>',
-    );
-    $response = $sdk->organizationInvitations->createOrganizationInvitation('<value>', $requestBody);
+);
 
-    if ($response->organizationInvitation !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+if ($response->organizationInvitation !== null) {
+    // handle response
 }
 ```
 
@@ -85,11 +78,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,403,404,422                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors63 | 400, 403, 404, 422   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## listOrganizationInvitations
 
@@ -108,23 +100,24 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->organizationInvitations->listOrganizationInvitations('<value>', 6429.18, 2744.7, Operations\ListOrganizationInvitationsQueryParamStatus::Pending);
 
-    if ($response->organizationInvitations !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizationInvitations->listOrganizationInvitations(
+    organizationId: '<id>',
+    limit: 10,
+    offset: 0,
+    status: Operations\ListOrganizationInvitationsQueryParamStatus::Accepted
+
+);
+
+if ($response->organizationInvitations !== null) {
+    // handle response
 }
 ```
 
@@ -133,9 +126,9 @@ try {
 | Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `organizationId`                                                                                                                          | *string*                                                                                                                                  | :heavy_check_mark:                                                                                                                        | The organization ID.                                                                                                                      |
-| `limit`                                                                                                                                   | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
-| `offset`                                                                                                                                  | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
-| `status`                                                                                                                                  | [Operations\ListOrganizationInvitationsQueryParamStatus](../../Models/Operations/ListOrganizationInvitationsQueryParamStatus.md)          | :heavy_minus_sign:                                                                                                                        | Filter organization invitations based on their status                                                                                     |
+| `limit`                                                                                                                                   | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
+| `offset`                                                                                                                                  | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
+| `status`                                                                                                                                  | [?Operations\ListOrganizationInvitationsQueryParamStatus](../../Models/Operations/ListOrganizationInvitationsQueryParamStatus.md)         | :heavy_minus_sign:                                                                                                                        | Filter organization invitations based on their status                                                                                     |
 
 ### Response
 
@@ -143,11 +136,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,404                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors64 | 400, 404             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## createOrganizationInvitationBulk
 
@@ -173,25 +165,28 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->organizationInvitations->createOrganizationInvitationBulk('<value>', [
-        new Operations\RequestBody,
-    ]);
 
-    if ($response->organizationInvitations !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizationInvitations->createOrganizationInvitationBulk(
+    organizationId: '<id>',
+    requestBody: [
+        new Operations\RequestBody(
+            emailAddress: 'Murray_Roberts@gmail.com',
+            inviterUserId: '<id>',
+            role: '<value>',
+        ),
+    ]
+
+);
+
+if ($response->organizationInvitations !== null) {
+    // handle response
 }
 ```
 
@@ -208,11 +203,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,403,404,422                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors65 | 400, 403, 404, 422   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## ~~listPendingOrganizationInvitations~~
 
@@ -233,22 +227,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->organizationInvitations->listPendingOrganizationInvitations('<value>', 9194.42, 4938.23);
 
-    if ($response->organizationInvitations !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizationInvitations->listPendingOrganizationInvitations(
+    organizationId: '<id>',
+    limit: 10,
+    offset: 0
+
+);
+
+if ($response->organizationInvitations !== null) {
+    // handle response
 }
 ```
 
@@ -257,8 +251,8 @@ try {
 | Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `organizationId`                                                                                                                          | *string*                                                                                                                                  | :heavy_check_mark:                                                                                                                        | The organization ID.                                                                                                                      |
-| `limit`                                                                                                                                   | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
-| `offset`                                                                                                                                  | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
+| `limit`                                                                                                                                   | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
+| `offset`                                                                                                                                  | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
 
 ### Response
 
@@ -266,11 +260,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,404                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors66 | 400, 404             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## getOrganizationInvitation
 
@@ -284,22 +277,21 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->organizationInvitations->getOrganizationInvitation('<value>', '<value>');
 
-    if ($response->organizationInvitation !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizationInvitations->getOrganizationInvitation(
+    organizationId: '<id>',
+    invitationId: '<id>'
+
+);
+
+if ($response->organizationInvitation !== null) {
+    // handle response
 }
 ```
 
@@ -316,11 +308,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,403,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors67 | 400, 403, 404        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## revokeOrganizationInvitation
 
@@ -338,25 +329,25 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\RevokeOrganizationInvitationRequestBody(
-        requestingUserId: '<value>',
-    );
-    $response = $sdk->organizationInvitations->revokeOrganizationInvitation('<value>', '<value>', $requestBody);
+$requestBody = new Operations\RevokeOrganizationInvitationRequestBody(
+    requestingUserId: '<id>',
+);
 
-    if ($response->organizationInvitation !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizationInvitations->revokeOrganizationInvitation(
+    organizationId: '<id>',
+    invitationId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->organizationInvitation !== null) {
+    // handle response
 }
 ```
 
@@ -374,7 +365,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,403,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors68 | 400, 403, 404        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

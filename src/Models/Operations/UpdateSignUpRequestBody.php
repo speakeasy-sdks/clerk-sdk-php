@@ -19,8 +19,8 @@ class UpdateSignUpRequestBody
      *
      * @var ?bool $customAction
      */
-    #[\JMS\Serializer\Annotation\SerializedName('custom_action')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_action')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $customAction = null;
 
     /**
@@ -30,8 +30,8 @@ class UpdateSignUpRequestBody
      *
      * @var ?string $externalId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('external_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $externalId = null;
 
     /**

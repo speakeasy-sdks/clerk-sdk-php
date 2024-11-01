@@ -8,19 +8,19 @@ declare(strict_types=1);
 
 namespace Clerk\Backend\Utils;
 
-use JMS\Serializer\Context;
-use JMS\Serializer\DeserializationContext;
-use JMS\Serializer\Exception\NonFloatCastableTypeException;
-use JMS\Serializer\Exception\NonIntCastableTypeException;
-use JMS\Serializer\Exception\NonStringCastableTypeException;
-use JMS\Serializer\Exception\NonVisitableTypeException;
-use JMS\Serializer\Exception\PropertyMissingException;
-use JMS\Serializer\Exception\RuntimeException;
-use JMS\Serializer\GraphNavigatorInterface;
-use JMS\Serializer\Handler\SubscribingHandlerInterface;
-use JMS\Serializer\SerializationContext;
-use JMS\Serializer\Visitor\DeserializationVisitorInterface;
-use JMS\Serializer\Visitor\SerializationVisitorInterface;
+use Speakeasy\Serializer\Context;
+use Speakeasy\Serializer\DeserializationContext;
+use Speakeasy\Serializer\Exception\NonFloatCastableTypeException;
+use Speakeasy\Serializer\Exception\NonIntCastableTypeException;
+use Speakeasy\Serializer\Exception\NonStringCastableTypeException;
+use Speakeasy\Serializer\Exception\NonVisitableTypeException;
+use Speakeasy\Serializer\Exception\PropertyMissingException;
+use Speakeasy\Serializer\Exception\RuntimeException;
+use Speakeasy\Serializer\GraphNavigatorInterface;
+use Speakeasy\Serializer\Handler\SubscribingHandlerInterface;
+use Speakeasy\Serializer\SerializationContext;
+use Speakeasy\Serializer\Visitor\DeserializationVisitorInterface;
+use Speakeasy\Serializer\Visitor\SerializationVisitorInterface;
 
 final class UnionHandler implements SubscribingHandlerInterface
 {
@@ -73,19 +73,40 @@ final class UnionHandler implements SubscribingHandlerInterface
             return $this->matchSimpleType($data, $type, $context);
         } else {
             if (is_array($data)) {
-                $innerType = gettype($data[0]);
-                if ($innerType === 'object') {
-                    $innerType = get_class($data[0]);
+                if (array_is_list($data) && ! empty($data)) {
+                    $innerType = gettype($data[0]);
+                    if ($innerType === 'object') {
+                        $innerType = get_class($data[0]);
+                    }
+                    $resolvedType = [
+                        'name' => 'array',
+                        'params' => ['name' => $innerType, 'params' => []],
+                    ];
+                } else {
+                    $keyType = gettype(array_key_first($data));
+                    $valueType = gettype($data[array_key_first($data)]);
+                    $resolvedType = [
+                        'name' => 'array',
+                        'params' => [
+                            ['name' => $keyType, 'params' => []],
+                            ['name' => $valueType, 'params' => []],
+                        ],
+                    ];
                 }
-                $resolvedType = [
-                    'name' => 'array',
-                    'params' => ['name' => $innerType, 'params' => []],
-                ];
             } else {
-                $resolvedType = [
-                    'name' => get_class($data),
-                    'params' => [],
-                ];
+                $resolvedType = null;
+                foreach ($type['params'] as $possibleType) {
+                    if ($possibleType['name'] === 'enum' && $possibleType['params'][0]['name'] === get_class($data)) {
+                        $resolvedType = $possibleType;
+                        break;
+                    }
+                }
+                if ($resolvedType === null) {
+                    $resolvedType = [
+                        'name' => get_class($data),
+                        'params' => [],
+                    ];
+                }
             }
 
             return $context->getNavigator()->accept($data, $resolvedType);
@@ -166,6 +187,10 @@ final class UnionHandler implements SubscribingHandlerInterface
             } catch (NonIntCastableTypeException $e) {
                 continue;
             } catch (NonFloatCastableTypeException $e) {
+                continue;
+            } catch (\Brick\Math\Exception\NumberFormatException $e) {
+                continue;
+            } catch (RuntimeException $e) {
                 continue;
             }
         }

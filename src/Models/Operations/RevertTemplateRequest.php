@@ -28,10 +28,10 @@ class RevertTemplateRequest
     public string $slug;
 
     /**
-     * @param  ?RevertTemplatePathParamTemplateType  $templateType
-     * @param  ?string  $slug
+     * @param  RevertTemplatePathParamTemplateType  $templateType
+     * @param  string  $slug
      */
-    public function __construct(?RevertTemplatePathParamTemplateType $templateType = null, ?string $slug = null)
+    public function __construct(RevertTemplatePathParamTemplateType $templateType, string $slug)
     {
         $this->templateType = $templateType;
         $this->slug = $slug;

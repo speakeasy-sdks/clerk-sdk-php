@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class RedirectURLs
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -31,8 +30,8 @@ class RedirectURLs
      * @return Operations\ListRedirectURLsResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function listRedirectURLs(
-    ): Operations\ListRedirectURLsResponse {
+    public function listRedirectURLs(): Operations\ListRedirectURLsResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/redirect_urls');
         $options = ['http_errors' => false];
@@ -71,13 +70,12 @@ class RedirectURLs
      *
      * Create a redirect URL
      *
-     * @param  Operations\CreateRedirectURLRequestBody  $request
+     * @param  ?Operations\CreateRedirectURLRequestBody  $request
      * @return Operations\CreateRedirectURLResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createRedirectURL(
-        ?Operations\CreateRedirectURLRequestBody $request,
-    ): Operations\CreateRedirectURLResponse {
+    public function createRedirectURL(?Operations\CreateRedirectURLRequestBody $request = null): Operations\CreateRedirectURLResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/redirect_urls');
         $options = ['http_errors' => false];
@@ -111,7 +109,7 @@ class RedirectURLs
         } elseif (in_array($statusCode, [400, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors75', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -132,9 +130,8 @@ class RedirectURLs
      * @return Operations\GetRedirectURLResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getRedirectURL(
-        string $id,
-    ): Operations\GetRedirectURLResponse {
+    public function getRedirectURL(string $id): Operations\GetRedirectURLResponse
+    {
         $request = new Operations\GetRedirectURLRequest(
             id: $id,
         );
@@ -167,7 +164,7 @@ class RedirectURLs
         } elseif ($statusCode == 404) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors76', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -188,9 +185,8 @@ class RedirectURLs
      * @return Operations\DeleteRedirectURLResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function deleteRedirectURL(
-        string $id,
-    ): Operations\DeleteRedirectURLResponse {
+    public function deleteRedirectURL(string $id): Operations\DeleteRedirectURLResponse
+    {
         $request = new Operations\DeleteRedirectURLRequest(
             id: $id,
         );
@@ -223,7 +219,7 @@ class RedirectURLs
         } elseif ($statusCode == 404) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors77', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -234,4 +230,5 @@ class RedirectURLs
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

@@ -27,10 +27,10 @@ class CreateOrganizationMembershipRequest
     public CreateOrganizationMembershipRequestBody $requestBody;
 
     /**
-     * @param  ?string  $organizationId
-     * @param  ?CreateOrganizationMembershipRequestBody  $requestBody
+     * @param  string  $organizationId
+     * @param  CreateOrganizationMembershipRequestBody  $requestBody
      */
-    public function __construct(?string $organizationId = null, ?CreateOrganizationMembershipRequestBody $requestBody = null)
+    public function __construct(string $organizationId, CreateOrganizationMembershipRequestBody $requestBody)
     {
         $this->organizationId = $organizationId;
         $this->requestBody = $requestBody;

@@ -20,9 +20,9 @@ class GetTemplateListRequest
     public TemplateType $templateType;
 
     /**
-     * @param  ?TemplateType  $templateType
+     * @param  TemplateType  $templateType
      */
-    public function __construct(?TemplateType $templateType = null)
+    public function __construct(TemplateType $templateType)
     {
         $this->templateType = $templateType;
     }

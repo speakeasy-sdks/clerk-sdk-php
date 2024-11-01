@@ -27,10 +27,10 @@ class VerifyTOTPRequest
     public ?VerifyTOTPRequestBody $requestBody = null;
 
     /**
-     * @param  ?string  $userId
+     * @param  string  $userId
      * @param  ?VerifyTOTPRequestBody  $requestBody
      */
-    public function __construct(?string $userId = null, ?VerifyTOTPRequestBody $requestBody = null)
+    public function __construct(string $userId, ?VerifyTOTPRequestBody $requestBody = null)
     {
         $this->userId = $userId;
         $this->requestBody = $requestBody;

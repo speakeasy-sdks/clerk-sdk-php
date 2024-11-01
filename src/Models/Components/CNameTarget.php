@@ -15,14 +15,14 @@ class CNameTarget
      *
      * @var string $host
      */
-    #[\JMS\Serializer\Annotation\SerializedName('host')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('host')]
     public string $host;
 
     /**
      *
      * @var string $value
      */
-    #[\JMS\Serializer\Annotation\SerializedName('value')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('value')]
     public string $value;
 
     /**
@@ -32,15 +32,15 @@ class CNameTarget
      *
      * @var bool $required
      */
-    #[\JMS\Serializer\Annotation\SerializedName('required')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('required')]
     public bool $required;
 
     /**
-     * @param  ?string  $host
-     * @param  ?string  $value
-     * @param  ?bool  $required
+     * @param  string  $host
+     * @param  string  $value
+     * @param  bool  $required
      */
-    public function __construct(?string $host = null, ?string $value = null, ?bool $required = null)
+    public function __construct(string $host, string $value, bool $required)
     {
         $this->host = $host;
         $this->value = $value;

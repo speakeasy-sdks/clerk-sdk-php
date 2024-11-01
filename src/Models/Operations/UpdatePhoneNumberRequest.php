@@ -27,10 +27,10 @@ class UpdatePhoneNumberRequest
     public ?UpdatePhoneNumberRequestBody $requestBody = null;
 
     /**
-     * @param  ?string  $phoneNumberId
+     * @param  string  $phoneNumberId
      * @param  ?UpdatePhoneNumberRequestBody  $requestBody
      */
-    public function __construct(?string $phoneNumberId = null, ?UpdatePhoneNumberRequestBody $requestBody = null)
+    public function __construct(string $phoneNumberId, ?UpdatePhoneNumberRequestBody $requestBody = null)
     {
         $this->phoneNumberId = $phoneNumberId;
         $this->requestBody = $requestBody;

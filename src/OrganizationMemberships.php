@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class OrganizationMemberships
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -29,15 +28,13 @@ class OrganizationMemberships
      * Adds a user as a member to the given organization.
      * Only users in the same instance as the organization can be added as members.
      *
-     * @param  string  $organizationId
      * @param  Operations\CreateOrganizationMembershipRequestBody  $requestBody
+     * @param  string  $organizationId
      * @return Operations\CreateOrganizationMembershipResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createOrganizationMembership(
-        string $organizationId,
-        Operations\CreateOrganizationMembershipRequestBody $requestBody,
-    ): Operations\CreateOrganizationMembershipResponse {
+    public function createOrganizationMembership(Operations\CreateOrganizationMembershipRequestBody $requestBody, string $organizationId): Operations\CreateOrganizationMembershipResponse
+    {
         $request = new Operations\CreateOrganizationMembershipRequest(
             organizationId: $organizationId,
             requestBody: $requestBody,
@@ -76,7 +73,7 @@ class OrganizationMemberships
         } elseif (in_array($statusCode, [400, 403, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors69', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -100,12 +97,8 @@ class OrganizationMemberships
      * @return Operations\ListOrganizationMembershipsResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function listOrganizationMemberships(
-        string $organizationId,
-        ?float $limit = null,
-        ?float $offset = null,
-        ?string $orderBy = null,
-    ): Operations\ListOrganizationMembershipsResponse {
+    public function listOrganizationMemberships(string $organizationId, ?float $limit = null, ?float $offset = null, ?string $orderBy = null): Operations\ListOrganizationMembershipsResponse
+    {
         $request = new Operations\ListOrganizationMembershipsRequest(
             organizationId: $organizationId,
             limit: $limit,
@@ -142,7 +135,7 @@ class OrganizationMemberships
         } elseif (in_array($statusCode, [401, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors70', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -159,17 +152,14 @@ class OrganizationMemberships
      *
      * Updates the properties of an existing organization membership
      *
+     * @param  Operations\UpdateOrganizationMembershipRequestBody  $requestBody
      * @param  string  $organizationId
      * @param  string  $userId
-     * @param  Operations\UpdateOrganizationMembershipRequestBody  $requestBody
      * @return Operations\UpdateOrganizationMembershipResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateOrganizationMembership(
-        string $organizationId,
-        string $userId,
-        Operations\UpdateOrganizationMembershipRequestBody $requestBody,
-    ): Operations\UpdateOrganizationMembershipResponse {
+    public function updateOrganizationMembership(Operations\UpdateOrganizationMembershipRequestBody $requestBody, string $organizationId, string $userId): Operations\UpdateOrganizationMembershipResponse
+    {
         $request = new Operations\UpdateOrganizationMembershipRequest(
             organizationId: $organizationId,
             userId: $userId,
@@ -209,7 +199,7 @@ class OrganizationMemberships
         } elseif (in_array($statusCode, [400, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors71', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -231,10 +221,8 @@ class OrganizationMemberships
      * @return Operations\DeleteOrganizationMembershipResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function deleteOrganizationMembership(
-        string $organizationId,
-        string $userId,
-    ): Operations\DeleteOrganizationMembershipResponse {
+    public function deleteOrganizationMembership(string $organizationId, string $userId): Operations\DeleteOrganizationMembershipResponse
+    {
         $request = new Operations\DeleteOrganizationMembershipRequest(
             organizationId: $organizationId,
             userId: $userId,
@@ -268,7 +256,7 @@ class OrganizationMemberships
         } elseif (in_array($statusCode, [400, 401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors72', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -287,17 +275,14 @@ class OrganizationMemberships
      * Metadata values will be updated via a deep merge. Deep means that any nested JSON objects will be merged as well.
      * You can remove metadata keys at any level by setting their value to `null`.
      *
+     * @param  Operations\UpdateOrganizationMembershipMetadataRequestBody  $requestBody
      * @param  string  $organizationId
      * @param  string  $userId
-     * @param  Operations\UpdateOrganizationMembershipMetadataRequestBody  $requestBody
      * @return Operations\UpdateOrganizationMembershipMetadataResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateOrganizationMembershipMetadata(
-        string $organizationId,
-        string $userId,
-        Operations\UpdateOrganizationMembershipMetadataRequestBody $requestBody,
-    ): Operations\UpdateOrganizationMembershipMetadataResponse {
+    public function updateOrganizationMembershipMetadata(Operations\UpdateOrganizationMembershipMetadataRequestBody $requestBody, string $organizationId, string $userId): Operations\UpdateOrganizationMembershipMetadataResponse
+    {
         $request = new Operations\UpdateOrganizationMembershipMetadataRequest(
             organizationId: $organizationId,
             userId: $userId,
@@ -337,7 +322,7 @@ class OrganizationMemberships
         } elseif (in_array($statusCode, [400, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors73', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -348,4 +333,5 @@ class OrganizationMemberships
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

@@ -27,10 +27,10 @@ class SetUserProfileImageRequest
     public SetUserProfileImageRequestBody $requestBody;
 
     /**
-     * @param  ?string  $userId
-     * @param  ?SetUserProfileImageRequestBody  $requestBody
+     * @param  string  $userId
+     * @param  SetUserProfileImageRequestBody  $requestBody
      */
-    public function __construct(?string $userId = null, ?SetUserProfileImageRequestBody $requestBody = null)
+    public function __construct(string $userId, SetUserProfileImageRequestBody $requestBody)
     {
         $this->userId = $userId;
         $this->requestBody = $requestBody;

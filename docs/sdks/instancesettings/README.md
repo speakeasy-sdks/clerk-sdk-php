@@ -1,4 +1,5 @@
 # InstanceSettings
+(*instanceSettings*)
 
 ## Overview
 
@@ -22,35 +23,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\UpdateInstanceRequestBody(
-        testMode: false,
-        hibp: false,
-        enhancedEmailDeliverability: false,
-        supportEmail: '<value>',
-        clerkJsVersion: '<value>',
-        developmentOrigin: '<value>',
-        allowedOrigins: [
-            '<value>',
-        ],
-        cookielessDev: false,
-        urlBasedSessionSyncing: false,
-    );
-    $response = $sdk->instanceSettings->updateInstance($request);
+$request = new Operations\UpdateInstanceRequestBody();
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->instanceSettings->updateInstance(
+    request: $request
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -66,11 +52,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 422                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors49 | 422                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## updateInstanceRestrictions
 
@@ -84,29 +69,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\UpdateInstanceRestrictionsRequestBody(
-        allowlist: false,
-        blocklist: false,
-        blockEmailSubaddresses: false,
-        blockDisposableEmailDomains: false,
-        ignoreDotsForGmailAddresses: false,
-    );
-    $response = $sdk->instanceSettings->updateInstanceRestrictions($request);
+$request = new Operations\UpdateInstanceRestrictionsRequestBody();
 
-    if ($response->instanceRestrictions !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->instanceSettings->updateInstanceRestrictions(
+    request: $request
+);
+
+if ($response->instanceRestrictions !== null) {
+    // handle response
 }
 ```
 
@@ -122,11 +98,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402,422                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors49 | 402, 422             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## updateInstanceOrganizationSettings
 
@@ -140,33 +115,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\UpdateInstanceOrganizationSettingsRequestBody(
-        enabled: false,
-        maxAllowedMemberships: 238063,
-        adminDeleteEnabled: false,
-        domainsEnabled: false,
-        domainsEnrollmentModes: [
-            '<value>',
-        ],
-        creatorRoleId: '<value>',
-        domainsDefaultRoleId: '<value>',
-    );
-    $response = $sdk->instanceSettings->updateInstanceOrganizationSettings($request);
+$request = new Operations\UpdateInstanceOrganizationSettingsRequestBody();
 
-    if ($response->organizationSettings !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->instanceSettings->updateInstanceOrganizationSettings(
+    request: $request
+);
+
+if ($response->organizationSettings !== null) {
+    // handle response
 }
 ```
 
@@ -182,7 +144,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402,404,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors51 | 402, 404, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

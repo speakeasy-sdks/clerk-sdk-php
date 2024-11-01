@@ -40,12 +40,12 @@ class UpdateEmailAddressResponse
     public ?Components\EmailAddress $emailAddress = null;
 
     /**
-     * @param  ?string  $contentType
-     * @param  ?int  $statusCode
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\EmailAddress  $emailAddress
      */
-    public function __construct(?string $contentType = null, ?int $statusCode = null, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, ?Components\EmailAddress $emailAddress = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\EmailAddress $emailAddress = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

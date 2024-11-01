@@ -9,14 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** PhoneNumber - Success */
 class PhoneNumber
 {
     /**
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
@@ -26,55 +27,55 @@ class PhoneNumber
      *
      * @var PhoneNumberObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PhoneNumberObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PhoneNumberObject')]
     public PhoneNumberObject $object;
 
     /**
      *
      * @var string $phoneNumber
      */
-    #[\JMS\Serializer\Annotation\SerializedName('phone_number')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('phone_number')]
     public string $phoneNumber;
 
     /**
      *
      * @var ?bool $reservedForSecondFactor
      */
-    #[\JMS\Serializer\Annotation\SerializedName('reserved_for_second_factor')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reserved_for_second_factor')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $reservedForSecondFactor = null;
 
     /**
      *
      * @var ?bool $defaultSecondFactor
      */
-    #[\JMS\Serializer\Annotation\SerializedName('default_second_factor')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_second_factor')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $defaultSecondFactor = null;
 
     /**
      *
      * @var bool $reserved
      */
-    #[\JMS\Serializer\Annotation\SerializedName('reserved')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reserved')]
     public bool $reserved;
 
     /**
      *
-     * @var VerificationOTP|VerificationAdmin $verification
+     * @var VerificationOTP|VerificationAdmin|null $verification
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verification')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\VerificationOTP|\Clerk\Backend\Models\Components\VerificationAdmin')]
-    public VerificationOTP|VerificationAdmin $verification;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verification')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\VerificationOTP|\Clerk\Backend\Models\Components\VerificationAdmin')]
+    public VerificationOTP|VerificationAdmin|null $verification;
 
     /**
      * $linkedTo
      *
      * @var array<IdentificationLink> $linkedTo
      */
-    #[\JMS\Serializer\Annotation\SerializedName('linked_to')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\IdentificationLink>')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('linked_to')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\IdentificationLink>')]
     public array $linkedTo;
 
     /**
@@ -82,9 +83,9 @@ class PhoneNumber
      *
      * @var ?array<string> $backupCodes
      */
-    #[\JMS\Serializer\Annotation\SerializedName('backup_codes')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('backup_codes')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $backupCodes = null;
 
     /**
@@ -94,7 +95,7 @@ class PhoneNumber
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -104,34 +105,34 @@ class PhoneNumber
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?PhoneNumberObject  $object
-     * @param  ?string  $phoneNumber
-     * @param  ?bool  $reserved
-     * @param  VerificationOTP|VerificationAdmin|null  $verification
-     * @param  ?array<IdentificationLink>  $linkedTo
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  PhoneNumberObject  $object
+     * @param  string  $phoneNumber
+     * @param  bool  $reserved
+     * @param  array<IdentificationLink>  $linkedTo
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      * @param  ?string  $id
      * @param  ?bool  $reservedForSecondFactor
      * @param  ?bool  $defaultSecondFactor
+     * @param  VerificationOTP|VerificationAdmin|null  $verification
      * @param  ?array<string>  $backupCodes
      */
-    public function __construct(?PhoneNumberObject $object = null, ?string $phoneNumber = null, ?bool $reserved = null, VerificationOTP|VerificationAdmin|null $verification = null, ?array $linkedTo = null, ?int $createdAt = null, ?int $updatedAt = null, ?string $id = null, ?bool $reservedForSecondFactor = null, ?bool $defaultSecondFactor = null, ?array $backupCodes = null)
+    public function __construct(PhoneNumberObject $object, string $phoneNumber, bool $reserved, array $linkedTo, int $createdAt, int $updatedAt, ?string $id = null, ?bool $reservedForSecondFactor = null, ?bool $defaultSecondFactor = null, VerificationOTP|VerificationAdmin|null $verification = null, ?array $backupCodes = null)
     {
         $this->object = $object;
         $this->phoneNumber = $phoneNumber;
         $this->reserved = $reserved;
-        $this->verification = $verification;
         $this->linkedTo = $linkedTo;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
         $this->id = $id;
         $this->reservedForSecondFactor = $reservedForSecondFactor;
         $this->defaultSecondFactor = $defaultSecondFactor;
+        $this->verification = $verification;
         $this->backupCodes = $backupCodes;
     }
 }

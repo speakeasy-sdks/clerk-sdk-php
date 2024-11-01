@@ -9,14 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** User - Success */
 class User
 {
     /**
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
@@ -26,65 +27,65 @@ class User
      *
      * @var ?UserObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\UserObject|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\UserObject|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UserObject $object = null;
 
     /**
      *
      * @var ?string $externalId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('external_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $externalId = null;
 
     /**
      *
      * @var ?string $primaryEmailAddressId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('primary_email_address_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('primary_email_address_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $primaryEmailAddressId = null;
 
     /**
      *
      * @var ?string $primaryPhoneNumberId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('primary_phone_number_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('primary_phone_number_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $primaryPhoneNumberId = null;
 
     /**
      *
      * @var ?string $primaryWeb3WalletId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('primary_web3_wallet_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('primary_web3_wallet_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $primaryWeb3WalletId = null;
 
     /**
      *
      * @var ?string $username
      */
-    #[\JMS\Serializer\Annotation\SerializedName('username')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('username')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $username = null;
 
     /**
      *
      * @var ?string $firstName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('first_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('first_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $firstName = null;
 
     /**
      *
      * @var ?string $lastName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $lastName = null;
 
     /**
@@ -92,51 +93,51 @@ class User
      * @var ?string $profileImageUrl
      * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    #[\JMS\Serializer\Annotation\SerializedName('profile_image_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('profile_image_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $profileImageUrl = null;
 
     /**
      *
      * @var ?string $imageUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('image_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('image_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $imageUrl = null;
 
     /**
      *
      * @var ?bool $hasImage
      */
-    #[\JMS\Serializer\Annotation\SerializedName('has_image')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('has_image')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $hasImage = null;
 
     /**
      *
      * @var ?PublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?PublicMetadata $publicMetadata = null;
 
     /**
      *
      * @var ?PrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PrivateMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PrivateMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?PrivateMetadata $privateMetadata = null;
 
     /**
      *
      * @var ?UnsafeMetadata $unsafeMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('unsafe_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\UnsafeMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('unsafe_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\UnsafeMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UnsafeMetadata $unsafeMetadata = null;
 
     /**
@@ -144,9 +145,9 @@ class User
      *
      * @var ?array<EmailAddress> $emailAddresses
      */
-    #[\JMS\Serializer\Annotation\SerializedName('email_addresses')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\EmailAddress>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email_addresses')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\EmailAddress>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $emailAddresses = null;
 
     /**
@@ -154,9 +155,9 @@ class User
      *
      * @var ?array<PhoneNumber> $phoneNumbers
      */
-    #[\JMS\Serializer\Annotation\SerializedName('phone_numbers')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\PhoneNumber>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('phone_numbers')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\PhoneNumber>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $phoneNumbers = null;
 
     /**
@@ -164,9 +165,9 @@ class User
      *
      * @var ?array<Web3Wallet> $web3Wallets
      */
-    #[\JMS\Serializer\Annotation\SerializedName('web3_wallets')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\Web3Wallet>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('web3_wallets')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\Web3Wallet>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $web3Wallets = null;
 
     /**
@@ -174,41 +175,41 @@ class User
      *
      * @var ?array<SchemasPasskey> $passkeys
      */
-    #[\JMS\Serializer\Annotation\SerializedName('passkeys')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\SchemasPasskey>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('passkeys')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\SchemasPasskey>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $passkeys = null;
 
     /**
      *
      * @var ?bool $passwordEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('password_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('password_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $passwordEnabled = null;
 
     /**
      *
      * @var ?bool $twoFactorEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('two_factor_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('two_factor_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $twoFactorEnabled = null;
 
     /**
      *
      * @var ?bool $totpEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('totp_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('totp_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $totpEnabled = null;
 
     /**
      *
      * @var ?bool $backupCodeEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('backup_code_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('backup_code_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $backupCodeEnabled = null;
 
     /**
@@ -218,8 +219,8 @@ class User
      *
      * @var ?int $mfaEnabledAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('mfa_enabled_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('mfa_enabled_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $mfaEnabledAt = null;
 
     /**
@@ -229,8 +230,8 @@ class User
      *
      * @var ?int $mfaDisabledAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('mfa_disabled_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('mfa_disabled_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $mfaDisabledAt = null;
 
     /**
@@ -238,9 +239,9 @@ class User
      *
      * @var ?array<ExternalAccounts> $externalAccounts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('external_accounts')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\ExternalAccounts>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_accounts')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\ExternalAccounts>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $externalAccounts = null;
 
     /**
@@ -248,9 +249,9 @@ class User
      *
      * @var ?array<SAMLAccount> $samlAccounts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('saml_accounts')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\SAMLAccount>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('saml_accounts')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\SAMLAccount>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $samlAccounts = null;
 
     /**
@@ -260,8 +261,8 @@ class User
      *
      * @var ?int $lastSignInAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_sign_in_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_sign_in_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $lastSignInAt = null;
 
     /**
@@ -271,8 +272,8 @@ class User
      *
      * @var ?bool $banned
      */
-    #[\JMS\Serializer\Annotation\SerializedName('banned')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('banned')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $banned = null;
 
     /**
@@ -282,8 +283,8 @@ class User
      *
      * @var ?bool $locked
      */
-    #[\JMS\Serializer\Annotation\SerializedName('locked')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('locked')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $locked = null;
 
     /**
@@ -293,8 +294,8 @@ class User
      *
      * @var ?int $lockoutExpiresInSeconds
      */
-    #[\JMS\Serializer\Annotation\SerializedName('lockout_expires_in_seconds')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('lockout_expires_in_seconds')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $lockoutExpiresInSeconds = null;
 
     /**
@@ -304,8 +305,8 @@ class User
      *
      * @var ?int $verificationAttemptsRemaining
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verification_attempts_remaining')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verification_attempts_remaining')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $verificationAttemptsRemaining = null;
 
     /**
@@ -315,8 +316,8 @@ class User
      *
      * @var ?int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $updatedAt = null;
 
     /**
@@ -326,8 +327,8 @@ class User
      *
      * @var ?int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $createdAt = null;
 
     /**
@@ -337,8 +338,8 @@ class User
      *
      * @var ?bool $deleteSelfEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('delete_self_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('delete_self_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $deleteSelfEnabled = null;
 
     /**
@@ -348,8 +349,8 @@ class User
      *
      * @var ?bool $createOrganizationEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('create_organization_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('create_organization_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $createOrganizationEnabled = null;
 
     /**
@@ -359,25 +360,17 @@ class User
      *
      * @var ?int $lastActiveAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_active_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_active_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $lastActiveAt = null;
 
     /**
      * @param  ?string  $id
      * @param  ?UserObject  $object
-     * @param  ?string  $externalId
-     * @param  ?string  $primaryEmailAddressId
-     * @param  ?string  $primaryPhoneNumberId
-     * @param  ?string  $primaryWeb3WalletId
-     * @param  ?string  $username
-     * @param  ?string  $firstName
-     * @param  ?string  $lastName
      * @param  ?string  $profileImageUrl
      * @param  ?string  $imageUrl
      * @param  ?bool  $hasImage
      * @param  ?PublicMetadata  $publicMetadata
-     * @param  ?PrivateMetadata  $privateMetadata
      * @param  ?UnsafeMetadata  $unsafeMetadata
      * @param  ?array<EmailAddress>  $emailAddresses
      * @param  ?array<PhoneNumber>  $phoneNumbers
@@ -387,37 +380,37 @@ class User
      * @param  ?bool  $twoFactorEnabled
      * @param  ?bool  $totpEnabled
      * @param  ?bool  $backupCodeEnabled
-     * @param  ?int  $mfaEnabledAt
-     * @param  ?int  $mfaDisabledAt
      * @param  ?array<ExternalAccounts>  $externalAccounts
      * @param  ?array<SAMLAccount>  $samlAccounts
-     * @param  ?int  $lastSignInAt
      * @param  ?bool  $banned
      * @param  ?bool  $locked
-     * @param  ?int  $lockoutExpiresInSeconds
-     * @param  ?int  $verificationAttemptsRemaining
      * @param  ?int  $updatedAt
      * @param  ?int  $createdAt
      * @param  ?bool  $deleteSelfEnabled
      * @param  ?bool  $createOrganizationEnabled
+     * @param  ?string  $externalId
+     * @param  ?string  $primaryEmailAddressId
+     * @param  ?string  $primaryPhoneNumberId
+     * @param  ?string  $primaryWeb3WalletId
+     * @param  ?string  $username
+     * @param  ?string  $firstName
+     * @param  ?string  $lastName
+     * @param  ?PrivateMetadata  $privateMetadata
+     * @param  ?int  $mfaEnabledAt
+     * @param  ?int  $mfaDisabledAt
+     * @param  ?int  $lastSignInAt
+     * @param  ?int  $lockoutExpiresInSeconds
+     * @param  ?int  $verificationAttemptsRemaining
      * @param  ?int  $lastActiveAt
      */
-    public function __construct(?string $id = null, ?UserObject $object = null, ?string $externalId = null, ?string $primaryEmailAddressId = null, ?string $primaryPhoneNumberId = null, ?string $primaryWeb3WalletId = null, ?string $username = null, ?string $firstName = null, ?string $lastName = null, ?string $profileImageUrl = null, ?string $imageUrl = null, ?bool $hasImage = null, ?PublicMetadata $publicMetadata = null, ?PrivateMetadata $privateMetadata = null, ?UnsafeMetadata $unsafeMetadata = null, ?array $emailAddresses = null, ?array $phoneNumbers = null, ?array $web3Wallets = null, ?array $passkeys = null, ?bool $passwordEnabled = null, ?bool $twoFactorEnabled = null, ?bool $totpEnabled = null, ?bool $backupCodeEnabled = null, ?int $mfaEnabledAt = null, ?int $mfaDisabledAt = null, ?array $externalAccounts = null, ?array $samlAccounts = null, ?int $lastSignInAt = null, ?bool $banned = null, ?bool $locked = null, ?int $lockoutExpiresInSeconds = null, ?int $verificationAttemptsRemaining = null, ?int $updatedAt = null, ?int $createdAt = null, ?bool $deleteSelfEnabled = null, ?bool $createOrganizationEnabled = null, ?int $lastActiveAt = null)
+    public function __construct(?string $id = null, ?UserObject $object = null, ?string $profileImageUrl = null, ?string $imageUrl = null, ?bool $hasImage = null, ?PublicMetadata $publicMetadata = null, ?UnsafeMetadata $unsafeMetadata = null, ?array $emailAddresses = null, ?array $phoneNumbers = null, ?array $web3Wallets = null, ?array $passkeys = null, ?bool $passwordEnabled = null, ?bool $twoFactorEnabled = null, ?bool $totpEnabled = null, ?bool $backupCodeEnabled = null, ?array $externalAccounts = null, ?array $samlAccounts = null, ?bool $banned = null, ?bool $locked = null, ?int $updatedAt = null, ?int $createdAt = null, ?bool $deleteSelfEnabled = null, ?bool $createOrganizationEnabled = null, ?string $externalId = null, ?string $primaryEmailAddressId = null, ?string $primaryPhoneNumberId = null, ?string $primaryWeb3WalletId = null, ?string $username = null, ?string $firstName = null, ?string $lastName = null, ?PrivateMetadata $privateMetadata = null, ?int $mfaEnabledAt = null, ?int $mfaDisabledAt = null, ?int $lastSignInAt = null, ?int $lockoutExpiresInSeconds = null, ?int $verificationAttemptsRemaining = null, ?int $lastActiveAt = null)
     {
         $this->id = $id;
         $this->object = $object;
-        $this->externalId = $externalId;
-        $this->primaryEmailAddressId = $primaryEmailAddressId;
-        $this->primaryPhoneNumberId = $primaryPhoneNumberId;
-        $this->primaryWeb3WalletId = $primaryWeb3WalletId;
-        $this->username = $username;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
         $this->profileImageUrl = $profileImageUrl;
         $this->imageUrl = $imageUrl;
         $this->hasImage = $hasImage;
         $this->publicMetadata = $publicMetadata;
-        $this->privateMetadata = $privateMetadata;
         $this->unsafeMetadata = $unsafeMetadata;
         $this->emailAddresses = $emailAddresses;
         $this->phoneNumbers = $phoneNumbers;
@@ -427,19 +420,27 @@ class User
         $this->twoFactorEnabled = $twoFactorEnabled;
         $this->totpEnabled = $totpEnabled;
         $this->backupCodeEnabled = $backupCodeEnabled;
-        $this->mfaEnabledAt = $mfaEnabledAt;
-        $this->mfaDisabledAt = $mfaDisabledAt;
         $this->externalAccounts = $externalAccounts;
         $this->samlAccounts = $samlAccounts;
-        $this->lastSignInAt = $lastSignInAt;
         $this->banned = $banned;
         $this->locked = $locked;
-        $this->lockoutExpiresInSeconds = $lockoutExpiresInSeconds;
-        $this->verificationAttemptsRemaining = $verificationAttemptsRemaining;
         $this->updatedAt = $updatedAt;
         $this->createdAt = $createdAt;
         $this->deleteSelfEnabled = $deleteSelfEnabled;
         $this->createOrganizationEnabled = $createOrganizationEnabled;
+        $this->externalId = $externalId;
+        $this->primaryEmailAddressId = $primaryEmailAddressId;
+        $this->primaryPhoneNumberId = $primaryPhoneNumberId;
+        $this->primaryWeb3WalletId = $primaryWeb3WalletId;
+        $this->username = $username;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->privateMetadata = $privateMetadata;
+        $this->mfaEnabledAt = $mfaEnabledAt;
+        $this->mfaDisabledAt = $mfaDisabledAt;
+        $this->lastSignInAt = $lastSignInAt;
+        $this->lockoutExpiresInSeconds = $lockoutExpiresInSeconds;
+        $this->verificationAttemptsRemaining = $verificationAttemptsRemaining;
         $this->lastActiveAt = $lastActiveAt;
     }
 }

@@ -16,8 +16,8 @@ class OrganizationMembership
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
@@ -27,17 +27,17 @@ class OrganizationMembership
      *
      * @var ?OrganizationMembershipObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipObject|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipObject|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?OrganizationMembershipObject $object = null;
 
     /**
      *
      * @var ?string $role
      */
-    #[\JMS\Serializer\Annotation\SerializedName('role')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $role = null;
 
     /**
@@ -45,9 +45,9 @@ class OrganizationMembership
      *
      * @var ?array<string> $permissions
      */
-    #[\JMS\Serializer\Annotation\SerializedName('permissions')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('permissions')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $permissions = null;
 
     /**
@@ -55,9 +55,9 @@ class OrganizationMembership
      *
      * @var ?OrganizationMembershipPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?OrganizationMembershipPublicMetadata $publicMetadata = null;
 
     /**
@@ -65,27 +65,27 @@ class OrganizationMembership
      *
      * @var ?OrganizationMembershipPrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipPrivateMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipPrivateMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?OrganizationMembershipPrivateMetadata $privateMetadata = null;
 
     /**
      *
      * @var ?OrganizationMembershipOrganization $organization
      */
-    #[\JMS\Serializer\Annotation\SerializedName('organization')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipOrganization|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('organization')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationMembershipOrganization|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?OrganizationMembershipOrganization $organization = null;
 
     /**
      *
      * @var ?PublicUserData $publicUserData
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_user_data')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PublicUserData|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_user_data')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PublicUserData|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?PublicUserData $publicUserData = null;
 
     /**
@@ -93,8 +93,8 @@ class OrganizationMembership
      *
      * @var ?int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $createdAt = null;
 
     /**
@@ -102,8 +102,8 @@ class OrganizationMembership
      *
      * @var ?int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $updatedAt = null;
 
     /**

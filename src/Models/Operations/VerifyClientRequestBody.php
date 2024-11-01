@@ -17,8 +17,8 @@ class VerifyClientRequestBody
      *
      * @var ?string $token
      */
-    #[\JMS\Serializer\Annotation\SerializedName('token')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('token')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $token = null;
 
     /**

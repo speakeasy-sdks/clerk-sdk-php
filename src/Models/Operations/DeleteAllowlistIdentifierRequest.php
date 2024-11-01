@@ -20,9 +20,9 @@ class DeleteAllowlistIdentifierRequest
     public string $identifierId;
 
     /**
-     * @param  ?string  $identifierId
+     * @param  string  $identifierId
      */
-    public function __construct(?string $identifierId = null)
+    public function __construct(string $identifierId)
     {
         $this->identifierId = $identifierId;
     }

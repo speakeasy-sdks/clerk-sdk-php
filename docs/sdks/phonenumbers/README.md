@@ -1,4 +1,5 @@
 # PhoneNumbers
+(*phoneNumbers*)
 
 ## Overview
 
@@ -24,29 +25,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\CreatePhoneNumberRequestBody(
-        userId: '<value>',
-        phoneNumber: '<value>',
-        verified: false,
-        primary: false,
-        reservedForSecondFactor: false,
-    );
-    $response = $sdk->phoneNumbers->createPhoneNumber($request);
+$request = new Operations\CreatePhoneNumberRequestBody();
 
-    if ($response->phoneNumber !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->phoneNumbers->createPhoneNumber(
+    request: $request
+);
+
+if ($response->phoneNumber !== null) {
+    // handle response
 }
 ```
 
@@ -62,11 +54,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,403,404,422                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| Errors\ClerkErrors7     | 400, 401, 403, 404, 422 | application/json        |
+| Errors\SDKException     | 4XX, 5XX                | \*/\*                   |
 
 ## getPhoneNumber
 
@@ -80,22 +71,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->phoneNumbers->getPhoneNumber('<value>');
 
-    if ($response->phoneNumber !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->phoneNumbers->getPhoneNumber(
+    phoneNumberId: '<id>'
+);
+
+if ($response->phoneNumber !== null) {
+    // handle response
 }
 ```
 
@@ -111,11 +99,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,403,404                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\ClerkErrors8 | 400, 401, 403, 404  | application/json    |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## deletePhoneNumber
 
@@ -129,22 +116,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->phoneNumbers->deletePhoneNumber('<value>');
 
-    if ($response->deletedObject !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->phoneNumbers->deletePhoneNumber(
+    phoneNumberId: '<id>'
+);
+
+if ($response->deletedObject !== null) {
+    // handle response
 }
 ```
 
@@ -160,11 +144,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,403,404                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\ClerkErrors9 | 400, 401, 403, 404  | application/json    |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## updatePhoneNumber
 
@@ -178,36 +161,31 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpdatePhoneNumberRequestBody(
-        verified: false,
-        primary: false,
-        reservedForSecondFactor: false,
-    );
-    $response = $sdk->phoneNumbers->updatePhoneNumber('<value>', $requestBody);
+$requestBody = new Operations\UpdatePhoneNumberRequestBody();
 
-    if ($response->phoneNumber !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->phoneNumbers->updatePhoneNumber(
+    phoneNumberId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->phoneNumber !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `phoneNumberId`                                                                                    | *string*                                                                                           | :heavy_check_mark:                                                                                 | The ID of the phone number to update                                                               |
-| `requestBody`                                                                                      | [Operations\UpdatePhoneNumberRequestBody](../../Models/Operations/UpdatePhoneNumberRequestBody.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `phoneNumberId`                                                                                     | *string*                                                                                            | :heavy_check_mark:                                                                                  | The ID of the phone number to update                                                                |
+| `requestBody`                                                                                       | [?Operations\UpdatePhoneNumberRequestBody](../../Models/Operations/UpdatePhoneNumberRequestBody.md) | :heavy_minus_sign:                                                                                  | N/A                                                                                                 |
 
 ### Response
 
@@ -215,7 +193,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,403,404                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors10 | 400, 401, 403, 404   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

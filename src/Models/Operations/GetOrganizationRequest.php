@@ -20,9 +20,9 @@ class GetOrganizationRequest
     public string $organizationId;
 
     /**
-     * @param  ?string  $organizationId
+     * @param  string  $organizationId
      */
-    public function __construct(?string $organizationId = null)
+    public function __construct(string $organizationId)
     {
         $this->organizationId = $organizationId;
     }

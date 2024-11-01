@@ -36,7 +36,7 @@ class ListSAMLConnectionsRequest
      * @param  ?float  $limit
      * @param  ?float  $offset
      */
-    public function __construct(?float $limit = null, ?float $offset = null)
+    public function __construct(?float $limit = 10, ?float $offset = 0)
     {
         $this->limit = $limit;
         $this->offset = $offset;

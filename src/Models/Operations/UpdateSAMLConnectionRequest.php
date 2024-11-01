@@ -27,10 +27,10 @@ class UpdateSAMLConnectionRequest
     public UpdateSAMLConnectionRequestBody $requestBody;
 
     /**
-     * @param  ?string  $samlConnectionId
-     * @param  ?UpdateSAMLConnectionRequestBody  $requestBody
+     * @param  string  $samlConnectionId
+     * @param  UpdateSAMLConnectionRequestBody  $requestBody
      */
-    public function __construct(?string $samlConnectionId = null, ?UpdateSAMLConnectionRequestBody $requestBody = null)
+    public function __construct(string $samlConnectionId, UpdateSAMLConnectionRequestBody $requestBody)
     {
         $this->samlConnectionId = $samlConnectionId;
         $this->requestBody = $requestBody;

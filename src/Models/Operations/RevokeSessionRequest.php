@@ -20,9 +20,9 @@ class RevokeSessionRequest
     public string $sessionId;
 
     /**
-     * @param  ?string  $sessionId
+     * @param  string  $sessionId
      */
-    public function __construct(?string $sessionId = null)
+    public function __construct(string $sessionId)
     {
         $this->sessionId = $sessionId;
     }

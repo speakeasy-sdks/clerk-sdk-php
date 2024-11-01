@@ -27,10 +27,10 @@ class UpdateUserMetadataRequest
     public ?UpdateUserMetadataRequestBody $requestBody = null;
 
     /**
-     * @param  ?string  $userId
+     * @param  string  $userId
      * @param  ?UpdateUserMetadataRequestBody  $requestBody
      */
-    public function __construct(?string $userId = null, ?UpdateUserMetadataRequestBody $requestBody = null)
+    public function __construct(string $userId, ?UpdateUserMetadataRequestBody $requestBody = null)
     {
         $this->userId = $userId;
         $this->requestBody = $requestBody;

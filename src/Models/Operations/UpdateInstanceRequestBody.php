@@ -18,8 +18,8 @@ class UpdateInstanceRequestBody
      *
      * @var ?bool $testMode
      */
-    #[\JMS\Serializer\Annotation\SerializedName('test_mode')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('test_mode')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $testMode = null;
 
     /**
@@ -27,8 +27,8 @@ class UpdateInstanceRequestBody
      *
      * @var ?bool $hibp
      */
-    #[\JMS\Serializer\Annotation\SerializedName('hibp')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('hibp')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $hibp = null;
 
     /**
@@ -38,32 +38,32 @@ class UpdateInstanceRequestBody
      *
      * @var ?bool $enhancedEmailDeliverability
      */
-    #[\JMS\Serializer\Annotation\SerializedName('enhanced_email_deliverability')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('enhanced_email_deliverability')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $enhancedEmailDeliverability = null;
 
     /**
      *
      * @var ?string $supportEmail
      */
-    #[\JMS\Serializer\Annotation\SerializedName('support_email')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('support_email')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $supportEmail = null;
 
     /**
      *
      * @var ?string $clerkJsVersion
      */
-    #[\JMS\Serializer\Annotation\SerializedName('clerk_js_version')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('clerk_js_version')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $clerkJsVersion = null;
 
     /**
      *
      * @var ?string $developmentOrigin
      */
-    #[\JMS\Serializer\Annotation\SerializedName('development_origin')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('development_origin')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $developmentOrigin = null;
 
     /**
@@ -73,9 +73,9 @@ class UpdateInstanceRequestBody
      *
      * @var ?array<string> $allowedOrigins
      */
-    #[\JMS\Serializer\Annotation\SerializedName('allowed_origins')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allowed_origins')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $allowedOrigins = null;
 
     /**
@@ -86,8 +86,8 @@ class UpdateInstanceRequestBody
      * @var ?bool $cookielessDev
      * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    #[\JMS\Serializer\Annotation\SerializedName('cookieless_dev')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('cookieless_dev')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $cookielessDev = null;
 
     /**
@@ -95,31 +95,31 @@ class UpdateInstanceRequestBody
      *
      * @var ?bool $urlBasedSessionSyncing
      */
-    #[\JMS\Serializer\Annotation\SerializedName('url_based_session_syncing')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('url_based_session_syncing')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $urlBasedSessionSyncing = null;
 
     /**
+     * @param  ?array<string>  $allowedOrigins
+     * @param  ?bool  $cookielessDev
+     * @param  ?bool  $urlBasedSessionSyncing
      * @param  ?bool  $testMode
      * @param  ?bool  $hibp
      * @param  ?bool  $enhancedEmailDeliverability
      * @param  ?string  $supportEmail
      * @param  ?string  $clerkJsVersion
      * @param  ?string  $developmentOrigin
-     * @param  ?array<string>  $allowedOrigins
-     * @param  ?bool  $cookielessDev
-     * @param  ?bool  $urlBasedSessionSyncing
      */
-    public function __construct(?bool $testMode = null, ?bool $hibp = null, ?bool $enhancedEmailDeliverability = null, ?string $supportEmail = null, ?string $clerkJsVersion = null, ?string $developmentOrigin = null, ?array $allowedOrigins = null, ?bool $cookielessDev = null, ?bool $urlBasedSessionSyncing = null)
+    public function __construct(?array $allowedOrigins = null, ?bool $cookielessDev = null, ?bool $urlBasedSessionSyncing = null, ?bool $testMode = null, ?bool $hibp = null, ?bool $enhancedEmailDeliverability = null, ?string $supportEmail = null, ?string $clerkJsVersion = null, ?string $developmentOrigin = null)
     {
+        $this->allowedOrigins = $allowedOrigins;
+        $this->cookielessDev = $cookielessDev;
+        $this->urlBasedSessionSyncing = $urlBasedSessionSyncing;
         $this->testMode = $testMode;
         $this->hibp = $hibp;
         $this->enhancedEmailDeliverability = $enhancedEmailDeliverability;
         $this->supportEmail = $supportEmail;
         $this->clerkJsVersion = $clerkJsVersion;
         $this->developmentOrigin = $developmentOrigin;
-        $this->allowedOrigins = $allowedOrigins;
-        $this->cookielessDev = $cookielessDev;
-        $this->urlBasedSessionSyncing = $urlBasedSessionSyncing;
     }
 }

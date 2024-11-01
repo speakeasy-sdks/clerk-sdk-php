@@ -27,10 +27,10 @@ class UpdateJWTTemplateRequest
     public ?UpdateJWTTemplateRequestBody $requestBody = null;
 
     /**
-     * @param  ?string  $templateId
+     * @param  string  $templateId
      * @param  ?UpdateJWTTemplateRequestBody  $requestBody
      */
-    public function __construct(?string $templateId = null, ?UpdateJWTTemplateRequestBody $requestBody = null)
+    public function __construct(string $templateId, ?UpdateJWTTemplateRequestBody $requestBody = null)
     {
         $this->templateId = $templateId;
         $this->requestBody = $requestBody;

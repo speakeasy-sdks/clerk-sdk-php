@@ -28,10 +28,10 @@ class GetTemplateRequest
     public string $slug;
 
     /**
-     * @param  ?PathParamTemplateType  $templateType
-     * @param  ?string  $slug
+     * @param  PathParamTemplateType  $templateType
+     * @param  string  $slug
      */
-    public function __construct(?PathParamTemplateType $templateType = null, ?string $slug = null)
+    public function __construct(PathParamTemplateType $templateType, string $slug)
     {
         $this->templateType = $templateType;
         $this->slug = $slug;

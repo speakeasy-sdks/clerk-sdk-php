@@ -35,11 +35,11 @@ class UpsertTemplateRequest
     public ?UpsertTemplateRequestBody $requestBody = null;
 
     /**
-     * @param  ?UpsertTemplatePathParamTemplateType  $templateType
-     * @param  ?string  $slug
+     * @param  UpsertTemplatePathParamTemplateType  $templateType
+     * @param  string  $slug
      * @param  ?UpsertTemplateRequestBody  $requestBody
      */
-    public function __construct(?UpsertTemplatePathParamTemplateType $templateType = null, ?string $slug = null, ?UpsertTemplateRequestBody $requestBody = null)
+    public function __construct(UpsertTemplatePathParamTemplateType $templateType, string $slug, ?UpsertTemplateRequestBody $requestBody = null)
     {
         $this->templateType = $templateType;
         $this->slug = $slug;

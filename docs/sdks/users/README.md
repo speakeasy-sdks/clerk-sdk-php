@@ -1,4 +1,5 @@
 # Users
+(*users*)
 
 ## Overview
 
@@ -39,50 +40,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\GetUserListRequest(
-        emailAddress: [
-            '<value>',
-        ],
-        phoneNumber: [
-            '<value>',
-        ],
-        externalId: [
-            '<value>',
-        ],
-        username: [
-            '<value>',
-        ],
-        web3Wallet: [
-            '<value>',
-        ],
-        userId: [
-            '<value>',
-        ],
-        organizationId: [
-            '<value>',
-        ],
-        query: '<value>',
-        lastActiveAtSince: 1700690400000,
-        limit: 2951.7,
-        offset: 6512.27,
-        orderBy: '<value>',
-    );
-    $response = $sdk->users->getUserList($request);
+$request = new Operations\GetUserListRequest(
+    lastActiveAtSince: 1700690400000,
+);
 
-    if ($response->userList !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->getUserList(
+    request: $request
+);
+
+if ($response->userList !== null) {
+    // handle response
 }
 ```
 
@@ -98,11 +71,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors22 | 400, 401, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## createUser
 
@@ -122,56 +94,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\CreateUserRequestBody(
-        externalId: '<value>',
-        firstName: 'Grayce',
-        lastName: 'Simonis',
-        emailAddress: [
-            '<value>',
-        ],
-        phoneNumber: [
-            '<value>',
-        ],
-        web3Wallet: [
-            '<value>',
-        ],
-        username: 'Jazmyn_Simonis',
-        password: 'tcG6vjwZ0JJFZd3',
-        passwordDigest: '<value>',
-        passwordHasher: Operations\PasswordHasher::Pbkdf2Sha512,
-        skipPasswordChecks: false,
-        skipPasswordRequirement: false,
-        totpSecret: '<value>',
-        backupCodes: [
-            '<value>',
-        ],
-        publicMetadata: new Operations\PublicMetadata(
+$request = new Operations\CreateUserRequestBody();
 
-        ),
-        privateMetadata: new Operations\PrivateMetadata(
+$response = $sdk->users->createUser(
+    request: $request
+);
 
-        ),
-        unsafeMetadata: new Operations\UnsafeMetadata(
-
-        ),
-        createdAt: '<value>',
-    );
-    $response = $sdk->users->createUser($request);
-
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
@@ -187,11 +123,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,403,422                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors23 | 400, 401, 403, 422   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## getUsersCount
 
@@ -205,43 +140,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\GetUsersCountRequest(
-        emailAddress: [
-            '<value>',
-        ],
-        phoneNumber: [
-            '<value>',
-        ],
-        externalId: [
-            '<value>',
-        ],
-        username: [
-            '<value>',
-        ],
-        web3Wallet: [
-            '<value>',
-        ],
-        userId: [
-            '<value>',
-        ],
-        query: '<value>',
-    );
-    $response = $sdk->users->getUsersCount($request);
+$request = new Operations\GetUsersCountRequest();
 
-    if ($response->totalCount !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->getUsersCount(
+    request: $request
+);
+
+if ($response->totalCount !== null) {
+    // handle response
 }
 ```
 
@@ -257,11 +169,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 422                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors24 | 422                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## getUser
 
@@ -275,22 +186,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->users->getUser('<value>');
 
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->getUser(
+    userId: '<id>'
+);
+
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
@@ -306,11 +214,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors25 | 400, 401, 404        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## updateUser
 
@@ -335,54 +242,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpdateUserRequestBody(
-        externalId: '<value>',
-        firstName: 'Geovanny',
-        lastName: 'O\'Kon',
-        primaryEmailAddressId: '<value>',
-        notifyPrimaryEmailAddressChanged: false,
-        primaryPhoneNumberId: '<value>',
-        primaryWeb3WalletId: '<value>',
-        username: 'Grant.Schmeler',
-        profileImageId: '<value>',
-        password: 'gAw_7A9pbvu1hDx',
-        passwordDigest: '<value>',
-        passwordHasher: Operations\UpdateUserPasswordHasher::Pbkdf2Sha1,
-        skipPasswordChecks: false,
-        signOutOfOtherSessions: false,
-        totpSecret: '<value>',
-        backupCodes: [
-            '<value>',
-        ],
-        publicMetadata: new Operations\UpdateUserPublicMetadata(
+$requestBody = new Operations\UpdateUserRequestBody();
 
-        ),
-        privateMetadata: new Operations\UpdateUserPrivateMetadata(
+$response = $sdk->users->updateUser(
+    userId: '<id>',
+    requestBody: $requestBody
 
-        ),
-        unsafeMetadata: new Operations\UpdateUserUnsafeMetadata(
+);
 
-        ),
-        deleteSelfEnabled: false,
-        createOrganizationEnabled: false,
-        createdAt: '<value>',
-    );
-    $response = $sdk->users->updateUser('<value>', $requestBody);
-
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
@@ -399,11 +274,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404,422                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors26 | 400, 401, 404, 422   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## deleteUser
 
@@ -417,22 +291,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->users->deleteUser('<value>');
 
-    if ($response->deletedObject !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->deleteUser(
+    userId: '<id>'
+);
+
+if ($response->deletedObject !== null) {
+    // handle response
 }
 ```
 
@@ -448,11 +319,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors27 | 400, 401, 404        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## banUser
 
@@ -466,22 +336,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->users->banUser('<value>');
 
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->banUser(
+    userId: '<id>'
+);
+
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
@@ -497,11 +364,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors28 | 402                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## unbanUser
 
@@ -515,22 +381,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->users->unbanUser('<value>');
 
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->unbanUser(
+    userId: '<id>'
+);
+
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
@@ -546,11 +409,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors29 | 402                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## lockUser
 
@@ -565,22 +427,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->users->lockUser('<value>');
 
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->lockUser(
+    userId: '<id>'
+);
+
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
@@ -596,11 +455,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 403                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors29 | 403                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## unlockUser
 
@@ -614,22 +472,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->users->unlockUser('<value>');
 
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->unlockUser(
+    userId: '<id>'
+);
+
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
@@ -645,11 +500,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 403                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors29 | 403                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## setUserProfileImage
 
@@ -663,28 +517,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\SetUserProfileImageRequestBody(
-        file: new Operations\File(
-            fileName: 'your_file_here',
-            content: '0xa2d4F0A27D',
-        ),
-    );
-    $response = $sdk->users->setUserProfileImage('<value>', $requestBody);
+$requestBody = new Operations\SetUserProfileImageRequestBody();
 
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->setUserProfileImage(
+    userId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
@@ -701,11 +549,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors29 | 400, 401, 404        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## deleteUserProfileImage
 
@@ -719,22 +566,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->users->deleteUserProfileImage('<value>');
 
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->deleteUserProfileImage(
+    userId: '<id>'
+);
+
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
@@ -750,11 +594,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 404                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors30 | 404                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## updateUserMetadata
 
@@ -775,42 +618,31 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpdateUserMetadataRequestBody(
-        publicMetadata: [
-            'interestingly' => '<value>',
-        ],
-        privateMetadata: [
-            'Bristol' => '<value>',
-        ],
-        unsafeMetadata: [
-            'withdrawal' => '<value>',
-        ],
-    );
-    $response = $sdk->users->updateUserMetadata('<value>', $requestBody);
+$requestBody = new Operations\UpdateUserMetadataRequestBody();
 
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->updateUserMetadata(
+    userId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `userId`                                                                                             | *string*                                                                                             | :heavy_check_mark:                                                                                   | The ID of the user whose metadata will be updated and merged                                         |
-| `requestBody`                                                                                        | [Operations\UpdateUserMetadataRequestBody](../../Models/Operations/UpdateUserMetadataRequestBody.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `userId`                                                                                              | *string*                                                                                              | :heavy_check_mark:                                                                                    | The ID of the user whose metadata will be updated and merged                                          |
+| `requestBody`                                                                                         | [?Operations\UpdateUserMetadataRequestBody](../../Models/Operations/UpdateUserMetadataRequestBody.md) | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
 
 ### Response
 
@@ -818,11 +650,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404,422                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors31 | 400, 401, 404, 422   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## getOAuthAccessToken
 
@@ -837,22 +668,21 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->users->getOAuthAccessToken('<value>', '<value>');
 
-    if ($response->responseBodies !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->getOAuthAccessToken(
+    userId: '<id>',
+    provider: '<value>'
+
+);
+
+if ($response->responseBodies !== null) {
+    // handle response
 }
 ```
 
@@ -869,11 +699,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,422                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors32 | 400, 422             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## usersGetOrganizationMemberships
 
@@ -887,22 +716,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->users->usersGetOrganizationMemberships('<value>', 2742.08, 1971.95);
 
-    if ($response->organizationMemberships !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->usersGetOrganizationMemberships(
+    userId: '<id>',
+    limit: 10,
+    offset: 0
+
+);
+
+if ($response->organizationMemberships !== null) {
+    // handle response
 }
 ```
 
@@ -911,8 +740,8 @@ try {
 | Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `userId`                                                                                                                                  | *string*                                                                                                                                  | :heavy_check_mark:                                                                                                                        | The ID of the user whose organization memberships we want to retrieve                                                                     |
-| `limit`                                                                                                                                   | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
-| `offset`                                                                                                                                  | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
+| `limit`                                                                                                                                   | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
+| `offset`                                                                                                                                  | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
 
 ### Response
 
@@ -920,11 +749,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 403                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors33 | 403                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## verifyPassword
 
@@ -939,34 +767,33 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\VerifyPasswordRequestBody(
-        password: 'fjScBhNI5ihHdcl',
-    );
-    $response = $sdk->users->verifyPassword('<value>', $requestBody);
+$requestBody = new Operations\VerifyPasswordRequestBody(
+    password: 'fSBhIihdxMPlTHN',
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->verifyPassword(
+    userId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `userId`                                                                                     | *string*                                                                                     | :heavy_check_mark:                                                                           | The ID of the user for whom to verify the password                                           |
-| `requestBody`                                                                                | [Operations\VerifyPasswordRequestBody](../../Models/Operations/VerifyPasswordRequestBody.md) | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `userId`                                                                                      | *string*                                                                                      | :heavy_check_mark:                                                                            | The ID of the user for whom to verify the password                                            |
+| `requestBody`                                                                                 | [?Operations\VerifyPasswordRequestBody](../../Models/Operations/VerifyPasswordRequestBody.md) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 
 ### Response
 
@@ -974,11 +801,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 500                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors33 | 500                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## verifyTOTP
 
@@ -995,34 +821,33 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\VerifyTOTPRequestBody(
-        code: '<value>',
-    );
-    $response = $sdk->users->verifyTOTP('<value>', $requestBody);
+$requestBody = new Operations\VerifyTOTPRequestBody(
+    code: '<value>',
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->verifyTOTP(
+    userId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `userId`                                                                             | *string*                                                                             | :heavy_check_mark:                                                                   | The ID of the user for whom to verify the TOTP                                       |
-| `requestBody`                                                                        | [Operations\VerifyTOTPRequestBody](../../Models/Operations/VerifyTOTPRequestBody.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `userId`                                                                              | *string*                                                                              | :heavy_check_mark:                                                                    | The ID of the user for whom to verify the TOTP                                        |
+| `requestBody`                                                                         | [?Operations\VerifyTOTPRequestBody](../../Models/Operations/VerifyTOTPRequestBody.md) | :heavy_minus_sign:                                                                    | N/A                                                                                   |
 
 ### Response
 
@@ -1030,11 +855,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 500                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors33 | 500                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## disableMFA
 
@@ -1048,22 +872,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->users->disableMFA('<value>');
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->users->disableMFA(
+    userId: '<id>'
+);
+
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -1079,7 +900,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 404,500                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors33 | 404, 500             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

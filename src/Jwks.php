@@ -13,11 +13,10 @@ use Clerk\Backend\Models\Operations;
 class Jwks
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -30,8 +29,8 @@ class Jwks
      * @return Operations\GetJWKSResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getJWKS(
-    ): Operations\GetJWKSResponse {
+    public function getJWKS(): Operations\GetJWKSResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/jwks');
         $options = ['http_errors' => false];
@@ -56,4 +55,5 @@ class Jwks
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

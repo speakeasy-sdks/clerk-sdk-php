@@ -16,7 +16,7 @@ class CreateSAMLConnectionRequestBody
      *
      * @var string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
 
     /**
@@ -24,7 +24,7 @@ class CreateSAMLConnectionRequestBody
      *
      * @var string $domain
      */
-    #[\JMS\Serializer\Annotation\SerializedName('domain')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('domain')]
     public string $domain;
 
     /**
@@ -32,8 +32,8 @@ class CreateSAMLConnectionRequestBody
      *
      * @var Provider $provider
      */
-    #[\JMS\Serializer\Annotation\SerializedName('provider')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\Provider')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('provider')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\Provider')]
     public Provider $provider;
 
     /**
@@ -41,8 +41,8 @@ class CreateSAMLConnectionRequestBody
      *
      * @var ?string $idpEntityId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_entity_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_entity_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpEntityId = null;
 
     /**
@@ -50,8 +50,8 @@ class CreateSAMLConnectionRequestBody
      *
      * @var ?string $idpSsoUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_sso_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_sso_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpSsoUrl = null;
 
     /**
@@ -59,8 +59,8 @@ class CreateSAMLConnectionRequestBody
      *
      * @var ?string $idpCertificate
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_certificate')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_certificate')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpCertificate = null;
 
     /**
@@ -68,8 +68,8 @@ class CreateSAMLConnectionRequestBody
      *
      * @var ?string $idpMetadataUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_metadata_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_metadata_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpMetadataUrl = null;
 
     /**
@@ -77,8 +77,8 @@ class CreateSAMLConnectionRequestBody
      *
      * @var ?string $idpMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_metadata')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_metadata')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpMetadata = null;
 
     /**
@@ -86,15 +86,15 @@ class CreateSAMLConnectionRequestBody
      *
      * @var ?AttributeMapping $attributeMapping
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attribute_mapping')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\AttributeMapping|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attribute_mapping')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\AttributeMapping|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?AttributeMapping $attributeMapping = null;
 
     /**
-     * @param  ?string  $name
-     * @param  ?string  $domain
-     * @param  ?Provider  $provider
+     * @param  string  $name
+     * @param  string  $domain
+     * @param  Provider  $provider
      * @param  ?string  $idpEntityId
      * @param  ?string  $idpSsoUrl
      * @param  ?string  $idpCertificate
@@ -102,7 +102,7 @@ class CreateSAMLConnectionRequestBody
      * @param  ?string  $idpMetadata
      * @param  ?AttributeMapping  $attributeMapping
      */
-    public function __construct(?string $name = null, ?string $domain = null, ?Provider $provider = null, ?string $idpEntityId = null, ?string $idpSsoUrl = null, ?string $idpCertificate = null, ?string $idpMetadataUrl = null, ?string $idpMetadata = null, ?AttributeMapping $attributeMapping = null)
+    public function __construct(string $name, string $domain, Provider $provider, ?string $idpEntityId = null, ?string $idpSsoUrl = null, ?string $idpCertificate = null, ?string $idpMetadataUrl = null, ?string $idpMetadata = null, ?AttributeMapping $attributeMapping = null)
     {
         $this->name = $name;
         $this->domain = $domain;

@@ -71,7 +71,7 @@ class ListOrganizationsRequest
      * @param  ?string  $query
      * @param  ?string  $orderBy
      */
-    public function __construct(?float $limit = null, ?float $offset = null, ?bool $includeMembersCount = null, ?string $query = null, ?string $orderBy = null)
+    public function __construct(?bool $includeMembersCount = null, ?string $query = null, ?float $limit = 10, ?float $offset = 0, ?string $orderBy = '-created_at')
     {
         $this->limit = $limit;
         $this->offset = $offset;

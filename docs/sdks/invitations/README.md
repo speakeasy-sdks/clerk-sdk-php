@@ -1,4 +1,5 @@
 # Invitations
+(*invitations*)
 
 ## Overview
 
@@ -25,31 +26,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\CreateInvitationRequestBody(
-        emailAddress: 'Green.Aufderhar@hotmail.com',
-        publicMetadata: new Operations\CreateInvitationPublicMetadata(
+$request = new Operations\CreateInvitationRequestBody(
+    emailAddress: 'Al.Grady1@hotmail.com',
+);
 
-        ),
-        redirectUrl: '<value>',
-        notify: false,
-        ignoreExisting: false,
-    );
-    $response = $sdk->invitations->createInvitation($request);
+$response = $sdk->invitations->createInvitation(
+    request: $request
+);
 
-    if ($response->invitation !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+if ($response->invitation !== null) {
+    // handle response
 }
 ```
 
@@ -65,11 +57,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,422                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors34 | 400, 422             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## listInvitations
 
@@ -83,23 +74,23 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->invitations->listInvitations(5414.73, 4011.8, Operations\QueryParamStatus::Accepted);
 
-    if ($response->invitationList !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->invitations->listInvitations(
+    limit: 10,
+    offset: 0,
+    status: Operations\QueryParamStatus::Accepted
+
+);
+
+if ($response->invitationList !== null) {
+    // handle response
 }
 ```
 
@@ -107,9 +98,9 @@ try {
 
 | Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `limit`                                                                                                                                   | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
-| `offset`                                                                                                                                  | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
-| `status`                                                                                                                                  | [Operations\QueryParamStatus](../../Models/Operations/QueryParamStatus.md)                                                                | :heavy_minus_sign:                                                                                                                        | Filter invitations based on their status                                                                                                  |
+| `limit`                                                                                                                                   | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
+| `offset`                                                                                                                                  | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
+| `status`                                                                                                                                  | [?Operations\QueryParamStatus](../../Models/Operations/QueryParamStatus.md)                                                               | :heavy_minus_sign:                                                                                                                        | Filter invitations based on their status                                                                                                  |
 
 ### Response
 
@@ -117,10 +108,9 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## revokeInvitation
 
@@ -137,22 +127,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->invitations->revokeInvitation('<value>');
 
-    if ($response->invitationRevoked !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->invitations->revokeInvitation(
+    invitationId: '<id>'
+);
+
+if ($response->invitationRevoked !== null) {
+    // handle response
 }
 ```
 
@@ -168,7 +155,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,404                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors35 | 400, 404             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

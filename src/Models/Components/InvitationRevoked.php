@@ -9,61 +9,62 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** InvitationRevoked - Success */
 class InvitationRevoked
 {
     /**
      *
      * @var InvitationRevokedObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationRevokedObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationRevokedObject')]
     public InvitationRevokedObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var string $emailAddress
      */
-    #[\JMS\Serializer\Annotation\SerializedName('email_address')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email_address')]
     public string $emailAddress;
 
     /**
      *
      * @var ?InvitationRevokedPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationRevokedPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationRevokedPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?InvitationRevokedPublicMetadata $publicMetadata = null;
 
     /**
      *
      * @var ?bool $revoked
      */
-    #[\JMS\Serializer\Annotation\SerializedName('revoked')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('revoked')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $revoked = null;
 
     /**
      *
      * @var InvitationRevokedStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationRevokedStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationRevokedStatus')]
     public InvitationRevokedStatus $status;
 
     /**
      *
      * @var ?string $url
      */
-    #[\JMS\Serializer\Annotation\SerializedName('url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $url = null;
 
     /**
@@ -73,7 +74,7 @@ class InvitationRevoked
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -83,21 +84,21 @@ class InvitationRevoked
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?InvitationRevokedObject  $object
-     * @param  ?string  $id
-     * @param  ?string  $emailAddress
-     * @param  ?InvitationRevokedStatus  $status
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  InvitationRevokedObject  $object
+     * @param  string  $id
+     * @param  string  $emailAddress
+     * @param  InvitationRevokedStatus  $status
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      * @param  ?InvitationRevokedPublicMetadata  $publicMetadata
      * @param  ?bool  $revoked
      * @param  ?string  $url
      */
-    public function __construct(?InvitationRevokedObject $object = null, ?string $id = null, ?string $emailAddress = null, ?InvitationRevokedStatus $status = null, ?int $createdAt = null, ?int $updatedAt = null, ?InvitationRevokedPublicMetadata $publicMetadata = null, ?bool $revoked = null, ?string $url = null)
+    public function __construct(InvitationRevokedObject $object, string $id, string $emailAddress, InvitationRevokedStatus $status, int $createdAt, int $updatedAt, ?InvitationRevokedPublicMetadata $publicMetadata = null, ?bool $revoked = null, ?string $url = null)
     {
         $this->object = $object;
         $this->id = $id;

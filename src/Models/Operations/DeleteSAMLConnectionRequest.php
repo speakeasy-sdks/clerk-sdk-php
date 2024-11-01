@@ -20,9 +20,9 @@ class DeleteSAMLConnectionRequest
     public string $samlConnectionId;
 
     /**
-     * @param  ?string  $samlConnectionId
+     * @param  string  $samlConnectionId
      */
-    public function __construct(?string $samlConnectionId = null)
+    public function __construct(string $samlConnectionId)
     {
         $this->samlConnectionId = $samlConnectionId;
     }

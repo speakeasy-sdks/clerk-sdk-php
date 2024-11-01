@@ -15,8 +15,8 @@ class SchemasPasskey
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
@@ -26,15 +26,15 @@ class SchemasPasskey
      *
      * @var SchemasPasskeyObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SchemasPasskeyObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SchemasPasskeyObject')]
     public SchemasPasskeyObject $object;
 
     /**
      *
      * @var string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
 
     /**
@@ -44,30 +44,30 @@ class SchemasPasskey
      *
      * @var int $lastUsedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_used_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_used_at')]
     public int $lastUsedAt;
 
     /**
      *
-     * @var Passkey $verification
+     * @var ?Passkey $verification
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verification')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Passkey')]
-    public Passkey $verification;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verification')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Passkey')]
+    public ?Passkey $verification;
 
     /**
-     * @param  ?SchemasPasskeyObject  $object
-     * @param  ?string  $name
-     * @param  ?int  $lastUsedAt
-     * @param  ?Passkey  $verification
+     * @param  SchemasPasskeyObject  $object
+     * @param  string  $name
+     * @param  int  $lastUsedAt
      * @param  ?string  $id
+     * @param  ?Passkey  $verification
      */
-    public function __construct(?SchemasPasskeyObject $object = null, ?string $name = null, ?int $lastUsedAt = null, ?Passkey $verification = null, ?string $id = null)
+    public function __construct(SchemasPasskeyObject $object, string $name, int $lastUsedAt, ?string $id = null, ?Passkey $verification = null)
     {
         $this->object = $object;
         $this->name = $name;
         $this->lastUsedAt = $lastUsedAt;
-        $this->verification = $verification;
         $this->id = $id;
+        $this->verification = $verification;
     }
 }

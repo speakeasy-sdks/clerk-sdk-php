@@ -15,41 +15,41 @@ class VerificationAdmin
      *
      * @var AdminVerificationPhoneNumberStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AdminVerificationPhoneNumberStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AdminVerificationPhoneNumberStatus')]
     public AdminVerificationPhoneNumberStatus $status;
 
     /**
      *
      * @var AdminVerificationStrategy $strategy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('strategy')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AdminVerificationStrategy')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('strategy')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AdminVerificationStrategy')]
     public AdminVerificationStrategy $strategy;
 
     /**
      *
      * @var ?int $attempts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attempts')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attempts')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $attempts = null;
 
     /**
      *
      * @var ?int $expireAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expire_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expire_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $expireAt = null;
 
     /**
-     * @param  ?AdminVerificationPhoneNumberStatus  $status
-     * @param  ?AdminVerificationStrategy  $strategy
+     * @param  AdminVerificationPhoneNumberStatus  $status
+     * @param  AdminVerificationStrategy  $strategy
      * @param  ?int  $attempts
      * @param  ?int  $expireAt
      */
-    public function __construct(?AdminVerificationPhoneNumberStatus $status = null, ?AdminVerificationStrategy $strategy = null, ?int $attempts = null, ?int $expireAt = null)
+    public function __construct(AdminVerificationPhoneNumberStatus $status, AdminVerificationStrategy $strategy, ?int $attempts = null, ?int $expireAt = null)
     {
         $this->status = $status;
         $this->strategy = $strategy;

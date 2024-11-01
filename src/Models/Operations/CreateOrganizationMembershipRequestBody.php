@@ -18,7 +18,7 @@ class CreateOrganizationMembershipRequestBody
      *
      * @var string $userId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
     public string $userId;
 
     /**
@@ -26,14 +26,14 @@ class CreateOrganizationMembershipRequestBody
      *
      * @var string $role
      */
-    #[\JMS\Serializer\Annotation\SerializedName('role')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
     public string $role;
 
     /**
-     * @param  ?string  $userId
-     * @param  ?string  $role
+     * @param  string  $userId
+     * @param  string  $role
      */
-    public function __construct(?string $userId = null, ?string $role = null)
+    public function __construct(string $userId, string $role)
     {
         $this->userId = $userId;
         $this->role = $role;

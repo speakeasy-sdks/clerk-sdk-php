@@ -1,4 +1,5 @@
 # SignInTokens
+(*signInTokens*)
 
 ## Overview
 
@@ -24,26 +25,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\CreateSignInTokenRequestBody(
-        userId: '<value>',
-        expiresInSeconds: 333727,
-    );
-    $response = $sdk->signInTokens->createSignInToken($request);
+$request = new Operations\CreateSignInTokenRequestBody();
 
-    if ($response->signInToken !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->signInTokens->createSignInToken(
+    request: $request
+);
+
+if ($response->signInToken !== null) {
+    // handle response
 }
 ```
 
@@ -59,11 +54,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 404,422                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors77 | 404, 422             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## revokeSignInToken
 
@@ -77,22 +71,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->signInTokens->revokeSignInToken('<value>');
 
-    if ($response->signInToken !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->signInTokens->revokeSignInToken(
+    signInTokenId: '<id>'
+);
+
+if ($response->signInToken !== null) {
+    // handle response
 }
 ```
 
@@ -108,7 +99,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,404                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors78 | 400, 404             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

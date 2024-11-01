@@ -16,8 +16,8 @@ class UpsertTemplateRequestBody
      *
      * @var ?string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $name = null;
 
     /**
@@ -27,8 +27,8 @@ class UpsertTemplateRequestBody
      *
      * @var ?string $subject
      */
-    #[\JMS\Serializer\Annotation\SerializedName('subject')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subject')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $subject = null;
 
     /**
@@ -36,8 +36,8 @@ class UpsertTemplateRequestBody
      *
      * @var ?string $markup
      */
-    #[\JMS\Serializer\Annotation\SerializedName('markup')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('markup')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $markup = null;
 
     /**
@@ -45,8 +45,8 @@ class UpsertTemplateRequestBody
      *
      * @var ?string $body
      */
-    #[\JMS\Serializer\Annotation\SerializedName('body')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('body')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $body = null;
 
     /**
@@ -54,8 +54,8 @@ class UpsertTemplateRequestBody
      *
      * @var ?bool $deliveredByClerk
      */
-    #[\JMS\Serializer\Annotation\SerializedName('delivered_by_clerk')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('delivered_by_clerk')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $deliveredByClerk = null;
 
     /**
@@ -66,8 +66,8 @@ class UpsertTemplateRequestBody
      *
      * @var ?string $fromEmailName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('from_email_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('from_email_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $fromEmailName = null;
 
     /**
@@ -78,27 +78,27 @@ class UpsertTemplateRequestBody
      *
      * @var ?string $replyToEmailName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('reply_to_email_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reply_to_email_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $replyToEmailName = null;
 
     /**
      * @param  ?string  $name
-     * @param  ?string  $subject
-     * @param  ?string  $markup
      * @param  ?string  $body
-     * @param  ?bool  $deliveredByClerk
      * @param  ?string  $fromEmailName
      * @param  ?string  $replyToEmailName
+     * @param  ?string  $subject
+     * @param  ?string  $markup
+     * @param  ?bool  $deliveredByClerk
      */
-    public function __construct(?string $name = null, ?string $subject = null, ?string $markup = null, ?string $body = null, ?bool $deliveredByClerk = null, ?string $fromEmailName = null, ?string $replyToEmailName = null)
+    public function __construct(?string $name = null, ?string $body = null, ?string $fromEmailName = null, ?string $replyToEmailName = null, ?string $subject = null, ?string $markup = null, ?bool $deliveredByClerk = null)
     {
         $this->name = $name;
-        $this->subject = $subject;
-        $this->markup = $markup;
         $this->body = $body;
-        $this->deliveredByClerk = $deliveredByClerk;
         $this->fromEmailName = $fromEmailName;
         $this->replyToEmailName = $replyToEmailName;
+        $this->subject = $subject;
+        $this->markup = $markup;
+        $this->deliveredByClerk = $deliveredByClerk;
     }
 }

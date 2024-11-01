@@ -40,12 +40,12 @@ class UsersGetOrganizationMembershipsResponse
     public ?Components\OrganizationMemberships $organizationMemberships = null;
 
     /**
-     * @param  ?string  $contentType
-     * @param  ?int  $statusCode
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\OrganizationMemberships  $organizationMemberships
      */
-    public function __construct(?string $contentType = null, ?int $statusCode = null, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, ?Components\OrganizationMemberships $organizationMemberships = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\OrganizationMemberships $organizationMemberships = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

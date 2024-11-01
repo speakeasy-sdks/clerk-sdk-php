@@ -15,59 +15,59 @@ class Oauth
      *
      * @var OauthVerificationStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OauthVerificationStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OauthVerificationStatus')]
     public OauthVerificationStatus $status;
 
     /**
      *
      * @var OauthVerificationStrategy $strategy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('strategy')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OauthVerificationStrategy')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('strategy')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OauthVerificationStrategy')]
     public OauthVerificationStrategy $strategy;
 
     /**
      *
      * @var ?string $externalVerificationRedirectUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('external_verification_redirect_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_verification_redirect_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $externalVerificationRedirectUrl = null;
 
     /**
      *
      * @var ?ErrorClerkError $error
      */
-    #[\JMS\Serializer\Annotation\SerializedName('error')]
-    #[\JMS\Serializer\Annotation\Type('?\Clerk\Backend\Models\Components\ErrorClerkError')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\ErrorClerkError')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?ErrorClerkError $error = null;
 
     /**
      *
      * @var int $expireAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expire_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expire_at')]
     public int $expireAt;
 
     /**
      *
      * @var ?int $attempts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attempts')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attempts')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $attempts = null;
 
     /**
-     * @param  ?OauthVerificationStatus  $status
-     * @param  ?OauthVerificationStrategy  $strategy
-     * @param  ?int  $expireAt
+     * @param  OauthVerificationStatus  $status
+     * @param  OauthVerificationStrategy  $strategy
+     * @param  int  $expireAt
      * @param  ?string  $externalVerificationRedirectUrl
      * @param  ?ErrorClerkError  $error
      * @param  ?int  $attempts
      */
-    public function __construct(?OauthVerificationStatus $status = null, ?OauthVerificationStrategy $strategy = null, ?int $expireAt = null, ?string $externalVerificationRedirectUrl = null, ?ErrorClerkError $error = null, ?int $attempts = null)
+    public function __construct(OauthVerificationStatus $status, OauthVerificationStrategy $strategy, int $expireAt, ?string $externalVerificationRedirectUrl = null, ?ErrorClerkError $error = null, ?int $attempts = null)
     {
         $this->status = $status;
         $this->strategy = $strategy;

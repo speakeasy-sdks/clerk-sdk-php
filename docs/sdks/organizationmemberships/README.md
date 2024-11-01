@@ -1,4 +1,5 @@
 # OrganizationMemberships
+(*organizationMemberships*)
 
 ## Overview
 
@@ -26,26 +27,25 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\CreateOrganizationMembershipRequestBody(
-        userId: '<value>',
-        role: '<value>',
-    );
-    $response = $sdk->organizationMemberships->createOrganizationMembership('<value>', $requestBody);
+$requestBody = new Operations\CreateOrganizationMembershipRequestBody(
+    userId: '<id>',
+    role: '<value>',
+);
 
-    if ($response->organizationMembership !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizationMemberships->createOrganizationMembership(
+    organizationId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->organizationMembership !== null) {
+    // handle response
 }
 ```
 
@@ -62,11 +62,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,403,404,422                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors69 | 400, 403, 404, 422   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## listOrganizationMemberships
 
@@ -80,22 +79,23 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->organizationMemberships->listOrganizationMemberships('<value>', 4957.25, 5573.93, '<value>');
 
-    if ($response->organizationMemberships !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizationMemberships->listOrganizationMemberships(
+    organizationId: '<id>',
+    limit: 10,
+    offset: 0,
+    orderBy: '<value>'
+
+);
+
+if ($response->organizationMemberships !== null) {
+    // handle response
 }
 ```
 
@@ -104,9 +104,9 @@ try {
 | Parameter                                                                                                                                                                                                                           | Type                                                                                                                                                                                                                                | Required                                                                                                                                                                                                                            | Description                                                                                                                                                                                                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `organizationId`                                                                                                                                                                                                                    | *string*                                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                  | The organization ID.                                                                                                                                                                                                                |
-| `limit`                                                                                                                                                                                                                             | *float*                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                  | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                                                                                                               |
-| `offset`                                                                                                                                                                                                                            | *float*                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                  | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`.                                                                                   |
-| `orderBy`                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                  | Sorts organizations memberships by phone_number, email_address, created_at, first_name, last_name or username.<br/>By prepending one of those values with + or -,<br/>we can choose to sort in ascending (ASC) or descending (DESC) order." |
+| `limit`                                                                                                                                                                                                                             | *?float*                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                  | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                                                                                                               |
+| `offset`                                                                                                                                                                                                                            | *?float*                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                  | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`.                                                                                   |
+| `orderBy`                                                                                                                                                                                                                           | *?string*                                                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                  | Sorts organizations memberships by phone_number, email_address, created_at, first_name, last_name or username.<br/>By prepending one of those values with + or -,<br/>we can choose to sort in ascending (ASC) or descending (DESC) order." |
 
 ### Response
 
@@ -114,11 +114,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 401,422                                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors70 | 401, 422             | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## updateOrganizationMembership
 
@@ -132,25 +131,25 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpdateOrganizationMembershipRequestBody(
-        role: '<value>',
-    );
-    $response = $sdk->organizationMemberships->updateOrganizationMembership('<value>', '<value>', $requestBody);
+$requestBody = new Operations\UpdateOrganizationMembershipRequestBody(
+    role: '<value>',
+);
 
-    if ($response->organizationMembership !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizationMemberships->updateOrganizationMembership(
+    organizationId: '<id>',
+    userId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->organizationMembership !== null) {
+    // handle response
 }
 ```
 
@@ -168,11 +167,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,404,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors71 | 400, 404, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## deleteOrganizationMembership
 
@@ -186,22 +184,21 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->organizationMemberships->deleteOrganizationMembership('<value>', '<value>');
 
-    if ($response->organizationMembership !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->organizationMemberships->deleteOrganizationMembership(
+    organizationId: '<id>',
+    userId: '<id>'
+
+);
+
+if ($response->organizationMembership !== null) {
+    // handle response
 }
 ```
 
@@ -218,11 +215,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors72 | 400, 401, 404        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## updateOrganizationMembershipMetadata
 
@@ -238,30 +234,23 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpdateOrganizationMembershipMetadataRequestBody(
-        publicMetadata: new Operations\UpdateOrganizationMembershipMetadataPublicMetadata(
+$requestBody = new Operations\UpdateOrganizationMembershipMetadataRequestBody();
 
-        ),
-        privateMetadata: new Operations\UpdateOrganizationMembershipMetadataPrivateMetadata(
+$response = $sdk->organizationMemberships->updateOrganizationMembershipMetadata(
+    organizationId: '<id>',
+    userId: '<id>',
+    requestBody: $requestBody
 
-        ),
-    );
-    $response = $sdk->organizationMemberships->updateOrganizationMembershipMetadata('<value>', '<value>', $requestBody);
+);
 
-    if ($response->organizationMembership !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+if ($response->organizationMembership !== null) {
+    // handle response
 }
 ```
 
@@ -279,7 +268,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,404,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors73 | 400, 404, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

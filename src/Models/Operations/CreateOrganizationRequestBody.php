@@ -16,7 +16,7 @@ class CreateOrganizationRequestBody
      *
      * @var string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
 
     /**
@@ -24,7 +24,7 @@ class CreateOrganizationRequestBody
      *
      * @var string $createdBy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_by')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_by')]
     public string $createdBy;
 
     /**
@@ -32,9 +32,9 @@ class CreateOrganizationRequestBody
      *
      * @var ?CreateOrganizationPrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CreateOrganizationPrivateMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CreateOrganizationPrivateMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?CreateOrganizationPrivateMetadata $privateMetadata = null;
 
     /**
@@ -42,9 +42,9 @@ class CreateOrganizationRequestBody
      *
      * @var ?CreateOrganizationPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CreateOrganizationPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CreateOrganizationPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?CreateOrganizationPublicMetadata $publicMetadata = null;
 
     /**
@@ -55,8 +55,8 @@ class CreateOrganizationRequestBody
      *
      * @var ?string $slug
      */
-    #[\JMS\Serializer\Annotation\SerializedName('slug')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $slug = null;
 
     /**
@@ -64,19 +64,19 @@ class CreateOrganizationRequestBody
      *
      * @var ?int $maxAllowedMemberships
      */
-    #[\JMS\Serializer\Annotation\SerializedName('max_allowed_memberships')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('max_allowed_memberships')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $maxAllowedMemberships = null;
 
     /**
-     * @param  ?string  $name
-     * @param  ?string  $createdBy
+     * @param  string  $name
+     * @param  string  $createdBy
      * @param  ?CreateOrganizationPrivateMetadata  $privateMetadata
      * @param  ?CreateOrganizationPublicMetadata  $publicMetadata
      * @param  ?string  $slug
      * @param  ?int  $maxAllowedMemberships
      */
-    public function __construct(?string $name = null, ?string $createdBy = null, ?CreateOrganizationPrivateMetadata $privateMetadata = null, ?CreateOrganizationPublicMetadata $publicMetadata = null, ?string $slug = null, ?int $maxAllowedMemberships = null)
+    public function __construct(string $name, string $createdBy, ?CreateOrganizationPrivateMetadata $privateMetadata = null, ?CreateOrganizationPublicMetadata $publicMetadata = null, ?string $slug = null, ?int $maxAllowedMemberships = null)
     {
         $this->name = $name;
         $this->createdBy = $createdBy;

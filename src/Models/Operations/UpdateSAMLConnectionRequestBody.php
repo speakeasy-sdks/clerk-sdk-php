@@ -16,8 +16,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $name = null;
 
     /**
@@ -25,8 +25,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?string $domain
      */
-    #[\JMS\Serializer\Annotation\SerializedName('domain')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('domain')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $domain = null;
 
     /**
@@ -34,8 +34,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?string $idpEntityId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_entity_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_entity_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpEntityId = null;
 
     /**
@@ -43,8 +43,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?string $idpSsoUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_sso_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_sso_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpSsoUrl = null;
 
     /**
@@ -52,8 +52,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?string $idpCertificate
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_certificate')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_certificate')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpCertificate = null;
 
     /**
@@ -61,8 +61,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?string $idpMetadataUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_metadata_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_metadata_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpMetadataUrl = null;
 
     /**
@@ -70,8 +70,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?string $idpMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('idp_metadata')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('idp_metadata')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $idpMetadata = null;
 
     /**
@@ -79,9 +79,9 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?UpdateSAMLConnectionAttributeMapping $attributeMapping
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attribute_mapping')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateSAMLConnectionAttributeMapping|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attribute_mapping')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateSAMLConnectionAttributeMapping|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UpdateSAMLConnectionAttributeMapping $attributeMapping = null;
 
     /**
@@ -89,8 +89,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?bool $active
      */
-    #[\JMS\Serializer\Annotation\SerializedName('active')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $active = null;
 
     /**
@@ -98,8 +98,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?bool $syncUserAttributes
      */
-    #[\JMS\Serializer\Annotation\SerializedName('sync_user_attributes')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sync_user_attributes')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $syncUserAttributes = null;
 
     /**
@@ -107,8 +107,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?bool $allowSubdomains
      */
-    #[\JMS\Serializer\Annotation\SerializedName('allow_subdomains')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_subdomains')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $allowSubdomains = null;
 
     /**
@@ -116,8 +116,8 @@ class UpdateSAMLConnectionRequestBody
      *
      * @var ?bool $allowIdpInitiated
      */
-    #[\JMS\Serializer\Annotation\SerializedName('allow_idp_initiated')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_idp_initiated')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $allowIdpInitiated = null;
 
     /**

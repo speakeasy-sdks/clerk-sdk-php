@@ -15,7 +15,7 @@ class SAMLAccount
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
@@ -25,95 +25,95 @@ class SAMLAccount
      *
      * @var SAMLAccountObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLAccountObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLAccountObject')]
     public SAMLAccountObject $object;
 
     /**
      *
      * @var string $provider
      */
-    #[\JMS\Serializer\Annotation\SerializedName('provider')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('provider')]
     public string $provider;
 
     /**
      *
      * @var bool $active
      */
-    #[\JMS\Serializer\Annotation\SerializedName('active')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active')]
     public bool $active;
 
     /**
      *
      * @var string $emailAddress
      */
-    #[\JMS\Serializer\Annotation\SerializedName('email_address')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email_address')]
     public string $emailAddress;
 
     /**
      *
      * @var ?string $firstName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('first_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('first_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $firstName = null;
 
     /**
      *
      * @var ?string $lastName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $lastName = null;
 
     /**
      *
      * @var ?string $providerUserId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('provider_user_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('provider_user_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $providerUserId = null;
 
     /**
      *
      * @var ?SAMLAccountPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLAccountPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLAccountPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?SAMLAccountPublicMetadata $publicMetadata = null;
 
     /**
      *
-     * @var Saml|Ticket $verification
+     * @var Saml|Ticket|null $verification
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verification')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Saml|\Clerk\Backend\Models\Components\Ticket')]
-    public Saml|Ticket $verification;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verification')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Saml|\Clerk\Backend\Models\Components\Ticket')]
+    public Saml|Ticket|null $verification;
 
     /**
-     * @param  ?string  $id
-     * @param  ?SAMLAccountObject  $object
-     * @param  ?string  $provider
-     * @param  ?bool  $active
-     * @param  ?string  $emailAddress
+     * @param  string  $id
+     * @param  SAMLAccountObject  $object
+     * @param  string  $provider
+     * @param  bool  $active
+     * @param  string  $emailAddress
+     * @param  ?SAMLAccountPublicMetadata  $publicMetadata
      * @param  Saml|Ticket|null  $verification
      * @param  ?string  $firstName
      * @param  ?string  $lastName
      * @param  ?string  $providerUserId
-     * @param  ?SAMLAccountPublicMetadata  $publicMetadata
      */
-    public function __construct(?string $id = null, ?SAMLAccountObject $object = null, ?string $provider = null, ?bool $active = null, ?string $emailAddress = null, Saml|Ticket|null $verification = null, ?string $firstName = null, ?string $lastName = null, ?string $providerUserId = null, ?SAMLAccountPublicMetadata $publicMetadata = null)
+    public function __construct(string $id, SAMLAccountObject $object, string $provider, bool $active, string $emailAddress, ?SAMLAccountPublicMetadata $publicMetadata = null, Saml|Ticket|null $verification = null, ?string $firstName = null, ?string $lastName = null, ?string $providerUserId = null)
     {
         $this->id = $id;
         $this->object = $object;
         $this->provider = $provider;
         $this->active = $active;
         $this->emailAddress = $emailAddress;
+        $this->publicMetadata = $publicMetadata;
         $this->verification = $verification;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->providerUserId = $providerUserId;
-        $this->publicMetadata = $publicMetadata;
     }
 }

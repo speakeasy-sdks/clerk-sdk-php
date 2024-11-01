@@ -1,4 +1,5 @@
 # SignUps
+(*signUps*)
 
 ## Overview
 
@@ -18,35 +19,31 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpdateSignUpRequestBody(
-        customAction: false,
-        externalId: '<value>',
-    );
-    $response = $sdk->signUps->updateSignUp('<value>', $requestBody);
+$requestBody = new Operations\UpdateSignUpRequestBody();
 
-    if ($response->signUp !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->signUps->updateSignUp(
+    id: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->signUp !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `id`                                                                                     | *string*                                                                                 | :heavy_check_mark:                                                                       | The ID of the sign-up to update                                                          |
-| `requestBody`                                                                            | [Operations\UpdateSignUpRequestBody](../../Models/Operations/UpdateSignUpRequestBody.md) | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `id`                                                                                      | *string*                                                                                  | :heavy_check_mark:                                                                        | The ID of the sign-up to update                                                           |
+| `requestBody`                                                                             | [?Operations\UpdateSignUpRequestBody](../../Models/Operations/UpdateSignUpRequestBody.md) | :heavy_minus_sign:                                                                        | N/A                                                                                       |
 
 ### Response
 
@@ -54,7 +51,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 403                                      | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors79 | 403                  | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

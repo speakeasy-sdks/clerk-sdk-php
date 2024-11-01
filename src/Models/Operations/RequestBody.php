@@ -16,7 +16,7 @@ class RequestBody
      *
      * @var string $emailAddress
      */
-    #[\JMS\Serializer\Annotation\SerializedName('email_address')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email_address')]
     public string $emailAddress;
 
     /**
@@ -26,7 +26,7 @@ class RequestBody
      *
      * @var string $inviterUserId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('inviter_user_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('inviter_user_id')]
     public string $inviterUserId;
 
     /**
@@ -34,7 +34,7 @@ class RequestBody
      *
      * @var string $role
      */
-    #[\JMS\Serializer\Annotation\SerializedName('role')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
     public string $role;
 
     /**
@@ -42,9 +42,9 @@ class RequestBody
      *
      * @var ?CreateOrganizationInvitationBulkPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CreateOrganizationInvitationBulkPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CreateOrganizationInvitationBulkPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?CreateOrganizationInvitationBulkPublicMetadata $publicMetadata = null;
 
     /**
@@ -52,9 +52,9 @@ class RequestBody
      *
      * @var ?CreateOrganizationInvitationBulkPrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CreateOrganizationInvitationBulkPrivateMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\CreateOrganizationInvitationBulkPrivateMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?CreateOrganizationInvitationBulkPrivateMetadata $privateMetadata = null;
 
     /**
@@ -62,19 +62,19 @@ class RequestBody
      *
      * @var ?string $redirectUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('redirect_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('redirect_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $redirectUrl = null;
 
     /**
-     * @param  ?string  $emailAddress
-     * @param  ?string  $inviterUserId
-     * @param  ?string  $role
+     * @param  string  $emailAddress
+     * @param  string  $inviterUserId
+     * @param  string  $role
      * @param  ?CreateOrganizationInvitationBulkPublicMetadata  $publicMetadata
      * @param  ?CreateOrganizationInvitationBulkPrivateMetadata  $privateMetadata
      * @param  ?string  $redirectUrl
      */
-    public function __construct(?string $emailAddress = null, ?string $inviterUserId = null, ?string $role = null, ?CreateOrganizationInvitationBulkPublicMetadata $publicMetadata = null, ?CreateOrganizationInvitationBulkPrivateMetadata $privateMetadata = null, ?string $redirectUrl = null)
+    public function __construct(string $emailAddress, string $inviterUserId, string $role, ?CreateOrganizationInvitationBulkPublicMetadata $publicMetadata = null, ?CreateOrganizationInvitationBulkPrivateMetadata $privateMetadata = null, ?string $redirectUrl = null)
     {
         $this->emailAddress = $emailAddress;
         $this->inviterUserId = $inviterUserId;

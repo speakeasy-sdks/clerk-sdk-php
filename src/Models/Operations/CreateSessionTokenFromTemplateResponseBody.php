@@ -16,17 +16,17 @@ class CreateSessionTokenFromTemplateResponseBody
      *
      * @var ?ObjectT $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\ObjectT|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\ObjectT|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?ObjectT $object = null;
 
     /**
      *
      * @var ?string $jwt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('jwt')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('jwt')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $jwt = null;
 
     /**

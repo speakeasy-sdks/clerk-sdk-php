@@ -15,8 +15,8 @@ class ResponseBody
      *
      * @var ?string $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $object = null;
 
     /**
@@ -24,8 +24,8 @@ class ResponseBody
      *
      * @var ?string $externalAccountId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('external_account_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_account_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $externalAccountId = null;
 
     /**
@@ -33,8 +33,8 @@ class ResponseBody
      *
      * @var ?string $providerUserId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('provider_user_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('provider_user_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $providerUserId = null;
 
     /**
@@ -42,8 +42,8 @@ class ResponseBody
      *
      * @var ?string $token
      */
-    #[\JMS\Serializer\Annotation\SerializedName('token')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('token')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $token = null;
 
     /**
@@ -51,25 +51,25 @@ class ResponseBody
      *
      * @var ?string $provider
      */
-    #[\JMS\Serializer\Annotation\SerializedName('provider')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('provider')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $provider = null;
 
     /**
      *
      * @var ?GetOAuthAccessTokenPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\GetOAuthAccessTokenPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\GetOAuthAccessTokenPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?GetOAuthAccessTokenPublicMetadata $publicMetadata = null;
 
     /**
      *
      * @var ?string $label
      */
-    #[\JMS\Serializer\Annotation\SerializedName('label')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('label')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $label = null;
 
     /**
@@ -79,9 +79,9 @@ class ResponseBody
      *
      * @var ?array<string> $scopes
      */
-    #[\JMS\Serializer\Annotation\SerializedName('scopes')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('scopes')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $scopes = null;
 
     /**
@@ -89,8 +89,8 @@ class ResponseBody
      *
      * @var ?string $tokenSecret
      */
-    #[\JMS\Serializer\Annotation\SerializedName('token_secret')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('token_secret')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $tokenSecret = null;
 
     /**
@@ -100,11 +100,11 @@ class ResponseBody
      * @param  ?string  $token
      * @param  ?string  $provider
      * @param  ?GetOAuthAccessTokenPublicMetadata  $publicMetadata
-     * @param  ?string  $label
      * @param  ?array<string>  $scopes
      * @param  ?string  $tokenSecret
+     * @param  ?string  $label
      */
-    public function __construct(?string $object = null, ?string $externalAccountId = null, ?string $providerUserId = null, ?string $token = null, ?string $provider = null, ?GetOAuthAccessTokenPublicMetadata $publicMetadata = null, ?string $label = null, ?array $scopes = null, ?string $tokenSecret = null)
+    public function __construct(?string $object = null, ?string $externalAccountId = null, ?string $providerUserId = null, ?string $token = null, ?string $provider = null, ?GetOAuthAccessTokenPublicMetadata $publicMetadata = null, ?array $scopes = null, ?string $tokenSecret = null, ?string $label = null)
     {
         $this->object = $object;
         $this->externalAccountId = $externalAccountId;
@@ -112,8 +112,8 @@ class ResponseBody
         $this->token = $token;
         $this->provider = $provider;
         $this->publicMetadata = $publicMetadata;
-        $this->label = $label;
         $this->scopes = $scopes;
         $this->tokenSecret = $tokenSecret;
+        $this->label = $label;
     }
 }

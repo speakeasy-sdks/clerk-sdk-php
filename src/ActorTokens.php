@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class ActorTokens
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -29,13 +28,12 @@ class ActorTokens
      * Create an actor token that can be used to impersonate the given user.
      * The `actor` parameter needs to include at least a "sub" key whose value is the ID of the actor (impersonating) user.
      *
-     * @param  Operations\CreateActorTokenRequestBody  $request
+     * @param  ?Operations\CreateActorTokenRequestBody  $request
      * @return Operations\CreateActorTokenResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createActorToken(
-        ?Operations\CreateActorTokenRequestBody $request,
-    ): Operations\CreateActorTokenResponse {
+    public function createActorToken(?Operations\CreateActorTokenRequestBody $request = null): Operations\CreateActorTokenResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/actor_tokens');
         $options = ['http_errors' => false];
@@ -69,7 +67,7 @@ class ActorTokens
         } elseif (in_array($statusCode, [400, 402, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors44', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -90,9 +88,8 @@ class ActorTokens
      * @return Operations\RevokeActorTokenResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function revokeActorToken(
-        string $actorTokenId,
-    ): Operations\RevokeActorTokenResponse {
+    public function revokeActorToken(string $actorTokenId): Operations\RevokeActorTokenResponse
+    {
         $request = new Operations\RevokeActorTokenRequest(
             actorTokenId: $actorTokenId,
         );
@@ -125,7 +122,7 @@ class ActorTokens
         } elseif (in_array($statusCode, [400, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors45', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -136,4 +133,5 @@ class ActorTokens
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

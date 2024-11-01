@@ -27,10 +27,10 @@ class UpdateDomainRequest
     public UpdateDomainRequestBody $requestBody;
 
     /**
-     * @param  ?string  $domainId
-     * @param  ?UpdateDomainRequestBody  $requestBody
+     * @param  string  $domainId
+     * @param  UpdateDomainRequestBody  $requestBody
      */
-    public function __construct(?string $domainId = null, ?UpdateDomainRequestBody $requestBody = null)
+    public function __construct(string $domainId, UpdateDomainRequestBody $requestBody)
     {
         $this->domainId = $domainId;
         $this->requestBody = $requestBody;

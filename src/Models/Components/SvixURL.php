@@ -9,19 +9,20 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** SvixURL - Response that contains a temporary Svix URL to access management dashboard */
 class SvixURL
 {
     /**
      *
      * @var string $svixUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('svix_url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('svix_url')]
     public string $svixUrl;
 
     /**
-     * @param  ?string  $svixUrl
+     * @param  string  $svixUrl
      */
-    public function __construct(?string $svixUrl = null)
+    public function __construct(string $svixUrl)
     {
         $this->svixUrl = $svixUrl;
     }

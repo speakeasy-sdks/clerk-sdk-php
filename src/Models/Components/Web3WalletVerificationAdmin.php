@@ -15,41 +15,41 @@ class Web3WalletVerificationAdmin
      *
      * @var AdminVerificationWeb3WalletStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AdminVerificationWeb3WalletStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AdminVerificationWeb3WalletStatus')]
     public AdminVerificationWeb3WalletStatus $status;
 
     /**
      *
      * @var AdminVerificationWeb3WalletStrategy $strategy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('strategy')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AdminVerificationWeb3WalletStrategy')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('strategy')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\AdminVerificationWeb3WalletStrategy')]
     public AdminVerificationWeb3WalletStrategy $strategy;
 
     /**
      *
      * @var ?int $attempts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attempts')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attempts')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $attempts = null;
 
     /**
      *
      * @var ?int $expireAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expire_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expire_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $expireAt = null;
 
     /**
-     * @param  ?AdminVerificationWeb3WalletStatus  $status
-     * @param  ?AdminVerificationWeb3WalletStrategy  $strategy
+     * @param  AdminVerificationWeb3WalletStatus  $status
+     * @param  AdminVerificationWeb3WalletStrategy  $strategy
      * @param  ?int  $attempts
      * @param  ?int  $expireAt
      */
-    public function __construct(?AdminVerificationWeb3WalletStatus $status = null, ?AdminVerificationWeb3WalletStrategy $strategy = null, ?int $attempts = null, ?int $expireAt = null)
+    public function __construct(AdminVerificationWeb3WalletStatus $status, AdminVerificationWeb3WalletStrategy $strategy, ?int $attempts = null, ?int $expireAt = null)
     {
         $this->status = $status;
         $this->strategy = $strategy;

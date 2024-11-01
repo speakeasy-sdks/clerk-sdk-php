@@ -15,41 +15,41 @@ class Ticket
      *
      * @var TicketVerificationStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\TicketVerificationStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\TicketVerificationStatus')]
     public TicketVerificationStatus $status;
 
     /**
      *
      * @var TicketVerificationStrategy $strategy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('strategy')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\TicketVerificationStrategy')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('strategy')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\TicketVerificationStrategy')]
     public TicketVerificationStrategy $strategy;
 
     /**
      *
      * @var ?int $attempts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attempts')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attempts')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $attempts = null;
 
     /**
      *
      * @var ?int $expireAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expire_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expire_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $expireAt = null;
 
     /**
-     * @param  ?TicketVerificationStatus  $status
-     * @param  ?TicketVerificationStrategy  $strategy
+     * @param  TicketVerificationStatus  $status
+     * @param  TicketVerificationStrategy  $strategy
      * @param  ?int  $attempts
      * @param  ?int  $expireAt
      */
-    public function __construct(?TicketVerificationStatus $status = null, ?TicketVerificationStrategy $strategy = null, ?int $attempts = null, ?int $expireAt = null)
+    public function __construct(TicketVerificationStatus $status, TicketVerificationStrategy $strategy, ?int $attempts = null, ?int $expireAt = null)
     {
         $this->status = $status;
         $this->strategy = $strategy;

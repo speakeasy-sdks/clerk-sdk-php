@@ -9,45 +9,46 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** DeletedObject - Deleted Object */
 class DeletedObject
 {
     /**
      *
      * @var string $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
     public string $object;
 
     /**
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
      *
      * @var ?string $slug
      */
-    #[\JMS\Serializer\Annotation\SerializedName('slug')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $slug = null;
 
     /**
      *
      * @var bool $deleted
      */
-    #[\JMS\Serializer\Annotation\SerializedName('deleted')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('deleted')]
     public bool $deleted;
 
     /**
-     * @param  ?string  $object
-     * @param  ?bool  $deleted
+     * @param  string  $object
+     * @param  bool  $deleted
      * @param  ?string  $id
      * @param  ?string  $slug
      */
-    public function __construct(?string $object = null, ?bool $deleted = null, ?string $id = null, ?string $slug = null)
+    public function __construct(string $object, bool $deleted, ?string $id = null, ?string $slug = null)
     {
         $this->object = $object;
         $this->deleted = $deleted;

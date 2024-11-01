@@ -41,11 +41,11 @@ class ListPendingOrganizationInvitationsRequest
     public ?float $offset = null;
 
     /**
-     * @param  ?string  $organizationId
+     * @param  string  $organizationId
      * @param  ?float  $limit
      * @param  ?float  $offset
      */
-    public function __construct(?string $organizationId = null, ?float $limit = null, ?float $offset = null)
+    public function __construct(string $organizationId, ?float $limit = 10, ?float $offset = 0)
     {
         $this->organizationId = $organizationId;
         $this->limit = $limit;

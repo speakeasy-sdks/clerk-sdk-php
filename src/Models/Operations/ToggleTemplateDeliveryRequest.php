@@ -35,11 +35,11 @@ class ToggleTemplateDeliveryRequest
     public ?ToggleTemplateDeliveryRequestBody $requestBody = null;
 
     /**
-     * @param  ?ToggleTemplateDeliveryPathParamTemplateType  $templateType
-     * @param  ?string  $slug
+     * @param  ToggleTemplateDeliveryPathParamTemplateType  $templateType
+     * @param  string  $slug
      * @param  ?ToggleTemplateDeliveryRequestBody  $requestBody
      */
-    public function __construct(?ToggleTemplateDeliveryPathParamTemplateType $templateType = null, ?string $slug = null, ?ToggleTemplateDeliveryRequestBody $requestBody = null)
+    public function __construct(ToggleTemplateDeliveryPathParamTemplateType $templateType, string $slug, ?ToggleTemplateDeliveryRequestBody $requestBody = null)
     {
         $this->templateType = $templateType;
         $this->slug = $slug;

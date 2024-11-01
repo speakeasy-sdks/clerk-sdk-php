@@ -18,24 +18,24 @@ class ClerkErrors
      *
      * @var array<Components\ClerkError> $errors
      */
-    #[\JMS\Serializer\Annotation\SerializedName('errors')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\ClerkError>')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('errors')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\ClerkError>')]
     public array $errors;
 
     /**
      *
      * @var ?Meta $meta
      */
-    #[\JMS\Serializer\Annotation\SerializedName('meta')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Errors\Meta|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meta')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Errors\Meta|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?Meta $meta = null;
 
     /**
-     * @param  ?array<Components\ClerkError>  $errors
+     * @param  array<Components\ClerkError>  $errors
      * @param  ?Meta  $meta
      */
-    public function __construct(?array $errors = null, ?Meta $meta = null)
+    public function __construct(array $errors, ?Meta $meta = null)
     {
         $this->errors = $errors;
         $this->meta = $meta;

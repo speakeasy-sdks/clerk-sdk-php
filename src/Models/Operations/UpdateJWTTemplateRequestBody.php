@@ -16,8 +16,8 @@ class UpdateJWTTemplateRequestBody
      *
      * @var ?string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $name = null;
 
     /**
@@ -25,9 +25,9 @@ class UpdateJWTTemplateRequestBody
      *
      * @var ?UpdateJWTTemplateClaims $claims
      */
-    #[\JMS\Serializer\Annotation\SerializedName('claims')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateJWTTemplateClaims|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('claims')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateJWTTemplateClaims|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UpdateJWTTemplateClaims $claims = null;
 
     /**
@@ -35,8 +35,8 @@ class UpdateJWTTemplateRequestBody
      *
      * @var ?float $lifetime
      */
-    #[\JMS\Serializer\Annotation\SerializedName('lifetime')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('lifetime')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?float $lifetime = null;
 
     /**
@@ -44,8 +44,8 @@ class UpdateJWTTemplateRequestBody
      *
      * @var ?float $allowedClockSkew
      */
-    #[\JMS\Serializer\Annotation\SerializedName('allowed_clock_skew')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allowed_clock_skew')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?float $allowedClockSkew = null;
 
     /**
@@ -53,8 +53,8 @@ class UpdateJWTTemplateRequestBody
      *
      * @var ?bool $customSigningKey
      */
-    #[\JMS\Serializer\Annotation\SerializedName('custom_signing_key')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_signing_key')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $customSigningKey = null;
 
     /**
@@ -62,8 +62,8 @@ class UpdateJWTTemplateRequestBody
      *
      * @var ?string $signingAlgorithm
      */
-    #[\JMS\Serializer\Annotation\SerializedName('signing_algorithm')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('signing_algorithm')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $signingAlgorithm = null;
 
     /**
@@ -71,26 +71,26 @@ class UpdateJWTTemplateRequestBody
      *
      * @var ?string $signingKey
      */
-    #[\JMS\Serializer\Annotation\SerializedName('signing_key')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('signing_key')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $signingKey = null;
 
     /**
      * @param  ?string  $name
      * @param  ?UpdateJWTTemplateClaims  $claims
+     * @param  ?bool  $customSigningKey
      * @param  ?float  $lifetime
      * @param  ?float  $allowedClockSkew
-     * @param  ?bool  $customSigningKey
      * @param  ?string  $signingAlgorithm
      * @param  ?string  $signingKey
      */
-    public function __construct(?string $name = null, ?UpdateJWTTemplateClaims $claims = null, ?float $lifetime = null, ?float $allowedClockSkew = null, ?bool $customSigningKey = null, ?string $signingAlgorithm = null, ?string $signingKey = null)
+    public function __construct(?string $name = null, ?UpdateJWTTemplateClaims $claims = null, ?bool $customSigningKey = null, ?float $lifetime = null, ?float $allowedClockSkew = null, ?string $signingAlgorithm = null, ?string $signingKey = null)
     {
         $this->name = $name;
         $this->claims = $claims;
+        $this->customSigningKey = $customSigningKey;
         $this->lifetime = $lifetime;
         $this->allowedClockSkew = $allowedClockSkew;
-        $this->customSigningKey = $customSigningKey;
         $this->signingAlgorithm = $signingAlgorithm;
         $this->signingKey = $signingKey;
     }

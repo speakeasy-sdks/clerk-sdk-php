@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Clerk\Backend\Utils;
 
-use JMS\Serializer\Type\ParserInterface;
 use phpDocumentor\Reflection\Type;
+use Speakeasy\Serializer\Type\ParserInterface;
 
 /**
  * Class PhpDocTypeParser

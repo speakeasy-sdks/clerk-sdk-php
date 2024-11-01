@@ -16,13 +16,13 @@ class VerifyPasswordRequestBody
      *
      * @var string $password
      */
-    #[\JMS\Serializer\Annotation\SerializedName('password')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('password')]
     public string $password;
 
     /**
-     * @param  ?string  $password
+     * @param  string  $password
      */
-    public function __construct(?string $password = null)
+    public function __construct(string $password)
     {
         $this->password = $password;
     }

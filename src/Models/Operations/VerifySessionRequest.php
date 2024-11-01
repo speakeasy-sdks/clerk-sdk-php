@@ -28,10 +28,10 @@ class VerifySessionRequest
     public ?VerifySessionRequestBody $requestBody = null;
 
     /**
-     * @param  ?string  $sessionId
+     * @param  string  $sessionId
      * @param  ?VerifySessionRequestBody  $requestBody
      */
-    public function __construct(?string $sessionId = null, ?VerifySessionRequestBody $requestBody = null)
+    public function __construct(string $sessionId, ?VerifySessionRequestBody $requestBody = null)
     {
         $this->sessionId = $sessionId;
         $this->requestBody = $requestBody;

@@ -16,13 +16,13 @@ class VerifyTOTPRequestBody
      *
      * @var string $code
      */
-    #[\JMS\Serializer\Annotation\SerializedName('code')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('code')]
     public string $code;
 
     /**
-     * @param  ?string  $code
+     * @param  string  $code
      */
-    public function __construct(?string $code = null)
+    public function __construct(string $code)
     {
         $this->code = $code;
     }

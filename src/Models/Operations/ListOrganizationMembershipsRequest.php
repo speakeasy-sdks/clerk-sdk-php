@@ -52,12 +52,12 @@ class ListOrganizationMembershipsRequest
     public ?string $orderBy = null;
 
     /**
-     * @param  ?string  $organizationId
+     * @param  string  $organizationId
      * @param  ?float  $limit
      * @param  ?float  $offset
      * @param  ?string  $orderBy
      */
-    public function __construct(?string $organizationId = null, ?float $limit = null, ?float $offset = null, ?string $orderBy = null)
+    public function __construct(string $organizationId, ?string $orderBy = null, ?float $limit = 10, ?float $offset = 0)
     {
         $this->organizationId = $organizationId;
         $this->limit = $limit;

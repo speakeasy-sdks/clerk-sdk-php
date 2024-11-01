@@ -27,10 +27,10 @@ class MergeOrganizationMetadataRequest
     public MergeOrganizationMetadataRequestBody $requestBody;
 
     /**
-     * @param  ?string  $organizationId
-     * @param  ?MergeOrganizationMetadataRequestBody  $requestBody
+     * @param  string  $organizationId
+     * @param  MergeOrganizationMetadataRequestBody  $requestBody
      */
-    public function __construct(?string $organizationId = null, ?MergeOrganizationMetadataRequestBody $requestBody = null)
+    public function __construct(string $organizationId, MergeOrganizationMetadataRequestBody $requestBody)
     {
         $this->organizationId = $organizationId;
         $this->requestBody = $requestBody;

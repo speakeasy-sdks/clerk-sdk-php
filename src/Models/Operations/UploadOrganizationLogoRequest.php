@@ -27,10 +27,10 @@ class UploadOrganizationLogoRequest
     public ?UploadOrganizationLogoRequestBody $requestBody = null;
 
     /**
-     * @param  ?string  $organizationId
+     * @param  string  $organizationId
      * @param  ?UploadOrganizationLogoRequestBody  $requestBody
      */
-    public function __construct(?string $organizationId = null, ?UploadOrganizationLogoRequestBody $requestBody = null)
+    public function __construct(string $organizationId, ?UploadOrganizationLogoRequestBody $requestBody = null)
     {
         $this->organizationId = $organizationId;
         $this->requestBody = $requestBody;

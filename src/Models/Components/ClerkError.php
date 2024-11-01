@@ -15,48 +15,48 @@ class ClerkError
      *
      * @var string $message
      */
-    #[\JMS\Serializer\Annotation\SerializedName('message')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('message')]
     public string $message;
 
     /**
      *
      * @var string $longMessage
      */
-    #[\JMS\Serializer\Annotation\SerializedName('long_message')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('long_message')]
     public string $longMessage;
 
     /**
      *
      * @var string $code
      */
-    #[\JMS\Serializer\Annotation\SerializedName('code')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('code')]
     public string $code;
 
     /**
      *
      * @var ?Meta $meta
      */
-    #[\JMS\Serializer\Annotation\SerializedName('meta')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Meta|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meta')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Meta|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?Meta $meta = null;
 
     /**
      *
      * @var ?string $clerkTraceId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('clerk_trace_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('clerk_trace_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $clerkTraceId = null;
 
     /**
-     * @param  ?string  $message
-     * @param  ?string  $longMessage
-     * @param  ?string  $code
+     * @param  string  $message
+     * @param  string  $longMessage
+     * @param  string  $code
      * @param  ?Meta  $meta
      * @param  ?string  $clerkTraceId
      */
-    public function __construct(?string $message = null, ?string $longMessage = null, ?string $code = null, ?Meta $meta = null, ?string $clerkTraceId = null)
+    public function __construct(string $message, string $longMessage, string $code, ?Meta $meta = null, ?string $clerkTraceId = null)
     {
         $this->message = $message;
         $this->longMessage = $longMessage;

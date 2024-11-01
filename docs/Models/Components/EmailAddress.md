@@ -1,5 +1,7 @@
 # EmailAddress
 
+Success
+
 
 ## Fields
 
@@ -8,8 +10,8 @@
 | `object`                                                                                    | [Components\EmailAddressObject](../../Models/Components/EmailAddressObject.md)              | :heavy_check_mark:                                                                          | String representing the object's type. Objects of the same type share the same value.<br/>  |
 | `emailAddress`                                                                              | *string*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
 | `reserved`                                                                                  | *bool*                                                                                      | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `verification`                                                                              | [Components\Otp\|Components\Admin\|Components\Oauth](../../Models/Components/Verification.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
 | `linkedTo`                                                                                  | array<[Components\IdentificationLink](../../Models/Components/IdentificationLink.md)>       | :heavy_check_mark:                                                                          | N/A                                                                                         |
 | `createdAt`                                                                                 | *int*                                                                                       | :heavy_check_mark:                                                                          | Unix timestamp of creation<br/>                                                             |
 | `updatedAt`                                                                                 | *int*                                                                                       | :heavy_check_mark:                                                                          | Unix timestamp of creation<br/>                                                             |
 | `id`                                                                                        | *?string*                                                                                   | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `verification`                                                                              | [Components\Otp\|Components\Admin\|Components\Oauth](../../Models/Components/Verification.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |

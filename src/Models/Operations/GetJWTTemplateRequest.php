@@ -20,9 +20,9 @@ class GetJWTTemplateRequest
     public string $templateId;
 
     /**
-     * @param  ?string  $templateId
+     * @param  string  $templateId
      */
-    public function __construct(?string $templateId = null)
+    public function __construct(string $templateId)
     {
         $this->templateId = $templateId;
     }

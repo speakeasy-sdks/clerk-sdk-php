@@ -16,7 +16,7 @@ class CreateActorTokenRequestBody
      *
      * @var string $userId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
     public string $userId;
 
     /**
@@ -26,8 +26,8 @@ class CreateActorTokenRequestBody
      *
      * @var Actor $actor
      */
-    #[\JMS\Serializer\Annotation\SerializedName('actor')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\Actor')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('actor')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\Actor')]
     public Actor $actor;
 
     /**
@@ -37,8 +37,8 @@ class CreateActorTokenRequestBody
      *
      * @var ?int $expiresInSeconds
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expires_in_seconds')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expires_in_seconds')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $expiresInSeconds = null;
 
     /**
@@ -48,17 +48,17 @@ class CreateActorTokenRequestBody
      *
      * @var ?int $sessionMaxDurationInSeconds
      */
-    #[\JMS\Serializer\Annotation\SerializedName('session_max_duration_in_seconds')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('session_max_duration_in_seconds')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $sessionMaxDurationInSeconds = null;
 
     /**
-     * @param  ?string  $userId
-     * @param  ?Actor  $actor
+     * @param  string  $userId
+     * @param  Actor  $actor
      * @param  ?int  $expiresInSeconds
      * @param  ?int  $sessionMaxDurationInSeconds
      */
-    public function __construct(?string $userId = null, ?Actor $actor = null, ?int $expiresInSeconds = null, ?int $sessionMaxDurationInSeconds = null)
+    public function __construct(string $userId, Actor $actor, ?int $expiresInSeconds = 3600, ?int $sessionMaxDurationInSeconds = 1800)
     {
         $this->userId = $userId;
         $this->actor = $actor;

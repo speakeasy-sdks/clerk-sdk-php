@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class EmailAndSMSTemplates
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -34,9 +33,8 @@ class EmailAndSMSTemplates
      * @throws \Clerk\Backend\Models\Errors\SDKException
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    public function getTemplateList(
-        Operations\TemplateType $templateType,
-    ): Operations\GetTemplateListResponse {
+    public function getTemplateList(Operations\TemplateType $templateType): Operations\GetTemplateListResponse
+    {
         trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new Operations\GetTemplateListRequest(
             templateType: $templateType,
@@ -70,7 +68,7 @@ class EmailAndSMSTemplates
         } elseif (in_array($statusCode, [400, 401, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors16', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -93,10 +91,8 @@ class EmailAndSMSTemplates
      * @throws \Clerk\Backend\Models\Errors\SDKException
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    public function getTemplate(
-        Operations\PathParamTemplateType $templateType,
-        string $slug,
-    ): Operations\GetTemplateResponse {
+    public function getTemplate(Operations\PathParamTemplateType $templateType, string $slug): Operations\GetTemplateResponse
+    {
         trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new Operations\GetTemplateRequest(
             templateType: $templateType,
@@ -131,7 +127,7 @@ class EmailAndSMSTemplates
         } elseif (in_array($statusCode, [400, 401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors17', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -155,11 +151,8 @@ class EmailAndSMSTemplates
      * @throws \Clerk\Backend\Models\Errors\SDKException
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    public function upsertTemplate(
-        Operations\UpsertTemplatePathParamTemplateType $templateType,
-        string $slug,
-        ?Operations\UpsertTemplateRequestBody $requestBody = null,
-    ): Operations\UpsertTemplateResponse {
+    public function upsertTemplate(Operations\UpsertTemplatePathParamTemplateType $templateType, string $slug, ?Operations\UpsertTemplateRequestBody $requestBody = null): Operations\UpsertTemplateResponse
+    {
         trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new Operations\UpsertTemplateRequest(
             templateType: $templateType,
@@ -199,7 +192,7 @@ class EmailAndSMSTemplates
         } elseif (in_array($statusCode, [400, 401, 402, 403, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors18', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -222,10 +215,8 @@ class EmailAndSMSTemplates
      * @throws \Clerk\Backend\Models\Errors\SDKException
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    public function revertTemplate(
-        Operations\RevertTemplatePathParamTemplateType $templateType,
-        string $slug,
-    ): Operations\RevertTemplateResponse {
+    public function revertTemplate(Operations\RevertTemplatePathParamTemplateType $templateType, string $slug): Operations\RevertTemplateResponse
+    {
         trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new Operations\RevertTemplateRequest(
             templateType: $templateType,
@@ -260,7 +251,7 @@ class EmailAndSMSTemplates
         } elseif (in_array($statusCode, [400, 401, 402, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors19', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -284,11 +275,8 @@ class EmailAndSMSTemplates
      * @throws \Clerk\Backend\Models\Errors\SDKException
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    public function previewTemplate(
-        string $templateType,
-        string $slug,
-        ?Operations\PreviewTemplateRequestBody $requestBody = null,
-    ): Operations\PreviewTemplateResponse {
+    public function previewTemplate(string $templateType, string $slug, ?Operations\PreviewTemplateRequestBody $requestBody = null): Operations\PreviewTemplateResponse
+    {
         trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new Operations\PreviewTemplateRequest(
             templateType: $templateType,
@@ -328,7 +316,7 @@ class EmailAndSMSTemplates
         } elseif (in_array($statusCode, [400, 401, 404, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors20', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -354,11 +342,8 @@ class EmailAndSMSTemplates
      * @throws \Clerk\Backend\Models\Errors\SDKException
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    public function toggleTemplateDelivery(
-        Operations\ToggleTemplateDeliveryPathParamTemplateType $templateType,
-        string $slug,
-        ?Operations\ToggleTemplateDeliveryRequestBody $requestBody = null,
-    ): Operations\ToggleTemplateDeliveryResponse {
+    public function toggleTemplateDelivery(Operations\ToggleTemplateDeliveryPathParamTemplateType $templateType, string $slug, ?Operations\ToggleTemplateDeliveryRequestBody $requestBody = null): Operations\ToggleTemplateDeliveryResponse
+    {
         trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new Operations\ToggleTemplateDeliveryRequest(
             templateType: $templateType,
@@ -398,7 +383,7 @@ class EmailAndSMSTemplates
         } elseif (in_array($statusCode, [400, 401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors21', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -409,4 +394,5 @@ class EmailAndSMSTemplates
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

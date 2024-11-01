@@ -18,17 +18,17 @@ class BlocklistIdentifier
      *
      * @var ?BlocklistIdentifierObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\BlocklistIdentifierObject|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\BlocklistIdentifierObject|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?BlocklistIdentifierObject $object = null;
 
     /**
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
@@ -38,25 +38,25 @@ class BlocklistIdentifier
      *
      * @var ?string $identifier
      */
-    #[\JMS\Serializer\Annotation\SerializedName('identifier')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('identifier')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $identifier = null;
 
     /**
      *
      * @var ?BlocklistIdentifierIdentifierType $identifierType
      */
-    #[\JMS\Serializer\Annotation\SerializedName('identifier_type')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\BlocklistIdentifierIdentifierType|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('identifier_type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\BlocklistIdentifierIdentifierType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?BlocklistIdentifierIdentifierType $identifierType = null;
 
     /**
      *
      * @var ?string $instanceId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('instance_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('instance_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $instanceId = null;
 
     /**
@@ -66,8 +66,8 @@ class BlocklistIdentifier
      *
      * @var ?int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $createdAt = null;
 
     /**
@@ -77,8 +77,8 @@ class BlocklistIdentifier
      *
      * @var ?int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $updatedAt = null;
 
     /**

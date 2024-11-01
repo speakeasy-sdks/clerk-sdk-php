@@ -40,12 +40,12 @@ class CreateAllowlistIdentifierResponse
     public ?Components\AllowlistIdentifier $allowlistIdentifier = null;
 
     /**
-     * @param  ?string  $contentType
-     * @param  ?int  $statusCode
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\AllowlistIdentifier  $allowlistIdentifier
      */
-    public function __construct(?string $contentType = null, ?int $statusCode = null, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, ?Components\AllowlistIdentifier $allowlistIdentifier = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\AllowlistIdentifier $allowlistIdentifier = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

@@ -16,9 +16,9 @@ class UpdateOrganizationRequestBody
      *
      * @var ?UpdateOrganizationPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateOrganizationPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateOrganizationPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UpdateOrganizationPublicMetadata $publicMetadata = null;
 
     /**
@@ -26,9 +26,9 @@ class UpdateOrganizationRequestBody
      *
      * @var ?UpdateOrganizationPrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateOrganizationPrivateMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateOrganizationPrivateMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UpdateOrganizationPrivateMetadata $privateMetadata = null;
 
     /**
@@ -36,8 +36,8 @@ class UpdateOrganizationRequestBody
      *
      * @var ?string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $name = null;
 
     /**
@@ -45,8 +45,8 @@ class UpdateOrganizationRequestBody
      *
      * @var ?string $slug
      */
-    #[\JMS\Serializer\Annotation\SerializedName('slug')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $slug = null;
 
     /**
@@ -54,8 +54,8 @@ class UpdateOrganizationRequestBody
      *
      * @var ?int $maxAllowedMemberships
      */
-    #[\JMS\Serializer\Annotation\SerializedName('max_allowed_memberships')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('max_allowed_memberships')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $maxAllowedMemberships = null;
 
     /**
@@ -63,8 +63,8 @@ class UpdateOrganizationRequestBody
      *
      * @var ?bool $adminDeleteEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('admin_delete_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('admin_delete_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $adminDeleteEnabled = null;
 
     /**

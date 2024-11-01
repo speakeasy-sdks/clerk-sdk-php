@@ -18,13 +18,13 @@ class RevokeOrganizationInvitationRequestBody
      *
      * @var string $requestingUserId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('requesting_user_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('requesting_user_id')]
     public string $requestingUserId;
 
     /**
-     * @param  ?string  $requestingUserId
+     * @param  string  $requestingUserId
      */
-    public function __construct(?string $requestingUserId = null)
+    public function __construct(string $requestingUserId)
     {
         $this->requestingUserId = $requestingUserId;
     }

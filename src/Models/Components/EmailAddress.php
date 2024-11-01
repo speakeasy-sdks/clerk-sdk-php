@@ -9,14 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** EmailAddress - Success */
 class EmailAddress
 {
     /**
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
@@ -26,39 +27,39 @@ class EmailAddress
      *
      * @var EmailAddressObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\EmailAddressObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\EmailAddressObject')]
     public EmailAddressObject $object;
 
     /**
      *
      * @var string $emailAddress
      */
-    #[\JMS\Serializer\Annotation\SerializedName('email_address')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email_address')]
     public string $emailAddress;
 
     /**
      *
      * @var bool $reserved
      */
-    #[\JMS\Serializer\Annotation\SerializedName('reserved')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reserved')]
     public bool $reserved;
 
     /**
      *
-     * @var Otp|Admin|Oauth $verification
+     * @var Otp|Admin|Oauth|null $verification
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verification')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Otp|\Clerk\Backend\Models\Components\Admin|\Clerk\Backend\Models\Components\Oauth')]
-    public Otp|Admin|Oauth $verification;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verification')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Otp|\Clerk\Backend\Models\Components\Admin|\Clerk\Backend\Models\Components\Oauth')]
+    public Otp|Admin|Oauth|null $verification;
 
     /**
      * $linkedTo
      *
      * @var array<IdentificationLink> $linkedTo
      */
-    #[\JMS\Serializer\Annotation\SerializedName('linked_to')]
-    #[\JMS\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\IdentificationLink>')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('linked_to')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Clerk\Backend\Models\Components\IdentificationLink>')]
     public array $linkedTo;
 
     /**
@@ -68,7 +69,7 @@ class EmailAddress
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -78,28 +79,28 @@ class EmailAddress
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?EmailAddressObject  $object
-     * @param  ?string  $emailAddress
-     * @param  ?bool  $reserved
-     * @param  Otp|Admin|Oauth|null  $verification
-     * @param  ?array<IdentificationLink>  $linkedTo
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  EmailAddressObject  $object
+     * @param  string  $emailAddress
+     * @param  bool  $reserved
+     * @param  array<IdentificationLink>  $linkedTo
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      * @param  ?string  $id
+     * @param  Otp|Admin|Oauth|null  $verification
      */
-    public function __construct(?EmailAddressObject $object = null, ?string $emailAddress = null, ?bool $reserved = null, Otp|Admin|Oauth|null $verification = null, ?array $linkedTo = null, ?int $createdAt = null, ?int $updatedAt = null, ?string $id = null)
+    public function __construct(EmailAddressObject $object, string $emailAddress, bool $reserved, array $linkedTo, int $createdAt, int $updatedAt, ?string $id = null, Otp|Admin|Oauth|null $verification = null)
     {
         $this->object = $object;
         $this->emailAddress = $emailAddress;
         $this->reserved = $reserved;
-        $this->verification = $verification;
         $this->linkedTo = $linkedTo;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
         $this->id = $id;
+        $this->verification = $verification;
     }
 }

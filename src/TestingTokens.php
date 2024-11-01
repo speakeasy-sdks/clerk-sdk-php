@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class TestingTokens
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -31,8 +30,8 @@ class TestingTokens
      * @return Operations\CreateTestingTokenResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createTestingToken(
-    ): Operations\CreateTestingTokenResponse {
+    public function createTestingToken(): Operations\CreateTestingTokenResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/testing_tokens');
         $options = ['http_errors' => false];
@@ -65,4 +64,5 @@ class TestingTokens
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

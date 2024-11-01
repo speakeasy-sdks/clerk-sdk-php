@@ -15,76 +15,76 @@ class OrganizationWithLogo
      *
      * @var OrganizationWithLogoObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationWithLogoObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationWithLogoObject')]
     public OrganizationWithLogoObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
 
     /**
      *
      * @var string $slug
      */
-    #[\JMS\Serializer\Annotation\SerializedName('slug')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
     public string $slug;
 
     /**
      *
      * @var ?int $membersCount
      */
-    #[\JMS\Serializer\Annotation\SerializedName('members_count')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('members_count')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $membersCount = null;
 
     /**
      *
      * @var int $maxAllowedMemberships
      */
-    #[\JMS\Serializer\Annotation\SerializedName('max_allowed_memberships')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('max_allowed_memberships')]
     public int $maxAllowedMemberships;
 
     /**
      *
      * @var ?bool $adminDeleteEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('admin_delete_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('admin_delete_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $adminDeleteEnabled = null;
 
     /**
      *
      * @var OrganizationWithLogoPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationWithLogoPublicMetadata')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationWithLogoPublicMetadata')]
     public OrganizationWithLogoPublicMetadata $publicMetadata;
 
     /**
      *
      * @var OrganizationWithLogoPrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationWithLogoPrivateMetadata')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OrganizationWithLogoPrivateMetadata')]
     public OrganizationWithLogoPrivateMetadata $privateMetadata;
 
     /**
      *
      * @var ?string $createdBy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_by')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_by')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $createdBy = null;
 
     /**
@@ -94,7 +94,7 @@ class OrganizationWithLogo
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -104,7 +104,7 @@ class OrganizationWithLogo
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
@@ -112,43 +112,43 @@ class OrganizationWithLogo
      * @var ?string $logoUrl
      * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    #[\JMS\Serializer\Annotation\SerializedName('logo_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('logo_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $logoUrl = null;
 
     /**
      *
      * @var string $imageUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('image_url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('image_url')]
     public string $imageUrl;
 
     /**
      *
      * @var ?bool $hasImage
      */
-    #[\JMS\Serializer\Annotation\SerializedName('has_image')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('has_image')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $hasImage = null;
 
     /**
-     * @param  ?OrganizationWithLogoObject  $object
-     * @param  ?string  $id
-     * @param  ?string  $name
-     * @param  ?string  $slug
-     * @param  ?int  $maxAllowedMemberships
-     * @param  ?OrganizationWithLogoPublicMetadata  $publicMetadata
-     * @param  ?OrganizationWithLogoPrivateMetadata  $privateMetadata
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
-     * @param  ?string  $imageUrl
-     * @param  ?int  $membersCount
+     * @param  OrganizationWithLogoObject  $object
+     * @param  string  $id
+     * @param  string  $name
+     * @param  string  $slug
+     * @param  int  $maxAllowedMemberships
+     * @param  OrganizationWithLogoPublicMetadata  $publicMetadata
+     * @param  OrganizationWithLogoPrivateMetadata  $privateMetadata
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
+     * @param  string  $imageUrl
      * @param  ?bool  $adminDeleteEnabled
      * @param  ?string  $createdBy
      * @param  ?string  $logoUrl
      * @param  ?bool  $hasImage
+     * @param  ?int  $membersCount
      */
-    public function __construct(?OrganizationWithLogoObject $object = null, ?string $id = null, ?string $name = null, ?string $slug = null, ?int $maxAllowedMemberships = null, ?OrganizationWithLogoPublicMetadata $publicMetadata = null, ?OrganizationWithLogoPrivateMetadata $privateMetadata = null, ?int $createdAt = null, ?int $updatedAt = null, ?string $imageUrl = null, ?int $membersCount = null, ?bool $adminDeleteEnabled = null, ?string $createdBy = null, ?string $logoUrl = null, ?bool $hasImage = null)
+    public function __construct(OrganizationWithLogoObject $object, string $id, string $name, string $slug, int $maxAllowedMemberships, OrganizationWithLogoPublicMetadata $publicMetadata, OrganizationWithLogoPrivateMetadata $privateMetadata, int $createdAt, int $updatedAt, string $imageUrl, ?bool $adminDeleteEnabled = null, ?string $createdBy = null, ?string $logoUrl = null, ?bool $hasImage = null, ?int $membersCount = null)
     {
         $this->object = $object;
         $this->id = $id;
@@ -160,10 +160,10 @@ class OrganizationWithLogo
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
         $this->imageUrl = $imageUrl;
-        $this->membersCount = $membersCount;
         $this->adminDeleteEnabled = $adminDeleteEnabled;
         $this->createdBy = $createdBy;
         $this->logoUrl = $logoUrl;
         $this->hasImage = $hasImage;
+        $this->membersCount = $membersCount;
     }
 }

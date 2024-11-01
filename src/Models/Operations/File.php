@@ -26,10 +26,10 @@ class File
     public string $content;
 
     /**
-     * @param  ?string  $fileName
-     * @param  ?string  $content
+     * @param  string  $fileName
+     * @param  string  $content
      */
-    public function __construct(?string $fileName = null, ?string $content = null)
+    public function __construct(string $fileName, string $content)
     {
         $this->fileName = $fileName;
         $this->content = $content;

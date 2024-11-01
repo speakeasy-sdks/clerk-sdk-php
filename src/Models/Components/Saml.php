@@ -15,63 +15,63 @@ class Saml
      *
      * @var SAMLVerificationStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLVerificationStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLVerificationStatus')]
     public SAMLVerificationStatus $status;
 
     /**
      *
      * @var SAMLVerificationStrategy $strategy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('strategy')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLVerificationStrategy')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('strategy')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLVerificationStrategy')]
     public SAMLVerificationStrategy $strategy;
 
     /**
      *
-     * @var string $externalVerificationRedirectUrl
+     * @var ?string $externalVerificationRedirectUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('external_verification_redirect_url')]
-    public string $externalVerificationRedirectUrl;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_verification_redirect_url')]
+    public ?string $externalVerificationRedirectUrl;
 
     /**
      *
      * @var ?SAMLErrorClerkError $error
      */
-    #[\JMS\Serializer\Annotation\SerializedName('error')]
-    #[\JMS\Serializer\Annotation\Type('?\Clerk\Backend\Models\Components\SAMLErrorClerkError')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\SAMLErrorClerkError')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?SAMLErrorClerkError $error = null;
 
     /**
      *
      * @var int $expireAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expire_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expire_at')]
     public int $expireAt;
 
     /**
      *
      * @var ?int $attempts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attempts')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attempts')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $attempts = null;
 
     /**
-     * @param  ?SAMLVerificationStatus  $status
-     * @param  ?SAMLVerificationStrategy  $strategy
+     * @param  SAMLVerificationStatus  $status
+     * @param  SAMLVerificationStrategy  $strategy
+     * @param  int  $expireAt
      * @param  ?string  $externalVerificationRedirectUrl
-     * @param  ?int  $expireAt
      * @param  ?SAMLErrorClerkError  $error
      * @param  ?int  $attempts
      */
-    public function __construct(?SAMLVerificationStatus $status = null, ?SAMLVerificationStrategy $strategy = null, ?string $externalVerificationRedirectUrl = null, ?int $expireAt = null, ?SAMLErrorClerkError $error = null, ?int $attempts = null)
+    public function __construct(SAMLVerificationStatus $status, SAMLVerificationStrategy $strategy, int $expireAt, ?string $externalVerificationRedirectUrl = null, ?SAMLErrorClerkError $error = null, ?int $attempts = null)
     {
         $this->status = $status;
         $this->strategy = $strategy;
-        $this->externalVerificationRedirectUrl = $externalVerificationRedirectUrl;
         $this->expireAt = $expireAt;
+        $this->externalVerificationRedirectUrl = $externalVerificationRedirectUrl;
         $this->error = $error;
         $this->attempts = $attempts;
     }

@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class BetaFeatures
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -28,13 +27,12 @@ class BetaFeatures
      *
      * Updates the settings of an instance
      *
-     * @param  Operations\UpdateInstanceAuthConfigRequestBody  $request
+     * @param  ?Operations\UpdateInstanceAuthConfigRequestBody  $request
      * @return Operations\UpdateInstanceAuthConfigResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function updateInstanceAuthConfig(
-        ?Operations\UpdateInstanceAuthConfigRequestBody $request,
-    ): Operations\UpdateInstanceAuthConfigResponse {
+    public function updateInstanceAuthConfig(?Operations\UpdateInstanceAuthConfigRequestBody $request = null): Operations\UpdateInstanceAuthConfigResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/beta_features/instance_settings');
         $options = ['http_errors' => false];
@@ -68,7 +66,7 @@ class BetaFeatures
         } elseif (in_array($statusCode, [402, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors42', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -89,14 +87,13 @@ class BetaFeatures
      *
      * WARNING: Changing your domain will invalidate all current user sessions (i.e. users will be logged out). Also, while your application is being deployed, a small downtime is expected to occur.
      *
-     * @param  Operations\UpdateProductionInstanceDomainRequestBody  $request
+     * @param  ?Operations\UpdateProductionInstanceDomainRequestBody  $request
      * @return Operations\UpdateProductionInstanceDomainResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    public function updateProductionInstanceDomain(
-        ?Operations\UpdateProductionInstanceDomainRequestBody $request,
-    ): Operations\UpdateProductionInstanceDomainResponse {
+    public function updateProductionInstanceDomain(?Operations\UpdateProductionInstanceDomainRequestBody $request = null): Operations\UpdateProductionInstanceDomainResponse
+    {
         trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/beta_features/domain');
@@ -123,7 +120,7 @@ class BetaFeatures
         } elseif (in_array($statusCode, [400, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors43', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -144,13 +141,12 @@ class BetaFeatures
      *
      * WARNING: Changing your domain will invalidate all current user sessions (i.e. users will be logged out). Also, while your application is being deployed, a small downtime is expected to occur.
      *
-     * @param  Operations\ChangeProductionInstanceDomainRequestBody  $request
+     * @param  ?Operations\ChangeProductionInstanceDomainRequestBody  $request
      * @return Operations\ChangeProductionInstanceDomainResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function changeProductionInstanceDomain(
-        ?Operations\ChangeProductionInstanceDomainRequestBody $request,
-    ): Operations\ChangeProductionInstanceDomainResponse {
+    public function changeProductionInstanceDomain(?Operations\ChangeProductionInstanceDomainRequestBody $request = null): Operations\ChangeProductionInstanceDomainResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/instance/change_domain');
         $options = ['http_errors' => false];
@@ -176,7 +172,7 @@ class BetaFeatures
         } elseif (in_array($statusCode, [400, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors50', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -187,4 +183,5 @@ class BetaFeatures
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

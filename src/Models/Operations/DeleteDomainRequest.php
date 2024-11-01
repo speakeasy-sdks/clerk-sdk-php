@@ -20,9 +20,9 @@ class DeleteDomainRequest
     public string $domainId;
 
     /**
-     * @param  ?string  $domainId
+     * @param  string  $domainId
      */
-    public function __construct(?string $domainId = null)
+    public function __construct(string $domainId)
     {
         $this->domainId = $domainId;
     }

@@ -16,8 +16,8 @@ class CreateSignInTokenRequestBody
      *
      * @var ?string $userId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $userId = null;
 
     /**
@@ -27,15 +27,15 @@ class CreateSignInTokenRequestBody
      *
      * @var ?int $expiresInSeconds
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expires_in_seconds')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expires_in_seconds')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $expiresInSeconds = null;
 
     /**
      * @param  ?string  $userId
      * @param  ?int  $expiresInSeconds
      */
-    public function __construct(?string $userId = null, ?int $expiresInSeconds = null)
+    public function __construct(?string $userId = null, ?int $expiresInSeconds = 2592000)
     {
         $this->userId = $userId;
         $this->expiresInSeconds = $expiresInSeconds;

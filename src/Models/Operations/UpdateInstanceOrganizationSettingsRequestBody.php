@@ -15,32 +15,32 @@ class UpdateInstanceOrganizationSettingsRequestBody
      *
      * @var ?bool $enabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $enabled = null;
 
     /**
      *
      * @var ?int $maxAllowedMemberships
      */
-    #[\JMS\Serializer\Annotation\SerializedName('max_allowed_memberships')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('max_allowed_memberships')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $maxAllowedMemberships = null;
 
     /**
      *
      * @var ?bool $adminDeleteEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('admin_delete_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('admin_delete_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $adminDeleteEnabled = null;
 
     /**
      *
      * @var ?bool $domainsEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('domains_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('domains_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $domainsEnabled = null;
 
     /**
@@ -50,9 +50,9 @@ class UpdateInstanceOrganizationSettingsRequestBody
      *
      * @var ?array<string> $domainsEnrollmentModes
      */
-    #[\JMS\Serializer\Annotation\SerializedName('domains_enrollment_modes')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('domains_enrollment_modes')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $domainsEnrollmentModes = null;
 
     /**
@@ -60,8 +60,8 @@ class UpdateInstanceOrganizationSettingsRequestBody
      *
      * @var ?string $creatorRoleId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('creator_role_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('creator_role_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $creatorRoleId = null;
 
     /**
@@ -69,27 +69,27 @@ class UpdateInstanceOrganizationSettingsRequestBody
      *
      * @var ?string $domainsDefaultRoleId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('domains_default_role_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('domains_default_role_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $domainsDefaultRoleId = null;
 
     /**
+     * @param  ?array<string>  $domainsEnrollmentModes
+     * @param  ?string  $creatorRoleId
+     * @param  ?string  $domainsDefaultRoleId
      * @param  ?bool  $enabled
      * @param  ?int  $maxAllowedMemberships
      * @param  ?bool  $adminDeleteEnabled
      * @param  ?bool  $domainsEnabled
-     * @param  ?array<string>  $domainsEnrollmentModes
-     * @param  ?string  $creatorRoleId
-     * @param  ?string  $domainsDefaultRoleId
      */
-    public function __construct(?bool $enabled = null, ?int $maxAllowedMemberships = null, ?bool $adminDeleteEnabled = null, ?bool $domainsEnabled = null, ?array $domainsEnrollmentModes = null, ?string $creatorRoleId = null, ?string $domainsDefaultRoleId = null)
+    public function __construct(?array $domainsEnrollmentModes = null, ?string $creatorRoleId = null, ?string $domainsDefaultRoleId = null, ?bool $enabled = null, ?int $maxAllowedMemberships = null, ?bool $adminDeleteEnabled = null, ?bool $domainsEnabled = null)
     {
+        $this->domainsEnrollmentModes = $domainsEnrollmentModes;
+        $this->creatorRoleId = $creatorRoleId;
+        $this->domainsDefaultRoleId = $domainsDefaultRoleId;
         $this->enabled = $enabled;
         $this->maxAllowedMemberships = $maxAllowedMemberships;
         $this->adminDeleteEnabled = $adminDeleteEnabled;
         $this->domainsEnabled = $domainsEnabled;
-        $this->domainsEnrollmentModes = $domainsEnrollmentModes;
-        $this->creatorRoleId = $creatorRoleId;
-        $this->domainsDefaultRoleId = $domainsDefaultRoleId;
     }
 }

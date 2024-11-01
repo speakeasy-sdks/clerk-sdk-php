@@ -1,4 +1,5 @@
 # SAMLConnections
+(*samlConnections*)
 
 ## Overview
 
@@ -27,22 +28,21 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->samlConnections->listSAMLConnections(7432.91, 2980.65);
 
-    if ($response->samlConnections !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->samlConnections->listSAMLConnections(
+    limit: 10,
+    offset: 0
+
+);
+
+if ($response->samlConnections !== null) {
+    // handle response
 }
 ```
 
@@ -50,8 +50,8 @@ try {
 
 | Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `limit`                                                                                                                                   | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
-| `offset`                                                                                                                                  | *float*                                                                                                                                   | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
+| `limit`                                                                                                                                   | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Applies a limit to the number of results returned.<br/>Can be used for paginating the results together with `offset`.                     |
+| `offset`                                                                                                                                  | *?float*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. |
 
 ### Response
 
@@ -59,11 +59,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402,403,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors85 | 402, 403, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## createSAMLConnection
 
@@ -77,38 +76,24 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $request = new Operations\CreateSAMLConnectionRequestBody(
-        name: '<value>',
-        domain: 'sticky-consulting.name',
-        provider: Operations\Provider::SamlGoogle,
-        idpEntityId: '<value>',
-        idpSsoUrl: '<value>',
-        idpCertificate: '<value>',
-        idpMetadataUrl: '<value>',
-        idpMetadata: '<value>',
-        attributeMapping: new Operations\AttributeMapping(
-            userId: '<value>',
-            emailAddress: 'Ally18@yahoo.com',
-            firstName: 'Kailyn',
-            lastName: 'Schuppe',
-        ),
-    );
-    $response = $sdk->samlConnections->createSAMLConnection($request);
+$request = new Operations\CreateSAMLConnectionRequestBody(
+    name: '<value>',
+    domain: 'stingy-necklace.name',
+    provider: Operations\Provider::SamlGoogle,
+);
 
-    if ($response->samlConnection !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->samlConnections->createSAMLConnection(
+    request: $request
+);
+
+if ($response->samlConnection !== null) {
+    // handle response
 }
 ```
 
@@ -124,11 +109,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402,403,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors86 | 402, 403, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## getSAMLConnection
 
@@ -142,22 +126,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->samlConnections->getSAMLConnection('<value>');
 
-    if ($response->samlConnection !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->samlConnections->getSAMLConnection(
+    samlConnectionId: '<id>'
+);
+
+if ($response->samlConnection !== null) {
+    // handle response
 }
 ```
 
@@ -173,11 +154,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402,403,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors87 | 402, 403, 404        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## updateSAMLConnection
 
@@ -191,41 +171,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpdateSAMLConnectionRequestBody(
-        name: '<value>',
-        domain: 'best-latter.com',
-        idpEntityId: '<value>',
-        idpSsoUrl: '<value>',
-        idpCertificate: '<value>',
-        idpMetadataUrl: '<value>',
-        idpMetadata: '<value>',
-        attributeMapping: new Operations\UpdateSAMLConnectionAttributeMapping(
-            userId: '<value>',
-            emailAddress: 'Demarcus_Ward@hotmail.com',
-            firstName: 'Cordell',
-            lastName: 'Fay',
-        ),
-        active: false,
-        syncUserAttributes: false,
-        allowSubdomains: false,
-        allowIdpInitiated: false,
-    );
-    $response = $sdk->samlConnections->updateSAMLConnection('<value>', $requestBody);
+$requestBody = new Operations\UpdateSAMLConnectionRequestBody();
 
-    if ($response->samlConnection !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->samlConnections->updateSAMLConnection(
+    samlConnectionId: '<id>',
+    requestBody: $requestBody
+
+);
+
+if ($response->samlConnection !== null) {
+    // handle response
 }
 ```
 
@@ -242,11 +203,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402,403,404,422                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors88 | 402, 403, 404, 422   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## deleteSAMLConnection
 
@@ -260,22 +220,19 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->samlConnections->deleteSAMLConnection('<value>');
 
-    if ($response->deletedObject !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->samlConnections->deleteSAMLConnection(
+    samlConnectionId: '<id>'
+);
+
+if ($response->deletedObject !== null) {
+    // handle response
 }
 ```
 
@@ -291,7 +248,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 402,403,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors89 | 402, 403, 404        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |

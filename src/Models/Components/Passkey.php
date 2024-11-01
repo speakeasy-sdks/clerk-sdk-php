@@ -15,51 +15,51 @@ class Passkey
      *
      * @var PasskeyVerificationStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PasskeyVerificationStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PasskeyVerificationStatus')]
     public PasskeyVerificationStatus $status;
 
     /**
      *
      * @var PasskeyVerificationStrategy $strategy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('strategy')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PasskeyVerificationStrategy')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('strategy')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\PasskeyVerificationStrategy')]
     public PasskeyVerificationStrategy $strategy;
 
     /**
      *
      * @var ?VerificationNonce $nonce
      */
-    #[\JMS\Serializer\Annotation\SerializedName('nonce')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\VerificationNonce|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('nonce')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\VerificationNonce|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?VerificationNonce $nonce = null;
 
     /**
      *
      * @var ?int $attempts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attempts')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attempts')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $attempts = null;
 
     /**
      *
      * @var ?int $expireAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expire_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expire_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?int $expireAt = null;
 
     /**
-     * @param  ?PasskeyVerificationStatus  $status
-     * @param  ?PasskeyVerificationStrategy  $strategy
+     * @param  PasskeyVerificationStatus  $status
+     * @param  PasskeyVerificationStrategy  $strategy
      * @param  ?VerificationNonce  $nonce
      * @param  ?int  $attempts
      * @param  ?int  $expireAt
      */
-    public function __construct(?PasskeyVerificationStatus $status = null, ?PasskeyVerificationStrategy $strategy = null, ?VerificationNonce $nonce = null, ?int $attempts = null, ?int $expireAt = null)
+    public function __construct(PasskeyVerificationStatus $status, PasskeyVerificationStrategy $strategy, ?VerificationNonce $nonce = null, ?int $attempts = null, ?int $expireAt = null)
     {
         $this->status = $status;
         $this->strategy = $strategy;

@@ -16,8 +16,8 @@ class CreatePhoneNumberRequestBody
      *
      * @var ?string $userId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $userId = null;
 
     /**
@@ -25,8 +25,8 @@ class CreatePhoneNumberRequestBody
      *
      * @var ?string $phoneNumber
      */
-    #[\JMS\Serializer\Annotation\SerializedName('phone_number')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('phone_number')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $phoneNumber = null;
 
     /**
@@ -34,8 +34,8 @@ class CreatePhoneNumberRequestBody
      *
      * @var ?bool $verified
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verified')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verified')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $verified = null;
 
     /**
@@ -45,8 +45,8 @@ class CreatePhoneNumberRequestBody
      *
      * @var ?bool $primary
      */
-    #[\JMS\Serializer\Annotation\SerializedName('primary')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('primary')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $primary = null;
 
     /**
@@ -57,8 +57,8 @@ class CreatePhoneNumberRequestBody
      *
      * @var ?bool $reservedForSecondFactor
      */
-    #[\JMS\Serializer\Annotation\SerializedName('reserved_for_second_factor')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reserved_for_second_factor')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $reservedForSecondFactor = null;
 
     /**

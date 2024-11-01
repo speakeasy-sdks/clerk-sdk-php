@@ -40,12 +40,12 @@ class GetOrganizationInvitationResponse
     public ?Components\OrganizationInvitation $organizationInvitation = null;
 
     /**
-     * @param  ?string  $contentType
-     * @param  ?int  $statusCode
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\OrganizationInvitation  $organizationInvitation
      */
-    public function __construct(?string $contentType = null, ?int $statusCode = null, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, ?Components\OrganizationInvitation $organizationInvitation = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\OrganizationInvitation $organizationInvitation = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

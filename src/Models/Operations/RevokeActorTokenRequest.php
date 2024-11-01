@@ -20,9 +20,9 @@ class RevokeActorTokenRequest
     public string $actorTokenId;
 
     /**
-     * @param  ?string  $actorTokenId
+     * @param  string  $actorTokenId
      */
-    public function __construct(?string $actorTokenId = null)
+    public function __construct(string $actorTokenId)
     {
         $this->actorTokenId = $actorTokenId;
     }

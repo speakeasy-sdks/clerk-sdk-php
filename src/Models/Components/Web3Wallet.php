@@ -15,8 +15,8 @@ class Web3Wallet
      *
      * @var ?string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $id = null;
 
     /**
@@ -26,24 +26,24 @@ class Web3Wallet
      *
      * @var Web3WalletObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Web3WalletObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Web3WalletObject')]
     public Web3WalletObject $object;
 
     /**
      *
      * @var string $web3Wallet
      */
-    #[\JMS\Serializer\Annotation\SerializedName('web3_wallet')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('web3_wallet')]
     public string $web3Wallet;
 
     /**
      *
-     * @var Web3Signature|Web3WalletVerificationAdmin $verification
+     * @var Web3Signature|Web3WalletVerificationAdmin|null $verification
      */
-    #[\JMS\Serializer\Annotation\SerializedName('verification')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Web3Signature|\Clerk\Backend\Models\Components\Web3WalletVerificationAdmin')]
-    public Web3Signature|Web3WalletVerificationAdmin $verification;
+    #[\Speakeasy\Serializer\Annotation\SerializedName('verification')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Web3Signature|\Clerk\Backend\Models\Components\Web3WalletVerificationAdmin')]
+    public Web3Signature|Web3WalletVerificationAdmin|null $verification;
 
     /**
      * Unix timestamp of creation
@@ -52,7 +52,7 @@ class Web3Wallet
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -62,24 +62,24 @@ class Web3Wallet
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?Web3WalletObject  $object
-     * @param  ?string  $web3Wallet
-     * @param  Web3Signature|Web3WalletVerificationAdmin|null  $verification
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  Web3WalletObject  $object
+     * @param  string  $web3Wallet
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      * @param  ?string  $id
+     * @param  Web3Signature|Web3WalletVerificationAdmin|null  $verification
      */
-    public function __construct(?Web3WalletObject $object = null, ?string $web3Wallet = null, Web3Signature|Web3WalletVerificationAdmin|null $verification = null, ?int $createdAt = null, ?int $updatedAt = null, ?string $id = null)
+    public function __construct(Web3WalletObject $object, string $web3Wallet, int $createdAt, int $updatedAt, ?string $id = null, Web3Signature|Web3WalletVerificationAdmin|null $verification = null)
     {
         $this->object = $object;
         $this->web3Wallet = $web3Wallet;
-        $this->verification = $verification;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
         $this->id = $id;
+        $this->verification = $verification;
     }
 }

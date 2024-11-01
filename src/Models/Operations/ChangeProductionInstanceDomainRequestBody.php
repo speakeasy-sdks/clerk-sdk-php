@@ -16,8 +16,8 @@ class ChangeProductionInstanceDomainRequestBody
      *
      * @var ?string $homeUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('home_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('home_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $homeUrl = null;
 
     /**

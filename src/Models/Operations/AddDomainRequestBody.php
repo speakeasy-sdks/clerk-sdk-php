@@ -16,7 +16,7 @@ class AddDomainRequestBody
      *
      * @var string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
 
     /**
@@ -24,7 +24,7 @@ class AddDomainRequestBody
      *
      * @var bool $isSatellite
      */
-    #[\JMS\Serializer\Annotation\SerializedName('is_satellite')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('is_satellite')]
     public bool $isSatellite;
 
     /**
@@ -32,16 +32,16 @@ class AddDomainRequestBody
      *
      * @var ?string $proxyUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('proxy_url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('proxy_url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $proxyUrl = null;
 
     /**
-     * @param  ?string  $name
-     * @param  ?bool  $isSatellite
+     * @param  string  $name
+     * @param  bool  $isSatellite
      * @param  ?string  $proxyUrl
      */
-    public function __construct(?string $name = null, ?bool $isSatellite = null, ?string $proxyUrl = null)
+    public function __construct(string $name, bool $isSatellite, ?string $proxyUrl = null)
     {
         $this->name = $name;
         $this->isSatellite = $isSatellite;

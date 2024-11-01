@@ -40,12 +40,12 @@ class CreateBlocklistIdentifierResponse
     public ?Components\BlocklistIdentifier $blocklistIdentifier = null;
 
     /**
-     * @param  ?string  $contentType
-     * @param  ?int  $statusCode
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\BlocklistIdentifier  $blocklistIdentifier
      */
-    public function __construct(?string $contentType = null, ?int $statusCode = null, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, ?Components\BlocklistIdentifier $blocklistIdentifier = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\BlocklistIdentifier $blocklistIdentifier = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

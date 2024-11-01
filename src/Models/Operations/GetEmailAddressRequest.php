@@ -20,9 +20,9 @@ class GetEmailAddressRequest
     public string $emailAddressId;
 
     /**
-     * @param  ?string  $emailAddressId
+     * @param  string  $emailAddressId
      */
-    public function __construct(?string $emailAddressId = null)
+    public function __construct(string $emailAddressId)
     {
         $this->emailAddressId = $emailAddressId;
     }

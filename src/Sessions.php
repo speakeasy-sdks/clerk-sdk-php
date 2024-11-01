@@ -9,16 +9,15 @@ declare(strict_types=1);
 namespace Clerk\Backend;
 
 use Clerk\Backend\Models\Operations;
-use JMS\Serializer\DeserializationContext;
+use Speakeasy\Serializer\DeserializationContext;
 
 class Sessions
 {
     private SDKConfiguration $sdkConfiguration;
-
     /**
      * @param  SDKConfiguration  $sdkConfig
      */
-    public function __construct(SDKConfiguration $sdkConfig)
+    public function __construct(public SDKConfiguration $sdkConfig)
     {
         $this->sdkConfiguration = $sdkConfig;
     }
@@ -31,13 +30,12 @@ class Sessions
      * **Deprecation Notice (2024-01-01):** All parameters were initially considered optional, however
      * moving forward at least one of `client_id` or `user_id` parameters should be provided.
      *
-     * @param  Operations\GetSessionListRequest  $request
+     * @param  ?Operations\GetSessionListRequest  $request
      * @return Operations\GetSessionListResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getSessionList(
-        ?Operations\GetSessionListRequest $request,
-    ): Operations\GetSessionListResponse {
+    public function getSessionList(?Operations\GetSessionListRequest $request = null): Operations\GetSessionListResponse
+    {
         $baseUrl = $this->sdkConfiguration->getServerUrl();
         $url = Utils\Utils::generateUrl($baseUrl, '/sessions');
         $options = ['http_errors' => false];
@@ -68,7 +66,7 @@ class Sessions
         } elseif (in_array($statusCode, [400, 401, 422])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors11', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -89,9 +87,8 @@ class Sessions
      * @return Operations\GetSessionResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function getSession(
-        string $sessionId,
-    ): Operations\GetSessionResponse {
+    public function getSession(string $sessionId): Operations\GetSessionResponse
+    {
         $request = new Operations\GetSessionRequest(
             sessionId: $sessionId,
         );
@@ -124,7 +121,7 @@ class Sessions
         } elseif (in_array($statusCode, [400, 401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors12', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -146,9 +143,8 @@ class Sessions
      * @return Operations\RevokeSessionResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function revokeSession(
-        string $sessionId,
-    ): Operations\RevokeSessionResponse {
+    public function revokeSession(string $sessionId): Operations\RevokeSessionResponse
+    {
         $request = new Operations\RevokeSessionRequest(
             sessionId: $sessionId,
         );
@@ -181,7 +177,7 @@ class Sessions
         } elseif (in_array($statusCode, [400, 401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors13', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -207,10 +203,8 @@ class Sessions
      * @throws \Clerk\Backend\Models\Errors\SDKException
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    public function verifySession(
-        string $sessionId,
-        ?Operations\VerifySessionRequestBody $requestBody = null,
-    ): Operations\VerifySessionResponse {
+    public function verifySession(string $sessionId, ?Operations\VerifySessionRequestBody $requestBody = null): Operations\VerifySessionResponse
+    {
         trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new Operations\VerifySessionRequest(
             sessionId: $sessionId,
@@ -249,7 +243,7 @@ class Sessions
         } elseif (in_array($statusCode, [400, 401, 404, 410])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors14', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -271,10 +265,8 @@ class Sessions
      * @return Operations\CreateSessionTokenFromTemplateResponse
      * @throws \Clerk\Backend\Models\Errors\SDKException
      */
-    public function createSessionTokenFromTemplate(
-        string $sessionId,
-        string $templateName,
-    ): Operations\CreateSessionTokenFromTemplateResponse {
+    public function createSessionTokenFromTemplate(string $sessionId, string $templateName): Operations\CreateSessionTokenFromTemplateResponse
+    {
         $request = new Operations\CreateSessionTokenFromTemplateRequest(
             sessionId: $sessionId,
             templateName: $templateName,
@@ -308,7 +300,7 @@ class Sessions
         } elseif (in_array($statusCode, [401, 404])) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+                $obj = $serializer->deserialize((string) $httpResponse->getBody(), '\Clerk\Backend\Models\Errors\ClerkErrors15', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
                 throw $obj->toException();
             } else {
                 throw new \Clerk\Backend\Models\Errors\SDKException('Unknown content type received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
@@ -319,4 +311,5 @@ class Sessions
             throw new \Clerk\Backend\Models\Errors\SDKException('Unknown status code received', $statusCode, $httpResponse->getBody()->getContents(), $httpResponse);
         }
     }
+
 }

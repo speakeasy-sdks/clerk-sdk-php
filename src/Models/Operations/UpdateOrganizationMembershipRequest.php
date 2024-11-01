@@ -35,11 +35,11 @@ class UpdateOrganizationMembershipRequest
     public UpdateOrganizationMembershipRequestBody $requestBody;
 
     /**
-     * @param  ?string  $organizationId
-     * @param  ?string  $userId
-     * @param  ?UpdateOrganizationMembershipRequestBody  $requestBody
+     * @param  string  $organizationId
+     * @param  string  $userId
+     * @param  UpdateOrganizationMembershipRequestBody  $requestBody
      */
-    public function __construct(?string $organizationId = null, ?string $userId = null, ?UpdateOrganizationMembershipRequestBody $requestBody = null)
+    public function __construct(string $organizationId, string $userId, UpdateOrganizationMembershipRequestBody $requestBody)
     {
         $this->organizationId = $organizationId;
         $this->userId = $userId;

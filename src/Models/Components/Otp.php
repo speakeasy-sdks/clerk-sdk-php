@@ -15,39 +15,39 @@ class Otp
      *
      * @var VerificationStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\VerificationStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\VerificationStatus')]
     public VerificationStatus $status;
 
     /**
      *
      * @var Strategy $strategy
      */
-    #[\JMS\Serializer\Annotation\SerializedName('strategy')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Strategy')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('strategy')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Strategy')]
     public Strategy $strategy;
 
     /**
      *
      * @var int $attempts
      */
-    #[\JMS\Serializer\Annotation\SerializedName('attempts')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('attempts')]
     public int $attempts;
 
     /**
      *
      * @var int $expireAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('expire_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expire_at')]
     public int $expireAt;
 
     /**
-     * @param  ?VerificationStatus  $status
-     * @param  ?Strategy  $strategy
-     * @param  ?int  $attempts
-     * @param  ?int  $expireAt
+     * @param  VerificationStatus  $status
+     * @param  Strategy  $strategy
+     * @param  int  $attempts
+     * @param  int  $expireAt
      */
-    public function __construct(?VerificationStatus $status = null, ?Strategy $strategy = null, ?int $attempts = null, ?int $expireAt = null)
+    public function __construct(VerificationStatus $status, Strategy $strategy, int $attempts, int $expireAt)
     {
         $this->status = $status;
         $this->strategy = $strategy;

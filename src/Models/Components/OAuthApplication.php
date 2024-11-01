@@ -15,78 +15,78 @@ class OAuthApplication
      *
      * @var OAuthApplicationObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OAuthApplicationObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\OAuthApplicationObject')]
     public OAuthApplicationObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var string $instanceId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('instance_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('instance_id')]
     public string $instanceId;
 
     /**
      *
      * @var string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
 
     /**
      *
      * @var string $clientId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('client_id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('client_id')]
     public string $clientId;
 
     /**
      *
      * @var bool $public
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public')]
     public bool $public;
 
     /**
      *
      * @var string $scopes
      */
-    #[\JMS\Serializer\Annotation\SerializedName('scopes')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('scopes')]
     public string $scopes;
 
     /**
      *
      * @var string $callbackUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('callback_url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('callback_url')]
     public string $callbackUrl;
 
     /**
      *
      * @var string $authorizeUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('authorize_url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('authorize_url')]
     public string $authorizeUrl;
 
     /**
      *
      * @var string $tokenFetchUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('token_fetch_url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('token_fetch_url')]
     public string $tokenFetchUrl;
 
     /**
      *
      * @var string $userInfoUrl
      */
-    #[\JMS\Serializer\Annotation\SerializedName('user_info_url')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('user_info_url')]
     public string $userInfoUrl;
 
     /**
@@ -96,7 +96,7 @@ class OAuthApplication
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -106,25 +106,25 @@ class OAuthApplication
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?OAuthApplicationObject  $object
-     * @param  ?string  $id
-     * @param  ?string  $instanceId
-     * @param  ?string  $name
-     * @param  ?string  $clientId
-     * @param  ?bool  $public
-     * @param  ?string  $scopes
-     * @param  ?string  $callbackUrl
-     * @param  ?string  $authorizeUrl
-     * @param  ?string  $tokenFetchUrl
-     * @param  ?string  $userInfoUrl
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  OAuthApplicationObject  $object
+     * @param  string  $id
+     * @param  string  $instanceId
+     * @param  string  $name
+     * @param  string  $clientId
+     * @param  bool  $public
+     * @param  string  $scopes
+     * @param  string  $callbackUrl
+     * @param  string  $authorizeUrl
+     * @param  string  $tokenFetchUrl
+     * @param  string  $userInfoUrl
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      */
-    public function __construct(?OAuthApplicationObject $object = null, ?string $id = null, ?string $instanceId = null, ?string $name = null, ?string $clientId = null, ?bool $public = null, ?string $scopes = null, ?string $callbackUrl = null, ?string $authorizeUrl = null, ?string $tokenFetchUrl = null, ?string $userInfoUrl = null, ?int $createdAt = null, ?int $updatedAt = null)
+    public function __construct(OAuthApplicationObject $object, string $id, string $instanceId, string $name, string $clientId, bool $public, string $scopes, string $callbackUrl, string $authorizeUrl, string $tokenFetchUrl, string $userInfoUrl, int $createdAt, int $updatedAt)
     {
         $this->object = $object;
         $this->id = $id;

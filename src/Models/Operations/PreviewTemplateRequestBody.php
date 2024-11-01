@@ -19,8 +19,8 @@ class PreviewTemplateRequestBody
      *
      * @var ?string $subject
      */
-    #[\JMS\Serializer\Annotation\SerializedName('subject')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subject')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $subject = null;
 
     /**
@@ -28,8 +28,8 @@ class PreviewTemplateRequestBody
      *
      * @var ?string $body
      */
-    #[\JMS\Serializer\Annotation\SerializedName('body')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('body')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $body = null;
 
     /**
@@ -40,8 +40,8 @@ class PreviewTemplateRequestBody
      *
      * @var ?string $fromEmailName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('from_email_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('from_email_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $fromEmailName = null;
 
     /**
@@ -52,21 +52,21 @@ class PreviewTemplateRequestBody
      *
      * @var ?string $replyToEmailName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('reply_to_email_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('reply_to_email_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $replyToEmailName = null;
 
     /**
-     * @param  ?string  $subject
      * @param  ?string  $body
      * @param  ?string  $fromEmailName
      * @param  ?string  $replyToEmailName
+     * @param  ?string  $subject
      */
-    public function __construct(?string $subject = null, ?string $body = null, ?string $fromEmailName = null, ?string $replyToEmailName = null)
+    public function __construct(?string $body = null, ?string $fromEmailName = null, ?string $replyToEmailName = null, ?string $subject = null)
     {
-        $this->subject = $subject;
         $this->body = $body;
         $this->fromEmailName = $fromEmailName;
         $this->replyToEmailName = $replyToEmailName;
+        $this->subject = $subject;
     }
 }

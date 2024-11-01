@@ -18,8 +18,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $externalId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('external_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $externalId = null;
 
     /**
@@ -27,8 +27,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $firstName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('first_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('first_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $firstName = null;
 
     /**
@@ -36,8 +36,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $lastName
      */
-    #[\JMS\Serializer\Annotation\SerializedName('last_name')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('last_name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $lastName = null;
 
     /**
@@ -47,8 +47,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $primaryEmailAddressId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('primary_email_address_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('primary_email_address_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $primaryEmailAddressId = null;
 
     /**
@@ -58,8 +58,8 @@ class UpdateUserRequestBody
      *
      * @var ?bool $notifyPrimaryEmailAddressChanged
      */
-    #[\JMS\Serializer\Annotation\SerializedName('notify_primary_email_address_changed')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('notify_primary_email_address_changed')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $notifyPrimaryEmailAddressChanged = null;
 
     /**
@@ -69,8 +69,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $primaryPhoneNumberId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('primary_phone_number_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('primary_phone_number_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $primaryPhoneNumberId = null;
 
     /**
@@ -80,8 +80,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $primaryWeb3WalletId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('primary_web3_wallet_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('primary_web3_wallet_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $primaryWeb3WalletId = null;
 
     /**
@@ -91,8 +91,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $username
      */
-    #[\JMS\Serializer\Annotation\SerializedName('username')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('username')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $username = null;
 
     /**
@@ -100,8 +100,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $profileImageId
      */
-    #[\JMS\Serializer\Annotation\SerializedName('profile_image_id')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('profile_image_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $profileImageId = null;
 
     /**
@@ -111,8 +111,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $password
      */
-    #[\JMS\Serializer\Annotation\SerializedName('password')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('password')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $password = null;
 
     /**
@@ -123,8 +123,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $passwordDigest
      */
-    #[\JMS\Serializer\Annotation\SerializedName('password_digest')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('password_digest')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $passwordDigest = null;
 
     /**
@@ -246,9 +246,9 @@ class UpdateUserRequestBody
      *
      * @var ?UpdateUserPasswordHasher $passwordHasher
      */
-    #[\JMS\Serializer\Annotation\SerializedName('password_hasher')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateUserPasswordHasher|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('password_hasher')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateUserPasswordHasher|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UpdateUserPasswordHasher $passwordHasher = null;
 
     /**
@@ -256,8 +256,8 @@ class UpdateUserRequestBody
      *
      * @var ?bool $skipPasswordChecks
      */
-    #[\JMS\Serializer\Annotation\SerializedName('skip_password_checks')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('skip_password_checks')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $skipPasswordChecks = null;
 
     /**
@@ -265,8 +265,8 @@ class UpdateUserRequestBody
      *
      * @var ?bool $signOutOfOtherSessions
      */
-    #[\JMS\Serializer\Annotation\SerializedName('sign_out_of_other_sessions')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sign_out_of_other_sessions')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $signOutOfOtherSessions = null;
 
     /**
@@ -279,8 +279,8 @@ class UpdateUserRequestBody
      *
      * @var ?string $totpSecret
      */
-    #[\JMS\Serializer\Annotation\SerializedName('totp_secret')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('totp_secret')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $totpSecret = null;
 
     /**
@@ -290,9 +290,9 @@ class UpdateUserRequestBody
      *
      * @var ?array<string> $backupCodes
      */
-    #[\JMS\Serializer\Annotation\SerializedName('backup_codes')]
-    #[\JMS\Serializer\Annotation\Type('array<string>|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('backup_codes')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?array $backupCodes = null;
 
     /**
@@ -300,9 +300,9 @@ class UpdateUserRequestBody
      *
      * @var ?UpdateUserPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateUserPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateUserPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UpdateUserPublicMetadata $publicMetadata = null;
 
     /**
@@ -310,9 +310,9 @@ class UpdateUserRequestBody
      *
      * @var ?UpdateUserPrivateMetadata $privateMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('private_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateUserPrivateMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('private_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateUserPrivateMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UpdateUserPrivateMetadata $privateMetadata = null;
 
     /**
@@ -322,9 +322,9 @@ class UpdateUserRequestBody
      *
      * @var ?UpdateUserUnsafeMetadata $unsafeMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('unsafe_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateUserUnsafeMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('unsafe_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Operations\UpdateUserUnsafeMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?UpdateUserUnsafeMetadata $unsafeMetadata = null;
 
     /**
@@ -332,8 +332,8 @@ class UpdateUserRequestBody
      *
      * @var ?bool $deleteSelfEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('delete_self_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('delete_self_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $deleteSelfEnabled = null;
 
     /**
@@ -341,8 +341,8 @@ class UpdateUserRequestBody
      *
      * @var ?bool $createOrganizationEnabled
      */
-    #[\JMS\Serializer\Annotation\SerializedName('create_organization_enabled')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('create_organization_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $createOrganizationEnabled = null;
 
     /**
@@ -350,57 +350,57 @@ class UpdateUserRequestBody
      *
      * @var ?string $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $createdAt = null;
 
     /**
-     * @param  ?string  $externalId
-     * @param  ?string  $firstName
-     * @param  ?string  $lastName
      * @param  ?string  $primaryEmailAddressId
      * @param  ?bool  $notifyPrimaryEmailAddressChanged
      * @param  ?string  $primaryPhoneNumberId
      * @param  ?string  $primaryWeb3WalletId
-     * @param  ?string  $username
-     * @param  ?string  $profileImageId
-     * @param  ?string  $password
      * @param  ?string  $passwordDigest
      * @param  ?UpdateUserPasswordHasher  $passwordHasher
-     * @param  ?bool  $skipPasswordChecks
-     * @param  ?bool  $signOutOfOtherSessions
      * @param  ?string  $totpSecret
      * @param  ?array<string>  $backupCodes
      * @param  ?UpdateUserPublicMetadata  $publicMetadata
      * @param  ?UpdateUserPrivateMetadata  $privateMetadata
      * @param  ?UpdateUserUnsafeMetadata  $unsafeMetadata
+     * @param  ?string  $createdAt
+     * @param  ?string  $externalId
+     * @param  ?string  $firstName
+     * @param  ?string  $lastName
+     * @param  ?string  $username
+     * @param  ?string  $profileImageId
+     * @param  ?string  $password
+     * @param  ?bool  $skipPasswordChecks
+     * @param  ?bool  $signOutOfOtherSessions
      * @param  ?bool  $deleteSelfEnabled
      * @param  ?bool  $createOrganizationEnabled
-     * @param  ?string  $createdAt
      */
-    public function __construct(?string $externalId = null, ?string $firstName = null, ?string $lastName = null, ?string $primaryEmailAddressId = null, ?bool $notifyPrimaryEmailAddressChanged = null, ?string $primaryPhoneNumberId = null, ?string $primaryWeb3WalletId = null, ?string $username = null, ?string $profileImageId = null, ?string $password = null, ?string $passwordDigest = null, ?UpdateUserPasswordHasher $passwordHasher = null, ?bool $skipPasswordChecks = null, ?bool $signOutOfOtherSessions = null, ?string $totpSecret = null, ?array $backupCodes = null, ?UpdateUserPublicMetadata $publicMetadata = null, ?UpdateUserPrivateMetadata $privateMetadata = null, ?UpdateUserUnsafeMetadata $unsafeMetadata = null, ?bool $deleteSelfEnabled = null, ?bool $createOrganizationEnabled = null, ?string $createdAt = null)
+    public function __construct(?string $primaryEmailAddressId = null, ?string $primaryPhoneNumberId = null, ?string $primaryWeb3WalletId = null, ?string $passwordDigest = null, ?UpdateUserPasswordHasher $passwordHasher = null, ?string $totpSecret = null, ?array $backupCodes = null, ?UpdateUserPublicMetadata $publicMetadata = null, ?UpdateUserPrivateMetadata $privateMetadata = null, ?UpdateUserUnsafeMetadata $unsafeMetadata = null, ?string $createdAt = null, ?string $externalId = null, ?string $firstName = null, ?string $lastName = null, ?string $username = null, ?string $profileImageId = null, ?string $password = null, ?bool $skipPasswordChecks = null, ?bool $signOutOfOtherSessions = null, ?bool $deleteSelfEnabled = null, ?bool $createOrganizationEnabled = null, ?bool $notifyPrimaryEmailAddressChanged = false)
     {
-        $this->externalId = $externalId;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
         $this->primaryEmailAddressId = $primaryEmailAddressId;
         $this->notifyPrimaryEmailAddressChanged = $notifyPrimaryEmailAddressChanged;
         $this->primaryPhoneNumberId = $primaryPhoneNumberId;
         $this->primaryWeb3WalletId = $primaryWeb3WalletId;
-        $this->username = $username;
-        $this->profileImageId = $profileImageId;
-        $this->password = $password;
         $this->passwordDigest = $passwordDigest;
         $this->passwordHasher = $passwordHasher;
-        $this->skipPasswordChecks = $skipPasswordChecks;
-        $this->signOutOfOtherSessions = $signOutOfOtherSessions;
         $this->totpSecret = $totpSecret;
         $this->backupCodes = $backupCodes;
         $this->publicMetadata = $publicMetadata;
         $this->privateMetadata = $privateMetadata;
         $this->unsafeMetadata = $unsafeMetadata;
+        $this->createdAt = $createdAt;
+        $this->externalId = $externalId;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->username = $username;
+        $this->profileImageId = $profileImageId;
+        $this->password = $password;
+        $this->skipPasswordChecks = $skipPasswordChecks;
+        $this->signOutOfOtherSessions = $signOutOfOtherSessions;
         $this->deleteSelfEnabled = $deleteSelfEnabled;
         $this->createOrganizationEnabled = $createOrganizationEnabled;
-        $this->createdAt = $createdAt;
     }
 }

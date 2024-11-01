@@ -15,22 +15,22 @@ class IdentificationLink
      *
      * @var Type $type
      */
-    #[\JMS\Serializer\Annotation\SerializedName('type')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Type')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Type')]
     public Type $type;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
-     * @param  ?Type  $type
-     * @param  ?string  $id
+     * @param  Type  $type
+     * @param  string  $id
      */
-    public function __construct(?Type $type = null, ?string $id = null)
+    public function __construct(Type $type, string $id)
     {
         $this->type = $type;
         $this->id = $id;

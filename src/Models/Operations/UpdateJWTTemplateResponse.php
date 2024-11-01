@@ -40,12 +40,12 @@ class UpdateJWTTemplateResponse
     public ?Components\JWTTemplate $jwtTemplate = null;
 
     /**
-     * @param  ?string  $contentType
-     * @param  ?int  $statusCode
-     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
      * @param  ?Components\JWTTemplate  $jwtTemplate
      */
-    public function __construct(?string $contentType = null, ?int $statusCode = null, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, ?Components\JWTTemplate $jwtTemplate = null)
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, ?Components\JWTTemplate $jwtTemplate = null)
     {
         $this->contentType = $contentType;
         $this->statusCode = $statusCode;

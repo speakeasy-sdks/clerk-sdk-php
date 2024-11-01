@@ -9,66 +9,67 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** JWTTemplate - List of JWT templates */
 class JWTTemplate
 {
     /**
      *
      * @var JWTTemplateObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\JWTTemplateObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\JWTTemplateObject')]
     public JWTTemplateObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var string $name
      */
-    #[\JMS\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
     public string $name;
 
     /**
      *
      * @var Claims $claims
      */
-    #[\JMS\Serializer\Annotation\SerializedName('claims')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Claims')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('claims')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\Claims')]
     public Claims $claims;
 
     /**
      *
      * @var int $lifetime
      */
-    #[\JMS\Serializer\Annotation\SerializedName('lifetime')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('lifetime')]
     public int $lifetime;
 
     /**
      *
      * @var int $allowedClockSkew
      */
-    #[\JMS\Serializer\Annotation\SerializedName('allowed_clock_skew')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allowed_clock_skew')]
     public int $allowedClockSkew;
 
     /**
      *
      * @var ?bool $customSigningKey
      */
-    #[\JMS\Serializer\Annotation\SerializedName('custom_signing_key')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('custom_signing_key')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $customSigningKey = null;
 
     /**
      *
      * @var ?string $signingAlgorithm
      */
-    #[\JMS\Serializer\Annotation\SerializedName('signing_algorithm')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('signing_algorithm')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $signingAlgorithm = null;
 
     /**
@@ -78,7 +79,7 @@ class JWTTemplate
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -88,22 +89,22 @@ class JWTTemplate
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?JWTTemplateObject  $object
-     * @param  ?string  $id
-     * @param  ?string  $name
-     * @param  ?Claims  $claims
-     * @param  ?int  $lifetime
-     * @param  ?int  $allowedClockSkew
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  JWTTemplateObject  $object
+     * @param  string  $id
+     * @param  string  $name
+     * @param  Claims  $claims
+     * @param  int  $lifetime
+     * @param  int  $allowedClockSkew
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      * @param  ?bool  $customSigningKey
      * @param  ?string  $signingAlgorithm
      */
-    public function __construct(?JWTTemplateObject $object = null, ?string $id = null, ?string $name = null, ?Claims $claims = null, ?int $lifetime = null, ?int $allowedClockSkew = null, ?int $createdAt = null, ?int $updatedAt = null, ?bool $customSigningKey = null, ?string $signingAlgorithm = null)
+    public function __construct(JWTTemplateObject $object, string $id, string $name, Claims $claims, int $lifetime, int $allowedClockSkew, int $createdAt, int $updatedAt, ?bool $customSigningKey = null, ?string $signingAlgorithm = null)
     {
         $this->object = $object;
         $this->id = $id;

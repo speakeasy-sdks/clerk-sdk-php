@@ -171,7 +171,7 @@ class GetUserListRequest
      * @param  ?float  $offset
      * @param  ?string  $orderBy
      */
-    public function __construct(?array $emailAddress = null, ?array $phoneNumber = null, ?array $externalId = null, ?array $username = null, ?array $web3Wallet = null, ?array $userId = null, ?array $organizationId = null, ?string $query = null, ?int $lastActiveAtSince = null, ?float $limit = null, ?float $offset = null, ?string $orderBy = null)
+    public function __construct(?array $emailAddress = null, ?array $phoneNumber = null, ?array $externalId = null, ?array $username = null, ?array $web3Wallet = null, ?array $userId = null, ?array $organizationId = null, ?string $query = null, ?int $lastActiveAtSince = null, ?float $limit = 10, ?float $offset = 0, ?string $orderBy = '-created_at')
     {
         $this->emailAddress = $emailAddress;
         $this->phoneNumber = $phoneNumber;

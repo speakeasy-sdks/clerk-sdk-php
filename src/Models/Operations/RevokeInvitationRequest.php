@@ -20,9 +20,9 @@ class RevokeInvitationRequest
     public string $invitationId;
 
     /**
-     * @param  ?string  $invitationId
+     * @param  string  $invitationId
      */
-    public function __construct(?string $invitationId = null)
+    public function __construct(string $invitationId)
     {
         $this->invitationId = $invitationId;
     }

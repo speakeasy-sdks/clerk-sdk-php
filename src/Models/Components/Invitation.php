@@ -9,61 +9,62 @@ declare(strict_types=1);
 namespace Clerk\Backend\Models\Components;
 
 
+/** Invitation - Success */
 class Invitation
 {
     /**
      *
      * @var InvitationObject $object
      */
-    #[\JMS\Serializer\Annotation\SerializedName('object')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationObject')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('object')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationObject')]
     public InvitationObject $object;
 
     /**
      *
      * @var string $id
      */
-    #[\JMS\Serializer\Annotation\SerializedName('id')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
     public string $id;
 
     /**
      *
      * @var string $emailAddress
      */
-    #[\JMS\Serializer\Annotation\SerializedName('email_address')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email_address')]
     public string $emailAddress;
 
     /**
      *
      * @var ?InvitationPublicMetadata $publicMetadata
      */
-    #[\JMS\Serializer\Annotation\SerializedName('public_metadata')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationPublicMetadata|null')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('public_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationPublicMetadata|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?InvitationPublicMetadata $publicMetadata = null;
 
     /**
      *
      * @var ?bool $revoked
      */
-    #[\JMS\Serializer\Annotation\SerializedName('revoked')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('revoked')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?bool $revoked = null;
 
     /**
      *
      * @var InvitationStatus $status
      */
-    #[\JMS\Serializer\Annotation\SerializedName('status')]
-    #[\JMS\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationStatus')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Clerk\Backend\Models\Components\InvitationStatus')]
     public InvitationStatus $status;
 
     /**
      *
      * @var ?string $url
      */
-    #[\JMS\Serializer\Annotation\SerializedName('url')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('url')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
     public ?string $url = null;
 
     /**
@@ -73,7 +74,7 @@ class Invitation
      *
      * @var int $createdAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('created_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
     public int $createdAt;
 
     /**
@@ -83,21 +84,21 @@ class Invitation
      *
      * @var int $updatedAt
      */
-    #[\JMS\Serializer\Annotation\SerializedName('updated_at')]
+    #[\Speakeasy\Serializer\Annotation\SerializedName('updated_at')]
     public int $updatedAt;
 
     /**
-     * @param  ?InvitationObject  $object
-     * @param  ?string  $id
-     * @param  ?string  $emailAddress
-     * @param  ?InvitationStatus  $status
-     * @param  ?int  $createdAt
-     * @param  ?int  $updatedAt
+     * @param  InvitationObject  $object
+     * @param  string  $id
+     * @param  string  $emailAddress
+     * @param  InvitationStatus  $status
+     * @param  int  $createdAt
+     * @param  int  $updatedAt
      * @param  ?InvitationPublicMetadata  $publicMetadata
      * @param  ?bool  $revoked
      * @param  ?string  $url
      */
-    public function __construct(?InvitationObject $object = null, ?string $id = null, ?string $emailAddress = null, ?InvitationStatus $status = null, ?int $createdAt = null, ?int $updatedAt = null, ?InvitationPublicMetadata $publicMetadata = null, ?bool $revoked = null, ?string $url = null)
+    public function __construct(InvitationObject $object, string $id, string $emailAddress, InvitationStatus $status, int $createdAt, int $updatedAt, ?InvitationPublicMetadata $publicMetadata = null, ?bool $revoked = null, ?string $url = null)
     {
         $this->object = $object;
         $this->id = $id;

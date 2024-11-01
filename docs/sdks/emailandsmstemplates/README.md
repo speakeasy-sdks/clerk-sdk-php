@@ -1,4 +1,5 @@
 # EmailAndSMSTemplates
+(*emailAndSMSTemplates*)
 
 ## Overview
 
@@ -29,23 +30,20 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->emailAndSMSTemplates->getTemplateList(Operations\TemplateType::Sms);
 
-    if ($response->templateList !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->emailAndSMSTemplates->getTemplateList(
+    templateType: Operations\TemplateType::Sms
+);
+
+if ($response->templateList !== null) {
+    // handle response
 }
 ```
 
@@ -61,11 +59,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,422                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors16 | 400, 401, 422        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## ~~getTemplate~~
 
@@ -81,23 +78,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->emailAndSMSTemplates->getTemplate(Operations\PathParamTemplateType::Email, '<value>');
 
-    if ($response->template !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->emailAndSMSTemplates->getTemplate(
+    templateType: Operations\PathParamTemplateType::Email,
+    slug: '<value>'
+
+);
+
+if ($response->template !== null) {
+    // handle response
 }
 ```
 
@@ -114,11 +110,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors17 | 400, 401, 404        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## ~~upsertTemplate~~
 
@@ -134,31 +129,23 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\UpsertTemplateRequestBody(
-        name: '<value>',
-        subject: '<value>',
-        markup: '<value>',
-        body: '<value>',
-        deliveredByClerk: false,
-        fromEmailName: '<value>',
-        replyToEmailName: '<value>',
-    );
-    $response = $sdk->emailAndSMSTemplates->upsertTemplate(Operations\UpsertTemplatePathParamTemplateType::Email, '<value>', $requestBody);
+$requestBody = new Operations\UpsertTemplateRequestBody();
 
-    if ($response->template !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->emailAndSMSTemplates->upsertTemplate(
+    templateType: Operations\UpsertTemplatePathParamTemplateType::Email,
+    slug: '<value>',
+    requestBody: $requestBody
+
+);
+
+if ($response->template !== null) {
+    // handle response
 }
 ```
 
@@ -168,7 +155,7 @@ try {
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `templateType`                                                                                                   | [Operations\UpsertTemplatePathParamTemplateType](../../Models/Operations/UpsertTemplatePathParamTemplateType.md) | :heavy_check_mark:                                                                                               | The type of template to update                                                                                   |
 | `slug`                                                                                                           | *string*                                                                                                         | :heavy_check_mark:                                                                                               | The slug of the template to update                                                                               |
-| `requestBody`                                                                                                    | [Operations\UpsertTemplateRequestBody](../../Models/Operations/UpsertTemplateRequestBody.md)                     | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `requestBody`                                                                                                    | [?Operations\UpsertTemplateRequestBody](../../Models/Operations/UpsertTemplateRequestBody.md)                    | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
 
 ### Response
 
@@ -176,11 +163,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,402,403,404,422                  | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| Errors\ClerkErrors18         | 400, 401, 402, 403, 404, 422 | application/json             |
+| Errors\SDKException          | 4XX, 5XX                     | \*/\*                        |
 
 ## ~~revertTemplate~~
 
@@ -196,23 +182,22 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
 
-    $response = $sdk->emailAndSMSTemplates->revertTemplate(Operations\RevertTemplatePathParamTemplateType::Sms, '<value>');
 
-    if ($response->template !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->emailAndSMSTemplates->revertTemplate(
+    templateType: Operations\RevertTemplatePathParamTemplateType::Sms,
+    slug: '<value>'
+
+);
+
+if ($response->template !== null) {
+    // handle response
 }
 ```
 
@@ -229,11 +214,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,402,404                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors19 | 400, 401, 402, 404   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## ~~previewTemplate~~
 
@@ -249,38 +233,33 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\PreviewTemplateRequestBody(
-        subject: '<value>',
-        body: '<value>',
-        fromEmailName: '<value>',
-        replyToEmailName: '<value>',
-    );
-    $response = $sdk->emailAndSMSTemplates->previewTemplate('<value>', '<value>', $requestBody);
+$requestBody = new Operations\PreviewTemplateRequestBody();
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->emailAndSMSTemplates->previewTemplate(
+    templateType: '<value>',
+    slug: '<value>',
+    requestBody: $requestBody
+
+);
+
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `templateType`                                                                                 | *string*                                                                                       | :heavy_check_mark:                                                                             | The type of template to preview                                                                |
-| `slug`                                                                                         | *string*                                                                                       | :heavy_check_mark:                                                                             | The slug of the template to preview                                                            |
-| `requestBody`                                                                                  | [Operations\PreviewTemplateRequestBody](../../Models/Operations/PreviewTemplateRequestBody.md) | :heavy_minus_sign:                                                                             | Required parameters                                                                            |
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `templateType`                                                                                  | *string*                                                                                        | :heavy_check_mark:                                                                              | The type of template to preview                                                                 |
+| `slug`                                                                                          | *string*                                                                                        | :heavy_check_mark:                                                                              | The slug of the template to preview                                                             |
+| `requestBody`                                                                                   | [?Operations\PreviewTemplateRequestBody](../../Models/Operations/PreviewTemplateRequestBody.md) | :heavy_minus_sign:                                                                              | Required parameters                                                                             |
 
 ### Response
 
@@ -288,11 +267,10 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404,422                          | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
-
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors20 | 400, 401, 404, 422   | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
 
 ## ~~toggleTemplateDelivery~~
 
@@ -310,25 +288,23 @@ declare(strict_types=1);
 require 'vendor/autoload.php';
 
 use Clerk\Backend;
-use Clerk\Backend\Models\Components;
 use Clerk\Backend\Models\Operations;
 
-$security = new Components\Security();
-$security->bearerAuth = '<YOUR_BEARER_TOKEN_HERE>';
+$security = '<YOUR_BEARER_TOKEN_HERE>';
 
 $sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
 
-try {
-    $requestBody = new Operations\ToggleTemplateDeliveryRequestBody(
-        deliveredByClerk: false,
-    );
-    $response = $sdk->emailAndSMSTemplates->toggleTemplateDelivery(Operations\ToggleTemplateDeliveryPathParamTemplateType::Sms, '<value>', $requestBody);
+$requestBody = new Operations\ToggleTemplateDeliveryRequestBody();
 
-    if ($response->template !== null) {
-        // handle response
-    }
-} catch (Throwable $e) {
-    // handle exception
+$response = $sdk->emailAndSMSTemplates->toggleTemplateDelivery(
+    templateType: Operations\ToggleTemplateDeliveryPathParamTemplateType::Sms,
+    slug: '<value>',
+    requestBody: $requestBody
+
+);
+
+if ($response->template !== null) {
+    // handle response
 }
 ```
 
@@ -338,7 +314,7 @@ try {
 | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | `templateType`                                                                                                                   | [Operations\ToggleTemplateDeliveryPathParamTemplateType](../../Models/Operations/ToggleTemplateDeliveryPathParamTemplateType.md) | :heavy_check_mark:                                                                                                               | The type of template to toggle delivery for                                                                                      |
 | `slug`                                                                                                                           | *string*                                                                                                                         | :heavy_check_mark:                                                                                                               | The slug of the template for which to toggle delivery                                                                            |
-| `requestBody`                                                                                                                    | [Operations\ToggleTemplateDeliveryRequestBody](../../Models/Operations/ToggleTemplateDeliveryRequestBody.md)                     | :heavy_minus_sign:                                                                                                               | N/A                                                                                                                              |
+| `requestBody`                                                                                                                    | [?Operations\ToggleTemplateDeliveryRequestBody](../../Models/Operations/ToggleTemplateDeliveryRequestBody.md)                    | :heavy_minus_sign:                                                                                                               | N/A                                                                                                                              |
 
 ### Response
 
@@ -346,7 +322,7 @@ try {
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Errors\ClerkErrors                       | 400,401,404                              | application/json                         |
-| Clerk\Backend\Models\Errors.SDKException | 4xx-5xx                                  | */*                                      |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| Errors\ClerkErrors21 | 400, 401, 404        | application/json     |
+| Errors\SDKException  | 4XX, 5XX             | \*/\*                |
