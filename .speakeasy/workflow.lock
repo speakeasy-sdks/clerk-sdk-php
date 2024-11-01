@@ -1,19 +1,25 @@
 speakeasyVersion: 1.424.0
 sources:
+    backend-php:
+        sourceNamespace: clerk-openapi
+        sourceRevisionDigest: sha256:38c16a932d47d12617f45050c406209cc527f1e669f6f93f697afd34dd65215a
+        sourceBlobDigest: sha256:a1fe6e2b6b88ebb94a1ed12cf3aa9acf83572460a5f825e8af217a692289a9f2
+        tags:
+            - latest
     clerk-backend-php:
         sourceNamespace: clerk-openapi
-        sourceRevisionDigest: sha256:1b286b5fed33a83bc8f8565131d2a072b75dbac14f4d2d47e67033f3ae2af2c8
+        sourceRevisionDigest: sha256:38c16a932d47d12617f45050c406209cc527f1e669f6f93f697afd34dd65215a
         sourceBlobDigest: sha256:a1fe6e2b6b88ebb94a1ed12cf3aa9acf83572460a5f825e8af217a692289a9f2
         tags:
             - latest
 targets:
     clerk-php:
-        source: clerk-backend-php
+        source: backend-php
         sourceNamespace: clerk-openapi
-        sourceRevisionDigest: sha256:1b286b5fed33a83bc8f8565131d2a072b75dbac14f4d2d47e67033f3ae2af2c8
+        sourceRevisionDigest: sha256:38c16a932d47d12617f45050c406209cc527f1e669f6f93f697afd34dd65215a
         sourceBlobDigest: sha256:a1fe6e2b6b88ebb94a1ed12cf3aa9acf83572460a5f825e8af217a692289a9f2
         codeSamplesNamespace: clerk-openapi-code-samples
-        codeSamplesRevisionDigest: sha256:220becc6b1b15b3ebe33c2a76a7f712f38f7c889d1522460eba85847cb041c9b
+        codeSamplesRevisionDigest: sha256:3dbc85e81ffa6788bc7471cb2daa04aab0ebfb9fabf3c81f6ec0b7199887991e
     my-first-target:
         source: clerk-backend-php
         sourceNamespace: clerk-openapi
@@ -23,7 +29,7 @@ workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
-        clerk-backend-php:
+        backend-php:
             inputs:
                 - location: ./openapi.json
             registry:
@@ -31,7 +37,7 @@ workflow:
     targets:
         clerk-php:
             target: php
-            source: clerk-backend-php
+            source: backend-php
             publish:
                 packagist:
                     username: clerkinc

@@ -1,7 +1,7 @@
 workflowVersion: 1.0.0
 speakeasyVersion: latest
 sources:
-    clerk-backend-php:
+    backend-php:
         inputs:
             - location: ./openapi.json
         registry:
@@ -9,7 +9,7 @@ sources:
 targets:
     clerk-php:
         target: php
-        source: clerk-backend-php
+        source: backend-php
         publish:
             packagist:
                 username: clerkinc
