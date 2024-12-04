@@ -32,3 +32,15 @@ php:
   namespace: Clerk\Backend
   outputModelSuffix: output
   packageName: clerk/backend-php
+  additionalDependencies: {
+    "autoload": {},
+    "autoload-dev": {
+      "Clerk\\Backend\\Tests\\": "Tests/"
+    },
+    "require": {
+      "firebase/php-jwt": "^6.10",
+      "phpseclib/phpseclib": "^3.0"
+    },
+    "require-dev": {}
+    }
+  }
