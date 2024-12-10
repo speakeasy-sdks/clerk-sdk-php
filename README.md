@@ -28,15 +28,44 @@
 
 [Clerk](https://clerk.com?utm_source=github&utm_medium=clerk-backend-php) is the easiest way to add authentication and user management to your application. To gain a better understanding of the Clerk Backend API, refer to the <a href="https://clerk.com/docs/reference/backend-api" target="_blank">Backend API</a> documentation.
 
-## Getting started
+<!-- Start Summary [summary] -->
+## Summary
 
-### Prerequisites
+Clerk Backend API: The Clerk REST Backend API, meant to be accessed by backend
+servers.
 
-## Installation
+### Versions
 
-```sh
-composer require clerk/backend-php
+When the API changes in a way that isn't compatible with older versions, a new version is released.
+Each version is identified by its release date, e.g. `2021-02-05`. For more information, please see [Clerk API Versions](https://clerk.com/docs/backend-requests/versioning/overview).
+
+
+Please see https://clerk.com/docs for more information.
+
+More information about the API can be found at https://clerk.com/docs
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [Usage](#usage)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+<!-- End Table of Contents [toc] -->
+
+<!-- Start SDK Installation [installation] -->
+## SDK Installation
+
+The SDK relies on [Composer](https://getcomposer.org/) to manage its dependencies.
+
+To install the SDK and add it as a dependency to an existing `composer.json` file:
+```bash
+composer require "clerk/backend-php"
 ```
+<!-- End SDK Installation [installation] -->
 
 ## Usage
 
@@ -47,6 +76,33 @@ CLERK_PUBLISHABLE_KEY=pk_*******
 CLERK_SECRET_KEY=sk_******
 ```
 
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
+
+### Example
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Clerk\Backend;
+
+$security = '<YOUR_BEARER_TOKEN_HERE>';
+
+$sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
+
+
+
+$response = $sdk->emailAddresses->get(
+    emailAddressId: '<id>'
+);
+
+if ($response->emailAddress !== null) {
+    // handle response
+}
+```
+<!-- End SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
@@ -356,71 +412,6 @@ You can override the default server globally by passing a server index to the `s
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 <!-- End Server Selection [server] -->
 
-<!-- Start Summary [summary] -->
-## Summary
-
-Clerk Backend API: The Clerk REST Backend API, meant to be accessed by backend
-servers.
-
-### Versions
-
-When the API changes in a way that isn't compatible with older versions, a new version is released.
-Each version is identified by its release date, e.g. `2021-02-05`. For more information, please see [Clerk API Versions](https://clerk.com/docs/backend-requests/versioning/overview).
-
-
-Please see https://clerk.com/docs for more information.
-
-More information about the API can be found at https://clerk.com/docs
-<!-- End Summary [summary] -->
-
-<!-- Start Table of Contents [toc] -->
-## Table of Contents
-
-* [SDK Installation](#sdk-installation)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-<!-- End Table of Contents [toc] -->
-
-<!-- Start SDK Installation [installation] -->
-## SDK Installation
-
-The SDK relies on [Composer](https://getcomposer.org/) to manage its dependencies.
-
-To install the SDK and add it as a dependency to an existing `composer.json` file:
-```bash
-composer require "clerk/backend-php"
-```
-<!-- End SDK Installation [installation] -->
-
-<!-- Start SDK Example Usage [usage] -->
-## SDK Example Usage
-
-### Example
-
-```php
-declare(strict_types=1);
-
-require 'vendor/autoload.php';
-
-use Clerk\Backend;
-
-$security = '<YOUR_BEARER_TOKEN_HERE>';
-
-$sdk = Backend\ClerkBackend::builder()->setSecurity($security)->build();
-
-
-
-$response = $sdk->emailAddresses->get(
-    emailAddressId: '<id>'
-);
-
-if ($response->emailAddress !== null) {
-    // handle response
-}
-```
-<!-- End SDK Example Usage [usage] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
