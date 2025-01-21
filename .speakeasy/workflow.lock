@@ -1,4 +1,4 @@
-speakeasyVersion: 1.424.0
+speakeasyVersion: 1.469.12
 sources:
     backend-php:
         sourceNamespace: clerk-openapi
@@ -52,5 +52,5 @@ workflow:
                     token: $packagist_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/clerk/clerk/clerk-openapi-code-samples
+                    location: registry.speakeasyapi.dev/clerk/clerk/clerk-openapi-php-code-samples
                 blocking: false
