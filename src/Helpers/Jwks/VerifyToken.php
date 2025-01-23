@@ -2,7 +2,6 @@
 
 namespace Clerk\Backend\Helpers\Jwks;
 
-use Clerk\Backend\Models\Components\WellKnownJWKS;
 use Clerk\Backend\Utils;
 use Exception;
 use Firebase\JWT\BeforeValidException;
@@ -135,7 +134,7 @@ class VerifyToken
         throw new TokenVerificationException(TokenVerificationErrorReason::$JWK_KID_MISMATCH);
     }
 
-    private static function fetchJwks(VerifyTokenOptions $options): WellKnownJWKS
+    private static function fetchJwks(VerifyTokenOptions $options): Clerk\Backend\Models\Components\Jwks
     {
         if ($options->getSecretKey() === null) {
             throw new TokenVerificationException(TokenVerificationErrorReason::$SECRET_KEY_MISSING);
@@ -154,7 +153,7 @@ class VerifyToken
 
         try {
             $serializer = Utils\JSON::createSerializer();
-            $wellKnownJWKS = $serializer->deserialize((string) $response->getBody(), '\Clerk\Backend\Models\Components\WellKnownJWKS', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
+            $wellKnownJWKS = $serializer->deserialize((string) $response->getBody(), '\Clerk\Backend\Models\Components\Jwks', 'json', DeserializationContext::create()->setRequireAllRequiredProperties(true));
 
         } catch (Exception $ex) {
             throw new TokenVerificationException(TokenVerificationErrorReason::$JWK_FAILED_TO_LOAD, $ex);
